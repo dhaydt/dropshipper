@@ -15,7 +15,7 @@ use App\Http\Controllers\Web\GenerateController;
 use Illuminate\Support\Facades\Route;
 
 //for maintenance mode
-Route::get('maintenance-mode', 'Web\WebController@maintenance_mode')->name('maintenance-mode');
+// Route::get('maintenance-mode', 'Web\WebController@maintenance_mode')->name('maintenance-mode');
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], function () {
     Route::get('/', 'WebController@home')->name('home');

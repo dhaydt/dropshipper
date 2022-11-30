@@ -180,13 +180,17 @@
                 height: 140px;
             } */
             .css-1xnb600 .banner-item{
-                height: 160px;
+                height: 180px;
             }
             .css-1xnb600 .desc-banner{
-                height: 20px;
+                height: 25px;
             }
             .css-1xnb600 .desc-banner .title{
-                font-size: 10px;
+                font-size: 12px;
+            }
+            .css-1xnb600 .banner-item img {
+                height: 85%;
+                width: 100%;
             }
         }
         .bardy-container{
@@ -202,7 +206,7 @@
             height: 100%;
         }
         .banner-item{
-            height: 310px;
+            height: 350px;
             position: relative;
         }
 
@@ -223,7 +227,7 @@
             color: #fff;
         }
         .banner-item img{
-            height: 100%;
+            height: 89%;
             width: 100%;
         }
     </style>
@@ -233,15 +237,15 @@
         <div class="css-1xnb600" data-testid="divLegoImageChannel">
             <div class="section-header mb-2">
                 <div class="feature_header">
-                  <span class="for-feature-title">Produk Unggulan</span>
+                  <span class="for-feature-title">{{ $unggulan['title'] }}</span>
                 </div>
-                <div class="view-all">
+                {{-- <div class="view-all">
                   <a class="btn btn-outline-accent btn-sm viw-btn-a"
                     href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
                     {{ \App\CPU\translate('view_all')}}
                     <i class="czi-arrow-{{Session::get('direction') === " rtl" ? 'left mr-1 ml-n1' : 'right ml-1 mr-n1' }}"></i>
                   </a>
-                </div>
+                </div> --}}
               </div>
               {{-- New Bardy --}}
               <div class="row bardy-container">
@@ -258,11 +262,11 @@
                                 <a href="{{route('product',$product->slug)}}">
                                     <img src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="">
                                 </a>
-                            </div>
-                            <div class="desc-banner">
-                                <span class="title">
-                                    {{ Str::limit($deal->product->name, 25) }}
-                                </span>
+                                <div class="desc-banner">
+                                    <span class="title">
+                                        {{ Str::limit($deal->product->name, 19) }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         @endforeach

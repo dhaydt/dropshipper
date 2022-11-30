@@ -71,13 +71,14 @@
             .header_banner{
                 margin-top: 156px;
             }
-            .ketupat{
-                width: 55px;
+            .card-header .ketupat{
+                width: 45px;
                 left: -8px !important;
             }
         }
         .ketupat{
-            left: -20px;
+            left: -5px;
+            width: 60px;
             z-index: 1;
             top: -4px;
             position: absolute;

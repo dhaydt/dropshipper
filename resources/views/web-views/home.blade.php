@@ -655,6 +655,10 @@ a .footer_banner_img {
     </div>
     @endif
 
+    <div class="container">
+        @include('web-views.partials._banner_pantene')
+    </div>
+
     {{-- small banner --}}
     {{-- <section class="banner mt-2">
         <div class="container mb-1">
