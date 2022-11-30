@@ -1424,4 +1424,6 @@
   'Add Category' => 'Add Category',
   'Diskon Berlimpah Kategori' => 'Diskon Berlimpah Kategori',
   'Add new category' => 'Add new category',
+  'Background_color' => 'Background color',
+  'Unggulan_table' => 'Unggulan table',
 );

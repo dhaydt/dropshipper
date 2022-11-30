@@ -54,7 +54,7 @@
                                 }
                                 ?>
                                 <div class="row {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                                    <input type="text" name="deal_type" value="flash_deal"  class="d-none">
+                                    <input type="hidden" name="deal_type" value="{{ $deal['deal_type'] }}" >
                                     <div class="col-md-12">
                                         <label for="name">{{ \App\CPU\translate('Title')}} ({{strtoupper($lang)}})</label>
                                         <input type="text" name="title[]" class="form-control" id="title"
@@ -73,6 +73,13 @@
                                             {{$deal['featured']==1?'checked':''}}>
                                         <label for="featured">{{ \App\CPU\translate('featured')}}</label>
                                     </div>--}}
+                                        <div class="col-md-12 pt-3">
+                                            <label for="name">{{ \App\CPU\translate('Background_color')}}</label>
+                                                    <div class="form-group">
+                                                        <input type="color" name="background_color" value="{{ $deal['background_color'] }}"
+                                                            class="form-control">
+                                                    </div>
+                                        </div>
                                     <div class="col-md-12 pt-3">
                                         <label for="name">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('Image')}}</label><span class="badge badge-soft-danger">( {{\App\CPU\translate('ratio')}} 5:1 )</span>
                                         <div class="custom-file" style="text-align: left">

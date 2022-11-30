@@ -66,7 +66,19 @@
                                     <input type="date" name="end_date" required class="form-control">
                                 </div>
                             </div> --}}
-
+                            <div class="row"  style="padding-top: 20px;">
+                                <div class="col-md-12">
+                                    <label for="name">{{ \App\CPU\translate('Background_color')}}</label>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <input type="color" name="background_color"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12" style="padding-top: 20px;">
                                     <label for="name">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('Banner')}}</label><span class="badge badge-soft-danger">( {{\App\CPU\translate('ratio')}} 3:4 )</span>
@@ -103,7 +115,7 @@
                 <div class="card-header">
                     <div class="flex-between row justify-content-between align-items-center flex-grow-1 mx-1">
                         <div class="flex-between">
-                            <div><h5>{{ \App\CPU\translate('flash_deal_table')}}</h5></div>
+                            <div><h5>{{ \App\CPU\translate('Unggulan_table')}}</h5></div>
                             <div class="mx-1"><h5 style="color: red;">({{ $flash_deal->total() }})</h5></div>
                         </div>
                         <div style="width: 40vw;">
@@ -239,7 +251,7 @@
                 }
             });
             $.ajax({
-                url: "{{route('admin.deal.status-update')}}",
+                url: "{{route('admin.deal.status-update-unggulan')}}",
                 method: 'POST',
                 data: {
                     id: id,

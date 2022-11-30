@@ -170,8 +170,65 @@
     box-sizing: border-box;
 }
     </style>
+    <style>
+        @media(max-width: 700px){
+            .css-1xnb600 .bardy-container{
+                max-height: 360px;
+                min-height: 360px;
+            }
+            /* .css-1xnb600 .banner-col{
+                height: 140px;
+            } */
+            .css-1xnb600 .banner-item{
+                height: 160px;
+            }
+            .css-1xnb600 .desc-banner{
+                height: 20px;
+            }
+            .css-1xnb600 .desc-banner .title{
+                font-size: 10px;
+            }
+        }
+        .bardy-container{
+            max-height: 700px;
+            min-height: 700px;
+            overflow: hidden;
+            background-color: {{ $unggulan['background_color'] }};
+            border-radius: 10px;
+            margin: 0;
+            box-shadow: 2px 2px 3px #00000030 !important;
+        }
+        .banner-bardy{
+            height: 100%;
+        }
+        .banner-item{
+            height: 310px;
+            position: relative;
+        }
+
+        .desc-banner{
+            /* position: absolute; */
+            bottom: 0;
+            left: 0;
+            background-color: {{ $unggulan['background_color'] }};
+            width: 100%;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            height: 40px;
+        }
+        .desc-banner .title{
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .banner-item img{
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 @endpush
-<div class="css-1bx5ylf mb-4">
+<div class="css-1bx5ylf mb-4 mt-4">
         {{-- <div class="css-1rv6yew-unf-divider css-ml2lxs" data-unify="Divider"></div> --}}
         <div class="css-1xnb600" data-testid="divLegoImageChannel">
             <div class="section-header mb-2">
@@ -186,7 +243,35 @@
                   </a>
                 </div>
               </div>
-            <div class="css-1amgor6" data-testid="cntrHomeLegoImage">
+              {{-- New Bardy --}}
+              <div class="row bardy-container">
+                <div class="col-5 p-0 banner-col">
+                    <div class="banner-bardy w-100 d-flex justify-content-center align-items-center">
+                        <img src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="">
+                    </div>
+                </div>
+                <div class="col-7 p-0 h-100">
+                    <div class="row h-100">
+                        @foreach ($unggulan['products'] as $key=>$deal)
+                        <div class="col-6 p-0 position-relative">
+                            <div class="banner-item">
+                                <a href="{{route('product',$product->slug)}}">
+                                    <img src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="">
+                                </a>
+                            </div>
+                            <div class="desc-banner">
+                                <span class="title">
+                                    {{ Str::limit($deal->product->name, 25) }}
+                                </span>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+              </div>
+
+              {{-- Old Bardy --}}
+            {{-- <div class="css-1amgor6" data-testid="cntrHomeLegoImage">
                 <a href="https://www.tokopedia.com/discovery/adidas-brandday?source=homepage.6_image.0.238732" class="css-1jke4yk" data-testid="aHomeLegoImage">
                     <div class="css-bqlp8e responsive">
                         <span class="responsive css-10rucli"></span>
@@ -223,6 +308,6 @@
                         <img class="css-1c345mg" decoding="async" src="https://images.tokopedia.net/img/cache/400-square/phZFtb/2022/11/24/d1f44434-8eb8-4b5a-9dba-1eec3484cb90.jpg" alt="Lego Channel" crossorigin="anonymous">
                     </div>
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>

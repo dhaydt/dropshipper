@@ -79,6 +79,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::get('unggulan', 'DealController@unggulan_index')->name('unggulan');
             Route::post('unggulan', 'DealController@unggulan_submit');
 
+            Route::post('status-update-unggulan', 'DealController@status_update_unggulan')->name('status-update-unggulan');
             Route::get('update-unggulan/{id}', 'DealController@edit_unggulan')->name('update-unggulan');
             Route::post('update-unggulan/{id}', 'DealController@update_unggulan')->name('update-unggulan');
 

@@ -286,6 +286,17 @@ class DealController extends Controller
         ], 200);
     }
 
+    public function status_update_unggulan(Request $request)
+    {
+        FlashDeal::where(['id' => $request['id']])->update([
+            'status' => $request['status'],
+        ]);
+
+        return response()->json([
+            'success' => 1,
+        ], 200);
+    }
+
     public function feature_status(Request $request)
     {
         FlashDeal::where(['status' => 1])->where(['deal_type' => 'feature_deal'])->update(['status' => 0]);

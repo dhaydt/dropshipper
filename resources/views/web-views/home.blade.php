@@ -648,9 +648,12 @@ a .footer_banner_img {
     </section>
 
     <!-- Banner Bardi -->
+    @php($unggulan=\App\Model\FlashDeal::with(['products.product.reviews'])->where(['status'=>1])->where(['deal_type'=>'unggulan'])->first())
+    @if ($unggulan)
     <div class="container mb-1">
         @include('web-views.partials._banner_bardy')
     </div>
+    @endif
 
     {{-- small banner --}}
     {{-- <section class="banner mt-2">

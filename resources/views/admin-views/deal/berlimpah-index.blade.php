@@ -239,7 +239,7 @@
                 }
             });
             $.ajax({
-                url: "{{route('admin.deal.status-update')}}",
+                url: "{{route('admin.deal.status-update-unggulan')}}",
                 method: 'POST',
                 data: {
                     id: id,
