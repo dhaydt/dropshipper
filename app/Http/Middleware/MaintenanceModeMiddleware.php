@@ -16,10 +16,11 @@ class MaintenanceModeMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // $maintenance_mode = Helpers::get_business_settings('maintenance_mode') ?? 0;
-        // if ($maintenance_mode) {
-        //     return redirect()->route('maintenance-mode');
-        // }
+        $maintenance_mode = Helpers::get_business_settings('maintenance_mode') ?? 0;
+        if ($maintenance_mode) {
+            return redirect()->route('maintenance-mode');
+        }
+
         return $next($request);
     }
 }
