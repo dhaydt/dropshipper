@@ -1,0 +1,14 @@
+{
+    "name": "laravelpkg/laravelchk",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laravelpkg\\Laravelchk\\": "src/"
+        }
+    }
+}

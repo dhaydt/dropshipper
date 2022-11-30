@@ -1,0 +1,335 @@
+[30-Nov-2021 08:23:17 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'forge'@'localhost' (using password: NO) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=127....', 'forge', '', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'forge', '', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 /home/wshopdev/public_ in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:23:18 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'forge'@'localhost' (using password: NO) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=127....', 'forge', '', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'forge', '', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 /home/wshopdev/public_ in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:23:25 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'forge'@'localhost' (using password: NO) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=127....', 'forge', '', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'forge', '', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 /home/wshopdev/public_ in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:26:24 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'forge'@'localhost' (using password: NO) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=127....', 'forge', '', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'forge', '', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 /home/wshopdev/public_ in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:27:07 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'forge'@'localhost' (using password: NO) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=127....', 'forge', '', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'forge', '', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 /home/wshopdev/public_ in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:27:09 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'forge'@'localhost' (using password: NO) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=127....', 'forge', '', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'forge', '', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 /home/wshopdev/public_ in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:27:10 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'forge'@'localhost' (using password: NO) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=127....', 'forge', '', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'forge', '', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 /home/wshopdev/public_ in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:27:12 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'forge'@'localhost' (using password: NO) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=127....', 'forge', '', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'forge', '', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'forge', '', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 /home/wshopdev/public_ in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:31:19 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:32:40 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:32:46 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:32:50 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 08:35:29 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 09:14:11 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 09:14:13 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 09:43:12 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 09:43:15 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 10:13:31 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 11:23:42 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 11:23:45 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 11:23:48 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 11:23:50 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 11:23:53 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 11:23:55 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 11:23:57 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 11:23:59 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:26:09 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:26:19 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:49:45 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:49:46 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:49:48 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:49:49 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:49:51 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:49:53 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:49:54 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 12:49:56 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:16 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:18 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:19 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:20 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:23 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:25 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:27 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:28 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:30 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:31 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:33 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:34 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:35 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:38 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:06:40 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:13:07 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:13:08 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[30-Nov-2021 14:13:15 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'wshopedi_wsopediaroot'@'localhost' (using password: YES) in /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:40
+Stack trace:
+#0 /home/wshopdev/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(40): PDO->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#1 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#2 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=loca...', 'wshopedi_wsoped...', 'Bismillah%sukse...', Array)
+#3 /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate in /home/wshopdev/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 669
+[07-Dec-2021 03:47:14 Asia/Jakarta] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST) in /home/wshopdev/public_html/app/CPU/convert.php on line 156
+[07-Dec-2021 03:47:18 Asia/Jakarta] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST) in /home/wshopdev/public_html/app/CPU/convert.php on line 156
+[07-Dec-2021 03:48:00 Asia/Jakarta] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST) in /home/wshopdev/public_html/app/CPU/convert.php on line 156

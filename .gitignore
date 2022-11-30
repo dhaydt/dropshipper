@@ -1,0 +1,6 @@
+# /node_modules
+/public/storage
+# /public
+.env
+/storage
+# index.copy.php
