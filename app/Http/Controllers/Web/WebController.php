@@ -36,7 +36,7 @@ class WebController extends Controller
     public function maintenance_mode()
     {
         $maintenance_mode = Helpers::get_business_settings('maintenance_mode') ?? 0;
-        if ($maintenance_mode) {
+        if ($maintenance_mode || env('APP_ENV' == 'production')) {
             return view('web-views.maintenance-mode');
         }
 
