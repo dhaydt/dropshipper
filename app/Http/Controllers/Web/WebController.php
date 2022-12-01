@@ -36,7 +36,7 @@ class WebController extends Controller
     public function maintenance_mode()
     {
         $maintenance_mode = Helpers::get_business_settings('maintenance_mode') ?? 0;
-        if ($maintenance_mode || env('APP_ENV' == 'production')) {
+        if ($maintenance_mode) {
             return view('web-views.maintenance-mode');
         }
 
@@ -101,7 +101,7 @@ class WebController extends Controller
 
         $deal_of_the_day = DealOfTheDay::join('products', 'products.id', '=', 'deal_of_the_days.product_id')->select('deal_of_the_days.*', 'products.unit_price')->where('deal_of_the_days.status', 1)->first();
         if (env('APP_ENV') == 'production') {
-            return redirect()->route('maintenance-mode');
+            return 'ON MAINTENANCE';
         } else {
             return view('web-views.home', compact('featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands', 'deal_of_the_day', 'top_sellers', 'home_categories'));
         }
