@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'], function () {
     Route::get('/', function () {
         return redirect()->route('admin.auth.login');
     });
