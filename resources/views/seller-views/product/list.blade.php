@@ -107,7 +107,7 @@
                                             @php($seller = auth('seller')->user())
                                             @php($url = env('ETOKO_URL').'/'.'generated'.'/'.$seller['id'].'/'.$seller->f_name.'_'.$seller->l_name.'/'.$p['slug'])
                                             <a class="btn btn-success btn-sm"
-                                               href="{{ $url }}">
+                                               href="{{ $url }}" target="_blank">
                                                 <i class="fa-solid fa-share"></i>
                                                 {{\App\CPU\translate('Share')}}
                                             </a>
