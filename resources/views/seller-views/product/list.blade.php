@@ -105,8 +105,9 @@
                                                 {{\App\CPU\translate('View')}}
                                             </a>
                                             @php($seller = auth('seller')->user())
+                                            @php($url = env('ETOKO_URL').'/'.'generated'.'/'.$seller['id'].'/'.$seller->f_name.'_'.$seller->l_name.'/'.$p['slug'])
                                             <a class="btn btn-success btn-sm"
-                                               href="{{route('generate',['seller_id' => $seller['id'], 'seller_name' => $seller->f_name.'_'.$seller->l_name,'product_slug'=>$p['slug']])}}">
+                                               href="{{ $url }}">
                                                 <i class="fa-solid fa-share"></i>
                                                 {{\App\CPU\translate('Share')}}
                                             </a>
