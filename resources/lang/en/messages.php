@@ -1393,4 +1393,6 @@
   'Dropshipper' => 'Dropshipper',
   'Dropshipper_login' => 'Dropshipper login',
   'Dropshipper_Login' => 'Dropshipper Login',
+  'otp_not_found' => 'Otp not found',
+  'otp_verified' => 'Otp verified',
 );

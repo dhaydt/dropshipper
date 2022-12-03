@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['namespace' => 'api\v2', 'prefix' => 'v2','middleware' => ['api_lang']], function () {
+Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_lang']], function () {
     Route::group(['prefix' => 'seller', 'namespace' => 'seller'], function () {
-
         Route::get('seller-info', 'SellerController@seller_info');
         Route::get('shop-product-reviews', 'SellerController@shop_product_reviews');
         Route::put('seller-update', 'SellerController@seller_info_update');
@@ -30,7 +29,7 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2','middleware' => ['api_la
         Route::group(['prefix' => 'orders'], function () {
             Route::get('list', 'OrderController@list');
             Route::get('/{id}', 'OrderController@details');
-            Route::put('order-detail-status/{id}','OrderController@order_detail_status');
+            Route::put('order-detail-status/{id}', 'OrderController@order_detail_status');
         });
 
         Route::group(['prefix' => 'shipping-method'], function () {
@@ -39,7 +38,7 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2','middleware' => ['api_la
             Route::get('edit/{id}', 'ShippingMethodController@edit');
             Route::put('status', 'ShippingMethodController@status_update');
             Route::put('update/{id}', 'ShippingMethodController@update');
-            Route::delete('delete/{id}','ShippingMethodController@delete');
+            Route::delete('delete/{id}', 'ShippingMethodController@delete');
         });
 
         Route::group(['prefix' => 'messages'], function () {
@@ -49,6 +48,7 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2','middleware' => ['api_la
 
         Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
             Route::post('login', 'LoginController@login');
+            Route::post('register', 'LoginController@register');
         });
     });
     Route::post('ls-lib-update', 'LsLibController@lib_update');

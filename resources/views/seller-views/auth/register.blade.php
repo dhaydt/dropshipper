@@ -20,26 +20,26 @@
                 <div class="col-lg-12">
                     <div class="p-5">
                         <div class="text-center mb-2 ">
-                            <h3 class="" > {{\App\CPU\translate('Dropshipper')}} {{\App\CPU\translate('Application')}}</h3>
+                            <h3 class="" > {{\App\CPU\translate('Dropship')}} {{\App\CPU\translate('Application')}}</h3>
                             <hr>
                         </div>
                         <form class="user" action="{{route('shop.apply')}}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <h5 class="black">{{\App\CPU\translate('Dropshipper')}} {{\App\CPU\translate('Info')}} </h5>
+                            <h5 class="black">{{\App\CPU\translate('Info')}} {{\App\CPU\translate('Dropship')}} </h5>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName" name="f_name" value="{{old('f_name')}}" placeholder="{{\App\CPU\translate('first_name')}}" required>
+                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="exampleFirstName" name="f_name" value="{{old('f_name')}}" placeholder="{{\App\CPU\translate('Nama_Lengkap')}}" required>
                                 </div>
-                                <div class="col-sm-6">
+                                {{-- <div class="col-sm-6">
                                     <input type="text" class="form-control form-control-user" id="exampleLastName" name="l_name" value="{{old('l_name')}}" placeholder="{{\App\CPU\translate('last_name')}}" required>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0 mt-4">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" value="{{old('email')}}" placeholder="{{\App\CPU\translate('email_address')}}" required>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" value="{{old('email')}}" placeholder="{{\App\CPU\translate('Alamat_Email')}}" required>
                                 </div>
-                                <div class="col-sm-6"><small class="text-danger">( * {{\App\CPU\translate('country_code_is_must')}} {{\App\CPU\translate('like_for_BD_880')}} )</small>
-                                    <input type="number" class="form-control form-control-user" id="exampleInputPhone" name="phone" value="{{old('phone')}}" placeholder="{{\App\CPU\translate('phone_number')}}" required>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control form-control-user" id="exampleInputPhone" name="phone" value="{{old('phone')}}" placeholder="{{\App\CPU\translate('Nomor_Handphone')}}" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -47,8 +47,8 @@
                                     <input type="password" class="form-control form-control-user" minlength="6" id="exampleInputPassword" name="password" placeholder="{{\App\CPU\translate('password')}}" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" minlength="6" id="exampleRepeatPassword" placeholder="{{\App\CPU\translate('repeat_password')}}" required>
-                                    <div class="pass invalid-feedback">{{\App\CPU\translate('Repeat')}}  {{\App\CPU\translate('password')}} {{\App\CPU\translate('not match')}} .</div>
+                                    <input type="password" class="form-control form-control-user" minlength="6" id="exampleRepeatPassword" placeholder="{{\App\CPU\translate('ulangi_password')}}" required>
+                                    <div class="pass invalid-feedback">{{\App\CPU\translate('Ulangi')}}  {{\App\CPU\translate('password')}} {{\App\CPU\translate('tidak_sama')}} .</div>
                                 </div>
                             </div>
                             <input type="hidden" name="country" value="ID">
@@ -75,20 +75,20 @@
                                     <div class="custom-file" style="text-align: left">
                                         <input type="file" name="image" id="customFileUpload" class="custom-file-input"
                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label" for="customFileUpload">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('image')}}</label>
+                                        <label class="custom-file-label" for="customFileUpload">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('Foto_Profil')}}</label>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <h5 class="black">{{\App\CPU\translate('Dropshipper_Shop')}} {{\App\CPU\translate('Info')}}</h5>
+                            <h5 class="black mt-3 pt-3">{{\App\CPU\translate('Info')}} {{\App\CPU\translate('Toko')}}</h5>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0 ">
-                                    <input type="text" class="form-control form-control-user" id="shop_name" name="shop_name" placeholder="{{\App\CPU\translate('shop_name')}}" value="{{old('shop_name')}}"required>
+                                <div class="col-sm-12 mb-3 mb-sm-0 ">
+                                    <input type="text" class="form-control form-control-user" id="shop_name" name="shop_name" placeholder="{{\App\CPU\translate('nama_toko')}}" value="{{old('shop_name')}}"required>
                                 </div>
-                                <div class="col-sm-6">
+                                {{-- <div class="col-sm-6">
                                     <textarea name="shop_address" class="form-control" id="shop_address"rows="1" placeholder="{{\App\CPU\translate('shop_address')}}">{{old('shop_address')}}</textarea>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="">
                                 <div class="pb-1">
@@ -102,11 +102,11 @@
                                     <div class="custom-file" style="text-align: left">
                                         <input type="file" name="logo" id="LogoUpload" class="custom-file-input"
                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label" for="LogoUpload">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('logo')}}</label>
+                                        <label class="custom-file-label" for="LogoUpload">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('logo_toko')}}</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="">
+                            {{-- <div class="">
                                 <div class="pb-1">
                                     <center>
                                         <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px;" id="viewerBanner"
@@ -121,12 +121,12 @@
                                         <label class="custom-file-label" for="BannerUpload">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('Banner')}}</label>
                                     </div>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block" id="apply">{{\App\CPU\translate('Apply')}} {{\App\CPU\translate('Dropshipper')}} </button>
+                            </div> --}}
+                            <button type="submit" class="btn btn-primary btn-user btn-block" id="apply">{{\App\CPU\translate('Daftar')}} {{\App\CPU\translate('Dropship')}} </button>
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="small"  href="{{route('seller.auth.login')}}">{{\App\CPU\translate('already_have_an_account?_login.')}}</a>
+                            <a class="small"  href="{{route('seller.auth.login')}}">Sudah memiliki akun ? <span style="color: blue;">Login disini!</span></a>
                         </div>
                     </div>
                 </div>

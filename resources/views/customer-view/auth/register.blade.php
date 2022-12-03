@@ -20,33 +20,33 @@
             <div class="col-md-6">
                 <div class="card border-0 box-shadow">
                     <div class="card-body">
-                        <h2 class="h4 mb-1">{{\App\CPU\translate('no_account')}}</h2>
-                        <p class="font-size-sm text-muted mb-4">{{\App\CPU\translate('register_control_your_order')}}
+                        <h2 class="h4 mb-1">{{\App\CPU\translate('tidak_memiliki_akun')}} ?</h2>
+                        <p class="font-size-sm text-muted mb-4">{{\App\CPU\translate('Lengkapi_data_untuk_register')}}
                             .</p>
                         <form class="needs-validation_" action="{{route('customer.auth.register')}}"
                               method="post" id="sign-up-form">
                             @csrf
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="reg-fn">{{\App\CPU\translate('first_name')}}</label>
+                                        <label for="reg-fn">{{\App\CPU\translate('Nama_lengkap')}}</label>
                                         <input class="form-control" value="{{old('f_name')}}" type="text" name="f_name"
                                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
                                                required>
-                                        <div class="invalid-feedback">{{\App\CPU\translate('Please enter your first name')}}!</div>
+                                        <div class="invalid-feedback">{{\App\CPU\translate('Masukan nama lengkap anda')}}!</div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                {{-- <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="reg-ln">{{\App\CPU\translate('last_name')}}</label>
                                         <input class="form-control" type="text" value="{{old('l_name')}}" name="l_name"
                                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                         <div class="invalid-feedback">{{\App\CPU\translate('Please enter your last name')}}!</div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="reg-email">{{\App\CPU\translate('email_address')}}</label>
+                                        <label for="reg-email">{{\App\CPU\translate('alamat_email')}}</label>
                                         <input class="form-control" type="email" value="{{old('email')}}"  name="email"
                                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};" required>
                                         <div class="invalid-feedback">{{\App\CPU\translate('Please enter valid email address')}}!</div>
@@ -54,8 +54,9 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="reg-phone">{{\App\CPU\translate('phone_number')}}
-                                            <small class="text-primary">( * {{\App\CPU\translate('country_code_is_must')}} {{\App\CPU\translate('like_for_BD_880')}} )</small></label>
+                                        <label for="reg-phone">{{\App\CPU\translate('nomor_handphone')}}
+                                            {{-- <small class="text-primary">( * {{\App\CPU\translate('country_code_is_must')}} {{\App\CPU\translate('like_for_BD_880')}} )</small> --}}
+                                        </label>
                                         <input class="form-control" type="number"  value="{{old('phone')}}"  name="phone"
                                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
                                                required>
@@ -108,7 +109,7 @@
                                     </div> --}}
                                 </div>
 
-                                <div class="col-sm-6">
+                                {{-- <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="reg-password-confirm">{{\App\CPU\translate('country')}}</label>
                                         <select id="country" name="country" class="form-control  js-select2-custom">
@@ -118,7 +119,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="form-group d-flex flex-wrap justify-content-between">
 
@@ -145,7 +146,7 @@
                                 </div>
                                 <div class="mx-1">
                                     <a class="btn btn-outline-primary" href="{{route('customer.auth.login')}}">
-                                        <i class="fa fa-sign-in"></i> {{\App\CPU\translate('sing_in')}}
+                                        <i class="fa fa-sign-in"></i> {{\App\CPU\translate('log_in')}}
                                     </a>
                                 </div>
                                 <div class="col-12 mt-3">

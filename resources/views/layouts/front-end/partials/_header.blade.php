@@ -9,11 +9,9 @@
     .mobile-head .navbar.navbar-dark{
         background-color: {{ $web_config['primary_color'] }};
     }
-
     .cate-mobile::after {
         display: none
     }
-
     .just-padding {
         padding: 15px;
         border: 1px solid #ccccccb3;
@@ -22,14 +20,12 @@
         height: 100%;
         background-color: white;
     }
-
     .category-canva{
         position: absolute;
         left: -17vw;
         width: 83vw;
         /* display: block; */
     }
-
     .mega-right {
         left: 96%;
         top: -80%;
@@ -48,7 +44,6 @@
     #nav-global-location-slot:hover {
         border: 2px solid #0f0f0f;
     }
-
     .nav-line-1.nav-progressive-content {
         font-size: 14px;
         line-height: 14px;
@@ -57,167 +52,101 @@
         color: #9d9d9d;
         font-weight: 700;
     }
-
     .nav-line-2.nav-progressive-content {
         font-size: 16px;
         font-weight: 700;
         transition: .3s;
     }
-
-  .card-body.search-result-box {
-    overflow: scroll;
-    height: 400px;
-    overflow-x: hidden;
-  }
-
-  .active .seller {
-    font-weight: 700;
-  }
-
-  ul.navbar-nav.mega-nav .nav-item .nav-link {
-    color: #000 !important;
-  }
-
-  .for-count-value {
-    position: absolute;
-
-    right: 0.6875rem;
-    ;
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 50%;
-
-    color: {
-        {
-        $web_config['primary_color']
-      }
+    .card-body.search-result-box {
+        overflow: scroll;
+        height: 400px;
+        overflow-x: hidden;
+    }
+    .active .seller {
+        font-weight: 700;
+    }
+    ul.navbar-nav.mega-nav .nav-item .nav-link {
+        color: #000 !important;
+    }
+    .for-count-value {
+        position: absolute;
+        right: 0.6875rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        color: {{ $web_config['primary_color'] }};
+        font-size: .75rem;
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.25rem;
+    }
+    .count-value {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        color: {{ $web_config['primary_color'] }};
+        font-size: .75rem;
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.25rem;
     }
 
-    ;
-
-    font-size: .75rem;
-    font-weight: 500;
-    text-align: center;
-    line-height: 1.25rem;
-  }
-
-  .count-value {
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 50%;
-
-    color: {
-        {
-        $web_config['primary_color']
-      }
-    }
-
-    ;
-
-    font-size: .75rem;
-    font-weight: 500;
-    text-align: center;
-    line-height: 1.25rem;
-  }
-
-  @media (min-width: 992px) {
-    .navbar-sticky.navbar-stuck .navbar-stuck-menu.show {
-      display: block;
-      height: 55px !important;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .navbar-stuck-menu {
-      background-color: {
-          {
-          $web_config['primary_color']
+    @media (min-width: 992px) {
+        .navbar-sticky.navbar-stuck .navbar-stuck-menu.show {
+            display: block;
+            height: 55px !important;
         }
-      }
-
-      ;
-      line-height: 15px;
-      padding-bottom: 6px;
     }
 
-  }
-
-  @media (max-width: 767px) {
-    .search_button {
-      background-color: transparent !important;
-    }
-
-    .search_button .input-group-text i {
-      color: {
-          {
-          $web_config['primary_color']
+    @media (min-width: 768px) {
+        .navbar-stuck-menu {
+            background-color: {{ $web_config['primary_color'] }};
+            line-height: 15px;
+            padding-bottom: 6px;
         }
-      }
-
-       !important;
-    }
-
-    .navbar-expand-md .dropdown-menu>.dropdown>.dropdown-toggle {
-      position: relative;
-
-      padding- {
-          {
-          Session: :get('direction')==="rtl"? 'left': 'right'
+        .tab-logo {
+            width: 10rem;
         }
-      }
-
-      : 1.95rem;
     }
 
-    .mega-nav1 {
-      background: white;
-
-      color: {
-          {
-          $web_config['primary_color']
+    @media (max-width: 767px) {
+        .search_button {
+            background-color: transparent !important;
         }
-      }
-
-       !important;
-      border-radius: 3px;
-    }
-
-    .mega-nav1 .nav-link {
-      color: {
-          {
-          $web_config['primary_color']
+        .search_button .input-group-text i {
+            color: {{ $web_config['primary_color'] }} !important;
         }
-      }
 
-       !important;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .tab-logo {
-      width: 10rem;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .mobile-head {
-      padding: 3px;
-    }
-  }
-
-  @media (max-width: 471px) {
-    .navbar-brand img {}
-
-    .mega-nav1 {
-      background: white;
-      color: #000 !important;
-      border-radius: 3px;
+        .navbar-expand-md .dropdown-menu>.dropdown>.dropdown-toggle {
+            position: relative;
+            padding-right: 1.95rem;
+        }
+        .mega-nav1 {
+            background: white;
+            color: {{ $web_config['primary_color'] }} !important;
+            border-radius: 3px;
+        }
+        .mega-nav1 .nav-link {
+            color: {{ $web_config['primary_color'] }} !important;
+        }
     }
 
-    .mega-nav1 .nav-link {
-      color: #000 !important;
+    @media (max-width: 360px) {
+        .mobile-head {
+            padding: 3px;
+        }
     }
-  }
+
+    @media (max-width: 471px) {
+        .mega-nav1 {
+            background: white;
+            color: #000 !important;
+            border-radius: 3px;
+        }
+        .mega-nav1 .nav-link {
+            color: #000 !important;
+        }
+    }
 </style>
 
 <header class="box-shadow-sm rtl d-none d-md-block">
@@ -300,20 +229,29 @@
               <i class="navbar-tool-icon czi-heart"></i>
             </a>
           </div>
-          @if(auth('customer')->check())
+          @if(auth('customer')->check() || auth('seller')->check())
           <div class="dropdown">
             <a class="navbar-tool ml-2 mr-2 " type="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               <div class="navbar-tool-icon-box bg-secondary">
                 <div class="navbar-tool-icon-box bg-secondary">
+                    @php
+                        if(auth('customer')->check()){
+                            $prof = 'storage/profile/'.auth('customer')->user()->image;
+                            $name = auth('customer')->user()->f_name;
+                        }else{
+                            $prof = 'storage/seller/'.auth('seller')->user()->image;
+                            $name = auth('seller')->user()->f_name;
+                        }
+                    @endphp
                   <img style="width: 40px;height: 40px"
-                    src="{{asset('storage/profile/'.auth('customer')->user()->image)}}"
+                    src="{{asset($prof)}}"
                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                     class="img-profile rounded-circle">
                 </div>
               </div>
               <div class="navbar-tool-text">
-                <small>Hello, {{auth('customer')->user()->f_name}}</small>
+                <small>Hello, {{ $name }}</small>
                 Dashboard
               </div>
             </a>

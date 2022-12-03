@@ -25,7 +25,7 @@ class LoginController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
         ]);
 
         $se = Seller::where(['email' => $request['email']])->first(['status']);
@@ -45,11 +45,14 @@ class LoginController extends Controller
                     'updated_at' => now(),
                 ]);
             }
-            return redirect()->route('seller.dashboard.index');
-        }elseif (isset($se) && $se['status'] == 'pending'){
+
+            session()->set('user_is', 'dropship');
+            // return redirect()->route('seller.dashboard.index');
+            return redirect()->route('home');
+        } elseif (isset($se) && $se['status'] == 'pending') {
             return redirect()->back()->withInput($request->only('email', 'remember'))
                 ->withErrors(['Your account is not approved yet.']);
-        }elseif (isset($se) && $se['status'] == 'suspended'){
+        } elseif (isset($se) && $se['status'] == 'suspended') {
             return redirect()->back()->withInput($request->only('email', 'remember'))
                 ->withErrors(['Your account has been suspended!.']);
         }
