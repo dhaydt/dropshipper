@@ -233,7 +233,7 @@ class Helpers
         // dd($id);
         // $user = User::find($id);
         $user = ShippingAddress::find(session()->get('address_id'));
-        dd($user);
+        // dd($user);
         $to_district = $user->district_id ? $user->district_id : null;
         $to_type = $user->city_type;
         $product = Product::find($product_id);
@@ -964,9 +964,9 @@ class Helpers
     {
         $position = Helpers::get_business_settings('currency_symbol_position');
         if (!is_null($position) && $position == 'left') {
-            $string = currency_symbol().''.number_format($amount, 2);
+            $string = currency_symbol().''.number_format($amount);
         } else {
-            $string = number_format($amount, 2).''.currency_symbol();
+            $string = number_format($amount).''.currency_symbol();
         }
 
         return $string;

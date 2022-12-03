@@ -153,7 +153,6 @@
                 <div class="col-12">
                     <select class="form-control" onchange="set_shipping_id(this.value,'all_cart_group')">
                         @foreach($shippings[1] as $shipping)
-                        <!--{{dd($shipping)}}-->
                         <option value="{{$shipping['id']}}"
                             {{$choosen_shipping['shipping_method_id']==$shipping['id']?'selected':''}}>
                             {{$shipping['title'].' ( '.$shipping['duration'].' )

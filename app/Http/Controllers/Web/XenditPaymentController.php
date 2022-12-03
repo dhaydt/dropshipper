@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web;
 
 use App\CPU\CartManager;
-use App\CPU\Convert;
 use App\CPU\OrderManager;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
@@ -66,6 +65,7 @@ class XenditPaymentController extends Controller
         $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
         $value = CartManager::cart_grand_total() - $discount;
         $tran = OrderManager::gen_unique_id();
+        $type = strtoupper($request['type']);
 
         session()->put('transaction_ref', $tran);
 
@@ -80,24 +80,26 @@ class XenditPaymentController extends Controller
         // dd($products);
 
         $user = [
-            'given_names' => $customer->f_name,
+            'given_names' => $customer->name ? $customer->name : $customer->f_name,
             'email' => $customer->email,
             'mobile_number' => $customer->phone,
             'address' => $customer->district.', '.$customer->city.', '.$customer->province,
         ];
 
         $params = [
-            'external_id' => 'ws'.$customer->phone.$customer->id,
-            'amount' => Convert::usdToidr($value),
+            'external_id' => 'ezren'.$customer->phone.$customer->id,
+            'amount' => $value,
             'payer_email' => $customer->email,
-            'description' => 'WSHOPEDIA',
-            'payment_methods' => [$request->type],
+            'description' => env('APP_NAME'),
+            'payment_methods' => [$type],
             'fixed_va' => true,
             'should_send_email' => true,
             'customer' => $user,
             // 'items' => $products,
-            'success_redirect_url' => env('APP_URL').'/xendit-payment/success/'.$request->type,
+            'success_redirect_url' => env('APP_URL').'/xendit-payment/success/'.$type,
         ];
+
+        // dd($params);
 
         $checkout_session = \Xendit\Invoice::create($params);
         // $order_ids = [];

@@ -143,15 +143,15 @@ class Convert
 
     public static function idrTousd($amount)
     {
-        $currency_model = Helpers::get_business_settings('currency_model');
-        if ($currency_model == 'multi_currency') {
-            $idr = Currency::where(['code' => 'IDR'])->first()->exchange_rate;
-            $usd = Currency::where('code', 'USD')->first()->exchange_rate;
-            $rate = $idr / $usd;
-            $value = floatval($amount) / floatval($rate);
-        } else {
-            $value = floatval($amount);
-        }
+        // $currency_model = Helpers::get_business_settings('currency_model');
+        // if ($currency_model == 'multi_currency') {
+        //     $idr = Currency::where(['code' => 'IDR'])->first()->exchange_rate;
+        //     $usd = Currency::where('code', 'USD')->first()->exchange_rate;
+        //     $rate = $idr / $usd;
+        //     $value = floatval($amount) / floatval($rate);
+        // } else {
+        $value = floatval($amount);
+        // }
 
         return $value;
     }

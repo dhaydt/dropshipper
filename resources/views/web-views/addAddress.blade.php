@@ -231,61 +231,47 @@
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="name">{{\App\CPU\translate('contact_person_name')}}</label>
+                                            <label for="name">{{\App\CPU\translate('Nama_penerima')}}</label>
                                             <input class="form-control" type="text" value="{{old('name')}}" id="name" name="name" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="address">{{\App\CPU\translate('address')}}</label>
+                                            <label for="address">{{\App\CPU\translate('Alamat')}}</label>
                                             <input class="form-control" type="text" value="{{old('address')}}" id="address" name="address"
                                                 required>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="zip">{{\App\CPU\translate('zip_code')}}</label>
+                                            <label for="zip">{{\App\CPU\translate('Kode_pos')}}</label>
                                             <input class="form-control" type="number" id="zip" name="zip" value="{{ old('zip') }}" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="country">{{\App\CPU\translate('country')}}</label>
-                                            <select id="country" name="country" class="form-control" value="{{ old('country') }}">
-                                                <option value="0" selected>---select country---</option>
-                                                @foreach($country as $r)
-                                                <option value="{{$r->country}}">{{$r->country_name}}</option>
-                                                @endforeach
-                                            </select>
-                                            <input type="hidden" id="country_hidden" name="country">
+                                            <label for="firstName">{{\App\CPU\translate('Handphone')}}</label>
+                                            <input class="form-control" type="text" id="phone" name="phone">
                                         </div>
-
                                     </div>
-                                    <div class="form-row prov-inter">
+                                    {{-- <div class="form-row prov-inter">
+
                                         <div class="form-group col-md-6">
-                                            <label for="state">{{\App\CPU\translate('State_/_Province')}}</label>
-                                            <input type="text" class="form-control" id="state" name="state"
-                                                placeholder="">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="address-city">{{\App\CPU\translate('City')}}</label>
+                                            <label for="address-city">{{\App\CPU\translate('Kota')}}</label>
                                             <input class="form-control" type="text" id="address-city" name="city"
                                                 >
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="district">{{\App\CPU\translate('District')}}</label>
+                                            <label for="district">{{\App\CPU\translate('Kecamatan')}}</label>
                                             <input class="form-control" type="text" id="district" name="district"
                                                 >
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="firstName">{{\App\CPU\translate('Phone')}}</label>
-                                            <input class="form-control" type="text" id="phone" name="phone">
-                                        </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-row prov-indo d-none">
                                         @php($province = App\CPU\Helpers::province())
                                         <div class="form-group col-md-6">
                                             {{-- {{ dd($province) }} --}}
-                                            <label for="state">{{\App\CPU\translate('State_/_Province')}}</label>
+                                            <input type="hidden" name="country" value="ID">
+                                            <label for="state">{{\App\CPU\translate('Provinsi')}}</label>
                                             <select class="form-control" name="state">
-                                                <option value="">Select your Province Address</option>
+                                                <option value="">Pilih provinsi</option>
                                                 @foreach($province as $p)
                                                 <option value="{{$p['province_id'].','. $p['province']}}"
                                                     provincename="{{$p['province']}}">
@@ -295,25 +281,25 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="address-city">{{\App\CPU\translate('City')}}</label>
+                                            <label for="address-city">{{\App\CPU\translate('Kota')}}</label>
                                             <select disabled class="form-control" name="city" id="address-city" placeholder="Select your city address"
                                         style="text-align: {{Session::get('direction') === " rtl" ? 'right' : 'left'
                                         }};">
-                                        <option value="">Select your city address</option>
+                                        <option value="">Pilih kota</option>
                                     </select>
                                         </div>
                                             <div class="form-group col-md-6">
-                                            <label for="district">{{\App\CPU\translate('District')}}</label>
+                                            <label for="district">{{\App\CPU\translate('Kecamatan')}}</label>
                                             <select disabled class="form-control" name="district" id="address-district" placeholder="Select your District address"
                                                 style="text-align: {{Session::get('direction') === " rtl" ? 'right' : 'left'
                                                 }};">
-                                                    <option value="">Select your district address</option>
+                                                    <option value="">Pilih Kecamatan</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        {{-- <div class="form-group col-md-6">
                                             <label for="firstName">{{\App\CPU\translate('Phone')}}</label>
                                             <input class="form-control" type="number" id="phone" name="phone" value="{{ old('phone') }}">
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                 </div>
@@ -339,8 +325,9 @@
     $(document).ready(function(){
         //ini ketika provinsi tujuan di klik maka akan eksekusi perintah yg kita mau
         //name select nama nya "provinve_id" kalian bisa sesuaikan dengan form select kalian
-        $('select[name="country"]').on('change', function(){
-            let country = $(this).val()
+        getProv();
+        function getProv(){
+            let country = 'ID';
             if(country == 'ID'){
                 $('.prov-inter').addClass('d-none');
                 $('.prov-indo').removeClass('d-none');
@@ -353,7 +340,7 @@
                 $('select[name="country"]').attr('disabled', true)
                 console.log('no indo')
             }
-        })
+        }
 
         $('select[name="state"]').on('change', function(){
             $('#loading').show();
