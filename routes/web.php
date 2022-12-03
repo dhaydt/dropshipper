@@ -21,6 +21,10 @@ Route::get('/storage-link', function () {
     Artisan::call('storage:link');
 });
 
+Route::get('/passport', function () {
+    Artisan::call('passport:install --force');
+});
+
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], function () {
     Route::get('/', 'WebController@home')->name('home');
     Route::get('quick-view', 'WebController@quick_view')->name('quick-view');
