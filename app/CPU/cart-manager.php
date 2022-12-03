@@ -7,8 +7,6 @@ use App\Model\CartShipping;
 use App\Model\Color;
 use App\Model\Product;
 use App\Model\Shop;
-use Barryvdh\Debugbar\Twig\Extension\Debug;
-use Cassandra\Collection;
 use Illuminate\Support\Str;
 
 class CartManager
@@ -81,6 +79,7 @@ class CartManager
         } else {
             $cart_ids = Cart::where(['customer_id' => $user->id])->groupBy('cart_group_id')->pluck('cart_group_id')->toArray();
         }
+
         return $cart_ids;
     }
 
@@ -92,6 +91,7 @@ class CartManager
             $data = CartShipping::where('cart_group_id', $group_id)->first();
             $cost = isset($data) ? $data->shipping_cost : 0;
         }
+
         return $cost;
     }
 
@@ -104,6 +104,7 @@ class CartManager
                 $total += $product_subtotal;
             }
         }
+
         return $total;
     }
 
@@ -116,6 +117,7 @@ class CartManager
                 $total += $product_subtotal;
             }
         }
+
         return $total;
     }
 
@@ -128,6 +130,7 @@ class CartManager
                 $total += $product_subtotal;
             }
         }
+
         return $total;
     }
 
@@ -145,6 +148,7 @@ class CartManager
             }
             $total += $shipping_cost;
         }
+
         return $total;
     }
 
@@ -169,6 +173,7 @@ class CartManager
         $price = 0;
 
         $user = Helpers::get_customer($request);
+        $type = session()->get('user_is');
         $product = Product::find($request->id);
 
         //check the color enabled or disabled for the product
@@ -183,7 +188,7 @@ class CartManager
             $choices[$choice->name] = $request[$choice->name];
             $variations[$choice->title] = $request[$choice->name];
             if ($str != null) {
-                $str .= '-' . str_replace(' ', '', $request[$choice->name]);
+                $str .= '-'.str_replace(' ', '', $request[$choice->name]);
             } else {
                 $str .= str_replace(' ', '', $request[$choice->name]);
             }
@@ -199,7 +204,7 @@ class CartManager
                 } else {
                     return [
                         'status' => 0,
-                        'message' => translate('already_added!')
+                        'message' => translate('already_added!'),
                     ];
                 }
             } else {
@@ -213,7 +218,7 @@ class CartManager
             } else {
                 return [
                     'status' => 0,
-                    'message' => translate('already_added!')
+                    'message' => translate('already_added!'),
                 ];
             }
         }
@@ -226,7 +231,7 @@ class CartManager
         if ($product['current_stock'] < $request['quantity']) {
             return [
                 'status' => 0,
-                'message' => translate('out_of_stock!')
+                'message' => translate('out_of_stock!'),
             ];
         }
 
@@ -236,13 +241,13 @@ class CartManager
         //Check the string and decreases quantity for the stock
         if ($str != null) {
             $count = count(json_decode($product->variation));
-            for ($i = 0; $i < $count; $i++) {
+            for ($i = 0; $i < $count; ++$i) {
                 if (json_decode($product->variation)[$i]->type == $str) {
                     $price = json_decode($product->variation)[$i]->price;
                     if (json_decode($product->variation)[$i]->qty < $request['quantity']) {
                         return [
                             'status' => 0,
-                            'message' => translate('out_of_stock!')
+                            'message' => translate('out_of_stock!'),
                         ];
                     }
                 }
@@ -261,13 +266,13 @@ class CartManager
             $cart_check = Cart::where([
                 'customer_id' => $user->id,
                 'seller_id' => $product->user_id,
-                'seller_is' => $product->added_by])->first();
+                'seller_is' => $product->added_by, ])->first();
         }
 
         if (isset($cart_check)) {
             $cart['cart_group_id'] = $cart_check['cart_group_id'];
         } else {
-            $cart['cart_group_id'] = ($user == 'offline' ? 'offline' : $user->id) . '-' . Str::random(5) . '-' . time();
+            $cart['cart_group_id'] = ($user == 'offline' ? 'offline' : $user->id).'-'.Str::random(5).'-'.time();
         }
         //generate group id end
 
@@ -294,12 +299,13 @@ class CartManager
             $offline_cart->push($cart);
             session()->put('offline_cart', $offline_cart);
         } else {
+            $cart['buyer_is'] = $type;
             $cart->save();
         }
 
         return [
             'status' => 1,
-            'message' => translate('successfully_added!')
+            'message' => translate('successfully_added!'),
         ];
     }
 
@@ -313,7 +319,7 @@ class CartManager
         $product = Product::find($cart['product_id']);
         $count = count(json_decode($product->variation));
         if ($count) {
-            for ($i = 0; $i < $count; $i++) {
+            for ($i = 0; $i < $count; ++$i) {
                 if (json_decode($product->variation)[$i]->type == $cart['variant']) {
                     if (json_decode($product->variation)[$i]->qty < $request->quantity) {
                         $status = 0;
@@ -321,12 +327,12 @@ class CartManager
                     }
                 }
             }
-        } else if ($product['current_stock'] < $request->quantity) {
+        } elseif ($product['current_stock'] < $request->quantity) {
             $status = 0;
             $qty = $cart['quantity'];
         }
 
-        if ($status){
+        if ($status) {
             $qty = $request->quantity;
             $cart['quantity'] = $request->quantity;
         }
@@ -336,7 +342,7 @@ class CartManager
         return [
             'status' => $status,
             'qty' => $qty,
-            'message' => $status == 1 ? translate('successfully_updated!') : translate('sorry_stock_is_limited')
+            'message' => $status == 1 ? translate('successfully_updated!') : translate('sorry_stock_is_limited'),
         ];
     }
 }

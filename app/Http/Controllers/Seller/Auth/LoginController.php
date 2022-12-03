@@ -46,7 +46,7 @@ class LoginController extends Controller
                 ]);
             }
 
-            session()->set('user_is', 'dropship');
+            $request->session()->put('user_is', 'dropship');
             // return redirect()->route('seller.dashboard.index');
             return redirect()->route('home');
         } elseif (isset($se) && $se['status'] == 'pending') {

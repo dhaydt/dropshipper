@@ -255,6 +255,7 @@
                 Dashboard
               </div>
             </a>
+            @if (session()->get('user_is') == 'customer')
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="{{route('account-oder')}}"> {{ \App\CPU\translate('my_order')}} </a>
               <a class="dropdown-item" href="{{route('account-address')}}"> {{ \App\CPU\translate('my_address')}} </a>
@@ -263,6 +264,13 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
             </div>
+            @else
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{route('seller.dashboard.index')}}"> {{ \App\CPU\translate('Dropship_Dashboard')}} </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{route('seller.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
+            </div>
+            @endif
           </div>
           @else
           <div class="dropdown">

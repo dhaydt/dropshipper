@@ -70,6 +70,8 @@ class LoginController extends Controller
             Toastr::info('Welcome to '.Helpers::get_business_settings('company_name').'!');
             CartManager::cart_to_db();
 
+            session()->put('user_is', 'customer');
+
             return redirect(session('keep_return_url'));
         }
 

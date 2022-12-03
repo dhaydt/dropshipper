@@ -118,6 +118,8 @@ class Helpers
             $user = $request->user(); //for api
         } elseif (session()->has('customer_id')) {
             $user = User::find(session('customer_id'));
+        } elseif (session()->get('user_is') == 'dropship') {
+            $user = auth('seller')->user();
         }
 
         if ($user == null) {
@@ -231,8 +233,8 @@ class Helpers
         // dd($id);
         // $user = User::find($id);
         $user = ShippingAddress::find(session()->get('address_id'));
-        // dd($user);
-        $to_district = $user->district_id;
+        dd($user);
+        $to_district = $user->district_id ? $user->district_id : null;
         $to_type = $user->city_type;
         $product = Product::find($product_id);
         // dd($product);

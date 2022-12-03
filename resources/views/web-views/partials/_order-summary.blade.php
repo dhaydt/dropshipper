@@ -23,8 +23,12 @@
         @php($total_shipping_cost=0)
         @php($total_discount_on_product=0)
         @php($cart=\App\CPU\CartManager::get_cart())
+        {{-- {{ dd($cart) }} --}}
+        {{-- @if (session()->get('user_is') == 'customer') --}}
+        @if ($cart)
         @php(session(['cart_group_id' => $cart[0]['cart_group_id']]))
-        {{-- {{ dd(session()) }} --}}
+        @endif
+        {{-- @endif --}}
         @php($shipping_cost=\App\CPU\CartManager::get_shipping_cost())
         @if($cart->count() > 0)
             @foreach($cart as $key => $cartItem)

@@ -1457,4 +1457,5 @@
   'UserKey' => 'UserKey',
   'API_Key' => 'API Key',
   'API_Endpoint' => 'API Endpoint',
+  'Dropship_Dashboard' => 'Dropship Dashboard',
 );

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web;
 
-
 use App\CPU\CartManager;
 use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
@@ -10,7 +9,6 @@ use App\Model\Cart;
 use App\Model\Color;
 use App\Model\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
@@ -27,7 +25,7 @@ class CartController extends Controller
 
         foreach (json_decode(Product::find($request->id)->choice_options) as $key => $choice) {
             if ($str != null) {
-                $str .= '-' . str_replace(' ', '', $request[$choice->name]);
+                $str .= '-'.str_replace(' ', '', $request[$choice->name]);
             } else {
                 $str .= str_replace(' ', '', $request[$choice->name]);
             }
@@ -35,7 +33,7 @@ class CartController extends Controller
 
         if ($str != null) {
             $count = count(json_decode($product->variation));
-            for ($i = 0; $i < $count; $i++) {
+            for ($i = 0; $i < $count; ++$i) {
                 if (json_decode($product->variation)[$i]->type == $str) {
                     $tax = Helpers::tax_calculation(json_decode($product->variation)[$i]->price, $product['tax'], $product['tax_type']);
                     $discount = Helpers::get_product_discount($product, json_decode($product->variation)[$i]->price);
@@ -54,7 +52,7 @@ class CartController extends Controller
             'price' => \App\CPU\Helpers::currency_converter($price * $request->quantity),
             'discount' => \App\CPU\Helpers::currency_converter($discount),
             'tax' => \App\CPU\Helpers::currency_converter($tax),
-            'quantity' => $quantity
+            'quantity' => $quantity,
         ];
     }
 
@@ -63,6 +61,7 @@ class CartController extends Controller
         $cart = CartManager::add_to_cart($request);
         session()->forget('coupon_code');
         session()->forget('coupon_discount');
+
         return response()->json($cart);
     }
 
@@ -75,6 +74,7 @@ class CartController extends Controller
     public function removeFromCart(Request $request)
     {
         $user = Helpers::get_customer();
+        // dd($user->id);
         if ($user == 'offline') {
             if (session()->has('offline_cart') == false) {
                 session()->put('offline_cart', collect([]));
@@ -83,15 +83,20 @@ class CartController extends Controller
 
             $new_collection = collect([]);
             foreach ($cart as $item) {
-                if ($item['id'] !=  $request->key) {
+                if ($item['id'] != $request->key) {
                     $new_collection->push($item);
                 }
             }
 
             session()->put('offline_cart', $new_collection);
+
             return response()->json($new_collection);
         } else {
-            Cart::where(['id' => $request->key, 'customer_id' => auth('customer')->id()])->delete();
+            if (session()->get('user_is') == 'dropship') {
+                Cart::where(['id' => $request->key, 'customer_id' => $user->id])->delete();
+            } else {
+                Cart::where(['id' => $request->key, 'customer_id' => auth('customer')->id()])->delete();
+            }
         }
 
         session()->forget('coupon_code');
