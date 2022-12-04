@@ -1469,4 +1469,6 @@
   'Notification mail for new order received' => 'Notification mail for new order received',
   'We have sent you this email to notify that you have a new order. You will be able to see your orders after login to your panel' => 'We have sent you this email to notify that you have a new order. You will be able to see your orders after login to your panel',
   'New order ID for you' => 'New order ID for you',
+  'Please fill your customer address first' => 'Please fill your customer address first',
+  'view_dashboard' => 'View dashboard',
 );

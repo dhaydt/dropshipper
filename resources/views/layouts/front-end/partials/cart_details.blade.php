@@ -6,6 +6,9 @@
 <hr class="view_border">
 @php($shippingMethod=\App\CPU\Helpers::get_business_settings('shipping_method'))
 @php($cart=\App\Model\Cart::where(['customer_id' => auth('customer')->id()])->get()->groupBy('cart_group_id'))
+@if (auth('seller')->check())
+@php($cart=\App\Model\Cart::where(['customer_id' => auth('seller')->id()])->get()->groupBy('cart_group_id'))
+@endif
 
 <div class="row">
     <!-- List of items-->

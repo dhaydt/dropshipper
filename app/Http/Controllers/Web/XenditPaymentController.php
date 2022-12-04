@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\CPU\CartManager;
 use App\CPU\OrderManager;
 use App\Http\Controllers\Controller;
+use App\Model\ShippingAddress;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -78,18 +79,35 @@ class XenditPaymentController extends Controller
             ]);
         }
         // dd($products);
+        if (auth('customer')->check()) {
+            $name = $customer->name ? $customer->name : $customer->f_name;
+            $phone = $customer->phone;
+            $address = $customer->district.', '.$customer->city.', '.$customer->province;
+            $id = $customer->id;
+            $email = $customer->email;
+        }
+        if (session()->get('user_is') == 'dropship') {
+            $custom = ShippingAddress::where('slug', session()->get('customer_address'))->first();
+            $name = $custom->contact_person_name;
+            $phone = $custom->phone;
+            $address = $custom->district.', '.$custom->city.', '.$custom->province;
+            $id = $custom->customer_id;
+            $email = 'dropshipper@ezren.id';
+        }
 
         $user = [
-            'given_names' => $customer->name ? $customer->name : $customer->f_name,
-            'email' => $customer->email,
-            'mobile_number' => $customer->phone,
-            'address' => $customer->district.', '.$customer->city.', '.$customer->province,
+            'given_names' => $name,
+            'email' => $email,
+            'mobile_number' => $phone,
+            'address' => $address,
         ];
 
+        // dd($user);
+
         $params = [
-            'external_id' => 'ezren'.$customer->phone.$customer->id,
+            'external_id' => 'ezren'.$phone.$id,
             'amount' => $value,
-            'payer_email' => $customer->email,
+            'payer_email' => $email,
             'description' => env('APP_NAME'),
             'payment_methods' => [$type],
             'fixed_va' => true,
@@ -139,7 +157,8 @@ class XenditPaymentController extends Controller
             array_push($order_ids, $order_id);
         }
         CartManager::cart_clean();
-        if (auth('customer')->check()) {
+        session()->forget('customer_address');
+        if (auth('customer')->check() || session()->get('user_is') == 'dropship') {
             Toastr::success('Payment success.');
 
             return view('web-views.checkout-complete');

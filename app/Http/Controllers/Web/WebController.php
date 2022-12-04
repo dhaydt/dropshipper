@@ -206,16 +206,25 @@ class WebController extends Controller
 
     public function checkout_details(Request $request)
     {
-        if (auth('customer')->user()->district == null) {
-            // dd('no distrcit');
-            $country = DB::table('country')->get();
+        $check = session()->has('customer_address');
+        if (session()->get('user_is') !== 'dropship') {
+            if (auth('customer')->user()->district == null) {
+                // dd('no distrcit');
+                $country = DB::table('country')->get();
 
-            Toastr::warning(translate('Please fill your address first'));
+                Toastr::warning(translate('Please fill your address first'));
+
+                return view('web-views.addAddress', compact('country'));
+            }
+        } elseif (session()->get('user_is') == 'dropship' && !$check) {
+            $country = 'ID';
+            Toastr::warning(translate('Please fill your customer address first'));
 
             return view('web-views.addAddress', compact('country'));
         }
 
         $cart_group_ids = CartManager::get_cart_group_ids();
+        // dd($cart_group_ids);
         if (CartShipping::whereIn('cart_group_id', $cart_group_ids)->count() != count($cart_group_ids)) {
             Toastr::info(translate('select_shipping_method_first'));
 
@@ -279,7 +288,7 @@ class WebController extends Controller
 
     public function shop_cart()
     {
-        if (auth('customer')->check() && Cart::where(['customer_id' => auth('customer')->id()])->count() > 0) {
+        if (auth('customer')->check() && Cart::where(['customer_id' => auth('customer')->id(), 'user_is' => 'customer'])->count() > 0) {
             if (auth('customer')->user()->district == null) {
                 // dd('no distrcit');
                 $country = DB::table('country')->get();
@@ -291,6 +300,16 @@ class WebController extends Controller
 
             $user = auth('customer')->id();
             $address = ShippingAddress::where('customer_id', $user)->first();
+
+            // dd($address);
+            session()->put('address_id', $address->id);
+
+            return view('web-views.shop-cart');
+        }
+
+        if (auth('seller')->check() && Cart::where(['customer_id' => auth('seller')->id(), 'user_is' => 'dropship'])) {
+            $user = auth('seller')->id();
+            $address = ShippingAddress::where('customer_id', $user)->orderBy('created_at', 'desc')->first();
 
             // dd($address);
             session()->put('address_id', $address->id);

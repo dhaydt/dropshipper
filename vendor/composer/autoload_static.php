@@ -864,6 +864,7 @@ class ComposerStaticInit5c810ba0d19412d72c885b40a9decbf5
         'App\\Http\\Controllers\\api\\v1\\ChatController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v1/ChatController.php',
         'App\\Http\\Controllers\\api\\v1\\ConfigController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v1/ConfigController.php',
         'App\\Http\\Controllers\\api\\v1\\CouponController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v1/CouponController.php',
+        'App\\Http\\Controllers\\api\\v1\\CustomBannerController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v1/CustomBannerController.php',
         'App\\Http\\Controllers\\api\\v1\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v1/CustomerController.php',
         'App\\Http\\Controllers\\api\\v1\\DealController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v1/DealController.php',
         'App\\Http\\Controllers\\api\\v1\\FlashDealController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v1/FlashDealController.php',

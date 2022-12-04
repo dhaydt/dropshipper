@@ -207,6 +207,7 @@
                                 <!-- Nav pills -->
 
                                 <ul class="donate-now">
+                                    @if (session()->get('user_is') !== 'dropship')
                                     <li>
                                         <input type="radio" id="a25" name="addressAs" value="permanent" />
                                         <label for="a25" class="component">{{\App\CPU\translate('permanent')}}</label>
@@ -220,6 +221,14 @@
                                             checked="checked" />
                                         <label for="a75" class="component">{{\App\CPU\translate('Office')}}</label>
                                     </li>
+                                    @else
+                                    <li>
+                                        <input type="radio" id="a75" name="addressAs" value="dropship"
+                                            checked="checked" />
+                                        <label for="a90" class="component">{{\App\CPU\translate('Dropship')}}</label>
+                                    </li>
+                                    @endif
+
 
                                 </ul>
                             </div>
@@ -235,19 +244,30 @@
                                             <input class="form-control" type="text" value="{{old('name')}}" id="name" name="name" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="address">{{\App\CPU\translate('Alamat')}}</label>
-                                            <input class="form-control" type="text" value="{{old('address')}}" id="address" name="address"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
                                             <label for="zip">{{\App\CPU\translate('Kode_pos')}}</label>
                                             <input class="form-control" type="number" id="zip" name="zip" value="{{ old('zip') }}" required>
                                         </div>
+                                    </div>
+                                    <div class="form-row">
+
                                         <div class="form-group col-md-6">
                                             <label for="firstName">{{\App\CPU\translate('Handphone')}}</label>
                                             <input class="form-control" type="text" id="phone" name="phone">
+                                        </div>
+                                        @php($province = App\CPU\Helpers::province())
+                                        <div class="form-group col-md-6">
+                                            {{-- {{ dd($province) }} --}}
+                                            <input type="hidden" name="country" value="ID">
+                                            <label for="state">{{\App\CPU\translate('Provinsi')}}</label>
+                                            <select class="form-control" name="state">
+                                                <option value="">Pilih provinsi</option>
+                                                @foreach($province as $p)
+                                                <option value="{{$p['province_id'].','. $p['province']}}"
+                                                    provincename="{{$p['province']}}">
+                                                    {{$p['province']}}
+                                                </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     {{-- <div class="form-row prov-inter">
@@ -264,22 +284,8 @@
                                         </div>
                                     </div> --}}
 
-                                    <div class="form-row prov-indo d-none">
-                                        @php($province = App\CPU\Helpers::province())
-                                        <div class="form-group col-md-6">
-                                            {{-- {{ dd($province) }} --}}
-                                            <input type="hidden" name="country" value="ID">
-                                            <label for="state">{{\App\CPU\translate('Provinsi')}}</label>
-                                            <select class="form-control" name="state">
-                                                <option value="">Pilih provinsi</option>
-                                                @foreach($province as $p)
-                                                <option value="{{$p['province_id'].','. $p['province']}}"
-                                                    provincename="{{$p['province']}}">
-                                                    {{$p['province']}}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                    <div class="form-row prov-indo">
+
                                         <div class="form-group col-md-6">
                                             <label for="address-city">{{\App\CPU\translate('Kota')}}</label>
                                             <select disabled class="form-control" name="city" id="address-city" placeholder="Select your city address"
@@ -295,6 +301,11 @@
                                                 }};">
                                                     <option value="">Pilih Kecamatan</option>
                                             </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="address">Nama jalan & Nomor rumah</label>
+                                            <textarea class="form-control" value="{{old('address')}}" id="address" name="address"
+                                                required></textarea>
                                         </div>
                                         {{-- <div class="form-group col-md-6">
                                             <label for="firstName">{{\App\CPU\translate('Phone')}}</label>

@@ -58,7 +58,7 @@ class SystemController extends Controller
         $selCountry = $seller->product->country;
 
         $customer = User::find($seller->customer_id);
-        $cusCountry = $customer->country;
+        $cusCountry = 'ID';
 
         if ($selCountry && $cusCountry == 'ID') {
             $shipp = $request['id'];
@@ -224,15 +224,13 @@ class SystemController extends Controller
         $old = session()->get('old_address');
         $new = session()->get('address_id');
 
-        if (auth('customer')->user()->country == 'ID') {
-            if ($new == $old) {
-            } else {
-                session(['address_changed' => 1]);
-                CartShipping::where('cart_group_id', session()->get('cart_group_id'))
+        if ($new == $old) {
+        } else {
+            session(['address_changed' => 1]);
+            CartShipping::where('cart_group_id', session()->get('cart_group_id'))
                         ->update([
                             'shipping_cost' => 0.00,
                         ]);
-            }
         }
 
         return response()->json([], 200);

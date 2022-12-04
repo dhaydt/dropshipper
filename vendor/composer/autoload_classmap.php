@@ -129,6 +129,7 @@ return array(
     'App\\Http\\Controllers\\api\\v1\\ChatController' => $baseDir . '/app/Http/Controllers/api/v1/ChatController.php',
     'App\\Http\\Controllers\\api\\v1\\ConfigController' => $baseDir . '/app/Http/Controllers/api/v1/ConfigController.php',
     'App\\Http\\Controllers\\api\\v1\\CouponController' => $baseDir . '/app/Http/Controllers/api/v1/CouponController.php',
+    'App\\Http\\Controllers\\api\\v1\\CustomBannerController' => $baseDir . '/app/Http/Controllers/api/v1/CustomBannerController.php',
     'App\\Http\\Controllers\\api\\v1\\CustomerController' => $baseDir . '/app/Http/Controllers/api/v1/CustomerController.php',
     'App\\Http\\Controllers\\api\\v1\\DealController' => $baseDir . '/app/Http/Controllers/api/v1/DealController.php',
     'App\\Http\\Controllers\\api\\v1\\FlashDealController' => $baseDir . '/app/Http/Controllers/api/v1/FlashDealController.php',

@@ -26,7 +26,7 @@ class OrderManager
 
     public static function gen_unique_id()
     {
-        return rand(1000, 9999) . '-' . Str::random(5) . '-' . time();
+        return rand(1000, 9999).'-'.Str::random(5).'-'.time();
     }
 
     public static function order_summary($order)
@@ -40,6 +40,7 @@ class OrderManager
             $total_discount_on_product += $detail->discount;
         }
         $total_shipping_cost = $order['shipping_cost'];
+
         return [
             'subtotal' => $sub_total,
             'total_tax' => $total_tax,
@@ -67,7 +68,7 @@ class OrderManager
                         'current_stock' => $product['current_stock'] + $detail['qty'],
                     ]);
                     OrderDetail::where(['id' => $detail['id']])->update([
-                        'is_stock_decreased' => 0
+                        'is_stock_decreased' => 0,
                     ]);
                 }
             }
@@ -101,7 +102,7 @@ class OrderManager
                         'current_stock' => $product['current_stock'] - $detail['qty'],
                     ]);
                     OrderDetail::where(['id' => $detail['id']])->update([
-                        'is_stock_decreased' => 1
+                        'is_stock_decreased' => 1,
                     ]);
                 }
             }
@@ -264,7 +265,8 @@ class OrderManager
             'customer_id' => $user->id,
             'seller_id' => $seller_data->seller_id,
             'seller_is' => $seller_data->seller_is,
-            'customer_type' => 'customer',
+            'user_is' => $seller_data->buyer_is,
+            'customer_type' => session()->get('user_is'),
             'payment_status' => $data['payment_status'],
             'order_status' => $data['order_status'],
             'payment_method' => $data['payment_method'],
@@ -279,7 +281,7 @@ class OrderManager
             'shipping_cost' => CartManager::get_shipping_cost($data['cart_group_id']),
             'shipping_method_id' => CartShipping::where(['cart_group_id' => $cart_group_id])->first()->shipping_method_id,
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ];
 
         $order_id = DB::table('orders')->insertGetId($or);
@@ -302,7 +304,7 @@ class OrderManager
                 'shipping_method_id' => null,
                 'payment_status' => 'unpaid',
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ];
 
             if ($c['variant'] != null) {
@@ -320,7 +322,7 @@ class OrderManager
             }
 
             Product::where(['id' => $product['id']])->update([
-                'current_stock' => $product['current_stock'] - $c['quantity']
+                'current_stock' => $product['current_stock'] - $c['quantity'],
             ]);
 
             DB::table('order_details')->insert($or_d);
@@ -391,7 +393,6 @@ class OrderManager
                 $seller = Admin::where(['admin_role_id' => 1])->first();
             }
             Mail::to($seller->email)->send(new \App\Mail\OrderReceivedNotifySeller($order_id));
-
         } catch (\Exception $exception) {
         }
 
