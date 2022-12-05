@@ -204,7 +204,7 @@
                 </a>
             </div>
         </div>
-
+        @php($user_is = session()->get('user_is'))
         <div class="card-body inline_product text-center p-1 clickable">
             <div style="position: relative;" class="product-title1">
                 <a href="{{route('product',$product->slug)}}">
@@ -215,7 +215,11 @@
                 <div class="product-price text-center">
                     @if($product->discount > 0)
                     <strike class="strike-price">
+                        @if ($user_is == 'dropship')
+                        {{\App\CPU\Helpers::currency_converter($product->dropship)}}
+                        @else
                         {{\App\CPU\Helpers::currency_converter($product->unit_price)}}
+                        @endif
                     </strike><br>
                     @endif
                     @if($product->discount > 0)
@@ -236,13 +240,14 @@
                     </div>
                     @endif
                     <span class="text-accent">
-                        {{\App\CPU\Helpers::currency_converter(
-                        $product->unit_price-(\App\CPU\Helpers::get_product_discount($product,$product->unit_price))
-                        )}}
+                        @if ($user_is == 'dropship')
+                        {{\App\CPU\Helpers::currency_converter($product->dropship-(\App\CPU\Helpers::get_product_discount($product,$product->dropship)))}}
+                        @else
+                        {{\App\CPU\Helpers::currency_converter($product->unit_price-(\App\CPU\Helpers::get_product_discount($product,$product->unit_price)))}}
+                        @endif
                     </span>
                 </div>
             </div>
-
         </div>
         {{-- <div class="d-flex justify-content-left w-100" style="position: absolute;bottom: 11px;left: 15px;z-index: 2;">
             <div class="flag">

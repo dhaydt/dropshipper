@@ -16,6 +16,7 @@
     }
 </style>
 
+@if (\Request::route()->getName() == 'shop-cart' || \Request::route()->getName() == 'checkout-details' || \Request::route()->getName() == 'checkout-shipping' || \Request::route()->getName() == 'checkout-payment' || \Request::route()->getName() == 'checkout-review')
 <aside class="col-lg-4 pt-4 pt-lg-0">
     <div class="cart_total">
         @php($sub_total=0)
@@ -23,11 +24,10 @@
         @php($total_shipping_cost=0)
         @php($total_discount_on_product=0)
         @php($cart=\App\CPU\CartManager::get_cart())
-        {{-- {{ dd($cart) }} --}}
-        {{-- @if (session()->get('user_is') == 'customer') --}}
-        @if ($cart)
-        @php(session(['cart_group_id' => $cart[0]['cart_group_id']]))
+        @if (session()->get('user_is') == 'dropship')
         @endif
+        {{-- @if (session()->get('user_is') == 'customer') --}}
+        @php(session(['cart_group_id' => $cart[0]['cart_group_id']]))
         {{-- @endif --}}
         @php($shipping_cost=\App\CPU\CartManager::get_shipping_cost())
         @if($cart->count() > 0)
@@ -122,3 +122,4 @@
         </div>
     </div>
 </aside>
+@endif

@@ -288,7 +288,7 @@ class WebController extends Controller
 
     public function shop_cart()
     {
-        if (auth('customer')->check() && Cart::where(['customer_id' => auth('customer')->id(), 'user_is' => 'customer'])->count() > 0) {
+        if (auth('customer')->check() && Cart::where(['customer_id' => auth('customer')->id(), 'buyer_is' => 'customer'])->count() > 0) {
             if (auth('customer')->user()->district == null) {
                 // dd('no distrcit');
                 $country = DB::table('country')->get();

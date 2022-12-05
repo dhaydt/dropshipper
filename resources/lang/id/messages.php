@@ -1471,4 +1471,5 @@
   'New order ID for you' => 'New order ID for you',
   'Please fill your customer address first' => 'Please fill your customer address first',
   'view_dashboard' => 'View dashboard',
+  'invalid_customer_data' => 'Invalid customer data',
 );

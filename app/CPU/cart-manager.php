@@ -256,6 +256,10 @@ class CartManager
             $price = $product->unit_price;
         }
 
+        if ($type == 'dropship') {
+            $price = $product->dropship;
+        }
+
         $tax = Helpers::tax_calculation($price, $product['tax'], 'percent');
 
         //generate group id
@@ -275,6 +279,15 @@ class CartManager
             $cart['cart_group_id'] = ($user == 'offline' ? 'offline' : $user->id).'-'.Str::random(5).'-'.time();
         }
         //generate group id end
+        if ($type == 'dropship') {
+            $price = $product->dropship;
+        }
+
+        $disc = Helpers::get_product_discount($product, $product->unit_price);
+
+        if ($type == 'dropship') {
+            $disc = Helpers::get_product_discount($product, $product->dropship);
+        }
 
         $cart['customer_id'] = $user->id ?? 0;
         $cart['quantity'] = $request['quantity'];
@@ -283,7 +296,7 @@ class CartManager
         $cart['tax'] = $tax;
         $cart['slug'] = $product->slug;
         $cart['name'] = $product->name;
-        $cart['discount'] = Helpers::get_product_discount($product, $price);
+        $cart['discount'] = $disc;
         /*$data['shipping_cost'] = $shipping_cost;*/
         $cart['thumbnail'] = $product->thumbnail;
         $cart['seller_id'] = $product->user_id;
