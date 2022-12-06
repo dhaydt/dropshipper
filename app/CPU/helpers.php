@@ -644,6 +644,12 @@ class Helpers
         $lowest_price = $product->unit_price;
         $highest_price = $product->unit_price;
 
+        $type = session()->get('user_is');
+        if ($type == 'dropship') {
+            $lowest_price = $product->dropship;
+            $highest_price = $product->dropship;
+        }
+
         foreach (json_decode($product->variation) as $key => $variation) {
             if ($lowest_price > $variation->price) {
                 $lowest_price = round($variation->price, 2);

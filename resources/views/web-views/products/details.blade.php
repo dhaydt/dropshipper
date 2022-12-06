@@ -66,15 +66,14 @@
 
         .btn-number:hover {
             color: {{$web_config['secondary_color']}};
-
         }
 
         .for-total-price {
-            margin- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: -30%;
+            margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 0%;
         }
 
         .feature_header span {
-            padding- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 15px;
+            padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 15px;
             font-weight: 700;
             font-size: 25px;
             background-color: #ffffff;
@@ -87,15 +86,15 @@
             }
 
             .for-total-price {
-                padding- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 30%;
+                padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 30%;
             }
 
             .product-quantity {
-                padding- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 4%;
+                padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 4%;
             }
 
             .for-margin-bnt-mobile {
-                margin- {{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 7px;
+                margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 7px;
             }
 
             .font-for-tab {
@@ -109,20 +108,20 @@
 
         @media (max-width: 375px) {
             .for-margin-bnt-mobile {
-                margin- {{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 3px;
+                margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 3px;
             }
 
             .for-discount {
-                margin- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10% !important;
+                margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10% !important;
             }
 
             .for-dicount-div {
                 margin-top: -5%;
-                margin- {{Session::get('direction') === "rtl" ? 'left' : 'right'}}: -7%;
+                margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: -7%;
             }
 
             .product-quantity {
-                margin- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 4%;
+                margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 4%;
             }
 
         }
@@ -130,11 +129,11 @@
         @media (max-width: 500px) {
             .for-dicount-div {
                 margin-top: -4%;
-                margin- {{Session::get('direction') === "rtl" ? 'left' : 'right'}}: -5%;
+                margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: -5%;
             }
 
             .for-total-price {
-                margin- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: -20%;
+                margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: -20%;
             }
 
             .view-btn-div {
@@ -144,7 +143,7 @@
             }
 
             .for-discount {
-                margin- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 7%;
+                margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 7%;
             }
 
             .viw-btn-a {
@@ -157,7 +156,7 @@
             }
 
             .for-mobile-capacity {
-                margin- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 7%;
+                margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 7%;
             }
         }
     </style>
@@ -263,7 +262,11 @@
                         </span>
                         @if($product->discount > 0)
                             <strike style="color: {{$web_config['secondary_color']}};">
+                                @if (session()->get('user_is') == 'dropship')
+                                {{\App\CPU\Helpers::currency_converter($product->dropship)}}
+                                @else
                                 {{\App\CPU\Helpers::currency_converter($product->unit_price)}}
+                                @endif
                             </strike>
                         @endif
                     </div>

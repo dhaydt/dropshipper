@@ -14,6 +14,7 @@ class CartController extends Controller
 {
     public function variant_price(Request $request)
     {
+        $type = session()->get('user_is');
         $product = Product::find($request->id);
         $str = '';
         $quantity = 0;
@@ -45,6 +46,11 @@ class CartController extends Controller
             $tax = Helpers::tax_calculation($product->unit_price, $product['tax'], $product['tax_type']);
             $discount = Helpers::get_product_discount($product, $product->unit_price);
             $price = $product->unit_price - $discount + $tax;
+
+            if ($type == 'dropship') {
+                $discount = Helpers::get_product_discount($product, $product->dropship);
+                $price = $product->dropship - $discount + $tax;
+            }
             $quantity = $product->current_stock;
         }
 
