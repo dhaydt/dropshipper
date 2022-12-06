@@ -505,7 +505,8 @@ class Helpers
                 foreach (json_decode($item['variation'], true) as $var) {
                     array_push($variation, [
                         'type' => $var['type'],
-                        'price' => (float) $var['price'],
+                        'price' => round($var['price']),
+                        // 'dropship' => round($var['dropship']),
                         'sku' => $var['sku'],
                         'qty' => (int) $var['qty'],
                     ]);
