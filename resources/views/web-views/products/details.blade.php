@@ -415,8 +415,21 @@
                         </div>
                     </form>
                     <hr style="padding-bottom: 10px">
-                    <div style="text-align:{{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                         class="sharethis-inline-share-buttons"></div>
+                    @php($type = session()->get('user_is'))
+                    @if ($type == 'dropship')
+                    @php($seller = auth('seller')->user())
+                    <div class="text-left">
+                        <a class="btn btn-sm btn-success" href="{{ route('generate', ['seller_id' => $seller->id, 'seller_name' => $seller->f_name, 'product_slug' => $product->slug]) }}" target="_blank">
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                            <span> Bagikan</span>
+                        </a>
+                    </div>
+                    @else
+
+                    @endif
+                    {{-- <div style="text-align:{{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
+                         class="sharethis-inline-share-buttons">
+                    </div> --}}
                 </div>
             </div>
         </div>
