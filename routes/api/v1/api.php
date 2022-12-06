@@ -47,7 +47,7 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
     Route::group(['prefix' => 'cart', 'middleware' => 'auth:api'], function () {
         Route::get('/', 'CartController@cart');
         Route::post('add', 'CartController@add_to_cart');
-        Route::put('update', 'CartController@update_cart');
+        Route::post('update', 'CartController@update_cart');
         Route::delete('remove', 'CartController@remove_from_cart');
     });
 

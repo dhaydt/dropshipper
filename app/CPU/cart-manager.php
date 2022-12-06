@@ -325,9 +325,23 @@ class CartManager
     public static function update_cart_qty($request)
     {
         $user = Helpers::get_customer($request);
+        if ($request->type == 'dropship') {
+            $check = Helpers::get_seller_by_token($request);
+            if ($check['success'] == 1) {
+                $user = $check['data'];
+            } else {
+                return response()->json([
+                    'auth-001' => translate('Your existing session token does not authorize you any more'),
+                ], 401);
+            }
+        }
         $status = 1;
         $qty = 0;
-        $cart = Cart::where(['id' => $request->key, 'customer_id' => $user->id])->first();
+        if ($request->type == 'dropship') {
+            $cart = Cart::where(['id' => $request->key, 'customer_id' => $user->id, 'buyer_is' => 'dropship'])->first();
+        } else {
+            $cart = Cart::where(['id' => $request->key, 'customer_id' => $user->id, 'buyer_is' => null])->first();
+        }
 
         $product = Product::find($cart['product_id']);
         $count = count(json_decode($product->variation));

@@ -15,7 +15,7 @@ class CartController extends Controller
     public function cart(Request $request)
     {
         $user = Helpers::get_customer($request);
-        $cart = Cart::where(['customer_id' => $user->id])->get();
+        $cart = Cart::where(['customer_id' => $user->id, 'buyer_is' => null])->get();
         $cart->map(function ($data) {
             $data['choices'] = json_decode($data['choices']);
             $data['variations'] = json_decode($data['variations']);
@@ -75,7 +75,7 @@ class CartController extends Controller
         }
 
         $user = Helpers::get_customer($request);
-        Cart::where(['id' => $request->key, 'customer_id' => $user->id])->delete();
+        Cart::where(['id' => $request->key, 'customer_id' => $user->id, 'buyer_is' => null])->delete();
 
         return response()->json(translate('successfully_removed'));
     }
