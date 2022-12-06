@@ -123,6 +123,12 @@ class Helpers
         }
 
         if ($user == null) {
+            $check = Helpers::get_seller_by_token($request);
+            if ($check['success'] == 1) {
+                $user = $check['data'];
+            }
+        }
+        if ($user == null) {
             $user = 'offline';
         }
 

@@ -26,6 +26,13 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
             Route::delete('delete/{id}', 'ProductController@delete');
         });
 
+        Route::group(['prefix' => 'cart'], function () {
+            Route::get('/', 'CartController@cart');
+            Route::post('add', 'CartController@add_to_cart');
+            Route::put('update', 'CartController@update_cart');
+            Route::delete('remove', 'CartController@remove_from_cart');
+        });
+
         Route::group(['prefix' => 'orders'], function () {
             Route::get('list', 'OrderController@list');
             Route::get('/{id}', 'OrderController@details');

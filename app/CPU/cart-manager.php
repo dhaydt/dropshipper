@@ -173,7 +173,7 @@ class CartManager
         $price = 0;
 
         $user = Helpers::get_customer($request);
-        $type = session()->get('user_is');
+        $type = session()->get('user_is') ? session()->get('user_is') : $request['type'];
         $product = Product::find($request->id);
 
         //check the color enabled or disabled for the product
@@ -256,7 +256,7 @@ class CartManager
             $price = $product->unit_price;
         }
 
-        if ($type == 'dropship') {
+        if ($type == 'dropship' || $user[0] == 'dropship') {
             $price = $product->dropship;
         }
 
@@ -279,13 +279,13 @@ class CartManager
             $cart['cart_group_id'] = ($user == 'offline' ? 'offline' : $user->id).'-'.Str::random(5).'-'.time();
         }
         //generate group id end
-        if ($type == 'dropship') {
+        if ($type == 'dropship' || $user[0] == 'dropship') {
             $price = $product->dropship;
         }
 
         $disc = Helpers::get_product_discount($product, $product->unit_price);
 
-        if ($type == 'dropship') {
+        if ($type == 'dropship' || $user[0] == 'dropship') {
             $disc = Helpers::get_product_discount($product, $product->dropship);
         }
 
