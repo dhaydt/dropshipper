@@ -339,6 +339,7 @@ class ProductController extends BaseController
         }
 
         $unit_price = $request->unit_price;
+        $dropship = $request->dropship_price;
         $product_name = $request->name[array_search('en', $request->lang)];
 
         if ($request->has('choice_no')) {
@@ -352,7 +353,7 @@ class ProductController extends BaseController
         $combinations = Helpers::combinations($options);
 
         return response()->json([
-            'view' => view('admin-views.product.partials._sku_combinations', compact('combinations', 'unit_price', 'colors_active', 'product_name'))->render(),
+            'view' => view('admin-views.product.partials._sku_combinations', compact('combinations', 'unit_price', 'colors_active', 'product_name', 'dropship'))->render(),
         ]);
     }
 
@@ -479,6 +480,7 @@ class ProductController extends BaseController
                 $item = [];
                 $item['type'] = $str;
                 $item['price'] = BackEndHelper::currency_to_usd(abs($request['price_'.str_replace('.', '_', $str)]));
+                $item['dropship'] = BackEndHelper::currency_to_usd(abs($request['dropship_'.str_replace('.', '_', $str)]));
                 $item['sku'] = $request['sku_'.str_replace('.', '_', $str)];
                 $item['qty'] = abs($request['qty_'.str_replace('.', '_', $str)]);
                 array_push($variations, $item);

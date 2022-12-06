@@ -9,6 +9,9 @@
             <label for="" class="control-label">{{\App\CPU\translate('Variant Price')}}</label>
         </td>
         <td class="text-center">
+            <label for="" class="control-label">{{\App\CPU\translate('Dropship Variant Price')}}</label>
+        </td>
+        <td class="text-center">
             <label for="" class="control-label">{{\App\CPU\translate('SKU')}}</label>
         </td>
         <td class="text-center">
@@ -25,6 +28,12 @@
             </td>
             <td>
                 <input type="number" name="price_{{ $combination['type'] }}"
+                       value="{{ \App\CPU\Convert::default($combination['price']) }}" min="0"
+                       step="0.01"
+                       class="form-control" required>
+            </td>
+            <td>
+                <input type="number" name="dropship_{{ $combination['type'] }}"
                        value="{{ \App\CPU\Convert::default($combination['price']) }}" min="0"
                        step="0.01"
                        class="form-control" required>

@@ -81,7 +81,30 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        $seller = Seller::where(['email' => $request['email']])->first();
+        $user_id = $request['email'];
+
+        if (filter_var($user_id, FILTER_VALIDATE_EMAIL)) {
+            $medium = 'email';
+        } else {
+            $count = strlen(preg_replace("/[^\d]/", '', $user_id));
+            if ($count >= 9 && $count <= 15) {
+                $medium = 'phone';
+            } else {
+                $errors = [];
+                array_push($errors, ['code' => 'email', 'message' => 'Invalid email address or phone number']);
+
+                return response()->json([
+                    'errors' => $errors,
+                ], 403);
+            }
+        }
+
+        $data = [
+            $medium => $user_id,
+            'password' => $request->password,
+        ];
+
+        $seller = Seller::where([$medium => $user_id])->first();
         if (isset($seller) && $seller['status'] == 'approved' && auth('seller')->attempt($data)) {
             $token = Str::random(50);
             Seller::where(['id' => auth('seller')->id()])->update(['auth_token' => $token]);

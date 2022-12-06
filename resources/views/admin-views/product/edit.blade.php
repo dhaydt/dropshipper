@@ -617,6 +617,7 @@
                 url: '{{route('admin.product.sku-combination')}}',
                 data: $('#product_form').serialize(),
                 success: function (data) {
+                    console.log('sku', data)
                     $('#sku_combination').html(data.view);
                     update_qty();
                     if (data.length > 1) {
