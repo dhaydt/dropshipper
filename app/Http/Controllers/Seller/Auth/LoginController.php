@@ -24,14 +24,26 @@ class LoginController extends Controller
     public function submit(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'user_id' => 'required',
             'password' => 'required|min:6',
         ]);
 
-        $se = Seller::where(['email' => $request['email']])->first(['status']);
+        $user_id = $request->user_id;
+        if (filter_var($user_id, FILTER_VALIDATE_EMAIL)) {
+            $medium = 'email';
+        } else {
+            $count = strlen(preg_replace("/[^\d]/", '', $user_id));
+            if ($count >= 9 && $count <= 15) {
+                $medium = 'phone';
+            } else {
+                Toastr::error('Invalid user email or phone number.');
+            }
+        }
 
-        if (isset($se) && $se['status'] == 'approved' && auth('seller')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            Toastr::info('Welcome to your dashboard!');
+        $se = Seller::where($medium, 'like', "%{$user_id}%")->first();
+
+        if (isset($se) && $se['status'] == 'approved' && auth('seller')->attempt(['email' => $se['email'], 'password' => $request->password], $request->remember)) {
+            Toastr::info('Welcome to Dropshipper!');
             if (SellerWallet::where('seller_id', auth('seller')->id())->first() == false) {
                 DB::table('seller_wallets')->insert([
                     'seller_id' => auth('seller')->id(),

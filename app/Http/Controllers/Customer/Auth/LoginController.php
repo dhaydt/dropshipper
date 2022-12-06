@@ -28,7 +28,7 @@ class LoginController extends Controller
 
     public function submit(Request $request)
     {
-        session()->put('hide_banner', false);
+        // session()->put('hide_banner', false);
         $request->validate([
             'user_id' => 'required',
             'password' => 'required|min:8',

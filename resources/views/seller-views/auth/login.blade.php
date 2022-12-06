@@ -70,12 +70,12 @@
 
                             <!-- Form Group -->
                             <div class="js-form-message form-group">
-                                <label class="input-label" for="signinSrEmail">{{\App\CPU\translate('your_email')}}</label>
+                                <label class="input-label" for="signinSrEmail">Email / Nomor Handphone</label>
 
-                                <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail"
+                                <input type="text" class="form-control form-control-lg" name="user_id" id="signinSrEmail"
                                        style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                       tabindex="1" placeholder="email@address.com" aria-label="email@address.com"
-                                       required data-msg="Please enter a valid email address.">
+                                       tabindex="1" placeholder="" aria-label=""
+                                       required data-msg="">
                             </div>
                             <!-- End Form Group -->
 
