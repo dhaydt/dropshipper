@@ -9,6 +9,7 @@ use App\Model\Category;
 use App\Model\Color;
 use App\Model\Coupon;
 use App\Model\Currency;
+use App\Model\FlashDealProduct;
 use App\Model\Order;
 use App\Model\Product;
 use App\Model\Review;
@@ -31,6 +32,13 @@ class Helpers
         }
 
         return $x;
+    }
+
+    public static function getProductDealsImg($cat_id, $deal_id)
+    {
+        $deal = FlashDealProduct::where(['flash_deal_id' => $deal_id, 'category_id' => $cat_id])->first();
+
+        return $deal;
     }
 
     public static function country()
@@ -491,6 +499,16 @@ class Helpers
         $path = asset('storage/app/public/brand');
 
         return $path;
+    }
+
+    public static function categoryDataFormatting($data, $id)
+    {
+        foreach ($data as $d) {
+            $product = \App\CPU\Helpers::getProductDealsImg($d['id'], $id);
+            $d['banner'] = $product['images'];
+        }
+
+        return $data;
     }
 
     public static function product_data_formatting($data, $multi_data = false)

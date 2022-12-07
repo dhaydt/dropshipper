@@ -90,6 +90,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::post('update-unggulan/{id}', 'DealController@update_unggulan')->name('update-unggulan');
             Route::get('add-category/{deal_id}', 'DealController@add_category')->name('add-category');
             Route::post('add-category/{deal_id}', 'DealController@add_category_submit');
+            Route::post('banner-berlimpah', 'DealController@banner_berlimpah')->name('banner-berlimpah');
         });
 
         Route::group(['prefix' => 'employee', 'as' => 'employee.', 'middleware' => ['module:employee_section']], function () {

@@ -145,6 +145,7 @@ return array(
     'App\\Http\\Controllers\\api\\v1\\auth\\PhoneVerificationController' => $baseDir . '/app/Http/Controllers/api/v1/auth/PhoneVerificationController.php',
     'App\\Http\\Controllers\\api\\v1\\auth\\SocialAuthController' => $baseDir . '/app/Http/Controllers/api/v1/auth/SocialAuthController.php',
     'App\\Http\\Controllers\\api\\v2\\LsLibController' => $baseDir . '/app/Http/Controllers/api/v2/LsLibController.php',
+    'App\\Http\\Controllers\\api\\v2\\seller\\CartController' => $baseDir . '/app/Http/Controllers/api/v2/seller/CartController.php',
     'App\\Http\\Controllers\\api\\v2\\seller\\ChatController' => $baseDir . '/app/Http/Controllers/api/v2/seller/ChatController.php',
     'App\\Http\\Controllers\\api\\v2\\seller\\OrderController' => $baseDir . '/app/Http/Controllers/api/v2/seller/OrderController.php',
     'App\\Http\\Controllers\\api\\v2\\seller\\ProductController' => $baseDir . '/app/Http/Controllers/api/v2/seller/ProductController.php',

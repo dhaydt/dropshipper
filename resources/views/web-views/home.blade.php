@@ -655,9 +655,12 @@ a .footer_banner_img {
     </div>
     @endif
 
+    @php($berlimpah=\App\Model\FlashDeal::with(['products.product.reviews'])->where(['status'=>1])->where(['deal_type'=>'berlimpah'])->first())
+    @if ($berlimpah)
     <div class="container">
         @include('web-views.partials._banner_pantene')
     </div>
+    @endif
 
     {{-- small banner --}}
     {{-- <section class="banner mt-2">

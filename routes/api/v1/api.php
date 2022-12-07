@@ -103,6 +103,11 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
         Route::get('products/{bardy_id}', 'CustomBannerController@get_products');
     });
 
+    Route::group(['prefix' => 'pantene-banner'], function () {
+        Route::get('/', 'CustomBannerController@pantene_banner');
+        Route::get('products/{pantene_id}', 'CustomBannerController@get_products_pantene');
+    });
+
     Route::group(['prefix' => 'deals'], function () {
         Route::get('featured', 'DealController@get_featured_deal');
     });

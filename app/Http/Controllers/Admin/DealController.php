@@ -19,6 +19,24 @@ use Illuminate\Support\Str;
 
 class DealController extends Controller
 {
+    public function banner_berlimpah(Request $request)
+    {
+        $deal = FlashDealProduct::where(['flash_deal_id' => $request['deal_id'], 'category_id' => $request['cat_id']])->first();
+        // dd($request);
+        if ($request->banner) {
+            $deal['images'] = ImageManager::update('deal/', $deal['images'], 'png', $request->file('banner'));
+            $deal->save();
+        } else {
+            Toastr::warning('Mohon pilih banner yang ingin di upload!');
+
+            return redirect()->back();
+        }
+
+        Toastr::success('Banner berhasil di Update!');
+
+        return redirect()->back();
+    }
+
     public function berlimpah_index(Request $request)
     {
         $query_param = [];
