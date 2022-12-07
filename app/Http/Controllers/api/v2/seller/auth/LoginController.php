@@ -36,7 +36,7 @@ class LoginController extends Controller
             $seller->email = $request->email;
             $seller->image = ImageManager::upload('seller/', 'png', $request->file('profile_img'));
             $seller->password = bcrypt($request->password);
-            $seller->status = 'pending';
+            $seller->status = 'approved';
             $seller->save();
 
             $shop = new Shop();
