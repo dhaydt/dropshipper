@@ -131,13 +131,15 @@ class Helpers
         }
 
         $type = $request ? $request->type : null;
-
         if (session()->get('user_is') == 'dropship' || $type == 'dropship') {
-            $check = Helpers::get_seller_by_token($request);
-            if ($check['success'] == 1) {
-                $user = $check['data'];
+            if (auth('seller')->check() == false) {
+                $check = Helpers::get_seller_by_token($request);
+                if ($check['success'] == 1) {
+                    $user = $check['data'];
+                }
             }
         }
+
         if ($user == null) {
             $user = 'offline';
         }
