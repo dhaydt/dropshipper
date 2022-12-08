@@ -209,6 +209,7 @@ class ProductController extends BaseController
             $p->images = json_encode($product_images);
         }
         $p->thumbnail = ImageManager::upload('product/thumbnail/', 'png', $request->image);
+        $p->icon = ImageManager::upload('product/icon/', 'png', $request->icon);
 
         //combinations end
         $p->variation = json_encode($variations);
@@ -370,6 +371,7 @@ class ProductController extends BaseController
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id' => 'required',
@@ -510,6 +512,9 @@ class ProductController extends BaseController
         if ($request->file('image')) {
             $product->thumbnail = ImageManager::update('product/thumbnail/', $product->thumbnail, 'png', $request->file('image'));
         }
+        if ($request->file('icon')) {
+            $product->icon = ImageManager::update('product/icon/', $product->icon, 'png', $request->file('icon'));
+        }
         //combinations end
         $product->variation = json_encode($variations);
         $product->unit_price = BackEndHelper::currency_to_usd($request->unit_price);
@@ -582,6 +587,17 @@ class ProductController extends BaseController
             'images' => json_encode($array),
         ]);
         Toastr::success('Product image removed successfully!');
+
+        return back();
+    }
+
+    public function remove_label(Request $request)
+    {
+        ImageManager::delete('/product/icon/'.$request['image']);
+        $product = Product::find($request['id']);
+        $product->icon = null;
+        $product->save();
+        Toastr::success('Product icon removed successfully!');
 
         return back();
     }

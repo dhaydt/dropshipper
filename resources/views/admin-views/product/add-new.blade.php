@@ -312,12 +312,25 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="name">{{\App\CPU\translate('Upload thumbnail')}}</label><small
-                                            style="color: red">* ( {{\App\CPU\translate('ratio')}} 1:1 )</small>
-                                    </div>
-                                    <div style="max-width:200px;">
-                                        <div class="row" id="thumbnail"></div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="name">{{\App\CPU\translate('Upload thumbnail')}}</label><small
+                                                    style="color: red">* ( {{\App\CPU\translate('ratio')}} 1:1 )</small>
+                                            </div>
+                                            <div style="max-width:200px;">
+                                                <div class="row" id="thumbnail"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="name">{{\App\CPU\translate('Icon Label')}}</label><small
+                                                    style="color: red"></small>
+                                            </div>
+                                            <div style="max-width:200px;">
+                                                <div class="row" id="icon"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -378,6 +391,40 @@
 
             $("#thumbnail").spartanMultiImagePicker({
                 fieldName: 'image',
+                maxCount: 1,
+                rowHeight: 'auto',
+                groupClassName: 'col-12',
+                maxFileSize: '',
+                placeholderImage: {
+                    image: '{{asset('public/assets/back-end/img/400x400/img2.jpg')}}',
+                    width: '100%',
+                },
+                dropFileLabel: "Drop Here",
+                onAddRow: function (index, file) {
+
+                },
+                onRenderedPreview: function (index) {
+
+                },
+                onRemoveRow: function (index) {
+
+                },
+                onExtensionErr: function (index, file) {
+                    toastr.error('{{\App\CPU\translate('Please only input png or jpg type file')}}', {
+                        CloseButton: true,
+                        ProgressBar: true
+                    });
+                },
+                onSizeErr: function (index, file) {
+                    toastr.error('{{\App\CPU\translate('File size too big')}}', {
+                        CloseButton: true,
+                        ProgressBar: true
+                    });
+                }
+            });
+
+            $("#icon").spartanMultiImagePicker({
+                fieldName: 'icon',
                 maxCount: 1,
                 rowHeight: 'auto',
                 groupClassName: 'col-12',

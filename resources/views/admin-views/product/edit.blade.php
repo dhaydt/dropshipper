@@ -380,23 +380,50 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="name">{{\App\CPU\translate('Upload thumbnail')}}</label><small
-                                            style="color: red">* ( {{\App\CPU\translate('ratio')}} 1:1 )</small>
-                                    </div>
-
-                                    <div class="row" id="thumbnail">
+                                    <div class="row">
                                         <div class="col-6">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <img style="width: 100%" height="auto"
-                                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                         src="{{asset("storage/product/thumbnail")}}/{{$product['thumbnail']}}"
-                                                         alt="Product image">
+                                            <div class="form-group">
+                                                <label for="name">{{\App\CPU\translate('Upload thumbnail')}}</label><small
+                                                    style="color: red">* ( {{\App\CPU\translate('ratio')}} 1:1 )</small>
+                                            </div>
+
+                                            <div class="row" id="thumbnail">
+                                                <div class="col-6">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <img style="width: 100%" height="auto"
+                                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                                 src="{{asset("storage/product/thumbnail")}}/{{$product['thumbnail']}}"
+                                                                 alt="Product image">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="name">{{\App\CPU\translate('Icon_Label')}}</label>
+                                            </div>
+
+                                            <div class="row" id="icon">
+                                                <div class="col-6">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <img style="width: 100%" height="auto"
+                                                            onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                            src="{{asset("storage/product/icon")}}/{{$product['icon']}}"
+                                                            alt="Product image">
+                                                            @if ($product['icon'] != NULL)
+                                                                 <a href="{{route('admin.product.remove-label',['id'=>$product['id'],'name'=>$product['icon']])}}"
+                                                                    class="btn btn-danger btn-block">{{\App\CPU\translate('Remove')}}</a>
+                                                            @endif
+                                                                </div>
+                                                            </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -425,6 +452,7 @@
     <script>
         var imageCount = {{4-count(json_decode($product->images))}};
         var thumbnail = '{{\App\CPU\ProductManager::product_image_path('thumbnail').'/'.$product->thumbnail??asset('public/assets/back-end/img/400x400/img2.jpg')}}';
+        var icon = '{{\App\CPU\ProductManager::product_image_path('icon').'/'.$product->icon??asset('public/assets/back-end/img/400x400/img2.jpg')}}';
         $(function () {
             if (imageCount > 0) {
                 $("#coba").spartanMultiImagePicker({
@@ -464,6 +492,40 @@
 
             $("#thumbnail").spartanMultiImagePicker({
                 fieldName: 'image',
+                maxCount: 1,
+                rowHeight: 'auto',
+                groupClassName: 'col-6',
+                maxFileSize: '',
+                placeholderImage: {
+                    image: '{{asset('public/assets/back-end/img/400x400/img2.jpg')}}',
+                    width: '100%',
+                },
+                dropFileLabel: "Drop Here",
+                onAddRow: function (index, file) {
+
+                },
+                onRenderedPreview: function (index) {
+
+                },
+                onRemoveRow: function (index) {
+
+                },
+                onExtensionErr: function (index, file) {
+                    toastr.error('{{\App\CPU\translate('Please only input png or jpg type file')}}', {
+                        CloseButton: true,
+                        ProgressBar: true
+                    });
+                },
+                onSizeErr: function (index, file) {
+                    toastr.error('{{\App\CPU\translate('File size too big')}}', {
+                        CloseButton: true,
+                        ProgressBar: true
+                    });
+                }
+            });
+
+            $("#icon").spartanMultiImagePicker({
+                fieldName: 'icon',
                 maxCount: 1,
                 rowHeight: 'auto',
                 groupClassName: 'col-6',

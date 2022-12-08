@@ -240,6 +240,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::get('add-new', 'ProductController@add_new')->name('add-new');
             Route::post('store', 'ProductController@store')->name('store');
             Route::get('remove-image', 'ProductController@remove_image')->name('remove-image');
+            Route::get('remove-label', 'ProductController@remove_label')->name('remove-label');
             Route::post('status-update', 'ProductController@status_update')->name('status-update');
             Route::get('list/{type}', 'ProductController@list')->name('list');
             //Route::get('list/{type}/{slug}', 'ProductController@list')->name('list');

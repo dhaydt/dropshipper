@@ -1473,4 +1473,6 @@
   'view_dashboard' => 'View dashboard',
   'invalid_customer_data' => 'Invalid customer data',
   'Dropship Variant Price' => 'Dropship Variant Price',
+  'Icon Label' => 'Icon Label',
+  'Icon_Label' => 'Icon Label',
 );
