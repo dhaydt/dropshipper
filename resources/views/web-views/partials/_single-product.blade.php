@@ -183,9 +183,11 @@
         @endif
 {{-- {{ dd($product) }} --}}
         <div class="card-header inline_product clickable">
+            @if ($product->icon != NULL)
             <div class="ketupat">
-                <img src="{{ asset('public/assets/front-end/img/ketupat.png') }}" alt="">
+                <img src="{{\App\CPU\ProductManager::product_image_path('icon')}}/{{$product['icon']}}" alt="">
             </div>
+            @endif
             @if(isset($product->label))
             <div class="d-flex justify-content-end for-dicount-div discount-hed" style="right: 0;position: absolute">
                 <span class="for-discoutn-value">
