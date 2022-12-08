@@ -163,7 +163,7 @@
                         </div>
                     </div>
 
-                    <div class="card mt-2 rest-part">
+                    {{-- <div class="card mt-2 rest-part">
                         <div class="card-header">
                             <h4>{{\App\CPU\translate('Variation')}}</h4>
                         </div>
@@ -223,7 +223,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="card mt-2 rest-part">
                         <div class="card-header">
