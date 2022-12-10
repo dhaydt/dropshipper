@@ -259,11 +259,13 @@ class OrderManager
             $cart = Cart::where(['cart_group_id' => $cart_group_id])->first();
             if ($cart->buyer_is == 'dropship') {
                 $user = Seller::find($cart->customer_id);
+            // $shipping =
             } else {
                 $user = User::find($cart->customer_id);
-                $shipping = CartShipping::where('cart_group_id', $cart_group_id)->first();
-                $address_id = $shipping['address_id'];
             }
+            $shipping = CartShipping::where('cart_group_id', $cart_group_id)->first();
+            $address_id = $shipping['address_id'];
+        // dd($address_id);
         } else {
             $user = Helpers::get_customer($req);
         }
@@ -272,8 +274,12 @@ class OrderManager
             $discount = round($discount / count(CartManager::get_cart_group_ids($req)), 2);
         }
 
-        $seller_data = Cart::where(['cart_group_id' => $cart_group_id])->first();
+        $user_is = $data['user_is'];
+        if (!$user_is) {
+            $user_is = null;
+        }
 
+        $seller_data = Cart::where(['cart_group_id' => $cart_group_id])->first();
         $or = [
             'id' => $order_id,
             'verification_code' => rand(100000, 999999),
@@ -281,7 +287,7 @@ class OrderManager
             'seller_id' => $seller_data->seller_id,
             'seller_is' => $seller_data->seller_is,
             'user_is' => $seller_data->buyer_is ? $seller_data->buyer_is : 'customer',
-            'customer_type' => session()->get('user_is'),
+            'customer_type' => $seller_data->buyer_is ? $seller_data->buyer_is : 'customer',
             'payment_status' => $data['payment_status'],
             'order_status' => $data['order_status'],
             'payment_method' => $data['payment_method'],
@@ -290,7 +296,7 @@ class OrderManager
             'discount_amount' => $discount,
             'discount_type' => $discount == 0 ? null : 'coupon_discount',
             'coupon_code' => $coupon_code,
-            'order_amount' => CartManager::cart_grand_total($cart_group_id) - $discount,
+            'order_amount' => CartManager::cart_grand_total($cart_group_id, $user_is) - $discount,
             'shipping_address' => $address_id,
             'shipping_address_data' => ShippingAddress::find($address_id),
             'shipping_cost' => CartManager::get_shipping_cost($data['cart_group_id']),
@@ -301,7 +307,14 @@ class OrderManager
 
         $order_id = DB::table('orders')->insertGetId($or);
 
-        foreach (CartManager::get_cart($data['cart_group_id']) as $c) {
+        // dd($data);
+        if ($data['user_is'] == 'dropship') {
+            $query = CartManager::get_cart($data['cart_group_id'], $data['user_is']);
+        } else {
+            $query = CartManager::get_cart($data['cart_group_id']);
+        }
+
+        foreach ($query as $c) {
             $product = Product::where(['id' => $c['product_id']])->first();
             $or_d = [
                 'order_id' => $order_id,

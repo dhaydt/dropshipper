@@ -168,7 +168,7 @@ class XenditPaymentController extends Controller
         return response()->json(['message' => 'Payment succeeded'], 200);
     }
 
-    public function successApi($type, $group)
+    public function successApi($type, $group, $user_is)
     {
         // $order = Order::find($request->id);
 
@@ -186,6 +186,7 @@ class XenditPaymentController extends Controller
                 'order_group_id' => $unique_id,
                 'cart_group_id' => $group_id,
                 'api' => true,
+                'user_is' => $user_is,
             ];
             $order_id = OrderManager::generate_order($data);
             array_push($order_ids, $order_id);

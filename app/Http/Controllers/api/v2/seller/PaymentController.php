@@ -26,7 +26,7 @@ class PaymentController extends Controller
         if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)]);
         }
-        $invoice = Helpers::invoice($request);
+        $invoice = Helpers::invoice($request, 'dropship');
 
         return response()->json(['payment_url' => $invoice]);
     }

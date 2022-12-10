@@ -46,15 +46,22 @@ class CartManager
         }
     }
 
-    public static function get_cart($group_id = null)
+    public static function get_cart($group_id = null, $user_is = null)
     {
         $user = Helpers::get_customer();
-        if (session()->has('offline_cart') && $user == 'offline') {
-            $cart = session('offline_cart');
-            if ($group_id != null) {
-                return $cart->where('cart_group_id', $group_id)->get();
-            } else {
-                return $cart;
+        // if ($user_is == 'dropship') {
+        //     $cart = Cart::where('cart_group_id', $group_id)->get();
+        // }
+        // dd(session()->has('offline_cart') && $user == 'offline' && $user_is !== 'dropship');
+        if ($user_is !== 'dropship') {
+            // dd($check);
+            if ($user_is !== 'dropship' && session()->has('offline_cart') && $user == 'offline') {
+                $cart = session('offline_cart');
+                if ($group_id != null) {
+                    return $cart->where('cart_group_id', $group_id)->get();
+                } else {
+                    return $cart;
+                }
             }
         }
 
@@ -134,9 +141,10 @@ class CartManager
         return $total;
     }
 
-    public static function cart_grand_total($cart_group_id = null)
+    public static function cart_grand_total($cart_group_id = null, $user_is = null)
     {
-        $cart = CartManager::get_cart($cart_group_id);
+        $cart = CartManager::get_cart($cart_group_id, $user_is);
+        // dd($cart);
         $shipping_cost = CartManager::get_shipping_cost($cart_group_id);
         $total = 0;
         if (!empty($cart)) {

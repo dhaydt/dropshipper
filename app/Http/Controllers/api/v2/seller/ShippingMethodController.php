@@ -10,6 +10,7 @@ use function App\CPU\translate;
 use App\Http\Controllers\Controller;
 use App\Model\CartShipping;
 use App\Model\Product;
+use App\Model\ShippingAddress;
 use App\Model\ShippingMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -57,6 +58,7 @@ class ShippingMethodController extends Controller
             'id' => 'required_if:service,""',
             'service' => 'required_if:id,""',
             'type' => 'required',
+            'slug_address' => 'required',
         ], [
             'type' => 'Required user type customer or dropshipper',
         ]);
@@ -95,10 +97,12 @@ class ShippingMethodController extends Controller
 
         // dd($cost);
         // dd($request);
+        $address = ShippingAddress::where('slug', $request['slug_address'])->first();
         $shipping['cart_group_id'] = $request['cart_group_id'];
         $shipping['shipping_method_id'] = $ship_method;
         $shipping['shipping_service'] = $service;
         $shipping['shipping_cost'] = round($price, 2);
+        $shipping['address_id'] = $address['id'];
         $shipping->save();
 
         // old shipping
@@ -163,7 +167,7 @@ class ShippingMethodController extends Controller
             'updated_at' => now(),
         ]);
 
-        return response()->json(['message' => translate('successfully_added')], 200);
+        return response()->json(['message' => translate('successfully_added_shipping_address')], 200);
     }
 
     public function list(Request $request)

@@ -24,7 +24,7 @@ use Xendit\Xendit;
 
 class Helpers
 {
-    public static function invoice($request)
+    public static function invoice($request, $user_is)
     {
         if ($request->user_is == 'customer') {
             $customer = $request->user();
@@ -87,9 +87,9 @@ class Helpers
             'should_send_email' => true,
             'customer' => $user,
             // 'items' => $products,
-            'success_redirect_url' => env('APP_URL').'/xendit-payment/success-api/'.$type.'/'.$group,
+            'success_redirect_url' => env('APP_URL').'/xendit-payment/success-api/'.$type.'/'.$group.'/'.$user_is,
         ];
-
+        // dd($params);
         $checkout_session = \Xendit\Invoice::create($params);
         // $order_ids = [];
         // foreach (CartManager::get_cart_group_ids() as $group_id) {
@@ -290,12 +290,14 @@ class Helpers
             $user = auth('seller')->user();
         }
 
-        $type = $request ? $request->type : null;
-        if (session()->get('user_is') == 'dropship' || $type == 'dropship') {
-            if (auth('seller')->check() == false) {
-                $check = Helpers::get_seller_by_token($request);
-                if ($check['success'] == 1) {
-                    $user = $check['data'];
+        if ($request != null) {
+            $type = $request ? $request->type : null;
+            if (session()->get('user_is') == 'dropship' || $type == 'dropship') {
+                if (auth('seller')->check() == false) {
+                    $check = Helpers::get_seller_by_token($request);
+                    if ($check['success'] == 1) {
+                        $user = $check['data'];
+                    }
                 }
             }
         }
