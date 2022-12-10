@@ -249,7 +249,6 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-
                                         <div class="form-group col-md-6">
                                             <label for="firstName">{{\App\CPU\translate('Handphone')}}</label>
                                             <input class="form-control" type="text" id="phone" name="phone">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\CPU\CartManager;
+use App\CPU\Convert;
 use App\CPU\Helpers;
 use function App\CPU\translate;
 use App\Http\Controllers\Controller;
@@ -14,13 +15,16 @@ use Illuminate\Support\Facades\Validator;
 
 class ShippingMethodController extends Controller
 {
-    public function get_rajaongkir($user_id, $product_id)
+    public function get_rajaongkir(Request $request)
     {
+        $user = $request->user();
         try {
-            $product = Product::where('id', $product_id)->first();
+            $product = Product::where('id', $request->product_id)->first();
+            if (!$product) {
+                return response()->json(['status' => 'fail', 'message' => 'Product id not found']);
+            }
             $seller_id = $product->user_id;
-            // dd($seller_id);
-            $shipping = Helpers::get_shipping_methods_api($seller_id, 'JNE', $product_id, $user_id);
+            $shipping = Helpers::get_shipping_methods_api($seller_id, 'JNE', $request->product_id, $user->id);
             $jne = $shipping[0][0];
             $tiki = $shipping[0][1];
             $cepat = $shipping[0][2];
@@ -90,17 +94,35 @@ class ShippingMethodController extends Controller
             $shipping = new CartShipping();
         }
 
-        if (isset($request['id'])) {
-            $shipping['cart_group_id'] = $request['cart_group_id'];
-            $shipping['shipping_method_id'] = $request['id'];
-            $shipping['shipping_cost'] = ShippingMethod::find($request['id'])->cost;
-            $shipping->save();
-        } else {
-            $shipping['cart_group_id'] = $request['cart_group_id'];
-            $shipping['shipping_service'] = $request['service'];
-            $shipping['shipping_cost'] = $request['cost'];
-            $shipping->save();
-        }
+        $shipp = $request['id'];
+        $ship = explode(',', $shipp);
+        $service = $ship[0];
+        $cost = $ship[1];
+        $price = Convert::idrTousd($cost);
+        $ship_method = 'NULL';
+        // $customer =
+        // dd($customer);
+
+        // dd($cost);
+        // dd($request);
+        $shipping['cart_group_id'] = $request['cart_group_id'];
+        $shipping['shipping_method_id'] = $ship_method;
+        $shipping['shipping_service'] = $service;
+        $shipping['shipping_cost'] = round($price, 2);
+        $shipping->save();
+
+        // old shipping
+        // if (isset($request['id'])) {
+        //     $shipping['cart_group_id'] = $request['cart_group_id'];
+        //     $shipping['shipping_method_id'] = $request['id'];
+        //     $shipping['shipping_cost'] = ShippingMethod::find($request['id'])->cost;
+        //     $shipping->save();
+        // } else {
+        //     $shipping['cart_group_id'] = $request['cart_group_id'];
+        //     $shipping['shipping_service'] = $request['service'];
+        //     $shipping['shipping_cost'] = $request['cost'];
+        //     $shipping->save();
+        // }
     }
 
     public function chosen_shipping_methods(Request $request)

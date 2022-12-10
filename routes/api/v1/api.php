@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,11 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
         Route::any('social-login', 'SocialAuthController@social_login');
     });
 
+    Route::group(['prefix' => 'payment', 'middleware' => 'auth:api'], function () {
+        Route::get('/', 'PaymentController@index');
+        Route::post('create-invoice', 'PaymentController@invoice');
+    });
+
     Route::group(['prefix' => 'config'], function () {
         Route::get('/', 'ConfigController@configuration');
     });
@@ -41,7 +47,7 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
         Route::post('choose-for-order', 'ShippingMethodController@choose_for_order');
         Route::get('chosen', 'ShippingMethodController@chosen_shipping_methods');
 
-        Route::get('ongkir/{user_id}/{product_id}', 'ShippingMethodController@get_rajaongkir');
+        Route::get('ongkir', 'ShippingMethodController@get_rajaongkir');
     });
 
     Route::group(['prefix' => 'cart', 'middleware' => 'auth:api'], function () {

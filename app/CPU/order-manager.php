@@ -265,7 +265,7 @@ class OrderManager
             'customer_id' => $user->id,
             'seller_id' => $seller_data->seller_id,
             'seller_is' => $seller_data->seller_is,
-            'user_is' => $seller_data->buyer_is,
+            'user_is' => $seller_data->buyer_is ? $seller_data->buyer_is : 'customer',
             'customer_type' => session()->get('user_is'),
             'payment_status' => $data['payment_status'],
             'order_status' => $data['order_status'],

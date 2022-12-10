@@ -33,6 +33,15 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
             Route::delete('remove', 'CartController@remove_from_cart');
         });
 
+        Route::group(['prefix' => 'address'], function () {
+            Route::post('customer-address', 'AddressController@add_new_address');
+
+            // Select province city district
+            Route::get('province', 'AddressController@getProvince');
+            Route::get('city', 'AddressController@getCity');
+            Route::get('district', 'AddressController@getDistrict');
+        });
+
         Route::group(['prefix' => 'orders'], function () {
             Route::get('list', 'OrderController@list');
             Route::get('/{id}', 'OrderController@details');

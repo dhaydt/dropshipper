@@ -20,9 +20,168 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Xendit\Xendit;
 
 class Helpers
 {
+    public static function invoice($request)
+    {
+        if ($request->user_is == 'customer') {
+            $customer = $request->user();
+        } elseif ($request->user_is == 'dropship') {
+            $check = Helpers::get_seller_by_token($request);
+            if ($check['success'] == 1) {
+                $customer = $check['data'];
+            } else {
+                return response()->json(['status' => 'auth-001', 'message' => 'not authorized user']);
+            }
+        }
+        $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
+        $value = CartManager::cart_grand_total($request->cart_group_id) - $discount;
+        $tran = OrderManager::gen_unique_id();
+        $type = strtoupper($request['type']);
+        session()->put('transaction_ref', $tran);
+
+        Xendit::setApiKey(config('xendit.apikey'));
+
+        $products = [];
+        foreach (CartManager::get_cart() as $detail) {
+            array_push($products, [
+                'name' => $detail->product['name'],
+            ]);
+        }
+        // dd($products);
+        if ($request->user_is == 'customer') {
+            $name = $customer->name ? $customer->name : $customer->f_name;
+            $phone = $customer->phone;
+            $address = $customer->district.', '.$customer->city.', '.$customer->province;
+            $id = $customer->id;
+            $email = $customer->email;
+        }
+        if ($request->user_is == 'dropship') {
+            $custom = ShippingAddress::where('slug', session()->get('customer_address'))->first();
+            $name = $custom->contact_person_name;
+            $phone = $custom->phone;
+            $address = $custom->district.', '.$custom->city.', '.$custom->province;
+            $id = $custom->customer_id;
+            $email = 'dropshipper@ezren.id';
+        }
+
+        $user = [
+            'given_names' => $name,
+            'email' => $email,
+            'mobile_number' => $phone,
+            'address' => $address,
+        ];
+
+        // dd($user);
+
+        $params = [
+            'external_id' => 'ezren'.$phone.$id,
+            'amount' => $value,
+            'payer_email' => $email,
+            'description' => env('APP_NAME'),
+            'payment_methods' => [$type],
+            'fixed_va' => true,
+            'should_send_email' => true,
+            'customer' => $user,
+            // 'items' => $products,
+            'success_redirect_url' => env('APP_URL').'/xendit-payment/success/'.$type,
+        ];
+
+        $checkout_session = \Xendit\Invoice::create($params);
+        // $order_ids = [];
+        // foreach (CartManager::get_cart_group_ids() as $group_id) {
+        //     $data = [
+        //         'payment_method' => 'xendit_payment',
+        //         'order_status' => 'pending',
+        //         'payment_status' => 'unpaid',
+        //         'transaction_ref' => session('transaction_ref'),
+        //         'order_group_id' => $tran,
+        //         'cart_group_id' => $group_id,
+        //     ];
+        //     $order_id = OrderManager::generate_order($data);
+        //     array_push($order_ids, $order_id);
+        // }
+
+        return response()->json($checkout_session['invoice_url']);
+    }
+
+    public static function payment()
+    {
+        Xendit::setApiKey(config('xendit.apikey'));
+
+        // $createVA = \Xendit\VirtualAccounts::create($params);
+        // var_dump($createVA);
+        $bank = \Xendit\VirtualAccounts::getVABanks();
+
+        return $bank;
+    }
+
+    public static function district($id)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => config('rajaongkir.url').'/subdistrict?city='.$id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => [
+                'key:'.config('rajaongkir.api_key'),
+            ],
+        ]);
+
+        $resp = curl_exec($curl);
+        $err = curl_error($curl);
+        $resp = json_decode($resp, true);
+        $data = $resp['rajaongkir']['results'];
+
+        // dd($prov);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo 'cURL Error #:'.$err;
+        } else {
+            return $data;
+        }
+    }
+
+    public static function city($id)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => config('rajaongkir.url').'/city?&province='.$id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => [
+                'key:'.config('rajaongkir.api_key'),
+            ],
+        ]);
+
+        $resp = curl_exec($curl);
+        $err = curl_error($curl);
+        $resp = json_decode($resp, true);
+        $data = $resp['rajaongkir']['results'];
+
+        // dd($prov);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo 'cURL Error #:'.$err;
+        } else {
+            return $data;
+        }
+    }
+
     public static function status($id)
     {
         if ($id == 1) {
