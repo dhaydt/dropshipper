@@ -17,6 +17,16 @@ class ShippingMethodController extends Controller
 {
     public function get_rajaongkir(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'product_id' => 'required',
+            'address_id' => 'required',
+        ], [
+            // 'id.required' => translate('shipping_id_is_required'),
+        ]);
+
+        if ($validator->errors()->count() > 0) {
+            return response()->json(['errors' => Helpers::error_processor($validator)]);
+        }
         $user = $request->user();
         try {
             $product = Product::where('id', $request->product_id)->first();
