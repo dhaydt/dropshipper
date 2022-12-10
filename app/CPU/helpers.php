@@ -531,7 +531,7 @@ class Helpers
         }
     }
 
-    public static function get_shipping_methods_api($seller_id, $type, $product_id, $user_id)
+    public static function get_shipping_methods_api($seller_id, $type, $product_id, $user_id, $address_id = null)
     {
         $admin = BusinessSetting::where('type', 'address')->first();
         $admin = json_decode($admin->value);
@@ -543,6 +543,8 @@ class Helpers
         $user = User::find($id);
         if (!$user) {
             $user = ShippingAddress::where('slug', $user_id)->first();
+        } else {
+            $user = ShippingAddress::find($address_id);
         }
         if ($user->district_id == null || $user->district_id == '') {
             return 'fail';

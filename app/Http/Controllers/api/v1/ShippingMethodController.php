@@ -24,7 +24,7 @@ class ShippingMethodController extends Controller
                 return response()->json(['status' => 'fail', 'message' => 'Product id not found']);
             }
             $seller_id = $product->user_id;
-            $shipping = Helpers::get_shipping_methods_api($seller_id, 'JNE', $request->product_id, $user->id);
+            $shipping = Helpers::get_shipping_methods_api($seller_id, 'JNE', $request->product_id, $user->id, $request->address_id);
             if ($shipping == 'fail') {
                 return response()->json(['status' => 'fail', 'message' => 'Admin address is empty!']);
             }
@@ -37,6 +37,7 @@ class ShippingMethodController extends Controller
 
             $shippings = [
             'title' => 'rajaongkir',
+            'address_id' => $request->address_id,
             'JNE' => $jne,
             'TIKI' => $tiki,
             'siCepat' => $cepat,
@@ -74,6 +75,7 @@ class ShippingMethodController extends Controller
             'cart_group_id' => 'required',
             'id' => 'required_if:service,""',
             'service' => 'required_if:id,""',
+            'address_id' => 'required',
         ], [
             // 'id.required' => translate('shipping_id_is_required'),
         ]);
@@ -116,6 +118,7 @@ class ShippingMethodController extends Controller
         $shipping['shipping_method_id'] = $ship_method;
         $shipping['shipping_service'] = $service;
         $shipping['shipping_cost'] = round($price, 2);
+        $shipping['address_id'] = $request['address_id'];
         $shipping->save();
 
         // old shipping

@@ -174,6 +174,7 @@ class XenditPaymentController extends Controller
 
         $unique_id = OrderManager::gen_unique_id();
         $cart = Cart::where('cart_group_id', $group);
+        // dd($cart);
         $cartGen = $cart->pluck('cart_group_id')->toArray();
         $order_ids = [];
         foreach ($cartGen as $group_id) {

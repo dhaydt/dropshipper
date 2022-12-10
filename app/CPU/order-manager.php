@@ -256,11 +256,13 @@ class OrderManager
         $cart_group_id = $data['cart_group_id'];
 
         if ($data['api'] == true) {
-            $user = Cart::where(['cart_group_id' => $cart_group_id])->first();
-            if ($user->buyer_is == 'dropship') {
-                $user = Seller::find($user->customer_id);
+            $cart = Cart::where(['cart_group_id' => $cart_group_id])->first();
+            if ($cart->buyer_is == 'dropship') {
+                $user = Seller::find($cart->customer_id);
             } else {
-                $user = User::find($user->customer_id);
+                $user = User::find($cart->customer_id);
+                $shipping = CartShipping::where('cart_group_id', $cart_group_id)->first();
+                $address_id = $shipping['address_id'];
             }
         } else {
             $user = Helpers::get_customer($req);
