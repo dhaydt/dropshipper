@@ -535,6 +535,9 @@ class Helpers
         $id = $user_id;
         // dd($id);
         $user = User::find($id);
+        if (!$user) {
+            $user = ShippingAddress::where('slug', $user_id)->first();
+        }
         // dd($user);
         $to_district = $user->district_id;
         $to_type = $user->city_type;

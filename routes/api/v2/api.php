@@ -42,6 +42,20 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
             Route::get('district', 'AddressController@getDistrict');
         });
 
+        Route::group(['prefix' => 'shipping-method'], function () {
+            Route::get('detail/{id}', 'ShippingMethodController@get_shipping_method_info');
+            Route::get('by-seller/{id}/{seller_is}', 'ShippingMethodController@shipping_methods_by_seller');
+            Route::post('choose-for-order', 'ShippingMethodController@choose_for_order');
+            Route::get('chosen', 'ShippingMethodController@chosen_shipping_methods');
+
+            Route::get('ongkir', 'ShippingMethodController@get_rajaongkir');
+        });
+
+        Route::group(['prefix' => 'payment'], function () {
+            Route::get('/', 'PaymentController@index');
+            Route::post('create-invoice', 'PaymentController@invoice');
+        });
+
         Route::group(['prefix' => 'orders'], function () {
             Route::get('list', 'OrderController@list');
             Route::get('/{id}', 'OrderController@details');

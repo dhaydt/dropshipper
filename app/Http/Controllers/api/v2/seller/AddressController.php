@@ -35,6 +35,9 @@ class AddressController extends Controller
     public function add_new_address(Request $request)
     {
         $check = Helpers::get_seller_by_token($request);
+        if ($check['success'] == 0) {
+            return response()->json(['status' => 'auth-001', 'message' => 'token expired!']);
+        }
         $user = $check['data'];
         $validator = Validator::make($request->all(), [
             'contact_person_name' => 'required',
