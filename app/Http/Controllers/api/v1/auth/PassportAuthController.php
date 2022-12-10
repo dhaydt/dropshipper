@@ -94,13 +94,13 @@ class PassportAuthController extends Controller
             $user->save();
 
             $phone_verification = Helpers::get_business_settings('phone_verification');
-            $email_verification = Helpers::get_business_settings('email_verification');
+            // $email_verification = Helpers::get_business_settings('email_verification');
             if ($phone_verification && !$user->is_phone_verified) {
                 return response()->json(['temporary_token' => $user->temporary_token], 200);
             }
-            if ($email_verification && !$user->is_email_verified) {
-                return response()->json(['temporary_token' => $user->temporary_token], 200);
-            }
+            // if ($email_verification && !$user->is_email_verified) {
+            //     return response()->json(['temporary_token' => $user->temporary_token], 200);
+            // }
 
             $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
 
