@@ -168,7 +168,7 @@ class CustomerController extends Controller
 
         $address = [
             'customer_id' => $user->id,
-            'contact_person_name' => $request->name,
+            'contact_person_name' => $request->contact_person_name,
             'address_type' => $request->address_type,
             'address' => $request->address,
             'city' => $city,
