@@ -25,6 +25,9 @@ class ShippingMethodController extends Controller
             }
             $seller_id = $product->user_id;
             $shipping = Helpers::get_shipping_methods_api($seller_id, 'JNE', $request->product_id, $user->id);
+            if ($shipping == 'fail') {
+                return response()->json(['status' => 'fail', 'message' => 'User address is empty, please insert address!!!']);
+            }
             $jne = $shipping[0][0];
             $tiki = $shipping[0][1];
             $cepat = $shipping[0][2];

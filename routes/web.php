@@ -34,6 +34,13 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], funct
 
     Route::get('shortBy/{country}', 'ShortHomeController@shortBy')->name('shortBy');
 
+    Route::group(['prefix' => 'address-api'], function () {
+        // Select province city district
+        Route::get('province', 'WebController@getProvince');
+        Route::get('city', 'WebController@getCity');
+        Route::get('district', 'WebController@getDistrict');
+    });
+
     Route::group(['middleware' => ['customer']], function () {
         Route::get('checkout-details', 'WebController@checkout_details')->name('checkout-details');
         Route::get('checkout-shipping', 'WebController@checkout_shipping')->name('checkout-shipping')->middleware('customer');

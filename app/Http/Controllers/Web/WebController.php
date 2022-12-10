@@ -33,6 +33,27 @@ use Illuminate\Support\Facades\Session;
 
 class WebController extends Controller
 {
+    public function getDistrict(Request $request)
+    {
+        $district = Helpers::district($request->city_id);
+
+        return response()->json(['status' => 'success get District', 'data' => $district]);
+    }
+
+    public function getCity(Request $request)
+    {
+        $city = Helpers::city($request->province_id);
+
+        return response()->json(['status' => 'success get City', 'data' => $city]);
+    }
+
+    public function getProvince()
+    {
+        $prov = Helpers::province();
+
+        return response()->json(['status' => 'success get Province', 'data' => $prov]);
+    }
+
     public function maintenance_mode()
     {
         $maintenance_mode = Helpers::get_business_settings('maintenance_mode') ?? 0;

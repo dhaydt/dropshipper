@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\CPU\CustomerManager;
 use App\CPU\Helpers;
 use App\CPU\ImageManager;
+use function App\CPU\translate;
 use App\Http\Controllers\Controller;
 use App\Model\Order;
 use App\Model\OrderDetail;
@@ -14,12 +15,8 @@ use App\Model\SupportTicketConv;
 use App\Model\Wishlist;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\Facades\Image;
-use function App\CPU\translate;
 
 class CustomerController extends Controller
 {
@@ -54,6 +51,7 @@ class CustomerController extends Controller
                 ],
             ], 422);
         }
+
         return response()->json(['message' => 'Support ticket created successfully.'], 200);
     }
 
@@ -64,6 +62,7 @@ class CustomerController extends Controller
         $support->admin_id = 1;
         $support->customer_message = $request['message'];
         $support->save();
+
         return response()->json(['message' => 'Support ticket reply sent.'], 200);
     }
 
@@ -90,10 +89,11 @@ class CustomerController extends Controller
         $wishlist = Wishlist::where('customer_id', $request->user()->id)->where('product_id', $request->product_id)->first();
 
         if (empty($wishlist)) {
-            $wishlist = new Wishlist;
+            $wishlist = new Wishlist();
             $wishlist->customer_id = $request->user()->id;
             $wishlist->product_id = $request->product_id;
             $wishlist->save();
+
             return response()->json(['message' => translate('successfully added!')], 200);
         }
 
@@ -114,9 +114,10 @@ class CustomerController extends Controller
 
         if (!empty($wishlist)) {
             Wishlist::where(['customer_id' => $request->user()->id, 'product_id' => $request->product_id])->delete();
-            return response()->json(['message' => translate('successfully removed!')], 200);
 
+            return response()->json(['message' => translate('successfully removed!')], 200);
         }
+
         return response()->json(['message' => translate('No such data found!')], 404);
     }
 
@@ -133,31 +134,70 @@ class CustomerController extends Controller
     public function add_new_address(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'contact_person_name' => 'required',
             'address_type' => 'required',
+            'contact_person_name' => 'required',
             'address' => 'required',
             'city' => 'required',
             'zip' => 'required',
             'phone' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'district' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
+        $user = $request->user();
+
+        $states = $request->province;
+        $stat = explode(',', $states);
+        $state = $stat[1];
+
+        $cities = $request->city;
+        $cit = explode(',', $cities);
+        $city_id = $cit[0];
+        $city = $cit[1];
+        $city_type = $cit[2];
+
+        $districts = $request->district;
+        $dis = explode(',', $districts);
+        $district_id = $dis[0];
+        $district = $dis[1];
+
         $address = [
-            'customer_id' => $request->user()->id,
+            'customer_id' => $user->id,
             'contact_person_name' => $request->name,
             'address_type' => $request->address_type,
             'address' => $request->address,
-            'city' => $request->city,
+            'city' => $city,
+            'city_id' => $city_id,
+            'city_type' => $city_type,
+            'district' => $district,
+            'district_id' => $district_id,
             'zip' => $request->zip,
             'phone' => $request->phone,
+            'state' => $state,
+            'province' => $state,
+            'country' => $request->country,
             'created_at' => now(),
             'updated_at' => now(),
         ];
         DB::table('shipping_addresses')->insert($address);
-        return response()->json(['message' => translate('successfully added!')], 200);
+
+        DB::table('users')->where('id', $user->id)->limit(1)->update([
+                'province' => $state,
+                'country' => $request->country,
+                'city' => $city,
+                'city_type' => $city_type,
+                'zip' => $request->zip,
+                'city_id' => $city_id,
+                'district' => $district,
+                'district_id' => $district_id,
+            ]);
+
+        return response()->json(['message' => translate('successfully added address!')], 200);
     }
 
     public function delete_address(Request $request)
@@ -172,18 +212,22 @@ class CustomerController extends Controller
 
         if (DB::table('shipping_addresses')->where(['id' => $request['address_id'], 'customer_id' => $request->user()->id])->first()) {
             DB::table('shipping_addresses')->where(['id' => $request['address_id'], 'customer_id' => $request->user()->id])->delete();
+
             return response()->json(['message' => 'successfully removed!'], 200);
         }
+
         return response()->json(['message' => translate('No such data found!')], 404);
     }
 
     public function get_order_list(Request $request)
     {
         $orders = Order::where(['customer_id' => $request->user()->id])->get();
-        $orders->map(function ($data){
-            $data['shipping_address_data']=json_decode($data['shipping_address_data']);
+        $orders->map(function ($data) {
+            $data['shipping_address_data'] = json_decode($data['shipping_address_data']);
+
             return $data;
         });
+
         return response()->json($orders, 200);
     }
 
@@ -198,11 +242,13 @@ class CustomerController extends Controller
         }
 
         $details = OrderDetail::where(['order_id' => $request['order_id']])->get();
-        $details->map(function ($query){
+        $details->map(function ($query) {
             $query['variation'] = json_decode($query['variation'], true);
             $query['product_details'] = Helpers::product_data_formatting(json_decode($query['product_details'], true));
+
             return $query;
         });
+
         return response()->json($details, 200);
     }
 

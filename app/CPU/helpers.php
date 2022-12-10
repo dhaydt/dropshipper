@@ -538,7 +538,9 @@ class Helpers
         if (!$user) {
             $user = ShippingAddress::where('slug', $user_id)->first();
         }
-        // dd($user);
+        if ($user->district_id == null || $user->district_id == '') {
+            return 'fail';
+        }
         $to_district = $user->district_id;
         $to_type = $user->city_type;
         $product = Product::find($product_id);
