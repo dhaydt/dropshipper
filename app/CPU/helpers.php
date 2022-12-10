@@ -75,6 +75,7 @@ class Helpers
         ];
 
         // dd($user);
+        $group = $request->cart_group_id;
 
         $params = [
             'external_id' => 'ezren'.$phone.$id,
@@ -86,7 +87,7 @@ class Helpers
             'should_send_email' => true,
             'customer' => $user,
             // 'items' => $products,
-            'success_redirect_url' => env('APP_URL').'/xendit-payment/success/'.$type,
+            'success_redirect_url' => env('APP_URL').'/xendit-payment/success-api/'.$type.'/'.$group,
         ];
 
         $checkout_session = \Xendit\Invoice::create($params);
@@ -532,6 +533,11 @@ class Helpers
 
     public static function get_shipping_methods_api($seller_id, $type, $product_id, $user_id)
     {
+        $admin = BusinessSetting::where('type', 'address')->first();
+        $admin = json_decode($admin->value);
+        if ($admin->district_id == '') {
+            return 'fail';
+        }
         $id = $user_id;
         // dd($id);
         $user = User::find($id);

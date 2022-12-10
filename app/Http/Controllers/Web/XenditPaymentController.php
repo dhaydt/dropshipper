@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\CPU\CartManager;
 use App\CPU\OrderManager;
 use App\Http\Controllers\Controller;
+use App\Model\Cart;
 use App\Model\ShippingAddress;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -157,6 +158,40 @@ class XenditPaymentController extends Controller
             array_push($order_ids, $order_id);
         }
         CartManager::cart_clean();
+        session()->forget('customer_address');
+        if (auth('customer')->check() || session()->get('user_is') == 'dropship') {
+            Toastr::success('Payment success.');
+
+            return view('web-views.checkout-complete');
+        }
+
+        return response()->json(['message' => 'Payment succeeded'], 200);
+    }
+
+    public function successApi($type, $group)
+    {
+        // $order = Order::find($request->id);
+
+        $unique_id = OrderManager::gen_unique_id();
+        $cart = Cart::where('cart_group_id', $group);
+        $cartGen = $cart->pluck('cart_group_id')->toArray();
+        $order_ids = [];
+        foreach ($cartGen as $group_id) {
+            $data = [
+                'payment_method' => 'Virtual Account'.$type,
+                'order_status' => 'confirmed',
+                'payment_status' => 'paid',
+                'transaction_ref' => session('transaction_ref'),
+                'order_group_id' => $unique_id,
+                'cart_group_id' => $group_id,
+                'api' => true,
+            ];
+            $order_id = OrderManager::generate_order($data);
+            array_push($order_ids, $order_id);
+        }
+        foreach ($cart->get() as $c) {
+            $c->delete();
+        }
         session()->forget('customer_address');
         if (auth('customer')->check() || session()->get('user_is') == 'dropship') {
             Toastr::success('Payment success.');

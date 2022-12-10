@@ -13,6 +13,7 @@ use App\Model\Product;
 use App\Model\Seller;
 use App\Model\SellerWallet;
 use App\Model\ShippingAddress;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -232,6 +233,7 @@ class OrderManager
 
     public static function generate_order($data)
     {
+        // dd($data);
         $order_id = 100000 + Order::all()->count() + 1;
         if (Order::find($order_id)) {
             $order_id = Order::orderBy('id', 'DESC')->first()->id + 1;
@@ -250,13 +252,24 @@ class OrderManager
                 $address_id = $req->has('address_id') ? $req['address_id'] : null;
             }
         }
-        $user = Helpers::get_customer($req);
+
+        $cart_group_id = $data['cart_group_id'];
+
+        if ($data['api'] == true) {
+            $user = Cart::where(['cart_group_id' => $cart_group_id])->first();
+            if ($user->buyer_is == 'dropship') {
+                $user = Seller::find($user->customer_id);
+            } else {
+                $user = User::find($user->customer_id);
+            }
+        } else {
+            $user = Helpers::get_customer($req);
+        }
 
         if ($discount > 0) {
             $discount = round($discount / count(CartManager::get_cart_group_ids($req)), 2);
         }
 
-        $cart_group_id = $data['cart_group_id'];
         $seller_data = Cart::where(['cart_group_id' => $cart_group_id])->first();
 
         $or = [

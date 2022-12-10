@@ -26,6 +26,9 @@ class ShippingMethodController extends Controller
             $seller_id = $product->user_id;
             $shipping = Helpers::get_shipping_methods_api($seller_id, 'JNE', $request->product_id, $user->id);
             if ($shipping == 'fail') {
+                return response()->json(['status' => 'fail', 'message' => 'Admin address is empty!']);
+            }
+            if ($shipping == 'fail') {
                 return response()->json(['status' => 'fail', 'message' => 'User address is empty, please insert address!!!']);
             }
             $jne = $shipping[0][0];
@@ -60,8 +63,9 @@ class ShippingMethodController extends Controller
     public function shipping_methods_by_seller($id, $seller_is)
     {
         $seller_is = $seller_is == 'admin' ? 'admin' : 'seller';
+        $type = 'customer';
 
-        return response()->json(Helpers::get_shipping_methods($id, $seller_is), 200);
+        return response()->json(Helpers::get_shipping_methods($id, $type, $seller_is), 200);
     }
 
     public function choose_for_order(Request $request)

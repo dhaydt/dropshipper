@@ -1475,4 +1475,5 @@
   'Dropship Variant Price' => 'Dropship Variant Price',
   'Icon Label' => 'Icon Label',
   'Icon_Label' => 'Icon Label',
+  'Shop_Address' => 'Shop Address',
 );

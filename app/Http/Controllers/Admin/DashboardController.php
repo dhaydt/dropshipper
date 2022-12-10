@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\AdminWallet;
 use App\Model\Brand;
+use App\Model\BusinessSetting;
 use App\Model\Order;
 use App\Model\OrderDetail;
 use App\Model\OrderTransaction;
 use App\Model\Product;
 use App\Model\SellerWalletHistory;
 use App\Model\Shop;
-use App\Model\WithdrawRequest;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,10 +22,26 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
+        $address = BusinessSetting::where('type', 'address')->first();
+        if (!$address) {
+            $address = new BusinessSetting();
+            $address->type = 'address';
+            $data = [
+                'province' => 'DKI Jakarta',
+                'province_id' => '6',
+                'city' => 'Jakarta Barat',
+                'city_id' => '151',
+                'district' => 'Cengkareng',
+                'district_id' => '2087',
+            ];
+            $address->value = json_encode($data);
+            $address->save();
+        }
+
         $top_sell = OrderDetail::with(['product'])
             ->select('product_id', DB::raw('SUM(qty) as count'))
             ->groupBy('product_id')
-            ->orderBy("count", 'desc')
+            ->orderBy('count', 'desc')
             ->take(6)
             ->get();
 
@@ -33,7 +49,7 @@ class DashboardController extends Controller
             ->groupBy('product_id')
             ->select(['product_id',
                 DB::raw('AVG(reviews.rating) as ratings_average'),
-                DB::raw('count(*) as total')
+                DB::raw('count(*) as total'),
             ])
             ->orderBy('total', 'desc')
             ->take(6)
@@ -41,21 +57,21 @@ class DashboardController extends Controller
 
         $top_store_by_earning = SellerWalletHistory::select('seller_id', DB::raw('SUM(amount) as count'))
             ->groupBy('seller_id')
-            ->orderBy("count", 'desc')
+            ->orderBy('count', 'desc')
             ->take(6)
             ->get();
 
         $top_customer = Order::with(['customer'])
             ->select('customer_id', DB::raw('COUNT(customer_id) as count'))
             ->groupBy('customer_id')
-            ->orderBy("count", 'desc')
+            ->orderBy('count', 'desc')
             ->take(6)
             ->get();
 
         $top_store_by_order_received = Order::where('seller_is', 'seller')
             ->select('seller_id', DB::raw('COUNT(id) as count'))
             ->groupBy('seller_id')
-            ->orderBy("count", 'desc')
+            ->orderBy('count', 'desc')
             ->take(6)
             ->get();
 
@@ -65,12 +81,12 @@ class DashboardController extends Controller
         $inhouse_data = [];
         $inhouse_earning = OrderTransaction::where([
             'seller_is' => 'admin',
-            'status' => 'disburse'
+            'status' => 'disburse',
         ])->select(
             DB::raw('IFNULL(sum(seller_amount),0) as sums'),
             DB::raw('YEAR(created_at) year, MONTH(created_at) month')
         )->whereBetween('created_at', [$from, $to])->groupby('year', 'month')->get()->toArray();
-        for ($inc = 1; $inc <= 12; $inc++) {
+        for ($inc = 1; $inc <= 12; ++$inc) {
             $inhouse_data[$inc] = 0;
             foreach ($inhouse_earning as $match) {
                 if ($match['month'] == $inc) {
@@ -82,12 +98,12 @@ class DashboardController extends Controller
         $seller_data = [];
         $seller_earnings = OrderTransaction::where([
             'seller_is' => 'seller',
-            'status' => 'disburse'
+            'status' => 'disburse',
         ])->select(
             DB::raw('IFNULL(sum(seller_amount),0) as sums'),
             DB::raw('YEAR(created_at) year, MONTH(created_at) month')
         )->whereBetween('created_at', [$from, $to])->groupby('year', 'month')->get()->toArray();
-        for ($inc = 1; $inc <= 12; $inc++) {
+        for ($inc = 1; $inc <= 12; ++$inc) {
             $seller_data[$inc] = 0;
             foreach ($seller_earnings as $match) {
                 if ($match['month'] == $inc) {
@@ -98,12 +114,12 @@ class DashboardController extends Controller
 
         $commission_data = [];
         $commission_earnings = OrderTransaction::where([
-            'status' => 'disburse'
+            'status' => 'disburse',
         ])->select(
             DB::raw('IFNULL(sum(admin_commission),0) as sums'),
             DB::raw('YEAR(created_at) year, MONTH(created_at) month')
         )->whereBetween('created_at', [$from, $to])->groupby('year', 'month')->get()->toArray();
-        for ($inc = 1; $inc <= 12; $inc++) {
+        for ($inc = 1; $inc <= 12; ++$inc) {
             $commission_data[$inc] = 0;
             foreach ($commission_earnings as $match) {
                 if ($match['month'] == $inc) {
@@ -141,7 +157,7 @@ class DashboardController extends Controller
         $data = self::order_stats_data();
 
         return response()->json([
-            'view' => view('admin-views.partials._dashboard-order-stats', compact('data'))->render()
+            'view' => view('admin-views.partials._dashboard-order-stats', compact('data'))->render(),
         ], 200);
     }
 
@@ -223,7 +239,7 @@ class DashboardController extends Controller
             'delivered' => $delivered,
             'canceled' => $canceled,
             'returned' => $returned,
-            'failed' => $failed
+            'failed' => $failed,
         ];
 
         return $data;
