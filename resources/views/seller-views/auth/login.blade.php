@@ -72,7 +72,7 @@
                             <div class="js-form-message form-group">
                                 <label class="input-label" for="signinSrEmail">Email / Nomor Handphone</label>
 
-                                <input type="text" class="form-control form-control-lg" name="user_id" id="signinSrEmail"
+                                <input type="text" class="form-control form-control-lg"  name="user_id" id="signinSrEmail"
                                        style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
                                        tabindex="1" placeholder="" aria-label=""
                                        required data-msg="">
