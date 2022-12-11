@@ -133,6 +133,7 @@ class ProductController extends BaseController
         $p->category_ids = json_encode($category);
         $p->brand_id = $request->brand_id;
         $p->unit = $request->unit;
+        $p->weight = $request->weight;
         $p->details = $request->description[array_search('en', $request->lang)];
 
         if ($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0) {
@@ -426,6 +427,7 @@ class ProductController extends BaseController
         $product->brand_id = $request->brand_id;
         $product->unit = $request->unit;
         $product->label = $request->label;
+        $product->weight = $request->weight;
         $product->details = $request->description[array_search('en', $request->lang)];
         $product_images = json_decode($product->images);
 

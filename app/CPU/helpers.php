@@ -555,7 +555,10 @@ class Helpers
         $to_type = $user->city_type;
         $product = Product::find($product_id);
         // dd($product);
-        $weight = $product->weight ? $product->weight : '1';
+        $weight = $product->weight ? (int) $product->weight : '1';
+        $weight = $weight * 1000;
+
+        // dd($weight);
 
         $from_city = $product->city_id ? $product->city_id : '151';
         $from_type = 'Kota';

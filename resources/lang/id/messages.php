@@ -1476,4 +1476,5 @@
   'Icon Label' => 'Icon Label',
   'Icon_Label' => 'Icon Label',
   'Shop_Address' => 'Shop Address',
+  'Weight' => 'Weight',
 );
