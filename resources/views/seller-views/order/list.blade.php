@@ -51,7 +51,7 @@
                                 <tr>
                                     <th>{{\App\CPU\translate('SL#')}}</th>
                                     <th>{{\App\CPU\translate('Order')}}</th>
-                                    <th>{{\App\CPU\translate('customer_name')}}</th>
+                                    <th>{{\App\CPU\translate('customer_data')}}</th>
                                     <th>{{\App\CPU\translate('Phone')}}</th>
                                     <th>{{\App\CPU\translate('Payment')}}</th>
                                     <th>{{\App\CPU\translate('Status')}} </th>
@@ -60,6 +60,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($orders as $k=>$order)
+                                    @php($address = json_decode($order['shipping_address_data']))
                                     <tr>
                                         <td>
                                             {{$orders->firstItem()+$k}}
@@ -67,7 +68,69 @@
                                         <td>
                                             <a href="{{route('seller.orders.details',$order['id'])}}">{{$order['id']}}</a>
                                         </td>
-                                        <td> {{$order->customer ? $order->customer['f_name'].' '.$order->customer['l_name'] : 'Customer Data not found'}}</td>
+                                        <td>
+                                            @if ($address !== NULL)
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <small>Nama :</small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small>{{ $address->contact_person_name }}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <small>Handphone :</small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small>{{ $address->phone }}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <small>Alamat :</small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small>{{ $address->address }}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <small>Kecamatan :</small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small>{{ $address->district }}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <small>Kota :</small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small>{{ $address->city }}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <small>Provinsi :</small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small>{{ $address->province }}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <small>Kode Pos :</small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small>{{ $address->zip }}</small>
+                                                    </div>
+                                                </div>
+                                                <hr class="hr">
+                                            @else
+                                                error customer address
+                                            @endif
+                                        </td>
                                         <td>{{ $order->customer ? $order->customer->phone : '' }}</td>
                                         <td>
                                             @if($order->payment_status=='paid')

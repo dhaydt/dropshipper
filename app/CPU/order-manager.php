@@ -279,6 +279,13 @@ class OrderManager
             $user_is = null;
         }
 
+        $shipMethod = CartShipping::where('cart_group_id', $cart_group_id)->first();
+        if ($shipMethod) {
+            $shipSelected = $shipMethod['shipping_service'];
+        } else {
+            $shipSelected = null;
+        }
+
         $seller_data = Cart::where(['cart_group_id' => $cart_group_id])->first();
         $or = [
             'id' => $order_id,
@@ -301,6 +308,7 @@ class OrderManager
             'shipping_address_data' => ShippingAddress::find($address_id),
             'shipping_cost' => CartManager::get_shipping_cost($data['cart_group_id']),
             'shipping_method_id' => CartShipping::where(['cart_group_id' => $cart_group_id])->first()->shipping_method_id,
+            'shipping' => $shipSelected,
             'created_at' => now(),
             'updated_at' => now(),
         ];

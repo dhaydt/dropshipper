@@ -91,11 +91,11 @@
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{\App\CPU\translate('All')}}</span>
                                         <span class="badge badge-info badge-pill {{Session::get('direction') === "rtl" ? 'mr-1' : 'ml-1'}}">
-                                            {{ \App\Model\Order::where(['seller_is'=>'seller'])->where(['seller_id'=>$sellerId])->count()}}
+                                            {{ \App\Model\Order::where(['user_is'=>'dropship'])->where(['customer_id'=>$sellerId])->count()}}
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item {{Request::is('seller/orders/list/pending')?'active':''}}">
+                                {{-- <li class="nav-item {{Request::is('seller/orders/list/pending')?'active':''}}">
                                     <a class="nav-link " href="{{route('seller.orders.list',['pending'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{\App\CPU\translate('Pending')}}</span>
@@ -169,7 +169,7 @@
                                             {{ \App\Model\Order::where(['seller_is'=>'seller'])->where(['seller_id'=>$sellerId])->where(['order_status'=>'canceled'])->count()}}
                                         </span>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
                         <!-- End Pages -->

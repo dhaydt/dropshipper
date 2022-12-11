@@ -1477,4 +1477,5 @@
   'Icon_Label' => 'Icon Label',
   'Shop_Address' => 'Shop Address',
   'Weight' => 'Weight',
+  'customer_data' => 'Customer data',
 );

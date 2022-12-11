@@ -102,8 +102,7 @@
                                             value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{\App\CPU\translate('Confirmed')}}</option>
                                         <option
                                             value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{\App\CPU\translate('Processing')}} </option>
-
-                                        @if( $order->shipping->creator_type != 'admin')
+                                        {{-- @if( $order->shipping->creator_type != 'admin') --}}
                                             <option
                                                 value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{\App\CPU\translate('out_for_delivery')}} </option>
                                             <option
@@ -114,7 +113,7 @@
                                                 value="failed" {{$order->order_status == 'failed'?'selected':''}} >{{\App\CPU\translate('Failed')}} </option>
                                             <option
                                                 value="canceled" {{$order->order_status == 'canceled'?'selected':''}} >{{\App\CPU\translate('Canceled')}} </option>
-                                        @endif
+                                        {{-- @endif --}}
                                     </select>
                                 </div>
                             </div>
