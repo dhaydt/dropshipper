@@ -173,16 +173,16 @@
                                     <h6 class="mx-1"
                                         style="color: #8a8a8a;">{{str_replace('_',' ',$order['payment_method'])}}</h6>
                                 </div>
-                                <div class="flex-end">
+                                {{-- <div class="flex-end">
                                     <h6 style="color: #8a8a8a;">{{\App\CPU\translate('Payment')}} {{\App\CPU\translate('reference')}}
                                         :</h6>
                                     <h6 class="mx-1"
                                         style="color: #8a8a8a;">{{str_replace('_',' ',$order['transaction_ref'])}}</h6>
-                                </div>
+                                </div> --}}
                                 <div class="flex-end">
                                     <h6 style="color: #8a8a8a;">{{\App\CPU\translate('shipping')}} {{\App\CPU\translate('method')}}
                                         :</h6>
-                                    <h6 class="mx-1" style="color: #8a8a8a;">{{$order->shipping->title}}</h6>
+                                    <h6 class="mx-1" style="color: #8a8a8a;">{{$order->shipping}}</h6>
                                 </div>
                             </div>
                         </div>
@@ -333,8 +333,8 @@
                     <!-- End Header -->
 
                     <!-- Body -->
-                    @if($order->customer)
-
+                    @if($order->shipping_address_data !== NULL)
+                    @php($user = json_decode($order->shipping_address_data))
                         <div class="card-body"
                              style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                             <div class="media align-items-center" href="javascript:">
@@ -343,12 +343,12 @@
                                     <img
                                         class="avatar-img"
                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                        src="{{asset('storage/profile/'.$order->customer->image)}}"
+                                        src=""
                                         alt="Image Description">
                                 </div>
                                 <div class="media-body">
                             <span
-                                class="text-body text-hover-primary">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</span>
+                                class="text-body text-hover-primary">{{$user->contact_person_name}}</span>
                                 </div>
                                 <div class="media-body text-right">
                                     {{--<i class="tio-chevron-right text-body"></i>--}}
@@ -363,7 +363,7 @@
                                     <i class="tio-shopping-basket-outlined"></i>
                                 </div>
                                 <div class="media-body">
-                                    <span class="text-body text-hover-primary"> {{\App\Model\Order::where('customer_id',$order['customer_id'])->count()}} {{\App\CPU\translate('orders')}}</span>
+                                    <span class="text-body text-hover-primary"> {{$user->address.', '.$user->district.', '.$user->city.', '.$user->province}}</span>
                                 </div>
                                 <div class="media-body text-right">
                                     {{--<i class="tio-chevron-right text-body"></i>--}}
@@ -376,31 +376,31 @@
                                 <h5>{{\App\CPU\translate('Contact info')}}</h5>
                             </div>
 
-                            <div class="flex-start">
+                            {{-- <div class="flex-start">
                                 <div>
                                     <i class="tio-online {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>
                                 </div>
                                 <div class="mx-1"><a class="text-dark"
                                                      href="mailto: {{$order->customer['email']}}">{{$order->customer['email']}}</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="flex-start">
                                 <div>
                                     <i class="tio-android-phone-vs {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>
                                 </div>
                                 <div class="mx-1"><a class="text-dark"
-                                                     href="tel:{{$order->customer['phone']}}">{{$order->customer['phone']}}</a>
+                                                     href="tel:{{$user->phone}}">{{$user->phone}}</a>
                                 </div>
                             </div>
 
                             <hr>
 
-                            <div class="d-flex justify-content-between align-items-center">
+                            {{-- <div class="d-flex justify-content-between align-items-center">
                                 <h5>{{\App\CPU\translate('shipping_address')}}</h5>
 
-                            </div>
+                            </div> --}}
 
-                            @if($order->shippingAddress)
+                            {{-- @if($order->shippingAddress)
                                 @php($shipping=$order->shippingAddress)
                             @else
                                 @php($shipping=json_decode($order['shipping_address_data']))
@@ -418,7 +418,7 @@
                                 <strong>{{$shipping ? $shipping->address  : \App\CPU\translate('empty')}}</strong><br>
                                 {{\App\CPU\translate('Phone')}}:
                                 <strong>{{$shipping ? $shipping->phone  : \App\CPU\translate('empty')}}</strong>
-                            </span>
+                            </span> --}}
                         </div>
                 @endif
                 <!-- End Body -->
