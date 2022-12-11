@@ -68,7 +68,7 @@ class Helpers
         }
 
         $user = [
-            'given_names' => $name,
+            'given_names' => $name ? $name : 'ezren_customer',
             'email' => $email,
             'mobile_number' => $phone,
             'address' => $address,
@@ -419,6 +419,7 @@ class Helpers
         $product = Product::find($product_id);
         // dd($product);
         $weight = $product->weight ? $product->weight : '1';
+        $weight = $weight * 1000;
 
         $from_city = $product->city_id ? $product->city_id : '151';
         $from_type = 'Kota';
