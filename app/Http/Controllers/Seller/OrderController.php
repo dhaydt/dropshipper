@@ -60,12 +60,13 @@ class OrderController extends Controller
             ->with('seller')
             ->where('id', $id)->first();
 
-        $data['email'] = $order->customer['email'];
-        $data['client_name'] = $order->customer['f_name'].' '.$order->customer['l_name'];
+        // $data['email'] = $order->customer['email'];
+        // $data['client_name'] = $order->customer['f_name'].' '.$order->customer['l_name'];
         $data['order'] = $order;
 
-        $mpdf_view = \View::make('seller-views.order.invoice')->with('order', $order)->with('seller', $seller);
-        Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
+        // $mpdf_view = \View::make('seller-views.order.invoice')->with('order', $order)->with('seller', $seller);
+        // Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
+        return view('seller-views.order.invoice')->with('order', $order)->with('seller', $seller);
     }
 
     public function payment_status(Request $request)

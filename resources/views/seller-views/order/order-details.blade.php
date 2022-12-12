@@ -92,7 +92,7 @@
                         <div class="col-6">
                             <div class="hs-unfold float-right">
                                 <div class="dropdown">
-                                    <select name="order_status" onchange="order_status(this.value)"
+                                    <select name="order_status" onchange="order_status(this.value)" disabled
                                             class="status form-control"
                                             data-id="{{$order['id']}}">
 

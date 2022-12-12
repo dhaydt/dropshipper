@@ -24,6 +24,13 @@ use Xendit\Xendit;
 
 class Helpers
 {
+    public static function getDropship($id)
+    {
+        $dropship = Seller::find($id);
+
+        return $dropship;
+    }
+
     public static function invoice($request, $user_is)
     {
         if ($request->user_is == 'customer') {

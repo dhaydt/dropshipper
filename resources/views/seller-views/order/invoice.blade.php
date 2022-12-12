@@ -346,7 +346,7 @@
     <table class="content-position">
         <tr>
             <th style="text-align: left">
-                <img height="70" width="200" src="{{asset("storage/>company/$company_web_logo")}}"
+                <img height="70" width="200" src="{{asset("storage/company/$company_web_logo")}}"
                      alt="">
             </th>
             <th style="text-align: right">
@@ -381,27 +381,32 @@
 </div>
 {{--<hr>--}}
 {{--<table>--}}
-<div class="row">
-    <section>
-        <table class="content-position-y" style="width: 100%">
-            <tr>
-                <td style="vertical-align: text-top;width: 130px; padding-left: 0;">
-                    <span class="h2" style="margin: 0px;">{{\App\CPU\translate('invoice_to')}}: </span>
-                </td>
-                <td>
-                    <div class="h4 montserrat-normal-600">
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer['email']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer['phone']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->shippingAddress ? $order->shippingAddress['address'] : ""}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->shippingAddress ? $order->shippingAddress['city'] : ""}} {{$order->shippingAddress ? $order->shippingAddress['zip'] : ""}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->shippingAddress ? $order->shippingAddress['country'] : ""}}</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </section>
-</div>
+    @if($order->shipping_address_data !== NULL)
+    <div class="row">
+        <section>
+            <table class="content-position-y" style="width: 100%">
+                <tr>
+                    <td style="vertical-align: text-top;width: 130px; padding-left: 0;">
+                        <span class="h2" style="margin: 0px;">{{\App\CPU\translate('invoice_to')}}: </span>
+                    </td>
+                    <td>
+                        @php
+                            $shippingUser = json_decode($order->shipping_address_data)
+                        @endphp
+                        <div class="h4 montserrat-normal-600">
+                            <p style=" margin-top: 6px; margin-bottom:0px;">{{$shippingUser->contact_person_name}}</p>
+                            <p style=" margin-top: 6px; margin-bottom:0px;">{{$shippingUser->phone}}</p>
+                            <p style=" margin-top: 6px; margin-bottom:0px;">{{$shippingUser->address}}</p>
+                            <p style=" margin-top: 6px; margin-bottom:0px;">{{$shippingUser->district}} ({{$shippingUser->zip}})</p>
+                            <p style=" margin-top: 6px; margin-bottom:0px;">{{$shippingUser->city}}</p>
+                            <p style=" margin-top: 6px; margin-bottom:0px;">{{$shippingUser->province}}</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+    @endif
 {{--</table>--}}
 
 <br>
