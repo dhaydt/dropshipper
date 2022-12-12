@@ -52,7 +52,7 @@ class OrderController extends Controller
     public function generate_invoice($id)
     {
         $sellerId = auth('seller')->id();
-        $seller = Seller::findOrFail($sellerId)->gst;
+        $seller = Seller::findOrFail($sellerId);
 
         $order = Order::with(['details' => function ($query) use ($sellerId) {
             $query->where('seller_id', $sellerId);

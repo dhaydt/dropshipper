@@ -346,8 +346,9 @@
     <table class="content-position">
         <tr>
             <th style="text-align: left">
-                <img height="70" width="200" src="{{asset("storage/company/$company_web_logo")}}"
-                     alt="">
+                {{-- <img height="70" width="200" src="{{asset("storage/company/$company_web_logo")}}"
+                     alt=""> --}}
+                     <h3>{{ $seller->shop->name }}</h3>
             </th>
             <th style="text-align: right">
                 <h1 style="color: #030303; margin-bottom: 0px; font-size: 30px;text-transform: capitalize">{{\App\CPU\translate('invoice')}}</h1>
