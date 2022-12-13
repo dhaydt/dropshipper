@@ -540,6 +540,7 @@ a .footer_banner_img {
         <div class="mt-2 brand-slider">
             {{-- @include('web-views.partials._category') --}}
             <div class="owl-carousel cat_wrapper owl-theme cat-owl" id="category-slider">
+                @include('web-views.partials.request')
                 @foreach($categories as $category)
                 <div class="category_div" style="">
                     <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}" class="cat-link">
@@ -554,6 +555,7 @@ a .footer_banner_img {
             </div>
         </div>
     </section>
+    @include('web-views.partials.modal-request')
 
 {{--flash deal--}}
 @php($flash_deals=\App\Model\FlashDeal::with(['products.product.reviews'])->where(['status'=>1])->where(['deal_type'=>'flash_deal'])->whereDate('start_date','

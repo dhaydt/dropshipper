@@ -1478,4 +1478,5 @@
   'Shop_Address' => 'Shop Address',
   'Weight' => 'Weight',
   'customer_data' => 'Customer data',
+  'Pilih foto produk' => 'Pilih foto produk',
 );

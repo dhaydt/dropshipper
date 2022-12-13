@@ -211,6 +211,7 @@ return array(
     'App\\Model\\PhoneOrEmailVerification' => $baseDir . '/app/Model/PhoneOrEmailVerification.php',
     'App\\Model\\Product' => $baseDir . '/app/Model/Product.php',
     'App\\Model\\ProductStock' => $baseDir . '/app/Model/ProductStock.php',
+    'App\\Model\\RequestProduct' => $baseDir . '/app/Model/RequestProduct.php',
     'App\\Model\\Review' => $baseDir . '/app/Model/Review.php',
     'App\\Model\\SearchFunction' => $baseDir . '/app/Model/SearchFunction.php',
     'App\\Model\\Seller' => $baseDir . '/app/Model/Seller.php',

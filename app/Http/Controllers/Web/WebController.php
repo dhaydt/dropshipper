@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\CPU\CartManager;
 use App\CPU\Helpers;
+use App\CPU\ImageManager;
 use App\CPU\OrderManager;
 use App\CPU\ProductManager;
 use function App\CPU\translate;
@@ -21,6 +22,7 @@ use App\Model\HelpTopic;
 use App\Model\Order;
 use App\Model\OrderDetail;
 use App\Model\Product;
+use App\Model\RequestProduct;
 use App\Model\Review;
 use App\Model\Seller;
 use App\Model\ShippingAddress;
@@ -33,6 +35,27 @@ use Illuminate\Support\Facades\Session;
 
 class WebController extends Controller
 {
+    public function request_product(Request $request)
+    {
+        $image = $request->file('image');
+        if ($image != null) {
+            $img = ImageManager::upload('product/request', 'png', $request->image);
+        }
+        $new = RequestProduct::create([
+            'name' => $request->nama,
+            'qty' => $request->jumlah,
+            'phone' => $request->phone,
+            'link' => $request->link,
+            'description' => $request->deskripsi,
+            'status' => 'pending',
+            'image' => $img,
+        ]);
+
+        Toastr::success('Berhasil mengirim permintaan produk!');
+
+        return redirect()->back();
+    }
+
     public function getDistrict(Request $request)
     {
         $district = Helpers::district($request->city_id);

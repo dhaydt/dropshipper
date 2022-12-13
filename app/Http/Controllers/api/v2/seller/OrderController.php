@@ -28,7 +28,7 @@ class OrderController extends Controller
             $q->where(['user_is' => 'dropship', 'customer_id' => $seller['id']]);
         })->pluck('order_id')->toArray();
 
-        return response()->json(Order::with(['customer'])->whereIn('id', $order_ids)->get(), 200);
+        return response()->json(Order::whereIn('id', $order_ids)->get(), 200);
     }
 
     public function details(Request $request, $id)

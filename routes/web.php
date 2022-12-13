@@ -65,6 +65,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], funct
 
     Route::get('categories', 'WebController@all_categories')->name('categories');
     Route::get('category-ajax/{id}', 'WebController@categories_by_category')->name('category-ajax');
+    Route::post('request-product', 'WebController@request_product')->name('request-product');
 
     Route::get('brands', 'WebController@all_brands')->name('brands');
     Route::get('sellers', 'WebController@all_sellers')->name('sellers');

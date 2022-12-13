@@ -946,6 +946,7 @@ class ComposerStaticInit5c810ba0d19412d72c885b40a9decbf5
         'App\\Model\\PhoneOrEmailVerification' => __DIR__ . '/../..' . '/app/Model/PhoneOrEmailVerification.php',
         'App\\Model\\Product' => __DIR__ . '/../..' . '/app/Model/Product.php',
         'App\\Model\\ProductStock' => __DIR__ . '/../..' . '/app/Model/ProductStock.php',
+        'App\\Model\\RequestProduct' => __DIR__ . '/../..' . '/app/Model/RequestProduct.php',
         'App\\Model\\Review' => __DIR__ . '/../..' . '/app/Model/Review.php',
         'App\\Model\\SearchFunction' => __DIR__ . '/../..' . '/app/Model/SearchFunction.php',
         'App\\Model\\Seller' => __DIR__ . '/../..' . '/app/Model/Seller.php',
