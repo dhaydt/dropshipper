@@ -4,23 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\CPU\Helpers;
 use App\CPU\OrderManager;
-use App\Http\Controllers\Controller;
-use App\Model\Admin;
-use App\Model\AdminWallet;
-use App\Model\BusinessSetting;
-use App\Model\Order;
-use App\Model\OrderDetail;
-use App\Model\OrderTransaction;
-use App\Model\Product;
-use App\Model\Seller;
-use App\Model\SellerWallet;
-use App\Model\ShippingMethod;
-use App\Model\Shop;
-use Barryvdh\DomPDF\Facade as PDF;
-use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use function App\CPU\translate;
+use App\Http\Controllers\Controller;
+use App\Model\Order;
+use App\Model\OrderTransaction;
+use App\Model\Seller;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -52,9 +41,7 @@ class OrderController extends Controller
                 });
                 $query_param = ['search' => $request['search']];
             }
-
         } else {
-
             if ($status != 'all') {
                 $orders = Order::with(['customer'])->where(['order_status' => $status]);
             } else {
@@ -75,6 +62,7 @@ class OrderController extends Controller
         }
 
         $orders = $orders->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
+
         return view('admin-views.order.list', compact('orders', 'search'));
     }
 
@@ -85,6 +73,7 @@ class OrderController extends Controller
             ->whereNotIn('order_group_id', ['def-order-group'])
             ->whereNotIn('id', [$order['id']])
             ->get();
+
         return view('admin-views.order.order-details', compact('order', 'linked_orders'));
     }
 
@@ -129,6 +118,7 @@ class OrderController extends Controller
             $order->payment_status = $request->payment_status;
             $order->save();
             $data = $request->payment_status;
+
             return response()->json($data);
         }
     }
@@ -137,15 +127,13 @@ class OrderController extends Controller
     {
         $order = Order::with('seller')->with('shipping')->with('details')->where('id', $id)->first();
         $seller = Seller::findOrFail($order->details->first()->seller_id);
-        $data["email"] = $order->customer["email"];
-        $data["client_name"] = $order->customer["f_name"] . ' ' . $order->customer["l_name"];
-        $data["order"] = $order;
+        $data['email'] = $order->customer['email'];
+        $data['client_name'] = $order->customer['f_name'].' '.$order->customer['l_name'];
+        $data['order'] = $order;
 
         $mpdf_view = \View::make('admin-views.order.invoice')->with('order', $order)->with('seller', $seller);
         Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
     }
-
-
 
     public function inhouse_order_filter()
     {
@@ -154,6 +142,7 @@ class OrderController extends Controller
         } else {
             session()->put('show_inhouse_orders', 1);
         }
+
         return back();
     }
 }

@@ -236,6 +236,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
 
             Route::post('sales-commission-update/{id}', 'SellerController@sales_commission_update')->name('sales-commission-update');
         });
+        Route::group(['prefix' => 'request', 'as' => 'request.', 'middleware' => ['module:product_management']], function () {
+            Route::get('list/{status}', 'RequestController@list')->name('list');
+            Route::get('view/{id}', 'RequestController@view')->name('view');
+            Route::get('approve-status', 'RequestController@approve_status')->name('approve-status');
+        });
         Route::group(['prefix' => 'product', 'as' => 'product.', 'middleware' => ['module:product_management']], function () {
             Route::get('add-new', 'ProductController@add_new')->name('add-new');
             Route::post('store', 'ProductController@store')->name('store');

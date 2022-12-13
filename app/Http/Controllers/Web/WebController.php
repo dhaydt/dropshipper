@@ -39,7 +39,7 @@ class WebController extends Controller
     {
         $image = $request->file('image');
         if ($image != null) {
-            $img = ImageManager::upload('product/request', 'png', $request->image);
+            $img = ImageManager::upload('product/request/', 'png', $image);
         }
         $new = RequestProduct::create([
             'name' => $request->nama,
