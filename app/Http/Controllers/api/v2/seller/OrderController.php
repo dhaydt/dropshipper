@@ -4,18 +4,11 @@ namespace App\Http\Controllers\api\v2\seller;
 
 use App\CPU\Helpers;
 use App\CPU\OrderManager;
+use function App\CPU\translate;
 use App\Http\Controllers\Controller;
-use App\Model\Admin;
-use App\Model\AdminWallet;
-use App\Model\BusinessSetting;
 use App\Model\Order;
 use App\Model\OrderDetail;
-use App\Model\SellerWallet;
-use App\Model\ShippingMethod;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use function App\CPU\translate;
-
 
 class OrderController extends Controller
 {
@@ -27,11 +20,13 @@ class OrderController extends Controller
             $seller = $data['data'];
         } else {
             return response()->json([
-                'auth-001' => translate('Your existing session token does not authorize you any more')
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
             ], 401);
         }
 
-        $order_ids = OrderDetail::where(['seller_id' => $seller['id']])->pluck('order_id')->toArray();
+        $order_ids = OrderDetail::whereHas('order', function ($q) use ($seller) {
+            $q->where(['user_is' => 'dropship', 'customer_id' => $seller['id']]);
+        })->pluck('order_id')->toArray();
 
         return response()->json(Order::with(['customer'])->whereIn('id', $order_ids)->get(), 200);
     }
@@ -44,7 +39,7 @@ class OrderController extends Controller
             $seller = $data['data'];
         } else {
             return response()->json([
-                'auth-001' => translate('Your existing session token does not authorize you any more')
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
             ], 401);
         }
 
@@ -64,7 +59,7 @@ class OrderController extends Controller
             $seller = $data['data'];
         } else {
             return response()->json([
-                'auth-001' => translate('Your existing session token does not authorize you any more')
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
             ], 401);
         }
 
@@ -92,8 +87,8 @@ class OrderController extends Controller
         $order->order_status = $request->order_status;
         OrderManager::stock_update_on_order_status_change($order, $request->order_status);
 
-        if ($request->order_status == 'delivered' && $order['seller_id'] != null){
-            OrderManager::wallet_manage_on_order_status_change($order,'seller');
+        if ($request->order_status == 'delivered' && $order['seller_id'] != null) {
+            OrderManager::wallet_manage_on_order_status_change($order, 'seller');
         }
 
         $order->save();

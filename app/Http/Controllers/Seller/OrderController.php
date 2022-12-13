@@ -16,9 +16,9 @@ class OrderController extends Controller
     {
         $sellerId = auth('seller')->id();
         if ($status != 'all') {
-            $orders = Order::where(['user_is' => 'dropship'])->where(['seller_id' => $sellerId, 'customer_id' => auth('seller')->id()])->where(['order_status' => $status]);
+            $orders = Order::where(['user_is' => 'dropship', 'customer_id' => auth('seller')->id()])->where(['order_status' => $status]);
         } else {
-            $orders = Order::where(['user_is' => 'dropship', 'customer_id' => auth('seller')->id()])->where(['seller_id' => $sellerId]);
+            $orders = Order::where(['user_is' => 'dropship', 'customer_id' => auth('seller')->id()]);
         }
 
         $query_param = [];
