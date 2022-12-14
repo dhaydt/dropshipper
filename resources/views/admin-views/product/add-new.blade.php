@@ -137,7 +137,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="name">{{\App\CPU\translate('Weight')}} (kg)</label>
+                                        <label for="name">{{\App\CPU\translate('Weight')}} (gram)</label>
                                         <input type="text" name="weight" class="form-control">
                                     </div>
                                 </div>

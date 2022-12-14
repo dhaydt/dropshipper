@@ -564,7 +564,7 @@ class Helpers
         $product = Product::find($product_id);
         // dd($product);
         $weight = $product->weight ? (int) $product->weight : '1';
-        $weight = $weight * 1000;
+        $weight = $weight;
 
         // dd($weight);
 
