@@ -75,7 +75,7 @@
                                 <label for="address">Nama jalan & Nomor rumah</label>
                                 <textarea class="form-control" id="address" name="address"
                                     required>
-                                    @if ($address->address)
+                                    @if (isset($address->address))
                                     {{ $address->address }}
                                     @endif
                                 </textarea>
