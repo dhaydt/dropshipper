@@ -124,6 +124,8 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
         Route::get('products/{category_id}/{country}', 'CategoryController@short_get_products');
     });
 
+    Route::post('request-product', 'AttributeController@request_product');
+
     Route::group(['prefix' => 'customer', 'middleware' => 'auth:api'], function () {
         Route::get('info', 'CustomerController@info');
         Route::put('update-profile', 'CustomerController@update_profile');

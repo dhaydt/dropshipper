@@ -221,7 +221,7 @@ class CustomerController extends Controller
 
     public function get_order_list(Request $request)
     {
-        $orders = Order::where(['customer_id' => $request->user()->id])->get();
+        $orders = Order::where(['customer_id' => $request->user()->id, 'user_is' => 'customer'])->get();
         $orders->map(function ($data) {
             $data['shipping_address_data'] = json_decode($data['shipping_address_data']);
 
