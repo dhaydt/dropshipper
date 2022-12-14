@@ -33,6 +33,7 @@ class DashboardController extends Controller
                 'city_id' => '151',
                 'district' => 'Cengkareng',
                 'district_id' => '2087',
+                'address' => '',
             ];
             $address->value = json_encode($data);
             $address->save();

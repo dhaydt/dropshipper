@@ -75,9 +75,7 @@
                                 <label for="address">Nama jalan & Nomor rumah</label>
                                 <textarea class="form-control" id="address" name="address"
                                     required>
-                                    @if (isset($address->address))
                                     {{ $address->address }}
-                                    @endif
                                 </textarea>
                             </div>
                             {{-- <div class="form-group col-md-6">

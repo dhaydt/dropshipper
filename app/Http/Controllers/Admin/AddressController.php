@@ -20,6 +20,7 @@ class AddressController extends Controller
                 'city_id' => '151',
                 'district' => 'Cengkareng',
                 'district_id' => '2087',
+                'address' => '',
             ];
 
             $address = new BusinessSetting();
