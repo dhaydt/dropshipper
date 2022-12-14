@@ -74,7 +74,11 @@
                             <div class="form-group col-md-6">
                                 <label for="address">Nama jalan & Nomor rumah</label>
                                 <textarea class="form-control" id="address" name="address"
-                                    required>{{ $address->address }}</textarea>
+                                    required>
+                                    @if ($address->address)
+                                    {{ $address->address }}
+                                    @endif
+                                </textarea>
                             </div>
                             {{-- <div class="form-group col-md-6">
                                 <label for="firstName">{{\App\CPU\translate('Phone')}}</label>
