@@ -697,7 +697,7 @@
                     <!--business settings ends here-->
 
                         @if(\App\CPU\Helpers::module_permission_check('web_&_app_settings'))
-                            <li class="nav-item {{(Request::is('adminpanel/business-settings/social-media') || Request::is('adminpanel/business-settings/terms-condition') || Request::is('adminpanel/business-settings/privacy-policy') || Request::is('adminpanel/business-settings/about-us') || Request::is('adminpanel/helpTopic/list') || Request::is('adminpanel/business-settings/fcm-index') || Request::is('adminpanel/business-settings/mail') || Request::is('adminpanel/business-settings/web-config'))?'scroll-here':''}}">
+                            <li class="nav-item {{(Request::is('adminpanel/business-settings/social-media') || Request::is('adminpanel/business-settings/address')|| Request::is('adminpanel/business-settings/terms-condition') || Request::is('adminpanel/business-settings/privacy-policy') || Request::is('adminpanel/business-settings/about-us') || Request::is('adminpanel/helpTopic/list') || Request::is('adminpanel/business-settings/fcm-index') || Request::is('adminpanel/business-settings/mail') || Request::is('adminpanel/business-settings/web-config'))?'scroll-here':''}}">
                                 <small class="nav-subtitle" title="">{{\App\CPU\translate('web_&_app_settings')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
