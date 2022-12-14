@@ -1499,4 +1499,11 @@
   'Deskripsi' => 'Deskripsi',
   'Terima' => 'Terima',
   'Tolak' => 'Tolak',
+  'address_config' => 'Address config',
+  'Shop Address' => 'Shop Address',
+  'Choose
+                                    file' => 'Choose
+                                    file',
+  'Simpan' => 'Simpan',
+  'Simpan Alamat' => 'Simpan Alamat',
 );

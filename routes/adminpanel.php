@@ -323,6 +323,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
                 Route::post('update', 'MailController@update')->name('update');
             });
 
+            Route::group(['prefix' => 'address', 'as' => 'address.', 'middleware' => ['module:web_&_app_settings']], function () {
+                Route::get('/', 'AddressController@index')->name('index');
+                Route::post('update', 'AddressController@update')->name('update');
+            });
+
             Route::group(['prefix' => 'web-config', 'as' => 'web-config.', 'middleware' => ['module:web_&_app_settings']], function () {
                 Route::get('/', 'BusinessSettingsController@companyInfo')->name('index');
                 Route::post('update-colors', 'BusinessSettingsController@update_colors')->name('update-colors');

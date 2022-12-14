@@ -720,6 +720,15 @@
                                     </span>
                                 </a>
                             </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/business-settings/address')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{route('admin.business-settings.address.index')}}">
+                                    <i class="tio-email nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                        {{\App\CPU\translate('address_config')}}
+                                    </span>
+                                </a>
+                            </li>
                             <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/business-settings/fcm-index')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.business-settings.fcm-index')}}">
