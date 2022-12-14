@@ -54,4 +54,15 @@ class RequestController extends Controller
 
         return redirect()->route('admin.request.list', ['all']);
     }
+
+    public function denied(Request $request)
+    {
+        $product = RequestProduct::find($request->id);
+        $product->status = 'denied';
+        $product->save();
+
+        Toastr::success('Request Produk '.$product->name.' berhasil ditolak');
+
+        return redirect()->route('admin.request.list', ['all']);
+    }
 }

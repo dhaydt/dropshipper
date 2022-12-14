@@ -53,48 +53,20 @@
 
             @if($product['status'] == 'pending')
                 <div class="row">
+                    @if($product['status'] == 'pending')
                     <div class="{{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}">
-                        @if($product['status'] == 'pending')
                             <a href="{{route('admin.request.approve-status', ['id'=>$product['id']])}}"
                                class="btn btn-secondary float-right">
                                 {{\App\CPU\translate('Terima')}}
                             </a>
-                        @endif
                     </div>
-                    <div class="{{Session::get('direction') === "rtl" ? 'mr-1' : 'ml-1'}}">
-                        <button class="btn btn-warning float-right" data-toggle="modal" data-target="#publishNoteModal">
-                            {{\App\CPU\translate('Tolak')}}
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="publishNoteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title"
-                                            id="exampleModalLabel">{{ \App\CPU\translate('denied_note') }}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form class="form-group"
-                                          action="{{ route('admin.product.deny', ['id'=>$product['id']]) }}"
-                                          method="post">
-                                        <div class="modal-body">
-                                            <textarea class="form-control" name="denied_note" rows="3"></textarea>
-                                            <input type="hidden" name="_token" id="csrf-token"
-                                                   value="{{ csrf_token() }}"/>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{\App\CPU\translate('Close')}}
-                                            </button>
-                                            <button type="submit" class="btn btn-primary">{{\App\CPU\translate('Save changes')}}</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="{{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}">
+                            <a href="{{route('admin.request.denied', ['id'=>$product['id']])}}"
+                               class="btn btn-warning float-right">
+                                {{\App\CPU\translate('Tolak')}}
+                            </a>
                     </div>
+                    @endif
                 </div>
         @elseif($product['request_status'] == 2)
             <!-- Card -->

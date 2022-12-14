@@ -240,6 +240,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::get('list/{status}', 'RequestController@list')->name('list');
             Route::get('view/{id}', 'RequestController@view')->name('view');
             Route::get('approve-status', 'RequestController@approve_status')->name('approve-status');
+            Route::get('denied', 'RequestController@denied')->name('denied');
         });
         Route::group(['prefix' => 'product', 'as' => 'product.', 'middleware' => ['module:product_management']], function () {
             Route::get('add-new', 'ProductController@add_new')->name('add-new');
