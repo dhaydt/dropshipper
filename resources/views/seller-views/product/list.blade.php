@@ -105,7 +105,7 @@
                                                 {{\App\CPU\translate('View')}}
                                             </a>
                                             @php($seller = auth('seller')->user())
-                                            @php($url = env('ETOKO_URL').'/'.'generated'.'/'.$seller['id'].'/'.$seller->f_name.'_'.$seller->l_name.'/'.$p['slug'])
+                                            @php($url = env('ETOKO_URL').'/'.'generated'.'/'.$seller['id'].'/'.$seller->f_name.'_'.$seller->l_name.'/'.$p['slug'].'/'.strip_tags($p['details']))
                                             <a class="btn btn-success btn-sm"
                                                href="{{ $url }}" target="_blank">
                                                 <i class="fa-solid fa-share"></i>
