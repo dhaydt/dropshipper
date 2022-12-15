@@ -110,10 +110,10 @@ class CustomerController extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        $wishlist = Wishlist::where('customer_id', $request->user()->id)->where('product_id', $request->product_id)->first();
+        $wishlist = Wishlist::where(['customer_id' => $request->user()->id, 'user_is' => 'customer'])->where('product_id', $request->product_id)->first();
 
         if (!empty($wishlist)) {
-            Wishlist::where(['customer_id' => $request->user()->id, 'product_id' => $request->product_id])->delete();
+            Wishlist::where(['customer_id' => $request->user()->id, 'user_is' => 'customer', 'product_id' => $request->product_id])->delete();
 
             return response()->json(['message' => translate('successfully removed!')], 200);
         }

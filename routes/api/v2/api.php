@@ -17,6 +17,12 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
         Route::post('balance-withdraw', 'SellerController@withdraw_request');
         Route::delete('close-withdraw-request', 'SellerController@close_withdraw_request');
 
+        Route::group(['prefix' => 'wish-list'], function () {
+            Route::get('/', 'SellerController@wish_list');
+            Route::post('add', 'SellerController@add_to_wishlist');
+            Route::delete('remove', 'SellerController@remove_from_wishlist');
+        });
+
         Route::group(['prefix' => 'products'], function () {
             Route::post('upload-images', 'ProductController@upload_images');
             Route::post('add', 'ProductController@add_new');
