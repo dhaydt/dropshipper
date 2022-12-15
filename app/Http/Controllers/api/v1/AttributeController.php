@@ -7,6 +7,7 @@ use App\CPU\Helpers;
 use App\CPU\ImageManager;
 use App\Http\Controllers\Controller;
 use App\Model\Attribute;
+use App\Model\BusinessSetting;
 use App\Model\RequestProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,39 @@ use Illuminate\Support\Facades\Validator;
 
 class AttributeController extends Controller
 {
+    public function term_and_condition()
+    {
+        $term = BusinessSetting::where('type', 'terms_condition')->first();
+        $resp = [
+            'status' => 'success',
+            'data' => $term->value,
+        ];
+
+        return response()->json($resp, 200);
+    }
+
+    public function about_us()
+    {
+        $about_us = BusinessSetting::where('type', 'about_us')->first();
+        $resp = [
+            'status' => 'success',
+            'data' => $about_us->value,
+        ];
+
+        return response()->json($resp, 200);
+    }
+
+    public function privacy_policy()
+    {
+        $privacy_policy = BusinessSetting::where('type', 'privacy_policy')->first();
+        $resp = [
+            'status' => 'success',
+            'data' => $privacy_policy->value,
+        ];
+
+        return response()->json($resp, 200);
+    }
+
     public function request_product(Request $request)
     {
         $validator = Validator::make($request->all(), [

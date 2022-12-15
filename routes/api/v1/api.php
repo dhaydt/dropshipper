@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_lang']], function () {
+    Route::get('about_us', 'AttributeController@about_us');
+    Route::get('privacy_policy', 'AttributeController@privacy_policy');
+    Route::get('termsandcondition', 'AttributeController@term_and_condition');
+
     Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
         Route::post('register', 'PassportAuthController@register');
         Route::post('login', 'PassportAuthController@login');

@@ -159,6 +159,20 @@ class BusinessSettingsController extends Controller
         return view('admin-views.business-settings.terms-condition', compact('terms_condition'));
     }
 
+    public function terms_condition_dropship()
+    {
+        $terms_condition = BusinessSetting::where('type', 'terms_condition_dropship')->first();
+
+        if (!$terms_condition) {
+            $terms_condition = BusinessSetting::create([
+                'type' => 'terms_condition_dropship',
+                'value' => 'dropship terms and condition',
+            ]);
+        }
+
+        return view('admin-views.business-settings.terms-condition-dropship', compact('terms_condition'));
+    }
+
     public function updateTermsCondition(Request $data)
     {
         $validatedData = $data->validate([
@@ -166,6 +180,17 @@ class BusinessSettingsController extends Controller
         ]);
         BusinessSetting::where('type', 'terms_condition')->update(['value' => $data->value]);
         Toastr::success('Terms and Condition Updated successfully!');
+
+        return redirect()->back();
+    }
+
+    public function updateTermsConditionDropship(Request $data)
+    {
+        $validatedData = $data->validate([
+            'value' => 'required',
+        ]);
+        BusinessSetting::where('type', 'terms_condition_dropship')->update(['value' => $data->value]);
+        Toastr::success('Dropship Terms and Condition Updated successfully!');
 
         return redirect()->back();
     }

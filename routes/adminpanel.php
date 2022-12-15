@@ -285,7 +285,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::post('social-media-status-update', 'BusinessSettingsController@social_media_status_update')->name('social-media-status-update');
 
             Route::get('terms-condition', 'BusinessSettingsController@terms_condition')->name('terms-condition');
+            Route::get('terms-condition-dropship', 'BusinessSettingsController@terms_condition_dropship')->name('terms-condition-dropship');
             Route::post('terms-condition', 'BusinessSettingsController@updateTermsCondition')->name('update-terms');
+            Route::post('terms-condition-dropship', 'BusinessSettingsController@updateTermsConditionDropship')->name('update-terms-dropship');
             Route::get('privacy-policy', 'BusinessSettingsController@privacy_policy')->name('privacy-policy');
             Route::post('privacy-policy', 'BusinessSettingsController@privacy_policy_update')->name('privacy-policy');
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_lang']], function () {
+    Route::get('termsandcondition', 'LsLibController@term_and_condition');
     Route::group(['prefix' => 'seller', 'namespace' => 'seller'], function () {
         Route::get('seller-info', 'SellerController@seller_info');
         Route::get('shop-product-reviews', 'SellerController@shop_product_reviews');

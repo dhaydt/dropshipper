@@ -1506,4 +1506,7 @@
                                     file',
   'Simpan' => 'Simpan',
   'Simpan Alamat' => 'Simpan Alamat',
+  'Terms & Condition Dropship' => 'Terms & Condition Dropship',
+  'terms_and_condition_dropship' => 'Terms and condition dropship',
+  'dropship_terms_and_condition' => 'Dropship terms and condition',
 );

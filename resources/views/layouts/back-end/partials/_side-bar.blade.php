@@ -697,7 +697,7 @@
                     <!--business settings ends here-->
 
                         @if(\App\CPU\Helpers::module_permission_check('web_&_app_settings'))
-                            <li class="nav-item {{(Request::is('adminpanel/business-settings/social-media') || Request::is('adminpanel/business-settings/address')|| Request::is('adminpanel/business-settings/terms-condition') || Request::is('adminpanel/business-settings/privacy-policy') || Request::is('adminpanel/business-settings/about-us') || Request::is('adminpanel/helpTopic/list') || Request::is('adminpanel/business-settings/fcm-index') || Request::is('adminpanel/business-settings/mail') || Request::is('adminpanel/business-settings/web-config'))?'scroll-here':''}}">
+                            <li class="nav-item {{(Request::is('adminpanel/business-settings/social-media') || Request::is('adminpanel/business-settings/address')|| Request::is('adminpanel/business-settings/terms-condition') || Request::is('adminpanel/business-settings/terms-condition-dropship') || Request::is('adminpanel/business-settings/privacy-policy') || Request::is('adminpanel/business-settings/about-us') || Request::is('adminpanel/helpTopic/list') || Request::is('adminpanel/business-settings/fcm-index') || Request::is('adminpanel/business-settings/mail') || Request::is('adminpanel/business-settings/web-config'))?'scroll-here':''}}">
                                 <small class="nav-subtitle" title="">{{\App\CPU\translate('web_&_app_settings')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
@@ -738,7 +738,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/business-settings/terms-condition') || Request::is('adminpanel/business-settings/privacy-policy') || Request::is('adminpanel/business-settings/about-us') || Request::is('adminpanel/helpTopic/list')?'active':''}}">
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/business-settings/terms-condition') || Request::is('adminpanel/business-settings/terms-condition-dropship') || Request::is('adminpanel/business-settings/privacy-policy') || Request::is('adminpanel/business-settings/about-us') || Request::is('adminpanel/helpTopic/list')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
                                     <i class="tio-pages-outlined nav-icon"></i>
@@ -747,12 +747,20 @@
                                     </span>
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                    style="display: {{Request::is('adminpanel/business-settings/terms-condition') || Request::is('adminpanel/business-settings/privacy-policy') || Request::is('adminpanel/business-settings/about-us') || Request::is('adminpanel/helpTopic/list')?'block':'none'}}">
+                                    style="display: {{Request::is('adminpanel/business-settings/terms-condition') || Request::is('adminpanel/business-settings/terms-condition-dropship') || Request::is('adminpanel/business-settings/privacy-policy') || Request::is('adminpanel/business-settings/about-us') || Request::is('adminpanel/helpTopic/list')?'block':'none'}}">
                                     <li class="nav-item {{Request::is('adminpanel/business-settings/terms-condition')?'active':''}}">
                                         <a class="nav-link" href="{{route('admin.business-settings.terms-condition')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
                                               {{\App\CPU\translate('terms_and_condition')}}
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item {{Request::is('adminpanel/business-settings/terms-condition-dropship')?'active':''}}">
+                                        <a class="nav-link" href="{{route('admin.business-settings.terms-condition-dropship')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">
+                                              {{\App\CPU\translate('dropship_terms_and_condition')}}
                                             </span>
                                         </a>
                                     </li>
