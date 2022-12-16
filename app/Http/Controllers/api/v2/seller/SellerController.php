@@ -140,7 +140,7 @@ class SellerController extends Controller
             ], 401);
         }
 
-        return response()->json(Seller::with(['wallet'])->withCount(['product', 'orders'])->where(['id' => $seller['id']])->first(), 200);
+        return response()->json(Seller::with(['wallet', 'shop'])->withCount(['product', 'orders'])->where(['id' => $seller['id']])->first(), 200);
     }
 
     public function shop_info_update(Request $request)
@@ -194,17 +194,24 @@ class SellerController extends Controller
             $imageName = $old_image;
         }
 
+        $shop = Shop::where(['seller_id' => $seller['id']])->first();
+        $shop->name = $request->shop_name;
+
         Seller::where(['id' => $seller['id']])->update([
-            'f_name' => $request['f_name'],
-            'l_name' => $request['l_name'],
+            'f_name' => $request['name'],
+            'l_name' => null,
             'bank_name' => $request['bank_name'],
             'branch' => $request['branch'],
+            'phone' => $request['phone'],
+            'email' => $request['email'],
             'account_no' => $request['account_no'],
             'holder_name' => $request['holder_name'],
             'password' => $request['password'] != null ? bcrypt($request['password']) : Seller::where(['id' => $seller['id']])->first()->password,
             'image' => $imageName,
             'updated_at' => now(),
         ]);
+
+        $shop->save();
 
         if ($request['password'] != null) {
             Seller::where(['id' => $seller['id']])->update([

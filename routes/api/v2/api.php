@@ -7,7 +7,7 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
     Route::group(['prefix' => 'seller', 'namespace' => 'seller'], function () {
         Route::get('seller-info', 'SellerController@seller_info');
         Route::get('shop-product-reviews', 'SellerController@shop_product_reviews');
-        Route::put('seller-update', 'SellerController@seller_info_update');
+        Route::post('seller-update', 'SellerController@seller_info_update');
         Route::get('monthly-earning', 'SellerController@monthly_earning');
         Route::get('monthly-commission-given', 'SellerController@monthly_commission_given');
 

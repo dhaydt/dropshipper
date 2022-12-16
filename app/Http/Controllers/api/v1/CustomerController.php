@@ -255,12 +255,10 @@ class CustomerController extends Controller
     public function update_profile(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'f_name' => 'required',
-            'l_name' => 'required',
+            'name' => 'required',
             'phone' => 'required',
         ], [
-            'f_name.required' => translate('First name is required!'),
-            'l_name.required' => translate('Last name is required!'),
+            'name.required' => 'Name field is required',
         ]);
 
         if ($validator->fails()) {
@@ -280,9 +278,10 @@ class CustomerController extends Controller
         }
 
         $userDetails = [
-            'f_name' => $request->f_name,
-            'l_name' => $request->l_name,
+            'name' => $request->name,
+            'l_name' => null,
             'phone' => $request->phone,
+            'email' => $request->email,
             'image' => $imageName,
             'password' => $pass,
             'updated_at' => now(),
