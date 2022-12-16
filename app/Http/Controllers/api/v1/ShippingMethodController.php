@@ -7,8 +7,8 @@ use App\CPU\Convert;
 use App\CPU\Helpers;
 use function App\CPU\translate;
 use App\Http\Controllers\Controller;
+use App\Model\Cart;
 use App\Model\CartShipping;
-use App\Model\Product;
 use App\Model\ShippingMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +18,7 @@ class ShippingMethodController extends Controller
     public function get_rajaongkir(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'product_id' => 'required',
+            'cart_group_id' => 'required',
             'address_id' => 'required',
         ], [
             // 'id.required' => translate('shipping_id_is_required'),
@@ -29,22 +29,25 @@ class ShippingMethodController extends Controller
         }
         $user = $request->user();
         try {
-            $product = Product::where('id', $request->product_id)->first();
-            if (!$product) {
-                return response()->json(['status' => 'fail', 'message' => 'Product id not found']);
-            }
-            $seller_id = $product->user_id;
-            $shipping = Helpers::get_shipping_methods_api($seller_id, 'JNE', $request->product_id, $user->id, $request->address_id);
-            // dd($shipping);
+            // $cart = Cart::where('cart_group_id', $request->cart_group_id)->get();
+            // if (count($cart) < 1) {
+            //     return response()->json(['status' => 'fail', 'message' => 'Cart not found']);
+            // }
+            $shipping = Helpers::get_shipping_methods_api($request->cart_group_id, $user->id, $request->address_id);
             if ($shipping == 'fail') {
                 return response()->json(['status' => 'fail', 'message' => 'User or Admin address is empty!']);
+            } elseif ($shipping == 'no_cart') {
+                return response()->json(['status' => 'fail', 'message' => 'Cart Group ID Not Found!']);
             }
+
             $jne = $shipping[0][0];
             $tiki = $shipping[0][1];
             $cepat = $shipping[0][2];
+            $weight = $shipping[2];
 
             $shippings = [
-            'title' => 'rajaongkir',
+            'title' => 'Raja Ongkir',
+            'Cart_Weight' => $weight.' gram',
             'address_id' => $request->address_id,
             'JNE' => $jne,
             'TIKI' => $tiki,

@@ -5,6 +5,7 @@ namespace App\CPU;
 use App\Country;
 use App\Model\Admin;
 use App\Model\BusinessSetting;
+use App\Model\Cart;
 use App\Model\Category;
 use App\Model\Color;
 use App\Model\Coupon;
@@ -541,7 +542,7 @@ class Helpers
         }
     }
 
-    public static function get_shipping_methods_api($seller_id, $type, $product_id, $user_id, $address_id = null)
+    public static function get_shipping_methods_api($cart_group_id, $user_id, $address_id = null)
     {
         $admin = BusinessSetting::where('type', 'address')->first();
         $admin = json_decode($admin->value);
@@ -560,19 +561,24 @@ class Helpers
             return 'fail';
         }
         $to_district = $user->district_id;
-        $to_type = $user->city_type;
-        $product = Product::find($product_id);
-        // dd($product);
-        $weight = $product->weight ? (int) $product->weight : '1';
-        $weight = $weight;
+        $carts = Cart::where('cart_group_id', $cart_group_id)->get();
+        if (count($carts) < 1) {
+            return 'no_cart';
+        }
+        $product_ids = $carts->pluck('product_id');
+        $qty_cart = $carts->pluck('quantity');
 
-        // dd($weight);
+        $weights = [];
+        foreach ($product_ids as $key => $id) {
+            $weight = Product::find($id)->weight * $qty_cart[$key];
+            array_push($weights, $weight);
+        }
+        $weight = count($weights) > 0 ? array_sum($weights) : '1';
 
-        $from_city = $product->city_id ? $product->city_id : '151';
-        $from_type = 'Kota';
-        $from_type = 'Kota';
-        // $from_state = '21';
-        $ShippingMethod = ShippingMethod::where(['status' => 1])->where(['creator_id' => $seller_id, 'creator_type' => $type])->get();
+        $from_city = $admin->city_id ? $admin->city_id : '151';
+
+        // $ShippingMethod = ShippingMethod::where(['status' => 1])->where(['creator_id' => $seller_id, 'creator_type' => $type])->get();
+        $ShippingMethod = 'Raja Ongkir';
 
         $curl = curl_init();
         // JNE
@@ -677,7 +683,7 @@ class Helpers
             // $jne = json_encode($data_ongkir);
             // dd($data_ongkir);
 
-            return with([[$data_ongkir, $tiki, $sicepat], $ShippingMethod]);
+            return with([[$data_ongkir, $tiki, $sicepat], $ShippingMethod, $weight]);
         }
     }
 

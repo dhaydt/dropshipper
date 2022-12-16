@@ -9,7 +9,6 @@ use App\CPU\Helpers;
 use function App\CPU\translate;
 use App\Http\Controllers\Controller;
 use App\Model\CartShipping;
-use App\Model\Product;
 use App\Model\ShippingAddress;
 use App\Model\ShippingMethod;
 use Illuminate\Http\Request;
@@ -22,24 +21,32 @@ class ShippingMethodController extends Controller
     {
         $check = Helpers::get_seller_by_token($request);
         if ($check['success'] == 1) {
+            $validator = Validator::make($request->all(), [
+                'cart_group_id' => 'required',
+                'slug_address' => 'required',
+            ], [
+                // 'id.required' => translate('shipping_id_is_required'),
+            ]);
+
+            if ($validator->errors()->count() > 0) {
+                return response()->json(['errors' => Helpers::error_processor($validator)]);
+            }
+
             $user = $check['data'];
             try {
-                $product = Product::where('id', $request->product_id)->first();
-                if (!$product) {
-                    return response()->json(['status' => 'fail', 'message' => 'Product id not found']);
-                }
-                $seller_id = $product->user_id;
-                $shipping = Helpers::get_shipping_methods_api($seller_id, 'JNE', $request->product_id, $request->slug);
+                $shipping = Helpers::get_shipping_methods_api($request->cart_group_id, $request->slug);
                 $jne = $shipping[0][0];
                 $tiki = $shipping[0][1];
                 $cepat = $shipping[0][2];
+                $weight = $shipping[2];
 
                 $shippings = [
-                'title' => 'rajaongkir',
-                'JNE' => $jne,
-                'TIKI' => $tiki,
-                'siCepat' => $cepat,
-            ];
+                    'title' => 'Raja Ongkir',
+                    'Cart_Weight' => $weight.' gram',
+                    'JNE' => $jne,
+                    'TIKI' => $tiki,
+                    'siCepat' => $cepat,
+                ];
 
                 // dd($shippings);
                 return response()->json($shippings, 200);
