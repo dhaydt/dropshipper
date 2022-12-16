@@ -6,19 +6,17 @@ use App\CPU\CategoryManager;
 use App\CPU\Helpers;
 use App\CPU\ImageManager;
 use App\CPU\ProductManager;
+use function App\CPU\translate;
 use App\Http\Controllers\Controller;
 use App\Model\Category;
+use App\Model\FlashDealProduct;
 use App\Model\OrderDetail;
 use App\Model\Product;
 use App\Model\Review;
 use App\Model\ShippingMethod;
 use App\Model\Wishlist;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use function App\CPU\translate;
-use App\Model\FlashDealProduct;
 
 class ProductController extends Controller
 {
@@ -38,6 +36,7 @@ class ProductController extends Controller
     {
         $products = ProductManager::get_latest_products($request['limit'], $request['offset']);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
+
         return response()->json($products, 200);
     }
 
@@ -45,6 +44,7 @@ class ProductController extends Controller
     {
         $products = ProductManager::get_featured_products($request['limit'], $request['offset']);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
+
         return response()->json($products, 200);
     }
 
@@ -52,6 +52,7 @@ class ProductController extends Controller
     {
         $products = ProductManager::get_top_rated_products($request['limit'], $request['offset']);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
+
         return response()->json($products, 200);
     }
 
@@ -70,15 +71,19 @@ class ProductController extends Controller
             $products = ProductManager::translated_product_search($request['name'], $request['limit'], $request['offset']);
         }
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
+
         return response()->json($products, 200);
     }
 
-    public function get_product($id)
+    public function get_product(Request $request, $id)
     {
+        $check = Helpers::get_seller_by_token($request);
+
         $product = Product::find($id);
-        if (isset($product)){
-            $product = Helpers::product_data_formatting($product, false);
+        if (isset($product)) {
+            $product = Helpers::product_data_formatting($product, false, $check);
         }
+
         return response()->json($product, 200);
     }
 
@@ -86,6 +91,7 @@ class ProductController extends Controller
     {
         $products = ProductManager::get_best_selling_products($request['limit'], $request['offset']);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
+
         return response()->json($products, 200);
     }
 
@@ -94,8 +100,10 @@ class ProductController extends Controller
         $categories = Category::where('home_status', true)->get();
         $categories->map(function ($data) {
             $data['products'] = Helpers::product_data_formatting(CategoryManager::products($data['id']), true);
+
             return $data;
         });
+
         return response()->json($categories, 200);
     }
 
@@ -104,10 +112,12 @@ class ProductController extends Controller
         if (Product::find($id)) {
             $products = ProductManager::get_related_products($id);
             $products = Helpers::product_data_formatting($products, true);
+
             return response()->json($products, 200);
         }
+
         return response()->json([
-            'errors' => ['code' => 'product-001', 'message' => translate('Product not found!')]
+            'errors' => ['code' => 'product-001', 'message' => translate('Product not found!')],
         ], 404);
     }
 
@@ -129,6 +139,7 @@ class ProductController extends Controller
         try {
             $product = Product::find($id);
             $overallRating = \App\CPU\ProductManager::get_overall_rating($product->reviews);
+
             return response()->json(floatval($overallRating[0]), 200);
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
@@ -140,6 +151,7 @@ class ProductController extends Controller
         try {
             $countOrder = OrderDetail::where('product_id', $product_id)->count();
             $countWishlist = Wishlist::where('product_id', $product_id)->count();
+
             return response()->json(['order_count' => $countOrder, 'wishlist_count' => $countWishlist], 200);
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
@@ -151,7 +163,6 @@ class ProductController extends Controller
         $product = Product::find($product_id);
         $link = route('product', $product->slug);
         try {
-
             return response()->json($link, 200);
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
@@ -179,7 +190,7 @@ class ProductController extends Controller
             }
         }
 
-        $review = new Review;
+        $review = new Review();
         $review->customer_id = $request->user()->id;
         $review->product_id = $request->product_id;
         $review->comment = $request->comment;
@@ -193,10 +204,11 @@ class ProductController extends Controller
     public function get_shipping_methods(Request $request)
     {
         $methods = ShippingMethod::where(['status' => 1])->get();
+
         return response()->json($methods, 200);
     }
-    
-     public function Short_latest_products(Request $request, $country)
+
+    public function Short_latest_products(Request $request, $country)
     {
         $products = ProductManager::short_latest_products($request['limit'], $request['offset'], $country);
         // dd($products);
@@ -204,31 +216,31 @@ class ProductController extends Controller
 
         return response()->json($products, 200);
     }
-    
-     public function short_featured_products(Request $request, $country)
+
+    public function short_featured_products(Request $request, $country)
     {
         $products = ProductManager::short_featured_products($request['limit'], $request['offset'], $country);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
 
         return response()->json($products, 200);
     }
-    
-       public function short_top_rated_products(Request $request, $country)
+
+    public function short_top_rated_products(Request $request, $country)
     {
         $products = ProductManager::short_top_rated_products($request['limit'], $request['offset'], $country);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
 
         return response()->json($products, 200);
     }
-    
-     public function short_best_sellings(Request $request, $country)
+
+    public function short_best_sellings(Request $request, $country)
     {
         $products = ProductManager::short_best_selling_products($request['limit'], $request['offset'], $country);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
 
         return response()->json($products, 200);
     }
-    
+
     public function short_home_categories($country)
     {
         $categories = Category::where('home_status', true)->get();

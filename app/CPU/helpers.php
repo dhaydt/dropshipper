@@ -704,7 +704,7 @@ class Helpers
         return $data;
     }
 
-    public static function product_data_formatting($data, $multi_data = false)
+    public static function product_data_formatting($data, $multi_data = false, $check = null)
     {
         $storage = [];
         if ($multi_data == true) {
@@ -756,6 +756,13 @@ class Helpers
                 ]);
             }
             $data['variation'] = $variation;
+            if ($check['success'] == 1) {
+                $dropship = Seller::with('shop')->find($check['data']['id']);
+                $desc = urlencode(strip_tags($data['details']));
+                $str = substr($desc, 0, 100);
+                $url = env('ETOKO_URL').'/'.'generated'.'/'.$dropship['id'].'/'.$dropship->f_name.'_'.$dropship->l_name.'/'.$data['slug'].'/'.$str;
+                $data['share_url'] = $url;
+            }
         }
 
         return $data;
