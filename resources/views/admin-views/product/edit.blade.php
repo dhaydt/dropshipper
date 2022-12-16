@@ -92,6 +92,10 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="row">
+                                    <div class="col-12 mb-2">
+                                        <label for="">Produk SKU</label>
+                                        <input type="text" class="form-control" name="product_code" placeholder="Produk SKU" value="{{ $product->product_code }}">
+                                    </div>
                                     <div class="col-md-4">
                                         <label for="name">{{\App\CPU\translate('Category')}}</label>
                                         <select

@@ -76,6 +76,7 @@ class ProductController extends BaseController
             'brand_id' => 'required',
             'unit' => 'required',
             'images' => 'required',
+            'product_code' => 'required',
             'image' => 'required',
             'tax' => 'required|min:0',
             'unit_price' => 'required|numeric|min:1',
@@ -84,6 +85,7 @@ class ProductController extends BaseController
         ], [
             'images.required' => 'Product images is required!',
             'image.required' => 'Product thumbnail is required!',
+            'product_code.required' => 'Product SKU is required!',
             'category_id.required' => 'category  is required!',
             'brand_id.required' => 'brand  is required!',
             'unit.required' => 'Unit  is required!',
@@ -101,6 +103,13 @@ class ProductController extends BaseController
                     'unit_price', 'Discount can not be more or equal to the price!'
                 );
             });
+        }
+
+        $checkSku = Product::where('product_code', $request->product_code)->first();
+        if ($checkSku) {
+            Toastr::warning('Produk SKU sudah digunakan!');
+
+            return redirect()->back();
         }
 
         $p = new Product();
@@ -134,6 +143,7 @@ class ProductController extends BaseController
         $p->brand_id = $request->brand_id;
         $p->unit = $request->unit;
         $p->weight = $request->weight;
+        $p->product_code = $request->product_code;
         $p->details = $request->description[array_search('en', $request->lang)];
 
         if ($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0) {
@@ -403,6 +413,7 @@ class ProductController extends BaseController
 
         $product = Product::find($id);
         $product->name = $request->name[array_search('en', $request->lang)];
+        $product->product_code = $request->product_code;
 
         $category = [];
         if ($request->category_id != null) {
