@@ -29,7 +29,7 @@ class Helpers
     public static function directWa($data)
     {
         $main = 'https://api.whatsapp.com/send?phone=';
-        $phone = '6282382852283';
+        $phone = $data['phone'];
         $product = ucwords($data['product']);
         $price = 'Rp.'.number_format($data['price']);
         $link = $data['link'];
