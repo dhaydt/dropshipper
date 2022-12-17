@@ -16,11 +16,11 @@ class FlashDealController extends Controller
             $flash_deals = FlashDeal::where(['status' => 1])
                 ->whereDate('start_date', '<=', date('Y-m-d'))
                 ->whereDate('end_date', '>=', date('Y-m-d'))->first();
+
             return response()->json($flash_deals, 200);
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
         }
-
     }
 
     public function get_products($deal_id)

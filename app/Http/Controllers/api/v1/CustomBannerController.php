@@ -14,7 +14,7 @@ class CustomBannerController extends Controller
     public function bardy_banner()
     {
         try {
-            $flash_deals = FlashDeal::where(['status' => 1, 'deal_type' => 'unggulan'])->first();
+            $flash_deals = FlashDeal::where(['status' => 1, 'deal_type' => 'unggulan'])->get();
 
             return response()->json($flash_deals, 200);
         } catch (\Exception $e) {
