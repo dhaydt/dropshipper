@@ -264,6 +264,9 @@ class OrderManager
                 $user = User::find($cart->customer_id);
             }
             $shipping = CartShipping::where('cart_group_id', $cart_group_id)->first();
+            if (!$shipping) {
+                return 'no_shipping';
+            }
             $address_id = $shipping['address_id'];
         // dd($address_id);
         } else {

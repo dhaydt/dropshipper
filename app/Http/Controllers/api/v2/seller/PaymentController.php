@@ -21,7 +21,7 @@ class PaymentController extends Controller
         $validator = Validator::make($request->all(), [
             'type' => 'required',
             'user_is' => 'required',
-            'cart_group_id' => 'required',
+            'order_id' => 'required',
         ]);
         if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)]);

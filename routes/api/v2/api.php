@@ -69,6 +69,8 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
             Route::put('order-detail-status/{id}', 'OrderController@order_detail_status');
         });
 
+        Route::get('place-order', 'OrderController@putOrder');
+
         Route::group(['prefix' => 'shipping-method'], function () {
             Route::get('list', 'ShippingMethodController@list');
             Route::post('add', 'ShippingMethodController@store');

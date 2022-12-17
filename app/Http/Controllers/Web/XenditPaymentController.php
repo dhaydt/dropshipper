@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Web;
 
 use App\CPU\CartManager;
+use App\CPU\Helpers;
 use App\CPU\OrderManager;
 use App\Http\Controllers\Controller;
 use App\Model\Cart;
+use App\Model\Order;
+use App\Model\Seller;
 use App\Model\ShippingAddress;
+use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -148,7 +152,7 @@ class XenditPaymentController extends Controller
         foreach (CartManager::get_cart_group_ids() as $group_id) {
             $data = [
                 'payment_method' => 'Virtual Account'.$type,
-                'order_status' => 'confirmed',
+                'order_status' => 'processing',
                 'payment_status' => 'paid',
                 'transaction_ref' => session('transaction_ref'),
                 'order_group_id' => $unique_id,
@@ -168,7 +172,7 @@ class XenditPaymentController extends Controller
         return response()->json(['message' => 'Payment succeeded'], 200);
     }
 
-    public function successApi($type, $group, $user_is)
+    public function OldsuccessApi($type, $group, $user_is)
     {
         // $order = Order::find($request->id);
 
@@ -180,7 +184,7 @@ class XenditPaymentController extends Controller
         foreach ($cartGen as $group_id) {
             $data = [
                 'payment_method' => 'Virtual Account'.$type,
-                'order_status' => 'confirmed',
+                'order_status' => 'processing',
                 'payment_status' => 'paid',
                 'transaction_ref' => session('transaction_ref'),
                 'order_group_id' => $unique_id,
@@ -193,6 +197,44 @@ class XenditPaymentController extends Controller
         }
         foreach ($cart->get() as $c) {
             $c->delete();
+        }
+        session()->forget('customer_address');
+        if (auth('customer')->check() || session()->get('user_is') == 'dropship') {
+            Toastr::success('Payment success.');
+
+            return view('web-views.checkout-complete');
+        }
+
+        return response()->json(['message' => 'Payment succeeded'], 200);
+    }
+
+    public function successApi($type, $order_id, $user_is)
+    {
+        $order = Order::find($order_id);
+
+        $order->order_status = 'processing';
+        $order->payment_status = 'paid';
+        $order->transaction_ref = session('transaction_ref');
+        $order->payment_method = $type;
+        $order->save();
+
+        if ($user_is == 'dropship') {
+            $user = Seller::where('id', $order->customer_id)->first();
+        } else {
+            $user = User::where('id', $order->customer_id)->first();
+        }
+        if (!$user) {
+            if ($user->cm_firebase_token !== null) {
+                $fcm_token = $user->cm_firebase_token;
+
+                $data = [
+                    'title' => 'Payment Successfully',
+                    'description' => 'Your payment Success',
+                    'order_id' => $order->id,
+                    'image' => '',
+                ];
+                Helpers::send_push_notif_to_device($fcm_token, $data);
+            }
         }
         session()->forget('customer_address');
         if (auth('customer')->check() || session()->get('user_is') == 'dropship') {

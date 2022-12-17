@@ -6,6 +6,7 @@ use App\CPU\Helpers;
 use App\CPU\OrderManager;
 use function App\CPU\translate;
 use App\Http\Controllers\Controller;
+use App\Model\Cart;
 use App\Model\Order;
 use App\Model\OrderDetail;
 use Illuminate\Http\Request;
@@ -94,5 +95,42 @@ class OrderController extends Controller
         $order->save();
 
         return response()->json(['success' => 1, 'message' => translate('order_status_updated_successfully')], 200);
+    }
+
+    public function putOrder(Request $request)
+    {
+        $check = Helpers::get_seller_by_token($request);
+        if ($check['success'] == 1) {
+            $unique_id = $check['data']['id'].'-'.rand(000001, 999999).'-'.time();
+            $order_ids = [];
+            $group = Cart::where('cart_group_id', $request->cart_group_id)->get();
+            // dd($group);
+            foreach ($group as $group_id) {
+                $data = [
+                    'payment_method' => 'cash_on_delivery',
+                    'order_status' => 'pending',
+                    'payment_status' => 'unpaid',
+                    'transaction_ref' => '',
+                    'order_group_id' => $unique_id,
+                    'cart_group_id' => $group_id['cart_group_id'],
+                    'request' => $request,
+                    'api' => true,
+                    'user_is' => 'dropship',
+                ];
+                $order_id = OrderManager::generate_order($data);
+                if ($order_id == 'no_shipping') {
+                    return response()->json(['status' => 'fail', 'message' => 'No shipping address selected']);
+                }
+                array_push($order_ids, $order_id);
+            }
+
+            foreach ($group as $g) {
+                $g->delete();
+            }
+
+            return response()->json(translate('order_placed_successfully'), 200);
+        } else {
+            return response()->json(['status' => 'fail', 'message' => 'auth-001 unauthorized']);
+        }
     }
 }

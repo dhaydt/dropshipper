@@ -32,7 +32,7 @@ class Helpers
         return $dropship;
     }
 
-    public static function invoice($request, $user_is)
+    public static function Oldinvoice($request, $user_is)
     {
         if ($request->user_is == 'customer') {
             $customer = $request->user();
@@ -90,6 +90,92 @@ class Helpers
             'amount' => $value,
             'payer_email' => $email,
             'description' => env('APP_NAME'),
+            'payment_methods' => [$type],
+            'fixed_va' => true,
+            'should_send_email' => true,
+            'customer' => $user,
+            // 'items' => $products,
+            'success_redirect_url' => env('APP_URL').'/xendit-payment/success-api/'.$type.'/'.$group.'/'.$user_is,
+        ];
+        // dd($params);
+        $checkout_session = \Xendit\Invoice::create($params);
+        // $order_ids = [];
+        // foreach (CartManager::get_cart_group_ids() as $group_id) {
+        //     $data = [
+        //         'payment_method' => 'xendit_payment',
+        //         'order_status' => 'pending',
+        //         'payment_status' => 'unpaid',
+        //         'transaction_ref' => session('transaction_ref'),
+        //         'order_group_id' => $tran,
+        //         'cart_group_id' => $group_id,
+        //     ];
+        //     $order_id = OrderManager::generate_order($data);
+        //     array_push($order_ids, $order_id);
+        // }
+
+        return response()->json($checkout_session['invoice_url']);
+    }
+
+    public static function invoice($request, $user_is)
+    {
+        if ($request->user_is == 'customer') {
+            $customer = $request->user();
+        } elseif ($request->user_is == 'dropship') {
+            $check = Helpers::get_seller_by_token($request);
+            if ($check['success'] == 1) {
+                $customer = $check['data'];
+            } else {
+                return response()->json(['status' => 'auth-001', 'message' => 'not authorized user']);
+            }
+        }
+        $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
+        // $value = CartManager::cart_grand_total($request->cart_group_id) - $discount;
+        $value = Order::find($request->order_id)['order_amount'];
+        // dd($value);
+        $tran = OrderManager::gen_unique_id();
+        $type = strtoupper($request['type']);
+        session()->put('transaction_ref', $tran);
+
+        Xendit::setApiKey(config('xendit.apikey'));
+
+        $products = [];
+        foreach (CartManager::get_cart() as $detail) {
+            array_push($products, [
+                'name' => $detail->product['name'],
+            ]);
+        }
+        // dd($products);
+        if ($request->user_is == 'customer') {
+            $name = $customer->name ? $customer->name : $customer->f_name;
+            $phone = $customer->phone;
+            $address = $customer->district.', '.$customer->city.', '.$customer->province;
+            $id = $customer->id;
+            $email = $customer->email;
+        }
+        if ($request->user_is == 'dropship') {
+            $custom = ShippingAddress::where('slug', session()->get('customer_address'))->first();
+            $name = $custom->contact_person_name;
+            $phone = $custom->phone;
+            $address = $custom->district.', '.$custom->city.', '.$custom->province;
+            $id = $custom->customer_id;
+            $email = 'dropshipper@ezren.id';
+        }
+
+        $user = [
+            'given_names' => $name ? $name : 'ezren_customer',
+            'email' => $email,
+            'mobile_number' => $phone,
+            'address' => $address,
+        ];
+
+        // dd($user);
+        $group = $request->order_id;
+
+        $params = [
+            'external_id' => 'ezren'.$phone.$id,
+            'amount' => $value,
+            'payer_email' => $email,
+            'description' => env('APP_NAME') ? env('APP_NAME') : 'Ezren Paymnet',
             'payment_methods' => [$type],
             'fixed_va' => true,
             'should_send_email' => true,
