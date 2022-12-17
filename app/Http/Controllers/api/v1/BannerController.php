@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class BannerController extends Controller
 {
-    public function get_banners(Request $request){
+    public function get_banners(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-            'banner_type' => 'required'
+            'banner_type' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -20,17 +21,18 @@ class BannerController extends Controller
         }
 
         try {
-            if ($request['banner_type']=='all'){
-                $banners = Banner::where(['published'=>1])->get();
-            }elseif ($request['banner_type']=='main_banner'){
-                $banners = Banner::where(['published'=>1,'banner_type'=>'Main Banner'])->get();
-            }else{
-                $banners = Banner::where(['published'=>1,'banner_type'=>'Footer Banner'])->get();
+            if ($request['banner_type'] == 'all') {
+                $banners = Banner::where(['published' => 1])->get();
+            } elseif ($request['banner_type'] == 'main_banner') {
+                $banners = Banner::where(['published' => 1, 'banner_type' => 'Main Banner'])->get();
+            } elseif ($request['banner_type'] == 'popup_banner') {
+                $banners = Banner::where(['published' => 1, 'banner_type' => 'Popup Banner'])->get();
+            } else {
+                $banners = Banner::where(['published' => 1, 'banner_type' => 'Footer Banner'])->get();
             }
         } catch (\Exception $e) {
-
         }
 
-        return response()->json($banners,200);
+        return response()->json($banners, 200);
     }
 }
