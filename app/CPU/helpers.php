@@ -31,7 +31,7 @@ class Helpers
         $main = 'https://api.whatsapp.com/send?phone=';
         $phone = $data['phone'];
         $product = ucwords($data['product']);
-        $product = substr($product, 0, 50);
+        $product = urlencode(substr($product, 0, 50));
         $price = 'Rp.'.number_format($data['price']);
         $link = $data['link'];
         $url = $main.$phone.'&text='.$product.'%0A'.$price;
