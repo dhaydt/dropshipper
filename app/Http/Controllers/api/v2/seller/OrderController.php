@@ -128,7 +128,7 @@ class OrderController extends Controller
                 $g->delete();
             }
 
-            return response()->json(translate('order_placed_successfully'), 200);
+            return response()->json(['status' => 'success', 'order_id' => $order_id, 'message' => 'order_placed_successfully!']);
         } else {
             return response()->json(['status' => 'fail', 'message' => 'auth-001 unauthorized']);
         }

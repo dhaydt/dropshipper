@@ -5,7 +5,6 @@ namespace App\Http\Controllers\api\v1;
 use App\CPU\CartManager;
 use App\CPU\Helpers;
 use App\CPU\OrderManager;
-use function App\CPU\translate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -50,6 +49,6 @@ class OrderController extends Controller
 
         CartManager::cart_clean($request);
 
-        return response()->json(translate('order_placed_successfully'), 200);
+        return response()->json(['status' => 'success', 'order_id' => $order_id, 'message' => 'order_placed_successfully!']);
     }
 }
