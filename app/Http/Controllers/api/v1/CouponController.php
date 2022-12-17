@@ -12,9 +12,8 @@ class CouponController extends Controller
 {
     public function apply(Request $request)
     {
-
         try {
-            $couponLimit = Order::where('customer_id', $request->user()->id)
+            $couponLimit = Order::where(['customer_id' => $request->user()->id, 'user_is' => 'customer'])
                 ->where('coupon_code', $request['code'])->count();
 
             $coupon = Coupon::where(['code' => $request['code']])

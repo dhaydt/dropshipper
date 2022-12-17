@@ -89,6 +89,10 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
             Route::post('login', 'LoginController@login');
             Route::post('register', 'LoginController@register');
         });
+
+        Route::group(['prefix' => 'coupon'], function () {
+            Route::get('apply', 'CouponController@apply');
+        });
     });
     Route::post('ls-lib-update', 'LsLibController@lib_update');
 });

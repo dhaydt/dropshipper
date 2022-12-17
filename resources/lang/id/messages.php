@@ -1509,4 +1509,6 @@
   'Terms & Condition Dropship' => 'Terms & Condition Dropship',
   'terms_and_condition_dropship' => 'Terms and condition dropship',
   'dropship_terms_and_condition' => 'Dropship terms and condition',
+  'Coupon Edit' => 'Coupon Edit',
+  'Discount on Purchase' => 'Discount on Purchase',
 );

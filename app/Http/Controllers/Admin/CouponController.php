@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\CPU\BackEndHelper;
 use App\CPU\Convert;
 use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
@@ -17,8 +16,7 @@ class CouponController extends Controller
     {
         $query_param = [];
         $search = $request['search'];
-        if ($request->has('search'))
-        {
+        if ($request->has('search')) {
             $key = explode(' ', $request['search']);
             $cou = Coupon::where(function ($q) use ($key) {
                 foreach ($key as $value) {
@@ -28,12 +26,13 @@ class CouponController extends Controller
                 }
             });
             $query_param = ['search' => $request['search']];
-        }else{
+        } else {
             $cou = new Coupon();
         }
-        
+
         $cou = $cou->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
-        return view('admin-views.coupon.add-new', compact('cou','search'));
+
+        return view('admin-views.coupon.add-new', compact('cou', 'search'));
     }
 
     public function store(Request $request)
@@ -54,23 +53,25 @@ class CouponController extends Controller
             'code' => $request->code,
             'start_date' => $request->start_date,
             'expire_date' => $request->expire_date,
-            'min_purchase' => Convert::usd($request->min_purchase),
-            'max_discount' => Convert::usd($request->max_discount),
+            'min_purchase' => $request->min_purchase,
+            'max_discount' => $request->max_discount,
             'discount' => $request->discount_type == 'amount' ? Convert::usd($request->discount) : $request['discount'],
             'discount_type' => $request->discount_type,
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now(),
-            'limit' =>$request->limit,
+            'limit' => $request->limit,
         ]);
 
         Toastr::success('Coupon added successfully!');
+
         return back();
     }
 
     public function edit($id)
     {
         $c = Coupon::where(['id' => $id])->first();
+
         return view('admin-views.coupon.edit', compact('c'));
     }
 
@@ -92,15 +93,16 @@ class CouponController extends Controller
             'code' => $request->code,
             'start_date' => $request->start_date,
             'expire_date' => $request->expire_date,
-            'min_purchase' => Convert::usd($request->min_purchase),
-            'max_discount' => Convert::usd($request->max_discount),
+            'min_purchase' => $request->min_purchase,
+            'max_discount' => $request->max_discount,
             'discount' => $request->discount_type == 'amount' ? Convert::usd($request->discount) : $request['discount'],
             'discount_type' => $request->discount_type,
             'updated_at' => now(),
-            'limit' =>$request->limit,
+            'limit' => $request->limit,
         ]);
 
         Toastr::success('Coupon updated successfully!');
+
         return back();
     }
 
@@ -112,6 +114,7 @@ class CouponController extends Controller
         // $data = $request->status;
         // return response()->json($data);
         Toastr::success('Coupon status updated!');
+
         return back();
     }
 }
