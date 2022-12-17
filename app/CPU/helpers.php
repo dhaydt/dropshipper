@@ -21,10 +21,23 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 use Xendit\Xendit;
 
 class Helpers
 {
+    public static function directWa($data)
+    {
+        $main = 'https://api.whatsapp.com/send?phone=';
+        $phone = '6282382852283';
+        $product = ucwords($data['product']);
+        $price = 'Rp.'.number_format($data['price']);
+        $link = $data['link'];
+        $url = $main.$phone.'&text='.$link.'%0A'.$product.'%0A'.$price;
+
+        return $url;
+    }
+
     public static function getDropship($id)
     {
         $dropship = Seller::find($id);
@@ -851,6 +864,20 @@ class Helpers
                     $data['share_url'] = $url;
                 }
             }
+        }
+
+        $phone = BusinessSetting::where('type', 'company_phone')->first();
+        if ($phone->value !== null || $phone->value != '') {
+            $direct = [
+                'phone' => '62'.(int) $phone->value,
+                'product' => $data['name'],
+                'price' => $data['unit_price'],
+                'link' => URL::to('/product/'.$data['slug']),
+            ];
+
+            $data['direct_wa'] = Helpers::directWa($direct);
+        } else {
+            $data['direct_wa'] = '';
         }
 
         return $data;
