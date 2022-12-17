@@ -166,20 +166,29 @@
                             <div class="col-6 pt-2">
 
                             </div>
-                            <div class="col-6 pt-2">
-                                <div class="text-right">
-                                    <h6 class="" style="color: #8a8a8a;">
-                                        {{\App\CPU\translate('Payment')}} {{\App\CPU\translate('Method')}}
-                                        : {{str_replace('_',' ',$order['payment_method'])}}
-                                    </h6>
-                                    <h6 class="" style="color: #8a8a8a;">
-                                        {{\App\CPU\translate('Payment')}} {{\App\CPU\translate('reference')}}
-                                        : {{str_replace('_',' ',$order['transaction_ref'])}}
-                                    </h6>
-                                    <h6 class="" style="color: #8a8a8a;">
-                                        {{\App\CPU\translate('shipping')}} {{\App\CPU\translate('method')}}
-                                        : {{$order->shipping ? $order->shipping->title :'No shipping method selected'}}
-                                    </h6>
+                            <div class="col-6 col-md-4 pt-2 flex-end">
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-capitalize"
+                                        style="color: #8a8a8a;">{{\App\CPU\translate('payment_method')}} :</span>
+                                    <span class="mx-1"
+                                        style="color: #8a8a8a;">
+                                    @if ($order->payment_method !== 'cash_on_delivery')
+                                    {{str_replace('_',' ',$order['payment_method'])}}
+                                    @else
+                                    Belum dipilih
+                                    @endif
+                                    </span>
+                                </div>
+                                {{-- <div class="flex-end">
+                                    <h6 style="color: #8a8a8a;">{{\App\CPU\translate('Payment')}} {{\App\CPU\translate('reference')}}
+                                        :</h6>
+                                    <h6 class="mx-1"
+                                        style="color: #8a8a8a;">{{str_replace('_',' ',$order['transaction_ref'])}}</h6>
+                                </div> --}}
+                                <div class="d-flex justify-content-between">
+                                    <span style="color: #8a8a8a;">{{\App\CPU\translate('shipping')}} {{\App\CPU\translate('method')}}
+                                        :</span>
+                                    <span class="mx-1 text-uppercase" style="color: #8a8a8a;">{{$order->shipping}}</span>
                                 </div>
                             </div>
                         </div>
