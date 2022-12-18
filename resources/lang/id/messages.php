@@ -1,4 +1,6 @@
-<?php return array (
+
+text/x-generic messages.php ( PHP script, UTF-8 Unicode text )
+<?php return [
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1511,10 +1513,14 @@
   'dropship_terms_and_condition' => 'Dropship terms and condition',
   'Coupon Edit' => 'Coupon Edit',
   'Discount on Purchase' => 'Discount on Purchase',
-  'proceed_order' => 'Proceed order',
-  'Pilih_metode_pengiriman' => 'Pilih metode pengiriman',
-  'select_shipping' => 'Select shipping',
-  'Select_address' => 'Select address',
-  'Shipping_address' => 'Shipping address',
-  'Proses_order' => 'Proses order',
-);
+  'Go to the facebook developer page' => 'Go to the facebook developer page',
+  'Click Here' => 'Click Here',
+  'If needed' => 'If needed',
+  'Provide Primary Email and press' => 'Provide Primary Email and press',
+  'In about section select' => 'In about section select',
+  'Select an app type and press' => 'Select an app type and press',
+  'Complete the add details form and press' => 'Complete the add details form and press',
+  'left sidebar' => 'Left sidebar',
+  'Make sure to check' => 'Make sure to check',
+  'must on' => 'Must on',
+];
