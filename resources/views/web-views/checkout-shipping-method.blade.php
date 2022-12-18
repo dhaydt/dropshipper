@@ -71,6 +71,8 @@
                                                 <div class="col-md-6">{{ $address['contact_person_name'] }}</div>
                                                 <div class="col-md-6 mb-1">Handphone: </div>
                                                 <div class="col-md-6">{{ $address['phone'] }}</div>
+                                                <div class="col-md-6 mb-1">Alamat: </div>
+                                                <div class="col-md-6">{{ $address['address'] }}</div>
                                                 <div class="col-md-6 mb-1">Kecamatan: </div>
                                                 <div class="col-md-6">{{ $address['district'] }}</div>
                                                 <div class="col-md-6 mb-1">Kota: </div>
