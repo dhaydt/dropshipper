@@ -8,6 +8,7 @@ use App\CPU\ImageManager;
 use App\CPU\OrderManager;
 use function App\CPU\translate;
 use App\Http\Controllers\Controller;
+use App\Model\CartShipping;
 use App\Model\Order;
 use App\Model\ShippingAddress;
 use App\Model\SupportTicket;
@@ -218,6 +219,21 @@ class UserProfileController extends Controller
         }
 
         DB::table('shipping_addresses')->insert($address);
+        $id_add = DB::getPdo()->lastInsertId();
+
+        if (auth('seller')->check()) {
+            $cart = \App\CPU\CartManager::get_cart();
+            $group_id = $cart[0]['cart_group_id'];
+            $shipp = CartShipping::where('cart_group_id', $group_id)->first();
+            if (!$shipp) {
+                $shipp = new CartShipping();
+                $shipp->cart_group_id = $group_id;
+                $shipp->shipping_method_id = 0;
+                $shipp->shipping_service = null;
+            }
+            $shipp->address_id = $id_add;
+            $shipp->save();
+        }
 
         if (auth('customer')->check()) {
             DB::table('users')->where('id', $id)->limit(1)->update([

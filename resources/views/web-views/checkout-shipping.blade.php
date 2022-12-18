@@ -45,10 +45,12 @@
                     @else
                     @php($shipping_addresses=\App\Model\ShippingAddress::where('customer_id',auth('customer')->id())->get())
                     @endif
+                    @php($cart=\App\CPU\CartManager::get_cart())
                     <form method="post" action="" id="address-form">
                         @csrf
                         <div class="card-body" style="padding: 0!important;">
                             <ul class="list-group">
+                                <input type="hidden" name="cart_group_id" value="{{ $cart[0]['cart_group_id'] }}">
                                 @foreach($shipping_addresses as $key=>$address)
                                     <li class="list-group-item mb-2 mt-2"
                                         style="cursor: pointer;background: rgba(245,245,245,0.51)"
@@ -109,14 +111,6 @@
                                                     </select>
                                                 </div>
                                                 {{-- {{ dd() }} --}}
-
-                                                <div class="form-group">
-                                                    <label>{{ \App\CPU\translate('Country')}} <span
-                                                            style="color: red">*</span></label>
-                                                            <input type="hidden" name="country" value="ID">
-                                                    <input type="text" class="form-control"
-                                                           name="country" {{$shipping_addresses->count()==0?'required':''}} value="Indonesia" disabled>
-                                                </div>
 
                                                 <div class="form-group">
                                                     @php($province = App\CPU\Helpers::province())
@@ -195,7 +189,7 @@
                         </div>
                         <div class="col-6">
                             <a class="btn btn-primary btn-block" href="javascript:" onclick="proceed_to_next()">
-                                <span class="d-none d-sm-inline">{{ \App\CPU\translate('proceed_payment')}}</span>
+                                <span class="d-none d-sm-inline">{{ \App\CPU\translate('select_shipping')}}</span>
                                 <span class="d-inline d-sm-none">{{ \App\CPU\translate('Next')}}</span>
                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} mt-sm-0 mx-1"></i>
                             </a>
@@ -356,13 +350,14 @@
                                 });
                             }
                         } else {
-                            location.href = '{{route('checkout-payment')}}';
+                            location.href = '{{route('checkout-shipping-method')}}';
                         }
                     },
                     complete: function () {
                         $('#loading').hide();
                     },
-                    error: function () {
+                    error: function (err) {
+                        console.log('err', err);
                         toastr.error('{{\App\CPU\translate('Something went wrong!')}}', {
                             CloseButton: true,
                             ProgressBar: true

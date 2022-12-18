@@ -86,37 +86,36 @@ class SystemController extends Controller
 
     public function choose_shipping_address(Request $request)
     {
-        if ($request['country'] == 'ID') {
-            $provinces = $request['state'];
-            $province = explode(',', $provinces);
-            if (count($province) > 1) {
-                $prov = $province[1];
-            } else {
-                $prov = $province[0];
-            }
-            // dd($prov);
+        $provinces = $request['state'];
+        $province = explode(',', $provinces);
+        if (count($province) > 1) {
+            $prov = $province[1];
+        } else {
+            $prov = $province[0];
+        }
+        // dd($prov);
 
-            $cities = $request['city'];
-            $cit = explode(',', $cities);
-            if (count($cit) > 1) {
-                $city = $cit[1];
-                $city_id = $cit[0];
-            } else {
-                $city = $province[0];
-                $city_id = '';
-            }
-            $districts = $request->district;
-            $dis = explode(',', $districts);
-            if (count($dis) > 1) {
-                $district = $dis[1];
-                $district_id = $dis[0];
-            } else {
-                $district_id = '';
-                $district = $dis[0];
-            }
+        $cities = $request['city'];
+        $cit = explode(',', $cities);
+        if (count($cit) > 1) {
+            $city = $cit[1];
+            $city_id = $cit[0];
+        } else {
+            $city = $province[0];
+            $city_id = '';
+        }
+        $districts = $request->district;
+        $dis = explode(',', $districts);
+        if (count($dis) > 1) {
+            $district = $dis[1];
+            $district_id = $dis[0];
+        } else {
+            $district_id = '';
+            $district = $dis[0];
+        }
 
-            if ($request->save_address == 'on') {
-                $address_id = DB::table('shipping_addresses')->insertGetId([
+        if ($request->save_address == 'on') {
+            $address_id = DB::table('shipping_addresses')->insertGetId([
                     'customer_id' => auth('customer')->id(),
                     'contact_person_name' => $request['contact_person_name'],
                     'address_type' => $request['address_type'],
@@ -133,8 +132,8 @@ class SystemController extends Controller
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
-            } elseif ($request['shipping_method_id'] == 0) {
-                $validator = Validator::make($request->all(), [
+        } elseif ($request['shipping_method_id'] == 0) {
+            $validator = Validator::make($request->all(), [
                     'contact_person_name' => 'required',
                     'address_type' => 'required',
                     'address' => 'required',
@@ -146,11 +145,11 @@ class SystemController extends Controller
                     'phone' => 'required',
                 ]);
 
-                if ($validator->fails()) {
-                    return response()->json(['errors' => Helpers::error_processor($validator)]);
-                }
+            if ($validator->fails()) {
+                return response()->json(['errors' => Helpers::error_processor($validator)]);
+            }
 
-                $address_id = DB::table('shipping_addresses')->insertGetId([
+            $address_id = DB::table('shipping_addresses')->insertGetId([
                     'customer_id' => 0,
                     'contact_person_name' => $request['contact_person_name'],
                     'address_type' => $request['address_type'],
@@ -166,72 +165,35 @@ class SystemController extends Controller
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
-            } else {
-                $address_id = $request['shipping_method_id'];
-            }
         } else {
-            if ($request->save_address == 'on') {
-                $address_id = DB::table('shipping_addresses')->insertGetId([
-                    'customer_id' => auth('customer')->id(),
-                    'contact_person_name' => $request['contact_person_name'],
-                    'address_type' => $request['address_type'],
-                    'address' => $request['address'],
-                    'city' => $request['city'],
-                    'country' => $request['country'],
-                    'zip' => $request['zip'],
-                    'phone' => $request['phone'],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            } elseif ($request['shipping_method_id'] == 0) {
-                $validator = Validator::make($request->all(), [
-                    'contact_person_name' => 'required',
-                    'address_type' => 'required',
-                    'address' => 'required',
-                    'city' => 'required',
-                    'country' => 'required',
-                    'zip' => 'required',
-                    'phone' => 'required',
-                ]);
-
-                if ($validator->fails()) {
-                    return response()->json(['errors' => Helpers::error_processor($validator)]);
-                }
-
-                $address_id = DB::table('shipping_addresses')->insertGetId([
-                    'customer_id' => 0,
-                    'contact_person_name' => $request['contact_person_name'],
-                    'address_type' => $request['address_type'],
-                    'address' => $request['address'],
-                    'city' => $request['city'],
-                    'country' => $request['country'],
-                    'zip' => $request['zip'],
-                    'phone' => $request['phone'],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            } else {
-                $address_id = $request['shipping_method_id'];
-            }
+            $address_id = $request['shipping_method_id'];
         }
 
-        $oldAddress = session()->get('address_id');
+        // $oldAddress = session()->get('address_id');
 
-        session(['old_address' => $oldAddress]);
+        // session(['old_address' => $oldAddress]);
 
-        session()->put('address_id', $address_id);
+        // session()->put('address_id', $address_id);
 
-        $old = session()->get('old_address');
-        $new = session()->get('address_id');
+        // $old = session()->get('old_address');
+        // $new = session()->get('address_id');
 
-        if ($new == $old) {
-        } else {
-            session(['address_changed' => 1]);
-            CartShipping::where('cart_group_id', session()->get('cart_group_id'))
-                        ->update([
-                            'shipping_cost' => 0.00,
-                        ]);
+        // if ($new == $old) {
+        // } else {
+        //     session(['address_changed' => 1]);
+        //     CartShipping::where('cart_group_id', session()->get('cart_group_id'))
+        //                 ->update([
+        //                     'shipping_cost' => 0.00,
+        //                 ]);
+        // }
+        $cart = CartShipping::where('cart_group_id', $request->cart_group_id)->first();
+        if (!$cart) {
+            $cart = new CartShipping();
+            $cart->cart_group_id = $request->cart_group_id;
+            $cart->shipping_method_id = 0;
         }
+        $cart->address_id = $request->shipping_method_id;
+        $cart->save();
 
         return response()->json([], 200);
     }

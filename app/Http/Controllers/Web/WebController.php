@@ -251,6 +251,11 @@ class WebController extends Controller
 
     public function checkout_details(Request $request)
     {
+        if (auth('seller')->check()) {
+            $country = DB::table('country')->get();
+
+            return view('web-views.addAddress', compact('country'));
+        }
         $check = session()->has('customer_address');
         if (session()->get('user_is') !== 'dropship') {
             if (auth('customer')->user()->district == null) {
@@ -270,11 +275,11 @@ class WebController extends Controller
 
         $cart_group_ids = CartManager::get_cart_group_ids();
         // dd($cart_group_ids);
-        if (CartShipping::whereIn('cart_group_id', $cart_group_ids)->count() != count($cart_group_ids)) {
-            Toastr::info(translate('select_shipping_method_first'));
+        // if (CartShipping::whereIn('cart_group_id', $cart_group_ids)->count() != count($cart_group_ids)) {
+        //     Toastr::info(translate('select_shipping_method_first'));
 
-            return redirect('shop-cart');
-        }
+        //     return redirect('shop-cart');
+        // }
 
         if (count($cart_group_ids) > 0) {
             // session(['address_changed' => 0]);
@@ -284,6 +289,22 @@ class WebController extends Controller
         Toastr::info(translate('no_items_in_basket'));
 
         return redirect('/');
+    }
+
+    public function shipping_method()
+    {
+        $cart = \App\CPU\CartManager::get_cart();
+
+        $cart_id = $cart[0]['cart_group_id'];
+        $shipping = CartShipping::where('cart_group_id', $cart_id)->first();
+        if (auth('customer')->check()) {
+            session()->put('address_id', $shipping->address_id);
+            $address = ShippingAddress::find($shipping->address_id);
+        } elseif (auth('seller')->check()) {
+            $address = ShippingAddress::where('slug', session()->get('customer_address'))->first();
+        }
+
+        return view('web-views.checkout-shipping-method', compact('address'));
     }
 
     public function checkout_payment()
@@ -316,12 +337,15 @@ class WebController extends Controller
                 'transaction_ref' => '',
                 'order_group_id' => $unique_id,
                 'cart_group_id' => $group_id,
+                'api' => false,
+                'user_is' => 'customer',
             ];
             $order_id = OrderManager::generate_order($data);
             array_push($order_ids, $order_id);
         }
 
         CartManager::cart_clean();
+        session()->forget('customer_address');
 
         return view('web-views.checkout-complete');
     }

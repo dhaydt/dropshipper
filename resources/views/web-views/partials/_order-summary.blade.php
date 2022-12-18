@@ -16,7 +16,7 @@
     }
 </style>
 
-@if (\Request::route()->getName() == 'shop-cart' || \Request::route()->getName() == 'checkout-details' || \Request::route()->getName() == 'checkout-shipping' || \Request::route()->getName() == 'checkout-payment' || \Request::route()->getName() == 'checkout-review')
+@if (\Request::route()->getName() == 'shop-cart' || \Request::route()->getName() == 'checkout-details' || \Request::route()->getName() == 'checkout-shipping' || \Request::route()->getName() == 'checkout-payment' || \Request::route()->getName() == 'checkout-review' || \Request::route()->getName() == 'checkout-shipping-method')
 <aside class="col-lg-4 pt-4 pt-lg-0">
     <div class="cart_total">
         @php($sub_total=0)

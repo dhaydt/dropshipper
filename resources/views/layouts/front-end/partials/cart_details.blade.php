@@ -31,9 +31,9 @@
                                         class="media-header d-flex justify-content-center align-items-center {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}">
                                         <a href="{{route('product',$cartItem['slug'])}}">
                                             <img style="height: 82px;"
-                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                 src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$cartItem['thumbnail']}}"
-                                                 alt="Product">
+                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$cartItem['thumbnail']}}"
+                                                alt="Product">
                                         </a>
                                     </div>
 
@@ -88,84 +88,76 @@
                         </div>
                     </div>
                     @if($cart_key==$group->count()-1)
-                    <!-- choosen shipping method-->
-            @php($choosen_shipping=\App\Model\CartShipping::where(['cart_group_id'=>$cartItem['cart_group_id']])->first())
-            @if(isset($choosen_shipping)==false)
-            @php($choosen_shipping['shipping_method_id']=0)
-            @endif
+                    {{-- @php($choosen_shipping=\App\Model\CartShipping::where(['cart_group_id'=>$cartItem['cart_group_id']])->first())
+                    @if(isset($choosen_shipping)==false)
+                    @php($choosen_shipping['shipping_method_id']=0)
+                    @endif
 
-            @if($shippingMethod=='sellerwise_shipping')
-            @php($shippings=\App\CPU\Helpers::get_shipping_methods($cartItem['seller_id'],$cartItem['seller_is'],$cartItem['product_id']))
-            <div class="row">
-                {{-- {{ dd($shippings) }} --}}
-                <div class="col-12">
-                    <select class="form-control"
-                        onchange="set_shipping_id(this.value,'{{$cartItem['cart_group_id']}}')">
-                        <option>{{\App\CPU\translate('choose_shipping_method')}}</option>
-                        @if ($shippings[0][0][0]['costs'])
-                        @foreach($shippings[0][0][0]['costs'] as $ship)
-                        {{-- {{ dd($ship) }} --}}
-                        <option value="{{'JNE-'.$ship['service'].','.$ship['cost'][0]['value']}}"
-                            {{$choosen_shipping['shipping_method_id']==$ship['service']?'selected':''}}>
-                            {{"JNE - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
-                           '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
-                        </option>
-                        @endforeach
+                    @if($shippingMethod=='sellerwise_shipping')
+                    @php($shippings=\App\CPU\Helpers::get_shipping_methods($group_key))
+                    <div class="row">
+                        @php($chosen = $choosen_shipping['shipping_method_id']);
+                        @if (isset($choosen_shipping['shipping_service']))
+                            @php($chosen = $choosen_shipping['shipping_service'])
                         @endif
+                        <div class="col-12">
+                            <select class="form-control"
+                                onchange="set_shipping_id(this.value,'{{$cartItem['cart_group_id']}}')">
+                                @if ($shippings[0][0][0]['costs'])
+                                @foreach($shippings[0][0][0]['costs'] as $ship)
+                                <option value="{{'JNE- '.$ship['service'].','.$ship['cost'][0]['value']}}"
+                                    {{$chosen=='JNE- '.$ship['service']?'selected':''}}>
+                                    {{"JNE - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
+                                '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
+                                </option>
+                                @endforeach
+                                @endif
 
-                        @if ($shippings[0][1][0]['costs'])
-                        @foreach($shippings[0][1][0]['costs'] as $ship)
-                        {{-- {{ dd($ship) }} --}}
-                       <option value="{{'TIKI- '.$ship['service'].','.$ship['cost'][0]['value']}}"
-                            {{$choosen_shipping['shipping_method_id']==$ship['service']?'selected':''}}>
-                            {{"TIKI - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
-                           '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
-                        </option>
-                        @endforeach
-                        @endif
+                                @if ($shippings[0][1][0]['costs'])
+                                @foreach($shippings[0][1][0]['costs'] as $ship)
+                            <option value="{{'TIKI- '.$ship['service'].','.$ship['cost'][0]['value']}}"
+                                    {{$chosen=='TIKI- '.$ship['service']?'selected':''}}>
+                                    {{"TIKI - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
+                                '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
+                                </option>
+                                @endforeach
+                                @endif
 
-                        @if ($shippings[0][2][0]['costs'])
-                        @foreach($shippings[0][2][0]['costs'] as $ship)
-                        {{-- {{ dd($ship) }} --}}
-                        <option value="{{'SiCepat- '.$ship['service'].','.$ship['cost'][0]['value']}}"
-                            {{$choosen_shipping['shipping_method_id']==$ship['service']?'selected':''}}>
-                            {{"SiCepat - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
-                           '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
-                        </option>
-                        @endforeach
-                        @endif
-                        @foreach($shippings[1] as $shipping)
-                        <option value="{{$shipping['id']}}"
-                            {{$choosen_shipping['shipping_method_id']==$shipping['id']?'selected':''}}>
-                            {{$shipping['title'].' ( '.$shipping['duration'].' )
-                            '.\App\CPU\Helpers::currency_converter($shipping['cost'])}}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            @endif
-            @endif
-            @endforeach
-            <div class="mt-3"></div>
-            @endforeach
-
-            @if($shippingMethod=='inhouse_shipping')
-                @php($shippings=\App\CPU\Helpers::get_shipping_methods(1,'admin', $cartItem['product_id']))
-            <div class="row">
-                <div class="col-12">
-                    <select class="form-control" onchange="set_shipping_id(this.value,'all_cart_group')">
-                        @foreach($shippings[1] as $shipping)
-                        <option value="{{$shipping['id']}}"
-                            {{$choosen_shipping['shipping_method_id']==$shipping['id']?'selected':''}}>
-                            {{$shipping['title'].' ( '.$shipping['duration'].' )
-                            '.\App\CPU\Helpers::currency_converter($shipping['cost'])}}
-                        </option>
-                        @endforeach
-                    </select>
+                                @if ($shippings[0][2][0]['costs'])
+                                @foreach($shippings[0][2][0]['costs'] as $ship)
+                                <option value="{{'SiCepat- '.$ship['service'].','.$ship['cost'][0]['value']}}"
+                                    {{$chosen=='SiCepat- '.$ship['service']?'selected':''}}>
+                                    {{"SiCepat - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
+                                '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
+                                </option>
+                                @endforeach
+                                <option {{$chosen== 0 ?'selected':''}}>{{\App\CPU\translate('Pilih_metode_pengiriman')}}</option>
+                                @endif
+                            </select>
+                        </div>
                     </div>
-                </div>
-            @endif
+                    @endif --}}
+                    @endif
+                    @endforeach
+                    <div class="mt-3"></div>
+                    @endforeach
+
+                    @if($shippingMethod=='inhouse_shipping')
+                        @php($shippings=\App\CPU\Helpers::get_shipping_methods(1,'admin', $cartItem['product_id']))
+                    <div class="row">
+                        <div class="col-12">
+                            <select class="form-control" onchange="set_shipping_id(this.value,'all_cart_group')">
+                                @foreach($shippings[1] as $shipping)
+                                <option value="{{$shipping['id']}}"
+                                    {{$choosen_shipping['shipping_method_id']==$shipping['id']?'selected':''}}>
+                                    {{$shipping['title'].' ( '.$shipping['duration'].' )
+                                    '.\App\CPU\Helpers::currency_converter($shipping['cost'])}}
+                                </option>
+                                @endforeach
+                            </select>
+                            </div>
+                        </div>
+                    @endif
 
             @if( $cart->count() == 0)
                 <div class="d-flex justify-content-center align-items-center">
@@ -180,11 +172,19 @@
                 </a>
             </div>
             <div class="col-6">
+                @if (auth('customer')->check())
                 <a href="{{route('checkout-details')}}"
                    class="btn btn-primary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
-                    {{\App\CPU\translate('checkout')}}
+                    {{\App\CPU\translate('Select_address')}}
                     <i class="fa fa-{{Session::get('direction') === "rtl" ? 'backward' : 'forward'}} px-1"></i>
                 </a>
+                @elseif(auth('seller')->check())
+                    <a href="{{route('checkout-shipping-method')}}"
+                    class="btn btn-primary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
+                        {{\App\CPU\translate('Proses_order')}}
+                        <i class="fa fa-{{Session::get('direction') === "rtl" ? 'backward' : 'forward'}} px-1"></i>
+                    </a>
+                @endif
             </div>
         </div>
     </section>

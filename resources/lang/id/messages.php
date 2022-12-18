@@ -1511,4 +1511,10 @@
   'dropship_terms_and_condition' => 'Dropship terms and condition',
   'Coupon Edit' => 'Coupon Edit',
   'Discount on Purchase' => 'Discount on Purchase',
+  'proceed_order' => 'Proceed order',
+  'Pilih_metode_pengiriman' => 'Pilih metode pengiriman',
+  'select_shipping' => 'Select shipping',
+  'Select_address' => 'Select address',
+  'Shipping_address' => 'Shipping address',
+  'Proses_order' => 'Proses order',
 );

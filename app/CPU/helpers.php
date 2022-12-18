@@ -515,25 +515,43 @@ class Helpers
         return $config;
     }
 
-    public static function get_shipping_methods($seller_id, $type, $product_id)
+    public static function get_shipping_methods($cart_group_id = null)
     {
+        $admin = BusinessSetting::where('type', 'address')->first();
+        $admin = json_decode($admin->value);
+        if ($admin->district_id == '') {
+            return 'fail';
+        }
         $id = auth('customer')->id();
         // dd($id);
         // $user = User::find($id);
         $user = ShippingAddress::find(session()->get('address_id'));
-        // dd($user);
+        if ($user->district_id == null || $user->district_id == '') {
+            return 'fail';
+        }
         $to_district = $user->district_id ? $user->district_id : null;
         $to_type = $user->city_type;
-        $product = Product::find($product_id);
-        // dd($product);
-        $weight = $product->weight ? $product->weight : '1';
-        $weight = $weight * 1000;
+        $carts = Cart::where('cart_group_id', $cart_group_id)->get();
+        if (count($carts) < 1) {
+            return 'no_cart';
+        }
+        $product_ids = $carts->pluck('product_id');
+        $qty_cart = $carts->pluck('quantity');
 
-        $from_city = $product->city_id ? $product->city_id : '151';
+        $weights = [];
+        foreach ($product_ids as $key => $id) {
+            $weight = Product::find($id)->weight * $qty_cart[$key];
+            array_push($weights, $weight);
+        }
+        $weight = count($weights) > 0 ? array_sum($weights) : 1;
+        $weight = $weight == 0 ? 1 : $weight;
+        // dd($weight);
+
+        $from_city = $admin->city_id ? $admin->city_id : '151';
         $from_type = 'Kota';
         $from_type = 'Kota';
         // $from_state = '21';
-        $ShippingMethod = ShippingMethod::where(['status' => 1])->where(['creator_id' => $seller_id, 'creator_type' => $type])->get();
+        $ShippingMethod = 'Raja Ongkir';
 
         $curl = curl_init();
         // JNE

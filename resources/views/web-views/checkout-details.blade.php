@@ -3,8 +3,8 @@
 @section('title',\App\CPU\translate('Checkout Process Start'))
 
 @push('css_or_js')
-    <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/checkout-details.css"/>
-    <style>
+<style>
+        <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/checkout-details.css"/>
         .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
             background: {{$web_config['primary_color']}};
             border-radius: 6px;
@@ -20,6 +20,7 @@
             font-weight: 600 !important;
             font-size: 18px !important;
         }
+        .god{}
     </style>
 @endpush
 
