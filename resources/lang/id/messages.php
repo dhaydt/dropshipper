@@ -1,6 +1,6 @@
+<?php
 
-text/x-generic messages.php ( PHP script, UTF-8 Unicode text )
-<?php return [
+return [
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
