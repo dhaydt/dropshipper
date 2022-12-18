@@ -865,20 +865,20 @@ class Helpers
                     $data['share_url'] = $url;
                 }
             }
-        }
 
-        $phone = BusinessSetting::where('type', 'company_phone')->first();
-        if ($phone->value !== null || $phone->value != '') {
-            $direct = [
-                'phone' => '62'.(int) $phone->value,
-                'product' => $data['name'],
-                'price' => $data['unit_price'],
-                'link' => URL::to('/product/'.$data['slug']),
-            ];
+            $phone = BusinessSetting::where('type', 'company_phone')->first();
+            if ($phone->value !== null || $phone->value != '') {
+                $direct = [
+                    'phone' => '62'.(int) $phone->value,
+                    'product' => $data['name'],
+                    'price' => $data['unit_price'],
+                    'link' => URL::to('/product/'.$data['slug']),
+                ];
 
-            $data['direct_wa'] = Helpers::directWa($direct);
-        } else {
-            $data['direct_wa'] = '';
+                $data['direct_wa'] = Helpers::directWa($direct);
+            } else {
+                $data['direct_wa'] = '';
+            }
         }
 
         return $data;
