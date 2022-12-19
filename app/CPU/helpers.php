@@ -420,8 +420,14 @@ class Helpers
     public static function coupon_discount($request)
     {
         $discount = 0;
+        $check = Helpers::get_seller_by_token($request);
+        $is = 'customer';
         $user = Helpers::get_customer($request);
-        $couponLimit = Order::where('customer_id', $user->id)
+        if ($check['success'] == 1) {
+            $user = $check['data'];
+            $is = 'dropship';
+        }
+        $couponLimit = Order::where(['customer_id' => $user->id, 'user_is' => $is])
             ->where('coupon_code', $request['coupon_code'])->count();
 
         $coupon = Coupon::where(['code' => $request['coupon_code']])
