@@ -1,4 +1,6 @@
-<?php return array (
+<?php
+
+return [
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1521,5 +1523,9 @@
   'left sidebar' => 'Left sidebar',
   'Make sure to check' => 'Make sure to check',
   'must on' => 'Must on',
-  'Contact_Us' => 'Contact Us',
-);
+  'select_shipping' => 'Select shipping',
+  'Pilih_metode_pengiriman' => 'Pilih metode pengiriman',
+  'Shipping_address' => 'Shipping address',
+  'Proses_order' => 'Proses order',
+  'Select_address' => 'Select address',
+];
