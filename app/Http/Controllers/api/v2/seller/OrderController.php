@@ -44,7 +44,9 @@ class OrderController extends Controller
             ], 401);
         }
 
-        $details = OrderDetail::where(['seller_id' => $seller['id'], 'order_id' => $id])->get();
+        $details = OrderDetail::whereHas('order', function ($q) use ($data) {
+            $q->where(['customer_id' => $data['data']['id'], 'user_is' => 'dropship']);
+        })->where(['order_id' => $id])->get();
         foreach ($details as $det) {
             $det['product_details'] = Helpers::product_data_formatting(json_decode($det['product_details'], true));
         }

@@ -1,6 +1,4 @@
-<?php
-
-return [
+<?php return array (
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1531,4 +1529,6 @@ return [
   'Contact_Us' => 'Contact Us',
   'customer_orders' => 'Customer orders',
   'dropship_orders' => 'Dropship orders',
-];
+  'shipping_address_customer_dropship' => 'Shipping address customer dropship',
+  'Contact_person_name' => 'Contact person name',
+);
