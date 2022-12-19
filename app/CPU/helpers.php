@@ -885,7 +885,7 @@ class Helpers
                     $dropship = Seller::with('shop')->find($check['data']['id']);
                     $desc = urlencode(strip_tags($data['details']));
                     $str = substr($desc, 0, 100);
-                    $url = env('ETOKO_URL').'/'.'generated'.'/'.$dropship['id'].'/'.$dropship->f_name.'_'.$dropship->l_name.'/'.$data['slug'].'/'.$str;
+                    $url = env('ETOKO_URL').'/'.'generated'.'/'.$dropship['id'].'/'.$dropship->f_name.'_'.$dropship->l_name.'/'.$data['slug'];
                     $data['share_url'] = $url;
                 }
             }
