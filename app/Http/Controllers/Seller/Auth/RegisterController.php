@@ -36,7 +36,7 @@ class RegisterController extends Controller
             $seller->email = $request->email;
             $seller->image = ImageManager::upload('seller/', 'png', $request->file('image'));
             $seller->password = bcrypt($request->password);
-            $seller->status = 'pending';
+            $seller->status = 'approved';
             $seller->save();
 
             $shop = new Shop();
