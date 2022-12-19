@@ -20,11 +20,25 @@ class LoginController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required',
+            'name' => 'required',
+            'shop_name' => 'required',
+            'password' => 'password',
+            'phone' => 'required',
             'password' => 'required|min:6',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+
+        $check = Seller::where('email', $request->email)->first();
+        $checkPhone = Seller::where('phone', $request->phone)->first();
+        if ($check) {
+            return response()->json(['status' => 'fail', 'message' => 'Email already exist!']);
+        }
+
+        if ($checkPhone) {
+            return response()->json(['status' => 'fail', 'message' => 'Phone already exist!']);
         }
 
         DB::transaction(function ($r) use ($request) {
