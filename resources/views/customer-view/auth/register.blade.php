@@ -25,7 +25,7 @@
                             .</p>
                         <form class="needs-validation_" action="{{route('customer.auth.register')}}"
                               method="post" id="sign-up-form">
-                            @csrf
+                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -200,6 +200,7 @@
                     $('#loading').show();
                 },
                 success: function (data) {
+                    console.log('data', data)
                     if (data.errors) {
                         for (var i = 0; i < data.errors.length; i++) {
                             toastr.error(data.errors[i].message, {
@@ -220,8 +221,8 @@
                 complete: function () {
                     $('#loading').hide();
                 },
-                error: function () {
-                  console.log(response)
+                error: function (response) {
+                    console.log(response.message)
                 }
             });
         });*/
