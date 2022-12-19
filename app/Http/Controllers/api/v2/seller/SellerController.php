@@ -8,6 +8,7 @@ use App\CPU\Helpers;
 use App\CPU\ImageManager;
 use function App\CPU\translate;
 use App\Http\Controllers\Controller;
+use App\Model\Order;
 use App\Model\OrderTransaction;
 use App\Model\Product;
 use App\Model\Review;
@@ -99,7 +100,13 @@ class SellerController extends Controller
         if ($data['success'] == 1) {
             $seller = $data['data'];
             $product_ids = Product::where(['user_id' => $seller['id'], 'added_by' => 'seller'])->pluck('id')->toArray();
+            $order = Order::where(['customer_id' => $data['data']['id'], 'user_is' => 'dropship', 'payment_status' => 'paid']);
             $shop = Shop::where(['seller_id' => $seller['id']])->first();
+            $shop['total_paid_transaction'] = $order->count();
+            $shop['total_selling'] = array_sum($order->pluck('order_amount')->toArray());
+            $shop['total_earning'] = 0;
+            // $shop['total_selling'] = BackEndHelper::set_symbol(array_sum($order->pluck('order_amount')->toArray()));
+            // $shop['total_earning'] = BackEndHelper::set_symbol(0);
             $shop['rating'] = round(Review::whereIn('product_id', $product_ids)->avg('rating'), 3);
             $shop['rating_count'] = Review::whereIn('product_id', $product_ids)->count();
         } else {
