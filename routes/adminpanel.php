@@ -374,6 +374,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::get('inhouse-order-filter', 'OrderController@inhouse_order_filter')->name('inhouse-order-filter');
         });
 
+        Route::group(['prefix' => 'orders-dropship', 'as' => 'orders-dropship.', 'middleware' => ['module:order_management']], function () {
+            Route::get('list/{status}', 'OrderController@listDropship')->name('list');
+            Route::get('details/{id}', 'OrderController@details')->name('details');
+            Route::post('status', 'OrderController@status')->name('status');
+            Route::post('payment-status', 'OrderController@payment_status')->name('payment-status');
+            Route::post('productStatus', 'OrderController@productStatus')->name('productStatus');
+            Route::get('generate-invoice/{id}', 'OrderController@generate_invoice')->name('generate-invoice');
+            Route::get('inhouse-order-filter', 'OrderController@inhouse_order_filter')->name('inhouse-order-filter');
+        });
+
         Route::group(['prefix' => 'helpTopic', 'as' => 'helpTopic.', 'middleware' => ['module:web_&_app_settings']], function () {
             Route::get('list', 'HelpTopicController@list')->name('list');
             Route::post('add-new', 'HelpTopicController@store')->name('add-new');

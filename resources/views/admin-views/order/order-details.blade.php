@@ -384,6 +384,99 @@
                 <!-- End Card -->
             </div>
 
+            @if ($order->user_is == 'dropship')
+            <div class="col-lg-4">
+                <!-- Card -->
+                <div class="card">
+                    <!-- Header -->
+                    <div class="card-header">
+                        <h4 class="card-header-title">{{\App\CPU\translate('Dropship')}}</h4>
+                    </div>
+                    <!-- End Header -->
+
+                    <!-- Body -->
+                    @if($order->seller)
+                        <div class="card-body">
+                            <div class="media align-items-center" href="javascript:">
+                                <div class="avatar avatar-circle mr-3">
+                                    <img
+                                        class="avatar-img" style="width: 75px;height: 42px"
+                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                        src="{{asset('storage/profile/'.$order->seller->image)}}"
+                                        alt="Image">
+                                </div>
+                                <div class="media-body">
+                                <span
+                                    class="text-body text-hover-primary">{{$order->seller['f_name']}}</span>
+                                </div>
+                                <div class="media-body text-right">
+                                    {{--<i class="tio-chevron-right text-body"></i>--}}
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="media align-items-center" href="javascript:">
+                                <div class="icon icon-soft-info icon-circle mr-3">
+                                    <i class="tio-shopping-basket-outlined"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span class="text-body text-hover-primary"> {{\App\Model\Order::where(['customer_id' => $order['customer_id'], 'user_is' => 'dropship'])->count()}} {{\App\CPU\translate('orders')}}</span>
+                                </div>
+                                <div class="media-body text-right">
+                                    {{--<i class="tio-chevron-right text-body"></i>--}}
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5>{{\App\CPU\translate('Contact')}} {{\App\CPU\translate('info')}} </h5>
+                            </div>
+
+                            <ul class="list-unstyled list-unstyled-py-2">
+                                <li>
+                                    <i class="tio-online mr-2"></i>
+                                    {{$order->seller['email']}}
+                                </li>
+                                <li>
+                                    <i class="tio-android-phone-vs mr-2"></i>
+                                    {{$order->seller['phone']}}
+                                </li>
+                            </ul>
+
+                            <hr>
+
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5>{{\App\CPU\translate('shipping_address_customer_dropship')}}</h5>
+
+                            </div>
+
+                            @if($order->shippingAddress)
+                                @php($shipping=$order->shippingAddress)
+                            @else
+                                @php($shipping=json_decode($order['shipping_address_data']))
+                            @endif
+
+                            <span class="d-block">{{\App\CPU\translate('Contact_person_name')}} :
+                                <strong>{{$shipping? $shipping->contact_person_name : \App\CPU\translate('empty')}}</strong><br>
+                                {{\App\CPU\translate('District')}}:
+                                <strong>{{$shipping ? $shipping->district : \App\CPU\translate('empty')}}</strong><br>
+                                {{\App\CPU\translate('City')}}:
+                                <strong>{{$shipping ? $shipping->city : \App\CPU\translate('empty')}}</strong><br>
+                                {{\App\CPU\translate('Province')}}:
+                                <strong>{{$shipping ? $shipping->province : \App\CPU\translate('empty')}}</strong><br>
+                                {{\App\CPU\translate('zip_code')}} :
+                                <strong>{{$shipping ? $shipping->zip  : \App\CPU\translate('empty')}}</strong><br>
+                                {{\App\CPU\translate('address')}} :
+                                <strong>{{$shipping ? $shipping->address  : \App\CPU\translate('empty')}}</strong><br>
+                                {{\App\CPU\translate('Phone')}}:
+                                <strong>{{$shipping ? $shipping->phone  : \App\CPU\translate('empty')}}</strong>
+                            </span>
+                        </div>
+                        @endif
+            @elseif($order->user_is == 'customer')
             <div class="col-lg-4">
                 <!-- Card -->
                 <div class="card">
@@ -406,7 +499,7 @@
                                 </div>
                                 <div class="media-body">
                                 <span
-                                    class="text-body text-hover-primary">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</span>
+                                    class="text-body text-hover-primary">{{$order->customer['name']}}</span>
                                 </div>
                                 <div class="media-body text-right">
                                     {{--<i class="tio-chevron-right text-body"></i>--}}
@@ -460,10 +553,12 @@
 
                             <span class="d-block">{{\App\CPU\translate('Name')}} :
                                 <strong>{{$shipping? $shipping->contact_person_name : \App\CPU\translate('empty')}}</strong><br>
-                                 {{\App\CPU\translate('Country')}}:
-                                <strong>{{$shipping ? $shipping->country : \App\CPU\translate('empty')}}</strong><br>
+                                {{\App\CPU\translate('District')}}:
+                                <strong>{{$shipping ? $shipping->district : \App\CPU\translate('empty')}}</strong><br>
                                 {{\App\CPU\translate('City')}}:
                                 <strong>{{$shipping ? $shipping->city : \App\CPU\translate('empty')}}</strong><br>
+                                {{\App\CPU\translate('Province')}}:
+                                <strong>{{$shipping ? $shipping->province : \App\CPU\translate('empty')}}</strong><br>
                                 {{\App\CPU\translate('zip_code')}} :
                                 <strong>{{$shipping ? $shipping->zip  : \App\CPU\translate('empty')}}</strong><br>
                                 {{\App\CPU\translate('address')}} :
@@ -477,6 +572,7 @@
                 </div>
                 <!-- End Card -->
             </div>
+            @endif
         </div>
         <!-- End Row -->
     </div>

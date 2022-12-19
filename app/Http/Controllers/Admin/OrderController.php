@@ -20,7 +20,60 @@ class OrderController extends Controller
         if (session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1) {
             $query = Order::whereHas('details', function ($query) {
                 $query->whereHas('product', function ($query) {
-                    $query->where('added_by', 'admin');
+                    $query->where('added_by', 'admin')->where('user_is', 'customer');
+                });
+            })->with(['customer']);
+
+            if ($status != 'all') {
+                $orders = $query->where(['order_status' => $status])->where('user_is', 'customer');
+            } else {
+                $orders = $query;
+            }
+
+            if ($request->has('search')) {
+                $key = explode(' ', $request['search']);
+                $orders = $orders->where(function ($q) use ($key) {
+                    foreach ($key as $value) {
+                        $q->orWhere('id', 'like', "%{$value}%")
+                            ->orWhere('order_status', 'like', "%{$value}%")
+                            ->orWhere('transaction_ref', 'like', "%{$value}%");
+                    }
+                });
+                $query_param = ['search' => $request['search']];
+            }
+        } else {
+            if ($status != 'all') {
+                $orders = Order::with(['customer'])->where(['order_status' => $status])->where('user_is', 'customer');
+            } else {
+                $orders = Order::with(['customer'])->where('user_is', 'customer');
+            }
+
+            if ($request->has('search')) {
+                $key = explode(' ', $request['search']);
+                $orders = $orders->where(function ($q) use ($key) {
+                    foreach ($key as $value) {
+                        $q->orWhere('id', 'like', "%{$value}%")
+                            ->orWhere('order_status', 'like', "%{$value}%")
+                            ->orWhere('transaction_ref', 'like', "%{$value}%");
+                    }
+                });
+                $query_param = ['search' => $request['search']];
+            }
+        }
+
+        $orders = $orders->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
+
+        return view('admin-views.order.list', compact('orders', 'search'));
+    }
+
+    public function listDropship(Request $request, $status)
+    {
+        $query_param = [];
+        $search = $request['search'];
+        if (session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1) {
+            $query = Order::whereHas('details', function ($query) {
+                $query->whereHas('product', function ($query) {
+                    $query->where('added_by', 'admin')->where('user_is', 'dropship');
                 });
             })->with(['customer']);
 
@@ -43,9 +96,9 @@ class OrderController extends Controller
             }
         } else {
             if ($status != 'all') {
-                $orders = Order::with(['customer'])->where(['order_status' => $status]);
+                $orders = Order::with(['customer'])->where(['order_status' => $status])->where('user_is', 'dropship');
             } else {
-                $orders = Order::with(['customer']);
+                $orders = Order::with(['customer'])->where('user_is', 'dropship');
             }
 
             if ($request->has('search')) {

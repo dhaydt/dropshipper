@@ -113,11 +113,20 @@
                             </td>
                             <td>{{date('d M Y',strtotime($order['created_at']))}}</td>
                             <td>
-                                @if($order->customer)
-                                    <a class="text-body text-capitalize"
-                                       href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</a>
+                                @if ($order->user_is == 'dropship')
+                                    @if($order->seller)
+                                        <a class="text-body text-capitalize"
+                                        href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order->seller['f_name']}}</a>
+                                    @else
+                                        <label class="badge badge-danger">{{\App\CPU\translate('invalid_customer_data')}}</label>
+                                    @endif
                                 @else
-                                    <label class="badge badge-danger">{{\App\CPU\translate('invalid_customer_data')}}</label>
+                                    @if($order->customer)
+                                        <a class="text-body text-capitalize"
+                                        href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order->customer['name']}}</a>
+                                    @else
+                                        <label class="badge badge-danger">{{\App\CPU\translate('invalid_customer_data')}}</label>
+                                    @endif
                                 @endif
                             </td>
                             <td>
