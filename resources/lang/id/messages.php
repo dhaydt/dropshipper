@@ -1,6 +1,4 @@
-<?php
-
-return [
+<?php return array (
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1523,4 +1521,5 @@ return [
   'left sidebar' => 'Left sidebar',
   'Make sure to check' => 'Make sure to check',
   'must on' => 'Must on',
-];
+  'Contact_Us' => 'Contact Us',
+);

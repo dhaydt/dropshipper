@@ -289,6 +289,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::post('terms-condition', 'BusinessSettingsController@updateTermsCondition')->name('update-terms');
             Route::post('terms-condition-dropship', 'BusinessSettingsController@updateTermsConditionDropship')->name('update-terms-dropship');
             Route::get('privacy-policy', 'BusinessSettingsController@privacy_policy')->name('privacy-policy');
+            Route::get('contact-us', 'BusinessSettingsController@contact_us')->name('contact-us');
+            Route::post('contact-us', 'BusinessSettingsController@update_contact_us')->name('update-contact-us');
             Route::post('privacy-policy', 'BusinessSettingsController@privacy_policy_update')->name('privacy-policy');
 
             Route::get('fcm-index', 'BusinessSettingsController@fcm_index')->name('fcm-index');

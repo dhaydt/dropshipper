@@ -772,6 +772,14 @@
                                             </span>
                                         </a>
                                     </li>
+                                    <li class="nav-item {{Request::is('adminpanel/business-settings/contact-us')?'active':''}}">
+                                        <a class="nav-link" href="{{route('admin.business-settings.contact-us')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">
+                                              {{\App\CPU\translate('contact_us')}}
+                                            </span>
+                                        </a>
+                                    </li>
                                     <li class="nav-item {{Request::is('adminpanel/business-settings/about-us')?'active':''}}">
                                         <a class="nav-link" href="{{route('admin.business-settings.about-us')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>

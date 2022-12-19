@@ -173,6 +173,31 @@ class BusinessSettingsController extends Controller
         return view('admin-views.business-settings.terms-condition-dropship', compact('terms_condition'));
     }
 
+    public function contact_us()
+    {
+        $terms_condition = BusinessSetting::where('type', 'contact_us')->first();
+
+        if (!$terms_condition) {
+            $terms_condition = BusinessSetting::create([
+                'type' => 'contact_us',
+                'value' => 'Contact Us Here',
+            ]);
+        }
+
+        return view('admin-views.business-settings.contact-us', compact('terms_condition'));
+    }
+
+    public function update_contact_us(Request $data)
+    {
+        $validatedData = $data->validate([
+            'value' => 'required',
+        ]);
+        BusinessSetting::where('type', 'contact_us')->update(['value' => $data->value]);
+        Toastr::success('Contact Us Updated successfully!');
+
+        return redirect()->back();
+    }
+
     public function updateTermsCondition(Request $data)
     {
         $validatedData = $data->validate([

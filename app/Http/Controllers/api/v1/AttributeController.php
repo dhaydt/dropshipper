@@ -15,6 +15,17 @@ use Illuminate\Support\Facades\Validator;
 
 class AttributeController extends Controller
 {
+    public function contact_us()
+    {
+        $term = BusinessSetting::where('type', 'contact_us')->first();
+        $resp = [
+            'status' => 'success',
+            'data' => $term->value,
+        ];
+
+        return response()->json($resp, 200);
+    }
+
     public function term_and_condition()
     {
         $term = BusinessSetting::where('type', 'terms_condition')->first();
