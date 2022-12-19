@@ -195,7 +195,7 @@ class Helpers
             'should_send_email' => true,
             'customer' => $user,
             // 'items' => $products,
-            'success_redirect_url' => env('APP_URL').'/xendit-payment/success-api/'.$type.'/'.$group.'/'.$user_is,
+            'success_redirect_url' => 'https://ezren.id'.'/xendit-payment/success-api/'.$type.'/'.$group.'/'.$user_is,
         ];
         // dd($params);
         $checkout_session = \Xendit\Invoice::create($params);
