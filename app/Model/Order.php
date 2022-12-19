@@ -24,7 +24,7 @@ class Order extends Model
 
     public function seller()
     {
-        return $this->belongsTo(Seller::class);
+        return $this->belongsTo(Seller::class, 'customer_id');
     }
 
     public function sellerName()
@@ -41,6 +41,7 @@ class Order extends Model
     {
         return $this->belongsTo(ShippingMethod::class, 'shipping_method_id');
     }
+
     public function shippingAddress()
     {
         return $this->belongsTo(ShippingAddress::class, 'shipping_address');
