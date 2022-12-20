@@ -168,11 +168,11 @@ class Helpers
         }
         if ($request->user_is == 'dropship') {
             $custom = ShippingAddress::where('slug', session()->get('customer_address'))->first();
-            $name = $custom->contact_person_name;
-            $phone = $custom->phone;
-            $address = $custom->district.', '.$custom->city.', '.$custom->province;
-            $id = $custom->customer_id;
-            $email = 'dropshipper@ezren.id';
+            $name = $customer->f_name;
+            $phone = $customer->phone;
+            $address = 'no_data';
+            $id = $customer->id;
+            $email = $customer->email;
         }
 
         $user = [
@@ -182,7 +182,6 @@ class Helpers
             'address' => $address,
         ];
 
-        // dd($user);
         $group = $request->order_id;
 
         $params = [
