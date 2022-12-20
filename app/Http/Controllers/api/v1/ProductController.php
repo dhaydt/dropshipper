@@ -75,6 +75,26 @@ class ProductController extends Controller
         return response()->json($products, 200);
     }
 
+    public function find_slug(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'slug' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+
+        $product = Product::where('product_code', $request->slug)->first();
+        // dd($product);
+        if ($product == null) {
+            return response()->json(['status' => 'fail', 'message' => 'produk tidak ditemukan atau tidak tersedia']);
+        }
+        $product = Helpers::product_data_formatting($product, false);
+
+        return response()->json($product, 200);
+    }
+
     public function get_product(Request $request, $id)
     {
         $check = Helpers::get_seller_by_token($request);

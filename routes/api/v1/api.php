@@ -89,6 +89,7 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
         Route::post('reviews/submit', 'ProductController@submit_product_review')->middleware('auth:api');
         Route::get('best-sellings', 'ProductController@get_best_sellings');
         Route::get('home-categories', 'ProductController@get_home_categories');
+        Route::get('find-slug', 'ProductController@find_slug');
     });
 
     Route::group(['prefix' => 'notifications'], function () {
