@@ -245,7 +245,9 @@ class CustomerController extends Controller
         $details->map(function ($query) use ($request) {
             $query['variation'] = json_decode($query['variation'], true);
             $query['product_details'] = Helpers::product_data_formatting(json_decode($query['product_details'], true));
-            $query['shipping_address'] = Order::find($request['order_id'])['shipping_address_data'];
+            $order = Order::find($request['order_id']);
+            $query['shipping_address'] = $order['shipping_address_data'];
+            $query['shipping'] = $order['shipping'];
 
             return $query;
         });
