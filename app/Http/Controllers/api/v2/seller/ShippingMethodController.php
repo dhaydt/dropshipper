@@ -34,7 +34,7 @@ class ShippingMethodController extends Controller
 
             $user = $check['data'];
             try {
-                $shipping = Helpers::get_shipping_methods_api($request->cart_group_id, $request->slug);
+                $shipping = Helpers::get_shipping_methods_api($request->cart_group_id, $request->slug_address);
                 $jne = $shipping[0][0];
                 $tiki = $shipping[0][1];
                 $cepat = $shipping[0][2];

@@ -673,10 +673,9 @@ class Helpers
         if ($admin->district_id == '') {
             return 'fail';
         }
-        $id = $user_id;
-        // dd($id);
-        $user = User::find($id);
-        if (!$user) {
+
+        $user = User::find($user_id);
+        if ($address_id == null) {
             $user = ShippingAddress::where('slug', $user_id)->first();
         } else {
             $user = ShippingAddress::find($address_id);
