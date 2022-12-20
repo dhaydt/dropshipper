@@ -135,4 +135,25 @@ class OrderController extends Controller
             return response()->json(['status' => 'fail', 'message' => 'auth-001 unauthorized']);
         }
     }
+
+    public function cancel(Request $request)
+    {
+        $check = Helpers::get_seller_by_token($request);
+        if ($check['success'] == 1) {
+            $id = $request['order_id'];
+            $order = Order::find($id);
+            if ($order['payment_method'] == 'cash_on_delivery' && $order['order_status'] == 'pending') {
+                OrderManager::stock_update_on_order_status_change($order, 'canceled');
+                Order::where('id', $id)->update([
+                    'order_status' => 'canceled',
+                ]);
+
+                return response()->json(['Order berhasil dibatalkan'], 200);
+            }
+
+            return response()->json(['Gagal membatalkan order karena sudah diproses atau sudah dibayar'], 200);
+        } else {
+            return response()->json(['status' => 'fail', 'message' => 'auth-001 unauthorized']);
+        }
+    }
 }

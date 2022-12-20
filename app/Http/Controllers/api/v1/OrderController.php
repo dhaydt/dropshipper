@@ -6,6 +6,7 @@ use App\CPU\CartManager;
 use App\CPU\Helpers;
 use App\CPU\OrderManager;
 use App\Http\Controllers\Controller;
+use App\Model\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,5 +51,21 @@ class OrderController extends Controller
         CartManager::cart_clean($request);
 
         return response()->json(['status' => 'success', 'order_id' => $order_id, 'message' => 'order_placed_successfully!']);
+    }
+
+    public function cancel(Request $request)
+    {
+        $id = $request['order_id'];
+        $order = Order::find($id);
+        if ($order['payment_method'] == 'cash_on_delivery' && $order['order_status'] == 'pending') {
+            OrderManager::stock_update_on_order_status_change($order, 'canceled');
+            Order::where('id', $id)->update([
+                'order_status' => 'canceled',
+            ]);
+
+            return response()->json(['Order berhasil dibatalkan'], 200);
+        }
+
+        return response()->json(['Gagal membatalkan order karena sudah diproses atau sudah dibayar'], 200);
     }
 }
