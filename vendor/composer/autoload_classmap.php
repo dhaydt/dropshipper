@@ -151,6 +151,7 @@ return array(
     'App\\Http\\Controllers\\api\\v2\\seller\\AddressController' => $baseDir . '/app/Http/Controllers/api/v2/seller/AddressController.php',
     'App\\Http\\Controllers\\api\\v2\\seller\\CartController' => $baseDir . '/app/Http/Controllers/api/v2/seller/CartController.php',
     'App\\Http\\Controllers\\api\\v2\\seller\\ChatController' => $baseDir . '/app/Http/Controllers/api/v2/seller/ChatController.php',
+    'App\\Http\\Controllers\\api\\v2\\seller\\CouponController' => $baseDir . '/app/Http/Controllers/api/v2/seller/CouponController.php',
     'App\\Http\\Controllers\\api\\v2\\seller\\OrderController' => $baseDir . '/app/Http/Controllers/api/v2/seller/OrderController.php',
     'App\\Http\\Controllers\\api\\v2\\seller\\PaymentController' => $baseDir . '/app/Http/Controllers/api/v2/seller/PaymentController.php',
     'App\\Http\\Controllers\\api\\v2\\seller\\ProductController' => $baseDir . '/app/Http/Controllers/api/v2/seller/ProductController.php',

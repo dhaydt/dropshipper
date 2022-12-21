@@ -886,6 +886,7 @@ class ComposerStaticInit5c810ba0d19412d72c885b40a9decbf5
         'App\\Http\\Controllers\\api\\v2\\seller\\AddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v2/seller/AddressController.php',
         'App\\Http\\Controllers\\api\\v2\\seller\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v2/seller/CartController.php',
         'App\\Http\\Controllers\\api\\v2\\seller\\ChatController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v2/seller/ChatController.php',
+        'App\\Http\\Controllers\\api\\v2\\seller\\CouponController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v2/seller/CouponController.php',
         'App\\Http\\Controllers\\api\\v2\\seller\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v2/seller/OrderController.php',
         'App\\Http\\Controllers\\api\\v2\\seller\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v2/seller/PaymentController.php',
         'App\\Http\\Controllers\\api\\v2\\seller\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/v2/seller/ProductController.php',
