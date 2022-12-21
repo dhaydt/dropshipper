@@ -144,6 +144,15 @@ class LoginController extends Controller
                 ]);
             }
 
+            $seller->temporary_token = Str::random(40);
+            $seller->save();
+
+            $phone_verification = Helpers::get_business_settings('phone_verification');
+            // $email_verification = Helpers::get_business_settings('email_verification');
+            if ($phone_verification && !$seller->is_phone_verified) {
+                return response()->json(['temporary_token' => $seller->temporary_token], 200);
+            }
+
             return response()->json(['token' => $token], 200);
         } else {
             $errors = [];
