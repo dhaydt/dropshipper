@@ -41,8 +41,10 @@ class LoginController extends Controller
             return response()->json(['status' => 'fail', 'message' => 'Phone already exist!']);
         }
 
-        DB::transaction(function ($r) use ($request) {
-            $seller = new Seller();
+        $seller = new Seller();
+
+        $temporary_token = Str::random(40);
+        DB::transaction(function ($r) use ($request, $seller, $temporary_token) {
             $seller->f_name = $request->name;
             $seller->l_name = $request->l_name;
             $seller->country = 'ID';
@@ -51,6 +53,7 @@ class LoginController extends Controller
             $seller->image = ImageManager::upload('seller/', 'png', $request->file('profile_img'));
             $seller->password = bcrypt($request->password);
             $seller->status = 'approved';
+            $seller->temporary_token = $temporary_token;
             $seller->save();
 
             $shop = new Shop();
@@ -75,6 +78,11 @@ class LoginController extends Controller
                 'updated_at' => now(),
             ]);
         });
+
+        $phone_verification = Helpers::get_business_settings('phone_verification');
+        if ($phone_verification && !$seller->is_phone_verified) {
+            return response()->json(['temporary_token' => $temporary_token], 200);
+        }
 
         return response()->json(['message' => 'Dropship applied successfully'], 200);
     }

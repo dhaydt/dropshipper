@@ -90,6 +90,8 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
         Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
             Route::post('login', 'LoginController@login');
             Route::post('register', 'LoginController@register');
+            Route::post('check-phone', 'PhoneVerificationController@check_phone');
+            Route::post('verify-phone', 'PhoneVerificationController@verify_phone');
         });
 
         Route::group(['prefix' => 'coupon'], function () {
