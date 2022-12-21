@@ -183,7 +183,7 @@
         @endif
 {{-- {{ dd($product) }} --}}
         <div class="card-header inline_product clickable">
-            @if ($product->icon != NULL)
+            @if ($product->icon !== NULL)
             <div class="ketupat">
                 <img src="{{\App\CPU\ProductManager::product_image_path('icon')}}/{{$product['icon']}}" alt="">
             </div>

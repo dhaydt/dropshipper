@@ -150,6 +150,33 @@ class SellerController extends Controller
         return response()->json(Seller::with(['wallet', 'shop'])->withCount(['product', 'orders'])->where(['id' => $seller['id']])->first(), 200);
     }
 
+    public function update_password(Request $request)
+    {
+        $data = Helpers::get_seller_by_token($request);
+        if ($data['success'] == 1) {
+            $validator = Validator::make($request->all(), [
+                'password' => 'required',
+            ], [
+                'password.required' => 'Password field is required',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+            }
+            $seller = $data['data'];
+
+            Seller::where(['id' => $seller['id']])->update([
+                'password' => $request['password'] != null ? bcrypt($request['password']) : Seller::where(['id' => $seller['id']])->first()->password,
+            ]);
+
+            return response()->json(translate('Password changed successfully!'), 200);
+        } else {
+            return response()->json([
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
+            ], 401);
+        }
+    }
+
     public function shop_info_update(Request $request)
     {
         $data = Helpers::get_seller_by_token($request);

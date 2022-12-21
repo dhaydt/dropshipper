@@ -255,6 +255,29 @@ class CustomerController extends Controller
         return response()->json($details, 200);
     }
 
+    public function update_password(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required',
+        ], [
+            'password.required' => 'Password field is required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+
+        $pass = bcrypt($request['password']);
+
+        $change = [
+            'password' => $pass,
+        ];
+
+        User::where(['id' => $request->user()->id])->update($change);
+
+        return response()->json(['message' => translate('successfully updated!')], 200);
+    }
+
     public function update_profile(Request $request)
     {
         $validator = Validator::make($request->all(), [

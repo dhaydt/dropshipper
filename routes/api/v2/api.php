@@ -8,6 +8,7 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
         Route::get('seller-info', 'SellerController@seller_info');
         Route::get('shop-product-reviews', 'SellerController@shop_product_reviews');
         Route::post('seller-update', 'SellerController@seller_info_update');
+        Route::post('update-password', 'SellerController@update_password');
         Route::get('monthly-earning', 'SellerController@monthly_earning');
         Route::get('monthly-commission-given', 'SellerController@monthly_commission_given');
 
