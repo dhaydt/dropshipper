@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Seller\Auth;
 
+use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
 use App\Model\Seller;
 use App\Model\SellerWallet;
@@ -41,6 +42,17 @@ class LoginController extends Controller
         }
 
         $se = Seller::where($medium, 'like', "%{$user_id}%")->first();
+
+        if (isset($se)) {
+            $phone_verification = Helpers::get_business_settings('phone_verification');
+            $email_verification = Helpers::get_business_settings('email_verification');
+            if ($phone_verification && !$se->is_phone_verified) {
+                return redirect(route('seller.auth.check', [$se->id]));
+            }
+            if ($email_verification && !$se->is_email_verified) {
+                return redirect(route('seller.auth.check', [$se->id]));
+            }
+        }
 
         if (isset($se) && $se['status'] == 'approved' && auth('seller')->attempt(['email' => $se['email'], 'password' => $request->password], $request->remember)) {
             Toastr::info('Welcome to Dropshipper!');
