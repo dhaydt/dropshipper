@@ -5,18 +5,16 @@ namespace App\Http\Controllers\api\v2\seller;
 use App\CPU\Convert;
 use App\CPU\Helpers;
 use App\CPU\ImageManager;
+use function App\CPU\translate;
 use App\Http\Controllers\Controller;
 use App\Model\Color;
 use App\Model\DealOfTheDay;
 use App\Model\FlashDealProduct;
 use App\Model\Product;
 use App\Model\Translation;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use PHPUnit\Exception;
-use function App\CPU\translate;
 
 class ProductController extends Controller
 {
@@ -28,7 +26,7 @@ class ProductController extends Controller
             $seller = $data['data'];
         } else {
             return response()->json([
-                'auth-001' => translate('Your existing session token does not authorize you any more')
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
             ], 401);
         }
 
@@ -46,8 +44,8 @@ class ProductController extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)]);
         }
 
-        $path = $request['type'] == 'product' ? '' : $request['type'] . '/';
-        $image = ImageManager::upload('product/' . $path, 'png', $request->file('image'));
+        $path = $request['type'] == 'product' ? '' : $request['type'].'/';
+        $image = ImageManager::upload('product/'.$path, 'png', $request->file('image'));
 
         return response()->json(['image_name' => $image, 'type' => $request['type']], 200);
     }
@@ -59,7 +57,7 @@ class ProductController extends Controller
             $seller = $data['data'];
         } else {
             return response()->json([
-                'auth-001' => translate('Your existing session token does not authorize you any more')
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
             ], 401);
         }
 
@@ -100,10 +98,10 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->user_id = $seller->id;
-        $product->added_by = "seller";
+        $product->added_by = 'seller';
 
         $product->name = $request->name[array_search(Helpers::default_lang(), $request->lang)];
-        $product->slug = Str::slug($request->name[array_search(Helpers::default_lang(), $request->lang)], '-') . '-' . Str::random(6);
+        $product->slug = Str::slug($request->name[array_search(Helpers::default_lang(), $request->lang)], '-').'-'.Str::random(6);
 
         $category = [];
 
@@ -144,8 +142,8 @@ class ProductController extends Controller
         $choice_options = [];
         if ($request->has('choice')) {
             foreach ($request->choice_no as $key => $no) {
-                $str = 'choice_options_' . $no;
-                $item['name'] = 'choice_' . $no;
+                $str = 'choice_options_'.$no;
+                $item['name'] = 'choice_'.$no;
                 $item['title'] = $request->choice[$key];
                 $item['options'] = $request[$str];
                 array_push($choice_options, $item);
@@ -161,7 +159,7 @@ class ProductController extends Controller
         }
         if ($request->has('choice_no')) {
             foreach ($request->choice_no as $key => $no) {
-                $name = 'choice_options_' . $no;
+                $name = 'choice_options_'.$no;
                 array_push($options, $request[$name]);
             }
         }
@@ -170,12 +168,11 @@ class ProductController extends Controller
         $variations = [];
         $stock_count = 0;
         if (count($combinations[0]) > 0) {
-
             foreach ($combinations as $combination) {
                 $str = '';
                 foreach ($combination as $k => $item) {
                     if ($k > 0) {
-                        $str .= '-' . str_replace(' ', '', $item);
+                        $str .= '-'.str_replace(' ', '', $item);
                     } else {
                         if ($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0) {
                             $color_name = Color::where('code', $item)->first()->name ?? '';
@@ -187,15 +184,15 @@ class ProductController extends Controller
                 }
                 $item = [];
                 $item['type'] = $str;
-                $item['price'] = Convert::usd(abs($request['price_' . str_replace('.', '_', $str)]));
-                $item['sku'] = $request['sku_' . str_replace('.', '_', $str)];
-                $item['qty'] = $request['qty_' . str_replace('.', '_', $str)];
+                $item['price'] = Convert::usd(abs($request['price_'.str_replace('.', '_', $str)]));
+                $item['sku'] = $request['sku_'.str_replace('.', '_', $str)];
+                $item['qty'] = $request['qty_'.str_replace('.', '_', $str)];
 
                 array_push($variations, $item);
                 $stock_count += $item['qty'];
             }
         } else {
-            $stock_count = (integer)$request['current_stock'];
+            $stock_count = (int) $request['current_stock'];
         }
 
         /*if ((integer)$request['current_stock'] != $stock_count) {
@@ -231,22 +228,22 @@ class ProductController extends Controller
         $data = [];
         foreach ($request->lang as $index => $key) {
             if ($request->name[$index] && $key != Helpers::default_lang()) {
-                array_push($data, array(
+                array_push($data, [
                     'translationable_type' => 'App\Model\Product',
                     'translationable_id' => $product->id,
                     'locale' => $key,
                     'key' => 'name',
                     'value' => $request->name[$index],
-                ));
+                ]);
             }
             if ($request->description[$index] && $key != Helpers::default_lang()) {
-                array_push($data, array(
+                array_push($data, [
                     'translationable_type' => 'App\Model\Product',
                     'translationable_id' => $product->id,
                     'locale' => $key,
                     'key' => 'description',
                     'value' => $request->description[$index],
-                ));
+                ]);
             }
         }
         Translation::insert($data);
@@ -261,7 +258,7 @@ class ProductController extends Controller
             $seller = $data['data'];
         } else {
             return response()->json([
-                'auth-001' => translate('Your existing session token does not authorize you any more')
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
             ], 401);
         }
 
@@ -278,7 +275,7 @@ class ProductController extends Controller
             $seller = $data['data'];
         } else {
             return response()->json([
-                'auth-001' => translate('Your existing session token does not authorize you any more')
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
             ], 401);
         }
 
@@ -315,10 +312,10 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         $product->user_id = $seller->id;
-        $product->added_by = "seller";
+        $product->added_by = 'seller';
 
         $product->name = $request->name[array_search(Helpers::default_lang(), $request->lang)];
-        $product->slug = Str::slug($request->name[array_search(Helpers::default_lang(), $request->lang)], '-') . '-' . Str::random(6);
+        $product->slug = Str::slug($request->name[array_search(Helpers::default_lang(), $request->lang)], '-').'-'.Str::random(6);
 
         $category = [];
 
@@ -359,8 +356,8 @@ class ProductController extends Controller
         $choice_options = [];
         if ($request->has('choice')) {
             foreach ($request->choice_no as $key => $no) {
-                $str = 'choice_options_' . $no;
-                $item['name'] = 'choice_' . $no;
+                $str = 'choice_options_'.$no;
+                $item['name'] = 'choice_'.$no;
                 $item['title'] = $request->choice[$key];
                 $item['options'] = $request[$str];
                 array_push($choice_options, $item);
@@ -376,7 +373,7 @@ class ProductController extends Controller
         }
         if ($request->has('choice_no')) {
             foreach ($request->choice_no as $key => $no) {
-                $name = 'choice_options_' . $no;
+                $name = 'choice_options_'.$no;
                 array_push($options, $request[$name]);
             }
         }
@@ -385,12 +382,11 @@ class ProductController extends Controller
         $variations = [];
         $stock_count = 0;
         if (count($combinations[0]) > 0) {
-
             foreach ($combinations as $combination) {
                 $str = '';
                 foreach ($combination as $k => $item) {
                     if ($k > 0) {
-                        $str .= '-' . str_replace(' ', '', $item);
+                        $str .= '-'.str_replace(' ', '', $item);
                     } else {
                         if ($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0) {
                             $color_name = Color::where('code', $item)->first()->name ?? '';
@@ -402,15 +398,15 @@ class ProductController extends Controller
                 }
                 $item = [];
                 $item['type'] = $str;
-                $item['price'] = Convert::usd(abs($request['price_' . str_replace('.', '_', $str)]));
-                $item['sku'] = $request['sku_' . str_replace('.', '_', $str)];
-                $item['qty'] = $request['qty_' . str_replace('.', '_', $str)];
+                $item['price'] = Convert::usd(abs($request['price_'.str_replace('.', '_', $str)]));
+                $item['sku'] = $request['sku_'.str_replace('.', '_', $str)];
+                $item['qty'] = $request['qty_'.str_replace('.', '_', $str)];
 
                 array_push($variations, $item);
                 $stock_count += $item['qty'];
             }
         } else {
-            $stock_count = (integer)$request['current_stock'];
+            $stock_count = (int) $request['current_stock'];
         }
 
         /*if ((integer)$request['current_stock'] != $stock_count) {
@@ -455,7 +451,7 @@ class ProductController extends Controller
                     ['translationable_type' => 'App\Model\Product',
                         'translationable_id' => $product->id,
                         'locale' => $key,
-                        'key' => 'name'],
+                        'key' => 'name', ],
                     ['value' => $request->name[$index]]
                 );
             }
@@ -464,7 +460,7 @@ class ProductController extends Controller
                     ['translationable_type' => 'App\Model\Product',
                         'translationable_id' => $product->id,
                         'locale' => $key,
-                        'key' => 'description'],
+                        'key' => 'description', ],
                     ['value' => $request->description[$index]]
                 );
             }
@@ -480,18 +476,19 @@ class ProductController extends Controller
             $seller = $data['data'];
         } else {
             return response()->json([
-                'auth-001' => translate('Your existing session token does not authorize you any more')
+                'auth-001' => translate('Your existing session token does not authorize you any more'),
             ], 401);
         }
 
         $product = Product::find($id);
         foreach (json_decode($product['images'], true) as $image) {
-            ImageManager::delete('/product/' . $image);
+            ImageManager::delete('/product/'.$image);
         }
-        ImageManager::delete('/product/thumbnail/' . $product['thumbnail']);
+        ImageManager::delete('/product/thumbnail/'.$product['thumbnail']);
         $product->delete();
         FlashDealProduct::where(['product_id' => $id])->delete();
         DealOfTheDay::where(['product_id' => $id])->delete();
+
         return response()->json(['message' => translate('successfully product deleted!')], 200);
     }
 }

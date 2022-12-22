@@ -12,6 +12,8 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
         Route::get('monthly-earning', 'SellerController@monthly_earning');
         Route::get('monthly-commission-given', 'SellerController@monthly_commission_given');
 
+        Route::post('update-cm-firebase-token', 'SellerController@put_fcm');
+
         Route::get('shop-info', 'SellerController@shop_info');
         Route::get('transactions', 'SellerController@transaction');
         Route::put('shop-update', 'SellerController@shop_info_update');

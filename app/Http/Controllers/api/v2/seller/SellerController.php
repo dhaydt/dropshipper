@@ -25,6 +25,27 @@ use Illuminate\Support\Str;
 
 class SellerController extends Controller
 {
+    public function put_fcm(Request $request)
+    {
+        $check = Helpers::get_seller_by_token($request);
+        if ($check['success'] == 1) {
+            if ($request['cm_firebase_token'] == null) {
+                return response()->json('cm_firebase_token required!');
+            }
+            $seller = Seller::find($check['data']['id']);
+            if (!$seller) {
+                return response()->json(['status' => 'fail', 'message' => 'dropship not found']);
+            } else {
+                $seller->cm_firebase_token = $request['cm_firebase_token'];
+                $seller->save();
+
+                return response()->json(['status' => 'success', 'message' => 'firebase_token updated successfully']);
+            }
+        } else {
+            return response()->json(['status' => 'fail', 'message' => 'auth-001, unauthorized']);
+        }
+    }
+
     public function add_to_wishlist(Request $request)
     {
         $user = Helpers::get_seller_by_token($request);
