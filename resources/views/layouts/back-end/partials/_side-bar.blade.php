@@ -339,12 +339,12 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('adminpanel/sellers/withdraw_list')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/sellers/withdraw_list')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.sellers.withdraw_list')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{\App\CPU\translate('withdraws')}}</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
                             <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/resi/all/dropship*')?'active':''}}">
@@ -365,12 +365,12 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('adminpanel/sellers/withdraw_list')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/sellers/withdraw_list')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.sellers.withdraw_list')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{\App\CPU\translate('withdraws')}}</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
 
