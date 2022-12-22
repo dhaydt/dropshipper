@@ -321,21 +321,47 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/resi*')?'active':''}}">
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/resi/all/customer*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                     href="javascript:">
                                     <i class="tio-users-switch nav-icon"></i>
                                     <span
-                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Order_resi')}}</span>
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Customer_Resi')}}</span>
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                    style="display: {{Request::is('adminpanel/resi*')?'block':'none'}}">
-                                    <li class="nav-item {{Request::is('adminpanel/resi')?'active':''}}">
+                                    style="display: {{Request::is('adminpanel/resi/all/customer')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('adminpanel/resi/all/customer')?'active':''}}">
                                         <a class="nav-link"
-                                        href="{{route('admin.sellers.seller-list')}}">
+                                        href="{{route('admin.resi.index', ['status' => 'all', 'user_is' => 'customer'])}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                                {{\App\CPU\translate('All_Resi')}}
+                                                {{\App\CPU\translate('All_Resi_Customer')}}
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item {{Request::is('adminpanel/sellers/withdraw_list')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.sellers.withdraw_list')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{\App\CPU\translate('withdraws')}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/resi/all/dropship*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
+                                    href="javascript:">
+                                    <i class="tio-users-switch nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Dropship_Resi')}}</span>
+                                </a>
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                    style="display: {{Request::is('adminpanel/resi/all/dropship*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('adminpanel/resi/all/dropship')?'active':''}}">
+                                        <a class="nav-link"
+                                        href="{{route('admin.resi.index', ['status' => 'all', 'user_is' => 'dropship'])}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">
+                                                {{\App\CPU\translate('All_Resi_Dropship')}}
                                             </span>
                                         </a>
                                     </li>
