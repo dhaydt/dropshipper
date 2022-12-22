@@ -57,6 +57,9 @@ class OrderController extends Controller
     {
         $id = $request['order_id'];
         $order = Order::find($id);
+        if (!$order) {
+            return response()->json(['Order tidak ditemukan'], 200);
+        }
         if ($order['payment_method'] == 'cash_on_delivery' && $order['order_status'] == 'pending') {
             OrderManager::stock_update_on_order_status_change($order, 'canceled');
             Order::where('id', $id)->update([
