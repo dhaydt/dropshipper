@@ -248,6 +248,7 @@ class CustomerController extends Controller
             $order = Order::find($request['order_id']);
             $query['shipping_address'] = $order['shipping_address_data'];
             $query['shipping'] = $order['shipping'];
+            $query['no_resi'] = $order['no_resi'];
 
             return $query;
         });

@@ -54,6 +54,7 @@ class OrderController extends Controller
             $order = Order::find($id);
             $query['shipping_address'] = $order['shipping_address_data'];
             $query['shipping'] = $order['shipping'];
+            $query['no_resi'] = $order['no_resi'];
 
             return $query;
         });
