@@ -44,11 +44,28 @@ class OrderController extends Controller
             ], 401);
         }
 
+        // $details = OrderDetail::where(['order_id' => $request['order_id']])->whereHas('order', function ($q) use ($data) {
+        //     $q->where('user_is', 'dropship');
+        // })->get();
+
+        // $details->map(function ($query) use ($request) {
+        //     $query['variation'] = json_decode($query['variation'], true);
+        //     $query['product_details'] = Helpers::product_data_formatting(json_decode($query['product_details'], true));
+        //     $order = Order::find($request['order_id']);
+        //     $query['shipping_address'] = $order['shipping_address_data'];
+        //     $query['shipping'] = $order['shipping'];
+
+        //     return $query;
+        // });
+
         $details = OrderDetail::whereHas('order', function ($q) use ($data) {
             $q->where(['customer_id' => $data['data']['id'], 'user_is' => 'dropship']);
         })->where(['order_id' => $id])->get();
         foreach ($details as $det) {
             $det['product_details'] = Helpers::product_data_formatting(json_decode($det['product_details'], true));
+            $order = Order::find($request['order_id']);
+            $query['shipping_address'] = $order['shipping_address_data'];
+            $query['shipping'] = $order['shipping'];
         }
 
         return response()->json($details, 200);

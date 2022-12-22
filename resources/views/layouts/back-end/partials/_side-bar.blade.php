@@ -321,6 +321,33 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/resi*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
+                                    href="javascript:">
+                                    <i class="tio-users-switch nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Order_resi')}}</span>
+                                </a>
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                    style="display: {{Request::is('adminpanel/resi*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('adminpanel/resi')?'active':''}}">
+                                        <a class="nav-link"
+                                        href="{{route('admin.sellers.seller-list')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">
+                                                {{\App\CPU\translate('All_Resi')}}
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item {{Request::is('adminpanel/sellers/withdraw_list')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.sellers.withdraw_list')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{\App\CPU\translate('withdraws')}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
                         @endif
                     <!--order management ends-->
 
@@ -623,7 +650,7 @@
                             </li>
                             <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/seller*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                                   href="javascript:">
+                                    href="javascript:">
                                     <i class="tio-users-switch nav-icon"></i>
                                     <span
                                         class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Dropshipper')}}</span>

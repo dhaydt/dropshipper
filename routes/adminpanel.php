@@ -374,6 +374,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::get('inhouse-order-filter', 'OrderController@inhouse_order_filter')->name('inhouse-order-filter');
         });
 
+        // Route::group(['prefix' => 'resi', 'as'  => 'resi.', 'middleware' => ['module:order_management']], function(){
+        //     Route::get('/');
+        // });
+
         Route::group(['prefix' => 'orders-dropship', 'as' => 'orders-dropship.', 'middleware' => ['module:order_management']], function () {
             Route::get('list/{status}', 'OrderController@listDropship')->name('list');
             Route::get('details/{id}', 'OrderController@details')->name('details');
