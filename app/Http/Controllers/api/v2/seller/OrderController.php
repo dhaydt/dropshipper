@@ -107,6 +107,7 @@ class OrderController extends Controller
             $order_ids = [];
             $group = Cart::where('cart_group_id', $request->cart_group_id)->get();
             // dd($group);
+
             foreach ($group as $group_id) {
                 $data = [
                     'payment_method' => 'cash_on_delivery',
