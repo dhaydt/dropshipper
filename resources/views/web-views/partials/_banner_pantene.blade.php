@@ -2,7 +2,7 @@
 @push('css_or_js')
     <style>
         .pantene-card .head{
-            height: 320px;
+            height: 396px;
             background: #D5FFF7;
             overflow: hidden;
         }
