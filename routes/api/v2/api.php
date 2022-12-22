@@ -92,6 +92,10 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
             Route::post('register', 'LoginController@register');
             Route::post('check-phone', 'PhoneVerificationController@check_phone');
             Route::post('verify-phone', 'PhoneVerificationController@verify_phone');
+
+            Route::post('forgot-password', 'ForgotPassword@reset_password_request');
+            Route::post('verify-otp', 'ForgotPassword@otp_verification_submit');
+            Route::put('reset-password', 'ForgotPassword@reset_password_submit');
         });
 
         Route::group(['prefix' => 'coupon'], function () {
