@@ -1,6 +1,4 @@
-<?php
-
-return [
+<?php return array (
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1537,4 +1535,15 @@ return [
   'profile_id' => 'Profile id',
   'Order_resi' => 'Order resi',
   'All_Resi' => 'All Resi',
-];
+  'Order List Resi' => 'Order List Resi',
+  'No_Resi' => 'No Resi',
+  'Ya, Update Resi!' => 'Ya  Update Resi!',
+  'Menunggu' => 'Menunggu',
+  'Diproses' => 'Diproses',
+  'Dikirim' => 'Dikirim',
+  'Dibatalkan' => 'Dibatalkan',
+  'Customer_Resi' => 'Customer Resi',
+  'All_Resi_Customer' => 'All Resi Customer',
+  'Dropship_Resi' => 'Dropship Resi',
+  'All_Resi_Dropship' => 'All Resi Dropship',
+);

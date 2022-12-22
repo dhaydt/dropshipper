@@ -107,14 +107,14 @@
                                         <a class="nav-link " href="{{route('admin.orders.list',['pending'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('pending')}}
+                                            {{\App\CPU\translate('Menunggu')}}
                                             <span class="badge badge-soft-info badge-pill ml-1">
                                                 {{\App\Model\Order::where(['order_status'=>'pending'])->where('user_is', 'customer')->count()}}
                                             </span>
                                         </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('adminpanel/orders/list/confirmed')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/orders/list/confirmed')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['confirmed'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -125,20 +125,20 @@
                                             </span>
                                         </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item {{Request::is('adminpanel/orders/list/processing')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['processing'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('Processing')}}
+                                            {{\App\CPU\translate('Diproses')}}
                                                 <span class="badge badge-warning badge-pill ml-1">
                                                 {{\App\Model\Order::where(['order_status'=>'processing'])->where('user_is', 'customer')->count()}}
                                             </span>
                                         </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('adminpanel/orders/list/out_for_delivery')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/orders/list/out_for_delivery')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['out_for_delivery'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -149,20 +149,20 @@
                                             </span>
                                         </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item {{Request::is('adminpanel/orders/list/delivered')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['delivered'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('delivered')}}
+                                            {{\App\CPU\translate('Dikirim')}}
                                                 <span class="badge badge-success badge-pill ml-1">
                                                 {{\App\Model\Order::where(['order_status'=>'delivered'])->where('user_is', 'customer')->count()}}
                                             </span>
                                         </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('adminpanel/orders/list/returned')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/orders/list/returned')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['returned'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -173,8 +173,8 @@
                                             </span>
                                         </span>
                                         </a>
-                                    </li>
-                                    <li class="nav-item {{Request::is('adminpanel/orders/list/failed')?'active':''}}">
+                                    </li> --}}
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/orders/list/failed')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['failed'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
@@ -184,14 +184,14 @@
                                             </span>
                                         </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
 
                                     <li class="nav-item {{Request::is('adminpanel/orders/list/canceled')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['canceled'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('canceled')}}
+                                            {{\App\CPU\translate('Dibatalkan')}}
                                                 <span class="badge badge-danger badge-pill ml-1">
                                                 {{\App\Model\Order::where(['order_status'=>'canceled'])->where('user_is', 'customer')->count()}}
                                             </span>
@@ -228,14 +228,14 @@
                                         <a class="nav-link " href="{{route('admin.orders-dropship.list',['pending'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('pending')}}
+                                            {{\App\CPU\translate('Menunggu')}}
                                             <span class="badge badge-soft-info badge-pill ml-1">
                                                 {{\App\Model\Order::where(['order_status'=>'pending'])->count()}}
                                             </span>
                                         </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/confirmed')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/confirmed')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders-dropship.list',['confirmed'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -246,20 +246,20 @@
                                             </span>
                                         </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/processing')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders-dropship.list',['processing'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('Processing')}}
+                                            {{\App\CPU\translate('Diproses')}}
                                                 <span class="badge badge-warning badge-pill ml-1">
                                                 {{\App\Model\Order::where(['order_status'=>'processing'])->count()}}
                                             </span>
                                         </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/out_for_delivery')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/out_for_delivery')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders-dropship.list',['out_for_delivery'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -270,20 +270,20 @@
                                             </span>
                                         </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/delivered')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders-dropship.list',['delivered'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('delivered')}}
+                                            {{\App\CPU\translate('Dikirim')}}
                                                 <span class="badge badge-success badge-pill ml-1">
                                                 {{\App\Model\Order::where(['order_status'=>'delivered'])->count()}}
                                             </span>
                                         </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/returned')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/returned')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders-dropship.list',['returned'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -294,8 +294,8 @@
                                             </span>
                                         </span>
                                         </a>
-                                    </li>
-                                    <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/failed')?'active':''}}">
+                                    </li> --}}
+                                    {{-- <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/failed')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders-dropship.list',['failed'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
@@ -305,14 +305,14 @@
                                             </span>
                                         </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
 
                                     <li class="nav-item {{Request::is('adminpanel/orders-dropship/list/canceled')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders-dropship.list',['canceled'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('canceled')}}
+                                            {{\App\CPU\translate('Dibatalkan')}}
                                                 <span class="badge badge-danger badge-pill ml-1">
                                                 {{\App\Model\Order::where(['order_status'=>'canceled'])->count()}}
                                             </span>

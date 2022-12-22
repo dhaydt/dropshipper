@@ -43,7 +43,7 @@ class ResiController extends Controller
             return response()->json(['success' => 0, 'message' => 'Order tidak ditemukan']);
         } else {
             $order->no_resi = $request['no_resi'];
-            $order->order_status = 'confirmed';
+            $order->order_status = 'delivered';
             $order->save();
 
             return response()->json(['success' => 1, 'message' => 'No Resi berhasil diPerbarui!']);
