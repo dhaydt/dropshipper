@@ -33,11 +33,6 @@
         </div> --}}
       </div>
       <div class="section-body row">
-        @php
-            $title = [
-                'Top Produk', 'Diskon Up To 30%', 'Gratis Kupon Disc'
-            ]
-        @endphp
         @foreach ($berlimpah['products'] as $key => $b_p)
             <div class="col-lg-2 col-md-3 col-4">
                 <div class="pantene-card">
@@ -46,9 +41,9 @@
                             <img src="{{ asset('storage/deal').'/'.$b_p['images'] }}" alt="" class="" style="max-height: 100%">
                         </div>
                     </div>
-                    <div class="pantene-desc bg-green">
+                    {{-- <div class="pantene-desc bg-green">
                         {{ $title[$key] }}
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         @endforeach
