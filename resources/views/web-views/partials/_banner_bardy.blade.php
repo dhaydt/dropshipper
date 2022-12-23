@@ -259,7 +259,7 @@
                         <div class="col-6 col-md-4 p-0 position-relative">
                             <div class="banner-item">
                                 <a href="{{route('product',$product->slug)}}">
-                                    <img src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="">
+                                    <img src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="" style="border-right: 1px solid grey">
                                 </a>
                                 <div class="desc-banner" style="background-color: {{ $unggulan['background_color'] }}">
                                     <span class="title">
