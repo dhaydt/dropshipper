@@ -821,7 +821,6 @@ a .footer_banner_img {
   @endif
   @endforeach
   @include('web-views.partials._floating')
-  @include('layouts.front-end.partials._mobile_footer')
   @endsection
 
   @push('script')

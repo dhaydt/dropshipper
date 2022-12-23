@@ -18,6 +18,11 @@
             color: #fff;
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
+        @media(max-width: 600px){
+            .pantene-card .head{
+                height: 242px;
+            }
+        }
     </style>
 @endpush<div class="my-4">
     <div class="section-header mb-2">

@@ -267,8 +267,11 @@
                                     <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="" style="border-right: 1px solid grey">
                                 </a>
                                 <div class="desc-banner" style="background-color: {{ $unggulan['background_color'] }}">
-                                    <span class="title">
-                                        {{ Str::limit($deal->product->name, 19) }}
+                                    <span class="title title-bardy-md">
+                                        {{ Str::limit($deal->product->name, 20) }}
+                                    </span>
+                                    <span class="title title-bardy-sm d-none">
+                                        {{ Str::limit($deal->product->name, 13) }}
                                     </span>
                                 </div>
                             </div>
@@ -319,3 +322,14 @@
             </div> --}}
         </div>
     </div>
+@push('script')
+<script>
+    var screenWidth = window.screen.width;
+    if(screenWidth < 700){
+        $('.title-bardy-md').addClass('d-none');
+        $('.title-bardy-sm').removeClass('d-none');
+    }else{
+
+    }
+</script>
+@endpush

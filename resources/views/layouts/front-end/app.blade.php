@@ -722,7 +722,7 @@
 <!-- Navbar Electronics Store-->
 @include('layouts.front-end.partials._header')
 {{-- Mobile navbar --}}
-@if (\Request::route()->getName() !== 'customer.auth.login' && \Request::route()->getName() !== 'customer.auth.register')
+@if (\Request::route()->getName() == 'home')
 <header class="box-shadow-sm rtl d-block d-md-none">
     @include('layouts.front-end.partials._mobile_header')
 </header>
@@ -751,6 +751,7 @@
 <!-- Footer-->
 <!-- Footer-->
 @include('layouts.front-end.partials._footer')
+@include('layouts.front-end.partials._mobile_footer')
 <!-- Toolbar for handheld devices-->
 <!--<div class="cz-handheld-toolbar" id="toolbar">
     {{--@include('layouts.front-end.partials._toolbar')--}}
