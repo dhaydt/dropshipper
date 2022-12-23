@@ -52,7 +52,9 @@
         margin-bottom: 5px;
     }
     .deal-product-col {
-        margin-left: -105px
+        margin-left: -105px;
+        background: {{ $web_config['primary_color'] }};
+        border-radius: 10px;
     }
 
     .discount-top-f {

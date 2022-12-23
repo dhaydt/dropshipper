@@ -857,19 +857,19 @@ a .footer_banner_img {
                 },
                 //Medium
                 768: {
-                    items: 2
+                    items: 2.5
                 },
                 //Large
                 992: {
-                    items: 4
+                    items: 3.5
                 },
                 //Extra large
                 1200: {
-                    items: 5
+                    items: 4.5
                 },
                 //Extra extra large
                 1400: {
-                    items: 5
+                    items: 4.5
                 }
             }
         })

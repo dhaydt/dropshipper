@@ -257,7 +257,7 @@
                 <div class="col-7 p-0 h-100">
                     <div class="row h-100">
                         @foreach ($unggulan['products'] as $key=>$deal)
-                        <div class="col-6 p-0 position-relative">
+                        <div class="col-6 col-md-4 p-0 position-relative">
                             <div class="banner-item">
                                 <a href="{{route('product',$product->slug)}}">
                                     <img src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="">
