@@ -148,8 +148,8 @@ a .footer_banner_img {
   }
 
   .category_div {
-        max-height: 132px !important;
-        height: 132px;
+        max-height: 145px !important;
+        height: 145px;
         width: 100%;
         background-color: transparent !important;
         border: none !important;
