@@ -254,10 +254,16 @@
                 </div>
                 <div class="col-7 p-0 h-100">
                     <div class="row h-100">
+                        {{-- {{ dd($unggulan['products'][1]) }} --}}
                         @foreach ($unggulan['products'] as $key=>$deal)
                         <div class="col-6 col-md-4 p-0 position-relative">
                             <div class="banner-item">
                                 <a href="{{route('product',$product->slug)}}">
+                                    @if ($deal->product['icon'] !== 'def.png' && $deal->product['icon'] !== NULL)
+                                    <div class="ketupat">
+                                        <img src="{{\App\CPU\ProductManager::product_image_path('icon')}}/{{$deal->product['icon']}}" alt="">
+                                    </div>
+                                    @endif
                                     <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="" style="border-right: 1px solid grey">
                                 </a>
                                 <div class="desc-banner" style="background-color: {{ $unggulan['background_color'] }}">

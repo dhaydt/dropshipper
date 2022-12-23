@@ -262,6 +262,11 @@
                 <span class="for-discoutn-value-null"></span>
               </div> --}}
               {{-- @endif --}}
+              @if ($deal->product->icon !== 'def.png' && $deal->product->icon !== NULL)
+                                    <div class="ketupat">
+                                        <img src="{{\App\CPU\ProductManager::product_image_path('icon')}}/{{$deal->product['icon']}}" alt="">
+                                    </div>
+                                    @endif
                 @if($deal->product->label)
                 <div class="d-flex justify-content-end for-dicount-div discount-hed">
                     <span class="for-discoutn-value">
