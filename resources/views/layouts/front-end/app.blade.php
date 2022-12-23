@@ -55,6 +55,7 @@
 
         body {
             background-color: #f7f8fa94;
+            font-family: 'DM Sans', sans-serif;
         }
 
         @media(max-width: 600px){
