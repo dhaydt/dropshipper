@@ -242,6 +242,9 @@ a .footer_banner_img {
     .cat-owl .owl-stage-outer .owl-item {
         height: 85px;
     }
+    .bg-transparent{
+        margin-top: 0;
+    }
 
     .category_div .cat-link img {
         padding: 5px;

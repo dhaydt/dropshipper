@@ -27,15 +27,15 @@
         .row.rtl {
         }
         .carousel-banner-row {
-            height: 154px;
+            height: 215px;
             position: relative;
         }
         .carousel.slide {
             position: absolute;
             top: 0;
             bottom: 0;
-            left: -7px;
-            right: -7px;
+            left: -10px;
+            right: -10px;
         }
 
         .carousel-indicators {
@@ -63,7 +63,7 @@
 
     @media(max-width: 500px){
         .carousel-banner-row {
-            height: 145px;
+            height: 215px;
         }
 
         .carousel-indicators {
@@ -76,7 +76,7 @@
     }
     @media(max-width: 380px){
         .carousel-banner-row {
-            height: 125px;
+            height: 215px;
         }
         .carousel-inner {
             height: 125px;
@@ -113,12 +113,12 @@
                     </div>
                 @endforeach
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+            <a class="carousel-control-prev d-none d-md-flex" href="#carouselExampleIndicators" role="button"
                data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{\App\CPU\translate('Previous')}}</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+            <a class="carousel-control-next d-none d-md-flex" href="#carouselExampleIndicators" role="button"
                data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{\App\CPU\translate('Next')}}</span>

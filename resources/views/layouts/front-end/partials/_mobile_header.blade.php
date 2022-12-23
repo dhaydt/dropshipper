@@ -18,10 +18,13 @@
             display: none
         }
 
-        .search-mobile-input {
-            background-color: #dfdfdf;
+        .form-control.search-mobile-input.search-bar-input {
+            background-color: #fff;
             height: 36px;
+            border-radius: 10px !important;
             font-size: 13px;
+            border-top-right-radius: 10px !important;
+            border-bottom-right-radius: 10px !important;
         }
         .search_button{
             height: 36px;
@@ -103,7 +106,7 @@
 </style>
 @php($cat = session()->get('category'))
 @if (isset($cat))
-<div class="navbar-sticky bg-dark mobile-head">
+<div class="navbar-sticky mobile-head">
     <div class="navbar navbar-expand-md navbar-dark p-2" style="height: 52px">
         <div class="container">
             <div class="row w-100">
@@ -142,7 +145,7 @@
         </div>
     </div> --}}
     @else
-    <div class="navbar-sticky bg-dark mobile-head">
+    <div class="navbar-sticky mobile-head">
         @if (session()->get('hide_banner') !== true)
         @if (Route::current()->getName() == 'home')
         {{-- @include('layouts.front-end.partials._banner_dynamic') --}}
@@ -158,11 +161,9 @@
                             <form action="{{route('products')}}" type="submit" class="search_form">
                                 <input class="form-control search-mobile-input appended-form-control search-bar-input" type="text"
                                     autocomplete="off" placeholder="{{\App\CPU\translate('search')}}" name="name"
-                                    style="border: 2px solid white; border-radius: 50px; border-top-right-radius: 50px !important; border-bottom-right-radius: 50px !important;">
+                                    style="border: 2px solid white;">
                                 <button class="input-group-append-overlay search_button" type="submit"
-                                    style="border: 2px solid white;background-color: {{ $web_config['primary_color'] }} !important; border-radius: {{Session::get('direction') === "
-                                    rtl" ? '50px 0px 0px 50px; right: unset; left: 0'
-                                    : '0px 50px 50px 0px; left: unset; right: 0' }};">
+                                    style="border: 2px solid white; border-left: none; background-color: transparent !important; border-radius: 0 10px 10px 0;">
                                     <span class="input-group-text" style="font-size: 20px;">
                                         <i class="czi-search text-white"></i>
                                     </span>

@@ -60,7 +60,6 @@
 
         @media(max-width: 600px){
             .bod {
-                margin-top: 55px;
                 padding-bottom: 70px;
             }
 

@@ -7,7 +7,7 @@
         display: none;
     }
     .mobile-head .navbar.navbar-dark{
-        background-color: {{ $web_config['primary_color'] }};
+        background-color: transparent;
     }
     .cate-mobile::after {
         display: none
@@ -114,7 +114,7 @@
             background-color: transparent !important;
         }
         .search_button .input-group-text i {
-            color: {{ $web_config['primary_color'] }} !important;
+            color: grey !important;
         }
 
         .navbar-expand-md .dropdown-menu>.dropdown>.dropdown-toggle {
@@ -154,16 +154,11 @@
   <div class="navbar-sticky bg-light mobile-head">
     <div class="navbar navbar-expand-md navbar-light">
       <div class="container ">
-        <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        {{-- {{ dd($web_config) }} --}}
 
         <a class="navbar-brand d-none d-sm-block mr-0
           flex-shrink-0 tab-logo" href="{{route('home')}}" style="min-width: 7rem;">
