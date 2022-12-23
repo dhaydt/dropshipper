@@ -197,7 +197,6 @@
             max-height: 700px;
             min-height: 700px;
             overflow: hidden;
-            background-color: {{ $unggulan['background_color'] }};
             border-radius: 10px;
             margin: 0;
             box-shadow: 2px 2px 3px #00000030 !important;
@@ -214,7 +213,6 @@
             /* position: absolute; */
             bottom: 0;
             left: 0;
-            background-color: {{ $unggulan['background_color'] }};
             width: 100%;
             display:flex;
             justify-content: center;
@@ -238,6 +236,7 @@
             <div class="section-header mb-2">
                 <div class="feature_header">
                   <span class="for-feature-title">{{ $unggulan['title'] }}</span>
+                  {{ var_dump($unggulan['background_color']) }}
                 </div>
                 {{-- <div class="view-all">
                   <a class="btn btn-outline-accent btn-sm viw-btn-a"
@@ -248,7 +247,7 @@
                 </div> --}}
               </div>
               {{-- New Bardy --}}
-              <div class="row bardy-container">
+              <div class="row bardy-container" style="background-color: {{ $unggulan['background_color'] }}">
                 <div class="col-5 p-0 banner-col">
                     <div class="banner-bardy w-100 d-flex justify-content-center align-items-center">
                         <img src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="">
@@ -262,7 +261,7 @@
                                 <a href="{{route('product',$product->slug)}}">
                                     <img src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="">
                                 </a>
-                                <div class="desc-banner">
+                                <div class="desc-banner" style="background-color: {{ $unggulan['background_color'] }}">
                                     <span class="title">
                                         {{ Str::limit($deal->product->name, 19) }}
                                     </span>
