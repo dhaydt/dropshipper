@@ -10,7 +10,7 @@
 </style>
 <div class="navbar-tool dropdown {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}"
      style="margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 6px">
-    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('shop-cart')}}">
+    <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('checkout-details')}}">
         <span class="navbar-tool-label" id="cartNumber">
             @php($cart=\App\CPU\CartManager::get_cart())
             {{$cart->count()}}

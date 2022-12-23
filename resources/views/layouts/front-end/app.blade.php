@@ -722,9 +722,11 @@
 <!-- Navbar Electronics Store-->
 @include('layouts.front-end.partials._header')
 {{-- Mobile navbar --}}
+@if (\Request::route()->getName() !== 'customer.auth.login' && \Request::route()->getName() !== 'customer.auth.register')
 <header class="box-shadow-sm rtl d-block d-md-none">
     @include('layouts.front-end.partials._mobile_header')
 </header>
+@endif
 <!-- Page title-->
 
 {{--loader--}}
@@ -815,6 +817,11 @@
             $('.header_banner').attr('class', 'header_banner d-block');
         }
     })
+
+    function getCart(){
+        var main = $('#main_cart').text();
+        $('#cartNumber').text(main);
+    }
 
     function closeBanHeader(){
         $('.header_banner').attr('class', 'header_banner d-none');
@@ -939,6 +946,7 @@
                     console.log(response);
                     if (response.status == 1) {
                         updateNavCart();
+                        getCart();
                         toastr.success(response.message, {
                             CloseButton: true,
                             ProgressBar: true
