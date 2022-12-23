@@ -1,4 +1,6 @@
-<?php return array (
+<?php
+
+return [
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1546,4 +1548,4 @@
   'Diproses' => 'Diproses',
   'Dikirim' => 'Dikirim',
   'Dibatalkan' => 'Dibatalkan',
-);
+];
