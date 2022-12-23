@@ -236,7 +236,6 @@
             <div class="section-header mb-2">
                 <div class="feature_header">
                   <span class="for-feature-title">{{ $unggulan['title'] }}</span>
-                  {{ var_dump($unggulan['background_color']) }}
                 </div>
                 {{-- <div class="view-all">
                   <a class="btn btn-outline-accent btn-sm viw-btn-a"
@@ -250,7 +249,7 @@
               <div class="row bardy-container" style="background-color: {{ $unggulan['background_color'] }}">
                 <div class="col-5 p-0 banner-col">
                     <div class="banner-bardy w-100 d-flex justify-content-center align-items-center">
-                        <img src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="">
+                        <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="">
                     </div>
                 </div>
                 <div class="col-7 p-0 h-100">
@@ -259,7 +258,7 @@
                         <div class="col-6 col-md-4 p-0 position-relative">
                             <div class="banner-item">
                                 <a href="{{route('product',$product->slug)}}">
-                                    <img src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="" style="border-right: 1px solid grey">
+                                    <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal->product['thumbnail']}}" alt="" style="border-right: 1px solid grey">
                                 </a>
                                 <div class="desc-banner" style="background-color: {{ $unggulan['background_color'] }}">
                                     <span class="title">

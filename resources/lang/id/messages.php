@@ -1,6 +1,4 @@
-<?php
-
-return [
+<?php return array (
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1544,4 +1542,8 @@ return [
   'Order List Resi' => 'Order List Resi',
   'No_Resi' => 'No Resi',
   'Ya, Update Resi!' => 'Ya  Update Resi!',
-];
+  'Menunggu' => 'Menunggu',
+  'Diproses' => 'Diproses',
+  'Dikirim' => 'Dikirim',
+  'Dibatalkan' => 'Dibatalkan',
+);

@@ -38,7 +38,7 @@
                 <div class="pantene-card">
                     <div class="head text-center d-flex justify-content-center align-items-center">
                         <div class="img">
-                            <img src="{{ asset('storage/deal').'/'.$b_p['images'] }}" alt="" class="" style="max-height: 100%">
+                            <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{ asset('storage/deal').'/'.$b_p['images'] }}" alt="" class="" style="max-height: 100%">
                         </div>
                     </div>
                     {{-- <div class="pantene-desc bg-green">
