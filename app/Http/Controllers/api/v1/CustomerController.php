@@ -128,7 +128,7 @@ class CustomerController extends Controller
 
     public function address_list(Request $request)
     {
-        return response()->json(ShippingAddress::where('customer_id', $request->user()->id)->get(), 200);
+        return response()->json(ShippingAddress::where(['customer_id' => $request->user()->id, 'user_is' => 'customer'])->get(), 200);
     }
 
     public function add_new_address(Request $request)
