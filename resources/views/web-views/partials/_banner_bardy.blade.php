@@ -173,14 +173,14 @@
     <style>
         @media(max-width: 700px){
             .css-1xnb600 .bardy-container{
-                max-height: 360px;
-                min-height: 360px;
+                max-height: 265px;
+                min-height: 265px;
             }
             /* .css-1xnb600 .banner-col{
                 height: 140px;
             } */
             .css-1xnb600 .banner-item{
-                height: 180px;
+                height: 133px;
             }
             .css-1xnb600 .desc-banner{
                 height: 25px;
@@ -189,8 +189,11 @@
                 font-size: 12px;
             }
             .css-1xnb600 .banner-item img {
-                height: 85%;
+                height: 80%;
                 width: 100%;
+            }
+            .banner-bardy{
+                max-height: 265px !important;
             }
         }
         .bardy-container{
@@ -248,12 +251,12 @@
               </div>
               {{-- New Bardy --}}
               <div class="row bardy-container" style="background-color: {{ $unggulan['background_color'] }}">
-                <div class="col-4 p-0 banner-col">
+                <div class="col-5 col-md-4 p-0 banner-col">
                     <div class="banner-bardy w-100 d-flex justify-content-center align-items-center position-relative">
                         <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="" style="position: absolute; height: 100%; width:auto;">
                     </div>
                 </div>
-                <div class="col-8 p-0 h-100">
+                <div class="col-7 col-md-8 p-0 h-100">
                     <div class="row h-100">
                         {{-- {{ dd($unggulan['products'][1]) }} --}}
                         @foreach ($unggulan['products'] as $key=>$deal)
