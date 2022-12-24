@@ -32,10 +32,10 @@ class OrderController extends Controller
             });
             $query_param = ['search' => $request['search']];
         }
-        //dd($orders->count())
+        $payment = Helpers::payment();
         $orders = $orders->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
 
-        return view('seller-views.order.list', compact('orders', 'search'));
+        return view('seller-views.order.list', compact('orders', 'search', 'payment'));
     }
 
     public function details($id)

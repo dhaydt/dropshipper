@@ -1552,4 +1552,5 @@
   'Batal' => 'Batal',
   'Batal65' => 'Batal65',
   'your_order_has_been_placed_successfully_with_id!' => 'Your order has been placed successfully with id!',
+  'Check_Order' => 'Check Order',
 );

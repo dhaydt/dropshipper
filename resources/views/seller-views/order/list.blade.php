@@ -163,6 +163,11 @@
                                             </td>
                                             <td>
                                                 <div class="dropdown">
+                                                    @if ($order['order_status'] == 'pending')
+                                                    <button type="button" class="btn btn-success py-1" data-toggle="modal" data-target="#pay{{ $order['id'] }}">
+                                                        Bayar
+                                                    </button>
+                                                    @endif
                                                     <button class="btn btn-outline-secondary dropdown-toggle"
                                                             type="button"
                                                             id="dropdownMenuButton" data-toggle="dropdown"
@@ -181,6 +186,47 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="pay{{ $order['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Pembayara order ID {{ $order['id'] }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        @foreach ($payment as $p)
+                                                            <div class="col-md-6 mb-4" style="cursor: pointer">
+                                                                <div class="card">
+                                                                    <div class="card-body" style="height: 100px">
+                                                                        <form class="needs-validation" target="_blank" method="POST" id="payment-form"
+                                                                            action="{{route('xendit-payment.vaInvoice')}}">
+
+                                                                            <input type="hidden" name="type" value="{{ $p['code'] }}">
+                                                                            <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                                            {{-- <input class="price" type="hidden" name="price" value="price"> --}}
+                                                                            {{ csrf_field() }}
+                                                                            <button class="btn btn-block" type="submit">
+                                                                                <img width="150" style="margin-top: -10px"
+                                                                                src="{{asset('assets/front-end/img/'.strtolower($p['code']).'.png')}}" />
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
 
                                 @endforeach
                                 </tbody>

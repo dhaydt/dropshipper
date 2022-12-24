@@ -148,9 +148,9 @@
                             </div>
 
                             <div class="col-6">
-                                <a href="{{route('seller.dashboard.index')}}"
+                                <a href="{{route('seller.orders.list', ['all'])}}"
                                    class="btn btn-secondary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
-                                    {{\App\CPU\translate('Pay_Now')}}
+                                    {{\App\CPU\translate('Check_Order')}}
                                 </a>
                             </div>
                         </div>
