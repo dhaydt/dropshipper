@@ -162,8 +162,12 @@
         }
 
         .search_button {
-            background-color: {{$web_config['primary_color']}};
+            background-color: transparent;
             border: none;
+        }
+
+        .input-group-append-overlay .input-group-text, .input-group-prepend-overlay .input-group-text{
+            color: #cbcbcb;
         }
 
         .nav-link {

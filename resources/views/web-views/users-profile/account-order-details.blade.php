@@ -248,8 +248,7 @@
                                                 @if($shipping)
                                                     {{$shipping->address}}
                                                     , {{$shipping->city}}
-                                                    , {{$shipping->zip}}@php($c_name = App\Country::where('country', $shipping->country)->first())
-                                                    , {{$c_name->country_name}}
+                                                    , {{$shipping->zip}}
                                                 @endif
                                             </span>
                                         </div>

@@ -278,20 +278,6 @@
                             <h5>{{$seller->shop->province}}</h5>
                         </div>
                     </div>
-                    <div class="flex-start">
-                        <div>
-                            <h5>{{\App\CPU\translate('country')}} : </h5>
-                        </div>
-                        <div class="ml-2">
-                            <img class="{{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}" width="20"
-                                src="{{asset('public/assets/front-end')}}/img/flags/{{strtolower($seller->shop->country)}}.png"
-                                alt="flag" />
-                        </div>
-                        @php($c_name = App\Country::where('country', $seller->shop->country)->get())
-                        <div class="">
-                            <h5>{{$c_name[0]->country_name}}</h5>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

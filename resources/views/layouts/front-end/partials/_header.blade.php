@@ -175,37 +175,20 @@
         </a>
 
       <!-- new search -->
-          <div id="nav-global-location-slot" data-toggle="tooltip" data-placement="top" title="Location">
-                    <span id="nav-global-location-data-modal-action" class="a-declarative nav-progressive-attribute">
-                        <a id="nav-global-location-popover-link"
-                            class="d-flex align-items-center nav-a nav-a-2 a-popover-trigger a-declarative nav-progressive-attribute"
-                            tabindex="0">
-                            <img class="mt-1 mr-1" style="height: 20px; width: auto;" src="{{asset('public/assets/front-end/img/loc.png')}}" alt="">
-                            <div class="mr-2 d-flex loc-div flex-column justify-content-center">
-                                <span class="nav-line-1 nav-progressive-content">Area pengiriman</span>
-                                <span class="nav-line-2 nav-progressive-content d-flex" id="auto-loc">
-                                    {{-- Indonesia --}}
-                                </span>
-                            </div>
-                        </a>
-                    </span>
-                </div>
-        <div class="input-group-overlay d-none d-md-block" style="text-align: {{Session::get('direction') === "
+        <div class="input-group-overlay d-none d-md-block" style="margin-left: 2rem; text-align: {{Session::get('direction') === "
           rtl" ? 'right' : 'left' }}">
           <form action="{{route('products')}}" type="submit" class="search_form">
-            <input class="form-control appended-form-control search-bar-input" type="text" autocomplete="off"
-              placeholder="{{\App\CPU\translate('search')}}" name="name"
-              style="border: 2px solid {{
-                $web_config['primary_color']
-              }}; border-radius: 50px; border-top-right-radius: 50px !important; border-bottom-right-radius: 50px !important;">
             <button class="input-group-append-overlay search_button" type="submit"
-              style="border-radius: {{Session::get('direction') === " rtl" ? '50px 0px 0px 50px; right: unset; left: 0'
-              : '0px 50px 50px 0px; left: unset; right: 0' }};">
-              <span class="input-group-text" style="font-size: 20px;">
-                <i class="czi-search text-white"></i>
+              style="border-radius: {{Session::get('direction') === " rtl" ? '0px 10px 10px 0px; right: 0; left: unset'
+              : '10px 0px 0px 10px; left: 0; right: unset' }};">
+              <span class="input-group-text" style="font-size: 14px;">
+                <i class="czi-search" style="color: grey;"></i>
               </span>
             </button>
-            <input name="data_from" value="search" hidden>
+            <input class="form-control appended-form-control search-bar-input" type="text" autocomplete="off"
+              placeholder="Cari Product" name="name"
+              style="border: 2px solid #cbcbcb; font-weight: 500;height: 35px !important; padding-left: 2.5rem; padding-right: unset; border-radius: 10px; border-top-right-radius: 10px !important; border-bottom-right-radius: 10px !important;">
+            <input name="data_from" value="" hidden>
             <input name="page" value="1" hidden>
             <diV class="card search-card"
               style="position: absolute;background: white;z-index: 999;width: 100%;display: none">
@@ -595,47 +578,6 @@
             @endif
 
             @php( $short = \App\CPU\Helpers::country())
-                        {{-- {{ dd($short[0]) }} --}}
-                        <li class="nav-item dropdown ml-auto">
-                            <a class="nav-link dropdown-toggle text-dark border-right py-2 mt-2" href="#"
-                                data-toggle="dropdown" style="color: black !important">
-                                <!--<img class="{{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}"-->
-                                <!--    style="height: 16px; width: auto"-->
-                                <!--    src="{{asset('public/assets/front-end')}}/img/loc.png" alt="Eng">-->
-                              @if (empty($country))
-                                    <img class="{{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}" width="20"
-                                        src="{{asset('public/assets/front-end')}}/img/shop.png"
-                                        alt="Eng">
-                                    All Country
-                                    @else
-                                    <img class="{{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}" width="20"
-                                    src="{{asset('public/assets/front-end')}}/img/flags/{{ strtolower($country ?? 'id')  }}.png"
-                                    alt="Eng">
-
-                                {{ $country }}
-                                @endif
-                            </a>
-                            <ul class="dropdown-menu scroll-bar">
-                                <li>
-                                    <a class="dropdown-item pb-1" href="{{route('home')}}">
-                                        <img class="{{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}"
-                                            width="20"
-                                            src="{{asset('public/assets/front-end')}}/img/shop.png"
-                                            alt="flsg" />
-                                        <span style="text-transform: capitalize">All Country</span>
-                                    </a>
-                                @foreach($short as $data)
-                                    <a class="dropdown-item pb-1" href="{{route('shortBy', $data->country)}}">
-                                        <img class="{{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}"
-                                            width="20"
-                                            src="{{asset('public/assets/front-end')}}/img/flags/{{strtolower($data->country)}}.png"
-                                            alt="flsg" />
-                                        <span style="text-transform: capitalize">{{ $data->country_name }}</span>
-                                    </a>
-                                @endforeach
-                                </li>
-                            </ul>
-                        </li>
 
             @php( $local = \App\CPU\Helpers::default_lang())
             <li class="nav-item dropdown ml-auto">
@@ -701,22 +643,5 @@
         }
         setInterval(function() { ObserveInputValue() }, 2000);
     });
-</script>
-<script>
-
-fetch('https://ipapi.co/json/')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    console.log('location',data);
-
-            if(data.region !== "West Java"){
-                $('#auto-loc').append('Diluar jangkauan').attr('style', 'font-size: 16px; width: 120px;')
-            }else{
-                $('#auto-loc').append(data.city)
-            }
-            $('#nav-global-location-slot').attr('data-original-title', data.country_name + ', ' + data.region);
-  });
 </script>
 @endpush

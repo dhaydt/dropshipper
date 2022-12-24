@@ -40,11 +40,11 @@
                                     <h6>{{\App\CPU\translate('Phone')}} : </h6>
                                     <h6 class="mx-1">{{$shop->contact}}</h6>
                                 </div>
-                                                                <div class="flex-start">
+                                                                {{-- <div class="flex-start">
                                     <h6>{{\App\CPU\translate('Country')}} : </h6>
                                     @php($c=App\Country::where('country', $shop->country)->first())
                                     <h6 class="mx-1">{{$c->country_name}}</h6>
-                                </div>
+                                </div> --}}
                                 <div class="flex-start">
                                     <h6>{{\App\CPU\translate('Province')}} : </h6>
                                     <h6 class="mx-1">{{$shop->province}}</h6>
