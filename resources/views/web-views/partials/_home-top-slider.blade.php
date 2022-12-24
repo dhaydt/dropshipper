@@ -70,7 +70,9 @@
         /* margin-top: -90px; */
     }
     @media(max-width: 600px){
-        .row.rtl {
+        .client-testimonial-carousel .owl-dots {
+            text-align: center;
+            margin-top: unset;
         }
         .carousel-banner-row {
             height: 215px;
@@ -233,9 +235,8 @@
 <script>
     $(document).ready(function(){
     $(".owl-carousel-banner").owlCarousel({
-        autoplay: false,
+        autoplay: true,
         margin:10,
-        height:325,
         loop:true,
         dots:true,
         responsive: {

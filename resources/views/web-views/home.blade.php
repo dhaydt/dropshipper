@@ -240,7 +240,7 @@ a .footer_banner_img {
 
   @media (max-width: 600px) {
     .cat-owl .owl-stage-outer .owl-item {
-        height: 85px;
+        height: 115px;
     }
     .bg-transparent{
         margin-top: 0;
@@ -261,7 +261,7 @@ a .footer_banner_img {
     /* category */
     .cat-owl .owl-stage-outer {
         overflow: auto !important;
-        height: 100px;
+        height: 125px;
     }
 
     .banner-wrapper .banner-item {
@@ -420,11 +420,15 @@ a .footer_banner_img {
 
   @media(max-width: 500px) {
     .owl-carousel .owl-dots .owl-dot span {
-        width: 5px !important;
+        width: 25px !important;
         height: 5px !important;
+        margin-right: -3px !important;
     }
     .owl-carousel .owl-dots {
-        margin-top: -10px !important;
+        margin-top: -32px !important;
+        z-index: 1;
+        width: 100%;
+        position: absolute;
     }
   }
 
