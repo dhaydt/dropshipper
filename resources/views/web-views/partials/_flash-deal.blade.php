@@ -13,8 +13,8 @@
         border-radius: 0px 0px 0 15px;
     }
     .bandiv{
-            min-height: 400px;
-            max-height: 400px;
+            min-height: 480px;
+            max-height: 480px;
             width: 96%;
             background-color: {{ $web_config['primary_color'] }};
             border-radius:10px;
@@ -231,8 +231,8 @@
         }
     }
 </style>
-<div class="row mb-4 d-none d-md-flex" style="max-height: 400px">
-    <div class="banner col-md-3 col-6">
+<div class="row mb-4 d-none d-md-flex" style="height: 480px">
+    <div class="banner col-md-4 col-6 h-100">
         <a href="/" class="h-100">
             <div class="bandiv">
                 <img src="{{asset("storage/company")."/".$web_config['flash_banner']->value}}" alt="">
@@ -240,7 +240,7 @@
         </a>
     </div>
     {{-- {{ dd($flash_deals) }} --}}
-    <div class="col-md-10 col-6 d-flex align-items-center deal-product-col">
+    <div class="col-md-9 col-6 d-flex align-items-center deal-product-col">
         <div class="owl-carousel owl-theme mt-2" id="flash-deal-slider">
             @foreach($flash_deals->products as $key=>$deal)
             @if( $deal->product)

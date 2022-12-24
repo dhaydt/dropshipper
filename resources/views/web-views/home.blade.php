@@ -578,19 +578,19 @@ a .footer_banner_img {
     <div class="row">
       <div class="col-md-12">
         <div class="section-header mb-2 fd rtl row justify-content-between">
-          <div class="col-lg-4 col-md-5 col-8 mt-2" style="padding-{{Session::get('direction') === " rtl" ? 'right' : 'left' }}: 0">
+          <div class="col-lg-3 col-md-5 col-8 mt-2" style="padding-{{Session::get('direction') === " rtl" ? 'right' : 'left' }}: 0">
             <div class="d-inline-flex displayTab">
               <span class="flash_deal_title ">
                 {{$flash_deals['title']}}
               </span>
             </div>
           </div>
-          <div class="col-lg-8 col-md-7 col-sm-10 col-12 timer" style="padding-{{Session::get('direction') === " rtl"
+          <div class="col-lg-9 col-md-7 col-sm-10 col-12 timer" style="padding-{{Session::get('direction') === " rtl"
             ? 'left' : 'right' }}: 0">
             <div class="view_all view-btn-div-f w-100 align-items-center" style="justify-content: space-between !important">
+                <div class="px-2 counter" style="margin-left: -60px;">
                 <small>Berakhir dalam:</small>
-              <div class="px-2 counter">
-                <span class="cz-countdown" style="margin-left: -6vw;"
+                <span class="cz-countdown" style=""
                   data-countdown="{{isset($flash_deals)?date('m/d/Y',strtotime($flash_deals['end_date'])):''}} 11:59:00 PM">
                   <span class="cz-countdown-days">
                     <span class="cz-countdown-value"></span> <span class="text-bold" style="font-weight: 700">Hari</span>
