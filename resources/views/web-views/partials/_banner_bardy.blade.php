@@ -249,7 +249,7 @@
               <div class="row bardy-container" style="background-color: {{ $unggulan['background_color'] }}">
                 <div class="col-4 p-0 banner-col">
                     <div class="banner-bardy w-100 d-flex justify-content-center align-items-center">
-                        <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="">
+                        <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="" style="position: absolute; top: 0; width:100%;">
                     </div>
                 </div>
                 <div class="col-8 p-0 h-100">
