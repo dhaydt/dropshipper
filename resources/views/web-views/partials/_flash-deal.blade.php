@@ -15,9 +15,9 @@
     .bandiv{
             min-height: 480px;
             max-height: 480px;
-            width: 96%;
+            width: 100%;
             background-color: {{ $web_config['primary_color'] }};
-            border-radius:10px;
+            border-radius:10px 0 0 10px;
         }
     .bandiv img {
         max-height: 400px;
@@ -52,9 +52,9 @@
         margin-bottom: 5px;
     }
     .deal-product-col {
-        margin-left: -105px;
+        margin-left: 0px;
         background: {{ $web_config['primary_color'] }};
-        border-radius: 10px;
+        border-radius: 0 10px 10px 0;
     }
 
     .discount-top-f {
@@ -232,7 +232,7 @@
     }
 </style>
 <div class="row mb-4 d-none d-md-flex" style="height: 480px">
-    <div class="banner col-md-4 col-6 h-100">
+    <div class="banner col-md-3 col-6 h-100 p-0">
         <a href="/" class="h-100">
             <div class="bandiv">
                 <img src="{{asset("storage/company")."/".$web_config['flash_banner']->value}}" alt="">
