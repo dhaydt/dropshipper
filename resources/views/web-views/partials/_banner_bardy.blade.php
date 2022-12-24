@@ -217,7 +217,7 @@
             display:flex;
             justify-content: center;
             align-items:center;
-            height: 40px;
+            height: 70px;
         }
         .desc-banner .title{
             font-size: 20px;
@@ -225,7 +225,7 @@
             color: #fff;
         }
         .banner-item img{
-            height: 89%;
+            height: 80%;
             width: 100%;
         }
     </style>
@@ -247,12 +247,12 @@
               </div>
               {{-- New Bardy --}}
               <div class="row bardy-container" style="background-color: {{ $unggulan['background_color'] }}">
-                <div class="col-5 p-0 banner-col">
+                <div class="col-4 p-0 banner-col">
                     <div class="banner-bardy w-100 d-flex justify-content-center align-items-center">
                         <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="">
                     </div>
                 </div>
-                <div class="col-7 p-0 h-100">
+                <div class="col-8 p-0 h-100">
                     <div class="row h-100">
                         {{-- {{ dd($unggulan['products'][1]) }} --}}
                         @foreach ($unggulan['products'] as $key=>$deal)
