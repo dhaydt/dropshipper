@@ -167,7 +167,7 @@
         }
 
         .input-group-append-overlay .input-group-text, .input-group-prepend-overlay .input-group-text{
-            color: #cbcbcb;
+            color:
         }
 
         .nav-link {

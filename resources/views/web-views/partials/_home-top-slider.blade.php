@@ -1,12 +1,58 @@
+
+@push('css_or_js')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+@endpush
 <style>
-    /* .just-padding {
-        padding: 15px;
-        border: 1px solid #ccccccb3;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        height: 100%;
-        background-color: white;
-    } */
+    .section-borders span.black-border {
+    background: #333;
+    width: 30px;
+    margin: 0 6px;
+
+}
+
+.client-testimonial-carousel .owl-dots button {
+    height: 5px;
+    background: #cbcbcb !important;
+    width: 5px;
+    display: inline-block;
+    margin: 5px;
+    transition: .2s;
+    border-radius: 2px;
+}
+
+.client-testimonial-carousel button.owl-dot.active {
+    background: #545454 !important;
+    width: 5px;
+}
+
+.client-testimonial-carousel .owl-dots {
+    text-align: left;
+    margin-top: 10px
+}
+
+.single-testimonial-item {
+    position: relative;
+    box-shadow: 0 0 2px #dadfd3;
+    font-style: italic;
+}
+
+.single-testimonial-item h3 {
+    font-size: 20px;
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+.single-testimonial-item{
+    height: 325px;
+}
+
+.single-testimonial-item h3 span {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 5px;
+}
     .carousel-banner-row {
             height: 369px;
         }
@@ -29,6 +75,9 @@
         .carousel-banner-row {
             height: 215px;
             position: relative;
+        }
+        .single-testimonial-item{
+            height: 210px;
         }
         .carousel.slide {
             position: absolute;
@@ -90,10 +139,22 @@
     }
 </style>
 
-<div class="row rtl mb-2">
+<div class="row rtl">
     <div class="col-xl-12 col-md-12 carousel-banner-row">
         @php($main_banner=\App\Model\Banner::where('banner_type','Main Banner')->where('published',1)->orderBy('id','desc')->get())
-        <div id="carouselExampleIndicators" class="carousel slide h-100" data-ride="carousel">
+        <div class="owl-carousel owl-carousel-banner client-testimonial-carousel">
+            @foreach($main_banner as $key=>$banner)
+            <div class="single-testimonial-item {{$key==0?'active':''}}">
+                <a href="//{{$banner['url']}}" class="h-100">
+                    <img class="d-block h-100"
+                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                         src="{{asset('storage/banner')}}/{{$banner['photo']}}"
+                         alt="">
+                </a>
+            </div>
+            @endforeach
+        </div>
+        <!--<div id="carouselExampleIndicators" class="carousel slide h-100" data-ride="carousel">
             <ol class="carousel-indicators">
                 @foreach($main_banner as $key=>$banner)
                     <li data-target="#carouselExampleIndicators" class="indicators" data-slide-to="{{$key}}"
@@ -123,7 +184,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{\App\CPU\translate('Next')}}</span>
             </a>
-        </div>
+        </div> -->
 
         {{-- <div class="row mt-2">
             @foreach(\App\Model\Banner::where('banner_type','Footer Banner')->where('published',1)->orderBy('id','desc')->take(3)->get() as $banner)
@@ -168,8 +229,54 @@
     <!-- Banner group-->
 </div>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
+    $(document).ready(function(){
+    $(".owl-carousel-banner").owlCarousel({
+        autoplay: false,
+        margin:10,
+        height:325,
+        loop:true,
+        dots:true,
+        responsive: {
+                //X-Small
+                0: {
+                    items: 1
+                },
+                360: {
+                    items: 1
+                },
+                375: {
+                    items: 1
+                },
+                540: {
+                    items: 1
+                },
+                //Small
+                576: {
+                    items: 1
+                },
+                //Medium
+                768: {
+                    items: 1
+                },
+                //Large
+                992: {
+                    items: 2
+                },
+                //Extra large
+                1200: {
+                    items: 2
+                },
+                //Extra extra large
+                1400: {
+                    items: 2
+                }
+            }
+    //      nav:true,
+    //      navText:["<i class='fas fa-long-arrow-alt-left'></i>","<i class='fas fa-long-arrow-alt-right'></i>" ]
+    });
+    });
     $(function () {
         $('.list-group-item').on('click', function () {
             $('.glyphicon', this)
