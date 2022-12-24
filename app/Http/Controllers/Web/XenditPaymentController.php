@@ -69,8 +69,10 @@ class XenditPaymentController extends Controller
         // dd($request);
         $customer = auth('customer')->user();
         $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
-        $value = CartManager::cart_grand_total() - $discount;
+        $value = Order::find($request->order_id)['order_amount'];
         $tran = OrderManager::gen_unique_id();
+        $order = Order::find($request->order_id);
+        $order_address = json_decode($order->shipping_address_data);
         $type = strtoupper($request['type']);
 
         session()->put('transaction_ref', $tran);
@@ -87,7 +89,7 @@ class XenditPaymentController extends Controller
         if (auth('customer')->check()) {
             $name = $customer->name ? $customer->name : $customer->f_name;
             $phone = $customer->phone;
-            $address = $customer->district.', '.$customer->city.', '.$customer->province;
+            $address = $order_address->district.', '.$order_address->city.', '.$order_address->province;
             $id = $customer->id;
             $email = $customer->email;
         }
@@ -95,7 +97,7 @@ class XenditPaymentController extends Controller
             $custom = ShippingAddress::where('slug', session()->get('customer_address'))->first();
             $name = $custom->contact_person_name;
             $phone = $custom->phone;
-            $address = $custom->district.', '.$custom->city.', '.$custom->province;
+            $address = $order_address->district.', '.$order_address->city.', '.$order_address->province;
             $id = $custom->customer_id;
             $email = 'dropshipper@ezren.id';
         }
@@ -119,7 +121,7 @@ class XenditPaymentController extends Controller
             'should_send_email' => true,
             'customer' => $user,
             // 'items' => $products,
-            'success_redirect_url' => env('APP_URL').'/xendit-payment/success/'.$type,
+            'success_redirect_url' => env('APP_URL').'/xendit-payment/success/'.$type.'/'.$request->order_id,
         ];
 
         // dd($params);
@@ -142,31 +144,74 @@ class XenditPaymentController extends Controller
         return redirect()->away($checkout_session['invoice_url']);
     }
 
-    public function success($type)
+    public function success($type, $group)
     {
         // dd($type);
         // $order = Order::find($request->id);
 
-        $unique_id = OrderManager::gen_unique_id();
-        $order_ids = [];
-        foreach (CartManager::get_cart_group_ids() as $group_id) {
-            $data = [
-                'payment_method' => 'Virtual Account'.$type,
-                'order_status' => 'processing',
-                'payment_status' => 'paid',
-                'transaction_ref' => session('transaction_ref'),
-                'order_group_id' => $unique_id,
-                'cart_group_id' => $group_id,
-            ];
-            $order_id = OrderManager::generate_order($data);
-            array_push($order_ids, $order_id);
+        // $unique_id = OrderManager::gen_unique_id();
+        // $order_ids = [];
+        // foreach (CartManager::get_cart_group_ids() as $group_id) {
+        //     $data = [
+        //         'payment_method' => 'Virtual Account'.$type,
+        //         'order_status' => 'processing',
+        //         'payment_status' => 'paid',
+        //         'transaction_ref' => session('transaction_ref'),
+        //         'order_group_id' => $unique_id,
+        //         'cart_group_id' => $group_id,
+        //     ];
+        //     $order_id = OrderManager::generate_order($data);
+        //     array_push($order_ids, $order_id);
+        // }
+        // CartManager::cart_clean();
+        // session()->forget('customer_address');
+        // if (auth('customer')->check() || session()->get('user_is') == 'dropship') {
+        //     Toastr::success('Payment success.');
+
+        //     return view('web-views.checkout-complete');
+        // }
+
+        // return response()->json(['message' => 'Payment succeeded'], 200);
+
+        $order = Order::find($group);
+
+        $order->order_status = 'processing';
+        $order->payment_status = 'paid';
+        $order->transaction_ref = session('transaction_ref');
+        $order->payment_method = $type;
+        $order->save();
+
+        $order_id = $group;
+
+        $user_is = $order->user_is;
+
+        if ($user_is == 'dropship') {
+            $user = Seller::where('id', $order->customer_id)->first();
+        } else {
+            $user = User::where('id', $order->customer_id)->first();
         }
-        CartManager::cart_clean();
+        if (!$user) {
+            if ($user->cm_firebase_token !== null) {
+                $fcm_token = $user->cm_firebase_token;
+
+                $data = [
+                    'title' => 'Payment Successfully',
+                    'description' => 'Your payment Success',
+                    'order_id' => $order->id,
+                    'image' => '',
+                ];
+                Helpers::send_push_notif_to_device($fcm_token, $data);
+            }
+        }
         session()->forget('customer_address');
         if (auth('customer')->check() || session()->get('user_is') == 'dropship') {
             Toastr::success('Payment success.');
 
-            return view('web-views.checkout-complete');
+            if (!$order_id) {
+                return redirect()->route('customer.account-oder');
+            }
+
+            return view('web-views.checkout-complete', compact('order_id'));
         }
 
         return response()->json(['message' => 'Payment succeeded'], 200);

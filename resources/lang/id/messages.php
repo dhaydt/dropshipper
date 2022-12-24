@@ -1,6 +1,4 @@
-<?php
-
-return [
+<?php return array (
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1548,4 +1546,10 @@ return [
   'Diproses' => 'Diproses',
   'Dikirim' => 'Dikirim',
   'Dibatalkan' => 'Dibatalkan',
-];
+  'You order with order number 100067 was placed successfully, please copmlete order payment to processing order!' => 'You order with order number 100067 was placed successfully  please copmlete order payment to processing order!',
+  'Pay_Now' => 'Pay Now',
+  'Lihat' => 'Lihat',
+  'Batal' => 'Batal',
+  'Batal65' => 'Batal65',
+  'your_order_has_been_placed_successfully_with_id!' => 'Your order has been placed successfully with id!',
+);

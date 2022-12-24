@@ -329,6 +329,7 @@ class WebController extends Controller
     {
         $unique_id = OrderManager::gen_unique_id();
         $order_ids = [];
+        $order_id = '';
         foreach (CartManager::get_cart_group_ids() as $group_id) {
             $data = [
                 'payment_method' => 'cash_on_delivery',
@@ -343,11 +344,15 @@ class WebController extends Controller
             $order_id = OrderManager::generate_order($data);
             array_push($order_ids, $order_id);
         }
-
         CartManager::cart_clean();
+        if ($order_id == '') {
+            Toastr::success('Order Not Found');
+
+            return redirect()->route('home');
+        }
         session()->forget('customer_address');
 
-        return view('web-views.checkout-complete');
+        return view('web-views.checkout-complete', compact('order_id'));
     }
 
     public function order_placed()

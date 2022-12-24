@@ -154,22 +154,105 @@
                                     </td>
                                     <td class="bodytr" style="width: 162px">
                                         <a href="{{ route('account-order-details', ['id'=>$order->id]) }}"
-                                           class="btn btn-secondary p-2">
-                                            <i class="fa fa-eye"></i> {{\App\CPU\translate('view')}}
+                                           class="btn btn-secondary btn-sm">
+                                            <i class="fa fa-eye"></i> {{\App\CPU\translate('Lihat')}}
                                         </a>
+                                        @if ($order->order_status == 'pending')
+                                        <button type="button" class="btn btn-primary btn-sm p-2" data-toggle="modal" data-target="#pay{{ $order->id }}">
+                                            <i class="fa fa-dollar"></i> Bayar
+                                        </button>
+                                        @endif
                                         @if($order['payment_method']=='cash_on_delivery' && $order['order_status']=='pending')
                                             <a href="javascript:"
                                                onclick="route_alert('{{ route('order-cancel',[$order->id]) }}','{{\App\CPU\translate('want_to_cancel_this_order?')}}')"
-                                               class="btn btn-danger p-2 top-margin">
-                                                <i class="fa fa-trash"></i> {{\App\CPU\translate('cancel')}}
+                                               class="btn btn-danger btn-sm p-2 top-margin">
+                                                <i class="fa fa-trash"></i> {{\App\CPU\translate('Batal')}}
                                             </a>
                                         @else
-                                            <button class="btn btn-danger p-2 top-margin" onclick="cancel_message()">
-                                                <i class="fa fa-trash"></i> {{\App\CPU\translate('cancel')}}
+                                            <button class="btn btn-danger btn-sm p-2 top-margin" onclick="cancel_message()">
+                                                <i class="fa fa-trash"></i> {{\App\CPU\translate('Batal')}}
                                             </button>
                                         @endif
                                     </td>
+                                    <!-- Modal -->
                                 </tr>
+                                 <!-- Modal -->
+                                <div class="modal fade" id="pay{{ $order->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Pilih metode pembayaran untuk order {{ $order->id }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <div class="row">
+                                            @foreach ($payment as $p)
+                                                <div class="col-md-6 mb-4" style="cursor: pointer">
+                                                    <div class="card">
+                                                        <div class="card-body" style="height: 100px">
+                                                            <form class="needs-validation" target="_blank" method="POST" id="payment-form"
+                                                                action="{{route('xendit-payment.vaInvoice')}}">
+
+                                                                <input type="hidden" name="type" value="{{ $p['code'] }}">
+                                                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                                {{-- <input class="price" type="hidden" name="price" value="price"> --}}
+                                                                {{ csrf_field() }}
+                                                                <button class="btn btn-block" type="submit">
+                                                                    <img width="150" style="margin-top: -10px"
+                                                                    src="{{asset('assets/front-end/img/'.strtolower($p['code']).'.png')}}" />
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                            <div class="col-md-6 mb-4" style="cursor: pointer">
+                                                <div class="card">
+                                                    <div class="card-body" style="height: 100px">
+                                                        <form class="needs-validation" method="POST" id="payment-form"
+                                                            action="{{route('xendit-payment.vaInvoice')}}">
+
+                                                            <input type="hidden" name="type" value="DANA">
+                                                            {{-- <input class="price" type="hidden" name="price" value="price"> --}}
+                                                            {{ csrf_field() }}
+                                                            <button class="btn btn-block" type="submit">
+                                                                <img width="150" style="margin-top: -10px"
+                                                                src="{{asset('public/assets/front-end/img/dana.png')}}" />
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-4" style="cursor: pointer">
+                                                <div class="card">
+                                                    <div class="card-body" style="height: 100px">
+                                                        <form class="needs-validation" method="POST" id="payment-form"
+                                                            action="{{route('xendit-payment.vaInvoice')}}">
+
+                                                            <input type="hidden" name="type" value="BNI">
+                                                            {{-- <input class="price" type="hidden" name="price" value="price"> --}}
+                                                            {{ csrf_field() }}
+                                                            <button class="btn btn-block" type="submit">
+                                                                <img width="150" style="margin-top: -10px"
+                                                                src="{{asset('public/assets/front-end/img/bni.png')}}" />
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
                             @endforeach
                             </tbody>
                         </table>

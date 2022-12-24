@@ -87,9 +87,14 @@ a .footer_banner_img {
     margin-top: 8px;
     /* margin-left: 10px; */
 }
+.cz-countdown{
+    background-color: red;
+    border-radius: 20px;
+    padding: 0 10px;
+}
   .cz-countdown-days {
             color: white !important;
-            background-color: {{$web_config['primary_color']}};
+            /* background-color: {{$web_config['primary_color']}}; */
             padding: 0px 6px;
             border-radius: 3px;
             margin-right: 3px !important;
@@ -97,7 +102,7 @@ a .footer_banner_img {
 
         .cz-countdown-hours {
             color: white !important;
-            background-color: {{$web_config['primary_color']}};
+            /* background-color: {{$web_config['primary_color']}}; */
             padding: 0px 6px;
             border-radius: 3px;
             margin-right: 3px !important;
@@ -105,15 +110,15 @@ a .footer_banner_img {
 
         .cz-countdown-minutes {
             color: white !important;
-            background-color: {{$web_config['primary_color']}};
+            /* background-color: {{$web_config['primary_color']}}; */
             padding: 0px 6px;
             border-radius: 3px;
             margin-right: 3px !important;
         }
 
         .cz-countdown-seconds {
-            color: {{$web_config['primary_color']}};
-            border: 1px solid{{$web_config['primary_color']}};
+            color: #fff;
+            /* border: 1px solid{{$web_config['primary_color']}}; */
             padding: 0px 6px;
             border-radius: 3px !important;
         }
@@ -573,31 +578,32 @@ a .footer_banner_img {
     <div class="row">
       <div class="col-md-12">
         <div class="section-header mb-2 fd rtl row justify-content-between">
-          <div class="col-md-2 col-3 mt-2" style="padding-{{Session::get('direction') === " rtl" ? 'right' : 'left' }}: 0">
+          <div class="col-lg-4 col-md-5 col-8 mt-2" style="padding-{{Session::get('direction') === " rtl" ? 'right' : 'left' }}: 0">
             <div class="d-inline-flex displayTab">
               <span class="flash_deal_title ">
                 {{$flash_deals['title']}}
               </span>
             </div>
           </div>
-          <div class="col-lg-10 col-md-8 col-sm-10 col-9 timer" style="padding-{{Session::get('direction') === " rtl"
+          <div class="col-lg-8 col-md-7 col-sm-10 col-12 timer" style="padding-{{Session::get('direction') === " rtl"
             ? 'left' : 'right' }}: 0">
-            <div class="view_all view-btn-div-f w-100" style="justify-content: space-between !important">
+            <div class="view_all view-btn-div-f w-100 align-items-center" style="justify-content: space-between !important">
+                <small>Berakhir dalam:</small>
               <div class="px-2 counter">
                 <span class="cz-countdown" style="margin-left: -6vw;"
                   data-countdown="{{isset($flash_deals)?date('m/d/Y',strtotime($flash_deals['end_date'])):''}} 11:59:00 PM">
                   <span class="cz-countdown-days">
-                    <span class="cz-countdown-value"></span>
+                    <span class="cz-countdown-value"></span> <span class="text-bold" style="font-weight: 700">Hari</span>
                   </span>
-                  <span class="cz-countdown-value">:</span>
+                  <span class="cz-countdown-value"></span>
                   <span class="cz-countdown-hours">
                     <span class="cz-countdown-value"></span>
                   </span>
-                  <span class="cz-countdown-value">:</span>
+                  <span class="cz-countdown-value text-white">:</span>
                   <span class="cz-countdown-minutes">
                     <span class="cz-countdown-value"></span>
                   </span>
-                  <span class="cz-countdown-value">:</span>
+                  <span class="cz-countdown-value text-white">:</span>
                   <span class="cz-countdown-seconds">
                     <span class="cz-countdown-value"></span>
                   </span>

@@ -328,8 +328,9 @@ class UserProfileController extends Controller
     public function account_oder()
     {
         $orders = Order::where('customer_id', auth('customer')->id())->orderBy('id', 'DESC')->get();
+        $payment = Helpers::payment();
 
-        return view('web-views.users-profile.account-orders', compact('orders'));
+        return view('web-views.users-profile.account-orders', compact('orders', 'payment'));
     }
 
     public function account_order_details(Request $request)
