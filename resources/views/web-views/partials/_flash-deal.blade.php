@@ -234,7 +234,7 @@
 <div class="row mb-4 d-none d-md-flex" style="height: 480px">
     <div class="banner col-md-3 col-6 h-100 p-0">
         <a href="/" class="h-100">
-            <div class="bandiv">
+            <div class="bandiv d-flex justify-content-center align-items-center">
                 <img src="{{asset("storage/company")."/".$web_config['flash_banner']->value}}" alt="">
             </div>
         </a>
