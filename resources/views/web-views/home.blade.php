@@ -22,6 +22,10 @@
     margin-top: 15px;
 }
 
+.mt-2rem{
+    margin-top: 2rem;
+}
+
 .div-flash {
   position: relative;
   width: 100%; /* The size you want */
@@ -574,7 +578,7 @@ a .footer_banner_img {
 <=',date('Y-m-d'))->whereDate('end_date','>=',date('Y-m-d'))->first())
 
   @if (isset($flash_deals))
-  <div class="container mb-1">
+  <div class="container mb-1 mt-2rem">
     <div class="row">
       <div class="col-md-12">
         <div class="section-header mb-2 fd rtl row justify-content-between">
@@ -612,7 +616,7 @@ a .footer_banner_img {
               <div class="view-all">
                 <a class="btn btn-outline-accent btn-sm viw-btn-a"
                   href="{{route('flash-deals',[isset($flash_deals)?$flash_deals['id']:0])}}">{{
-                  \App\CPU\translate('view_all')}}
+                  \App\CPU\translate('Lihat_semua')}}
                   <i class="czi-arrow-{{Session::get('direction') === " rtl" ? 'left mr-1 ml-n1' : 'right ml-1 mr-n1'
                     }}"></i>
                 </a>
@@ -627,11 +631,11 @@ a .footer_banner_img {
   @endif
 
   <!-- Latest Product -->
-    <section class="container rtl">
+    <section class="container rtl mt-2rem" style="margin-bottom: -20px;">
         <!-- Heading-->
         <div class="section-header">
             <div class="feature_header">
-                <span class="for-feature-title">{{ App\CPU\Translate('Latest_Product') }}</span>
+                <span class="for-feature-title">{{ App\CPU\Translate('Produk_terbaru') }}</span>
             </div>
             {{-- <div class="view-all">
                 <a class="btn btn-outline-accent btn-sm viw-btn-a"
@@ -644,8 +648,8 @@ a .footer_banner_img {
 
         <div class="row product-wrapper  mt-2">
             @foreach($latest_products as $key=>$product)
-                @if($key<12)
-                    <div class="product-item px-0  col-xl-2 col-sm-3 col-4 h-100" style="margin-bottom: 10px">
+                @if($key<6)
+                    <div class="product-item px-0  col-xl-2 col-sm-3 col-4 h-100">
                         @if (empty($country))
                         @include('web-views.partials._single-product',['product'=>$product])
                         @else
@@ -666,7 +670,7 @@ a .footer_banner_img {
     @php($unggulans=\App\Model\FlashDeal::with(['products.product.reviews'])->where(['status'=>1])->where(['deal_type'=>'unggulan'])->get())
     @if (count($unggulans) > 0)
     @foreach ($unggulans as $unggulan)
-    <div class="container mb-1">
+    <div class="container mb-1 mt-5">
         @include('web-views.partials._banner_bardy')
     </div>
     @endforeach
@@ -674,10 +678,47 @@ a .footer_banner_img {
 
     @php($berlimpah=\App\Model\FlashDeal::with(['products.product.reviews'])->where(['status'=>1])->where(['deal_type'=>'berlimpah'])->first())
     @if ($berlimpah)
-    <div class="container">
+    <div class="container my-5">
         @include('web-views.partials._banner_pantene')
     </div>
     @endif
+
+    <!-- Latest Product -->
+    <section class="container rtl mt-2rem" style="margin-bottom: -20px;">
+        <!-- Heading-->
+        <div class="section-header">
+            <div class="feature_header">
+                <span class="for-feature-title">{{ App\CPU\Translate('Produk_Terlaris') }}</span>
+            </div>
+            {{-- <div class="view-all">
+                <a class="btn btn-outline-accent btn-sm viw-btn-a"
+                href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
+                {{ \App\CPU\translate('view_all')}}
+                <i class="czi-arrow-{{Session::get('direction') === " rtl" ? 'left mr-1 ml-n1' : 'right ml-1 mr-n1' }}"></i>
+                </a>
+            </div> --}}
+            </div>
+
+        <div class="row product-wrapper  mt-2">
+            @foreach($bestSellProduct as $key=>$best)
+            @php($product = $best['product'])
+                @if($key<6)
+                    <div class="product-item px-0  col-xl-2 col-sm-3 col-4 h-100">
+                        @if (empty($country))
+                        @include('web-views.partials._single-product',['product'=>$product])
+                        @else
+                        @if($product['country'] == $country)
+                        {{-- {{ dd($product['country']) }} --}}
+                        @include('web-views.partials._single-product',['product'=>$product])
+                        @else
+                        <div id="empty" class="empty"></div>
+                        @endif
+                        @endif
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    </section>
 
     {{-- small banner --}}
     {{-- <section class="banner mt-2">
@@ -735,7 +776,7 @@ a .footer_banner_img {
   @php($featured_deals=\App\Model\FlashDeal::with(['products.product.reviews'])->where(['status'=>1])->where(['deal_type'=>'feature_deal'])->first())
 
   @if(isset($featured_deals))
-  <section class="container">
+  <section class="container mt-5">
     <div class="row">
       <div class="col-xl-12">
         <div class="featured_deal">
@@ -795,7 +836,7 @@ a .footer_banner_img {
   {{-- Categorized product --}}
   @foreach($home_categories as $category)
   @if(App\CPU\CategoryManager::products($category['id'])->count()>0)
-  <section class="container rtl">
+  <section class="container rtl mt-4">
     <!-- Heading-->
     <div class="section-header">
       <div class="feature_header">
@@ -804,7 +845,7 @@ a .footer_banner_img {
       <div class="view-all">
         <a class="btn btn-outline-accent btn-sm viw-btn-a"
           href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
-          {{ \App\CPU\translate('view_all')}}
+          {{ \App\CPU\translate('Lihat_semua')}}
           <i class="czi-arrow-{{Session::get('direction') === " rtl" ? 'left mr-1 ml-n1' : 'right ml-1 mr-n1' }}"></i>
         </a>
       </div>
