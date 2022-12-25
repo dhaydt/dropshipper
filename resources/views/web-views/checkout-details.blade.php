@@ -44,7 +44,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4>{{auth('customer')->user()->f_name}}, {{\App\CPU\translate('HI')}}!</h4>
-                                <small>{{\App\CPU\translate('you_are_already_login_proceed')}}.</small>
+                                <small>{{\App\CPU\translate('Kamu_sudah_masuk')}}.</small>
                             </div>
                         </div>
                     @else
@@ -53,12 +53,12 @@
                                 <ul class="nav nav-tabs mt-2 d-flex justify-content-between" role="tablist">
                                     <li class="nav-item d-inline-block">
                                         <a class="nav-link active" href="#signin" data-toggle="tab" role="tab">
-                                            {{\App\CPU\translate('Sign In')}}
+                                            {{\App\CPU\translate('Masuk')}}
                                         </a>
                                     </li>
                                     <li class="nav-item d-inline-block">
                                         <a class="nav-link" href="#signup" data-toggle="tab" role="tab">
-                                            {{\App\CPU\translate('Sign Up')}}
+                                            {{\App\CPU\translate('Daftar')}}
                                         </a>
                                     </li>
                                 </ul>
@@ -79,7 +79,7 @@
                                                                id="si-email" value="{{old('email')}}"
                                                                placeholder="johndoe@example.com"
                                                                required>
-                                                        <div class="invalid-feedback">{{\App\CPU\translate('Please provide a valid email address')}}.
+                                                        <div class="invalid-feedback">{{\App\CPU\translate('Tolong masukan email yang benar')}}.
                                                         </div>
                                                     </div>
                                                 </div>
@@ -92,7 +92,7 @@
                                                             <label class="password-toggle-btn">
                                                                 <input class="custom-control-input" type="checkbox"><i
                                                                     class="czi-eye password-toggle-indicator"></i><span
-                                                                    class="sr-only">{{\App\CPU\translate('Show password')}}</span>
+                                                                    class="sr-only">{{\App\CPU\translate('Lihat password')}}</span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -106,12 +106,12 @@
                                                                    {{ old('remember') ? 'checked' : '' }}
                                                                    id="remember_me">
                                                             <label for="remember_me" style="cursor: pointer">
-                                                                {{\App\CPU\translate('remember_me')}}
+                                                                {{\App\CPU\translate('ingatkan_saya')}}
                                                             </label>
 
                                                             <a class="font-size-sm {{Session::get('direction') === "rtl" ? 'mr-5' : 'ml-5'}}"
                                                                href="{{route('customer.auth.recover-password')}}">
-                                                                {{\App\CPU\translate('forgot_password')}}?
+                                                                {{\App\CPU\translate('lupa_password')}}?
                                                             </a>
                                                         </div>
                                                     </div>
@@ -120,7 +120,7 @@
                                             <div class="form-row">
                                                 <div class="col">
                                                     <button class="btn btn-primary btn-block"
-                                                            type="submit">{{\App\CPU\translate('sing_in')}}</button>
+                                                            type="submit">{{\App\CPU\translate('Masuk')}}</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -133,18 +133,18 @@
                                             <div class="form-row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="su-name">{{\App\CPU\translate('first_name')}}</label>
+                                                        <label for="su-name">{{\App\CPU\translate('Nama_depan')}}</label>
                                                         <input class="form-control" type="text" name="f_name"
                                                                placeholder="John" required>
-                                                        <div class="invalid-feedback">{{\App\CPU\translate('Please fill in your name')}}.</div>
+                                                        <div class="invalid-feedback">{{\App\CPU\translate('Mohon isi nama depan')}}.</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="su-name">{{\App\CPU\translate('last_name')}} </label>
+                                                        <label for="su-name">{{\App\CPU\translate('namna_belakang')}} </label>
                                                         <input class="form-control" type="text" name="l_name"
                                                                placeholder="Doe" required>
-                                                        <div class="invalid-feedback">{{\App\CPU\translate('Please fill in your name')}}.</div>
+                                                        <div class="invalid-feedback">{{\App\CPU\translate('Mohon isi nama belakang')}}.</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,22 +152,22 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label
-                                                            for="su-email">{{\App\CPU\translate('email_address')}}</label>
+                                                            for="su-email">{{\App\CPU\translate('alamat_enmail')}}</label>
                                                         <input class="form-control" name="email" type="email"
                                                                id="su-email"
                                                                placeholder="johndoe@example.com"
                                                                required>
-                                                        <div class="invalid-feedback">{{\App\CPU\translate('Please provide a valid email address')}}.
+                                                        <div class="invalid-feedback">{{\App\CPU\translate('Mohon masukan email yang benar')}}.
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="su-email">{{\App\CPU\translate('Phone')}}</label>
+                                                        <label for="su-email">{{\App\CPU\translate('No Handphone')}}</label>
                                                         <input class="form-control" name="phone" type="number"
                                                                id="su-phone" placeholder="{{\App\CPU\translate('01700000000')}}"
                                                                required>
-                                                        <div class="invalid-feedback">{{\App\CPU\translate('Please provide a valid phone number')}}.
+                                                        <div class="invalid-feedback">{{\App\CPU\translate('Mohon masukan No HP yang benar')}}.
                                                         </div>
                                                     </div>
                                                 </div>
@@ -190,7 +190,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label
-                                                            for="su-password-confirm">{{\App\CPU\translate('confirm_password')}}</label>
+                                                            for="su-password-confirm">{{\App\CPU\translate('konfirmasi_password')}}</label>
                                                         <div class="password-toggle">
                                                             <input class="form-control" name="con_password"
                                                                    type="password" id="su-password-confirm"
@@ -198,7 +198,7 @@
                                                             <label class="password-toggle-btn">
                                                                 <input class="custom-control-input" type="checkbox"><i
                                                                     class="czi-eye password-toggle-indicator"></i><span
-                                                                    class="sr-only">{{\App\CPU\translate('Show password')}}</span>
+                                                                    class="sr-only">{{\App\CPU\translate('Lihat password')}}</span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -207,7 +207,7 @@
                                             <div class="form-row">
                                                 <div class="col">
                                                     <button class="btn btn-primary btn-block" type="submit">
-                                                        {{\App\CPU\translate('sign-up')}}
+                                                        {{\App\CPU\translate('Daftar')}}
                                                     </button>
                                                 </div>
                                             </div>

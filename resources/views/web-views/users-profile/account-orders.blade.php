@@ -1,6 +1,6 @@
 @extends('layouts.front-end.app')
 
-@section('title',\App\CPU\translate('My Order List'))
+@section('title',\App\CPU\translate('Daftar Order Saya'))
 
 @push('css_or_js')
     <style>
@@ -84,7 +84,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-9 sidebar_heading">
-                <h1 class="h3  mb-0 float-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} headerTitle">{{\App\CPU\translate('my_order')}}</h1>
+                <h1 class="h3  mb-0 float-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} headerTitle">{{\App\CPU\translate('order_saya')}}</h1>
             </div>
         </div>
     </div>
@@ -109,7 +109,7 @@
 
                                 <td class="tdBorder orderDate">
                                     <div class="py-2"><span
-                                            class="d-block spandHeadO">{{\App\CPU\translate('Order')}} {{\App\CPU\translate('Date')}}</span>
+                                            class="d-block spandHeadO">{{\App\CPU\translate('Tanggal')}} {{\App\CPU\translate('Order')}}</span>
                                     </div>
                                 </td>
                                 <td class="tdBorder">
@@ -122,7 +122,7 @@
                                 </td>
                                 <td class="tdBorder">
                                     <div class="py-2"><span
-                                            class="d-block spandHeadO"> {{\App\CPU\translate('action')}}</span></div>
+                                            class="d-block spandHeadO"> {{\App\CPU\translate('Aksi')}}</span></div>
                                 </td>
                             </tr>
                             </thead>
@@ -137,15 +137,26 @@
                                     <td class="bodytr">
                                         @if($order['order_status']=='failed' || $order['order_status']=='canceled')
                                             <span class="badge badge-danger text-capitalize">
-                                                {{\App\CPU\translate($order['order_status'])}}
+                                                {{-- {{\App\CPU\translate($order['order_status'])}} --}}
+                                                Dibatalkan
                                             </span>
                                         @elseif($order['order_status']=='confirmed' || $order['order_status']=='processing' || $order['order_status']=='delivered')
                                             <span class="badge badge-success text-capitalize">
-                                                {{\App\CPU\translate($order['order_status'])}}
+                                                @if ($order['order_status']=='processing')
+                                                Diproses
+                                                @elseif($order['order_status']=='delivered')
+                                                Dikirim
+                                                @else
+                                                Dikonfirmasi
+                                                @endif
                                             </span>
                                         @else
                                             <span class="badge badge-info text-capitalize">
-                                                {{\App\CPU\translate($order['order_status'])}}
+                                                @if($order['order_status'] == 'pending')
+                                                    Menunggu
+                                                @else
+                                                    {{\App\CPU\translate($order['order_status'])}}
+                                                @endif
                                             </span>
                                         @endif
                                     </td>

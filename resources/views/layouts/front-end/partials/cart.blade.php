@@ -8,7 +8,7 @@
         </span>
         <i class="navbar-tool-icon czi-cart"></i>
     </a>
-    <a class="navbar-tool-text" href="{{route('shop-cart')}}"><small>{{\App\CPU\translate('my_cart')}}</small>
+    <a class="navbar-tool-text" href="{{route('shop-cart')}}"><small>{{\App\CPU\translate('keranjang')}}</small>
         {{\App\CPU\Helpers::currency_converter(\App\CPU\CartManager::cart_total_applied_discount(\App\CPU\CartManager::get_cart()))}}
     </a>
     <!-- Cart dropdown-->
@@ -66,7 +66,7 @@
                     </div>
 
                     <a class="btn btn-outline-secondary btn-sm" href="{{route('shop-cart')}}">
-                        {{\App\CPU\translate('Expand cart')}}<i
+                        {{\App\CPU\translate('Detail')}}<i
                             class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left mr-1 ml-n1' : 'right ml-1 mr-n1'}}"></i>
                     </a>
                 </div>
@@ -76,7 +76,7 @@
             @else
                 <div class="widget-cart-item">
                     <h6 class="text-danger text-center"><i
-                            class="fa fa-cart-arrow-down"></i> {{\App\CPU\translate('Empty')}} {{\App\CPU\translate('Cart')}}
+                            class="fa fa-cart-arrow-down"></i> {{\App\CPU\translate('Keranjang')}} {{\App\CPU\translate('Kosong')}}
                     </h6>
                 </div>
             @endif

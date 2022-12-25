@@ -1,6 +1,6 @@
 @extends('layouts.front-end.app')
 
-@section('title',\App\CPU\translate('My Shopping Cart'))
+@section('title',\App\CPU\translate('Keranjang belanja saya'))
 
 @push('css_or_js')
     <meta property="og:image" content="{{asset('storage/company')}}/{{$web_config['web_logo']->value}}"/>

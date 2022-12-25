@@ -4,7 +4,7 @@
         <span class="cz-handheld-toolbar-label">{{\App\CPU\translate('Menu')}}</span></a>
     <a class="d-table-cell cz-handheld-toolbar-item" href="{{route('wishlists')}}">
         <span class="cz-handheld-toolbar-icon"><i class="czi-heart"></i></span>
-        <span class="cz-handheld-toolbar-label">{{\App\CPU\translate('Wishlist')}} (<span class="countWishlist">{{session()->has('wish_list')?count(session('wish_list')):0}}</span>)</span></a>
+        <span class="cz-handheld-toolbar-label">{{\App\CPU\translate('Favorit')}} (<span class="countWishlist">{{session()->has('wish_list')?count(session('wish_list')):0}}</span>)</span></a>
 
     <a class="d-table-cell cz-handheld-toolbar-item" href="{{route('shop-cart')}}">
         <span class="cz-handheld-toolbar-icon"><i class="czi-cart"></i>

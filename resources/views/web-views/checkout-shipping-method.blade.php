@@ -10,7 +10,7 @@
 
         .btn-outline {
             color: #020512;
-            border-color: {{$web_config['primary_color']}}   !important;
+            border-color: {{$web_config['primary_color']}} !important;
         }
 
         .btn-outline:hover {
@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-md-12 mb-5 pt-5">
                 <div class="feature_header" style="background: #dcdcdc;line-height: 1px">
-                    <span>{{ \App\CPU\translate('shipping_address')}}</span>
+                    <span>{{ \App\CPU\translate('Metode_Pengiriman')}}</span>
                 </div>
             </div>
             <div class="row">
@@ -46,7 +46,7 @@
                     <!-- Steps-->
                 @include('web-views.partials._checkout-steps',['step'=>2])
                 <!-- Shipping methods table-->
-                    <h2 class="h4 pb-3 mb-2 mt-5">{{ \App\CPU\translate('choose_shipping_method')}}</h2>
+                    <h2 class="h4 pb-3 mb-2 mt-5">{{ \App\CPU\translate('Pilih_metode_pengiriman')}}</h2>
                     @if (auth('seller')->check())
                     @php($shipping_addresses=\App\Model\ShippingAddress::where('slug',session()->get('customer_address'))->get())
                     @else
@@ -175,8 +175,8 @@
                         <div class="col-6">
                             <a class="btn btn-secondary btn-block" href="{{route('checkout-details')}}">
                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} mt-sm-0 mx-1"></i>
-                                <span class="d-none d-sm-inline">{{ \App\CPU\translate('Shipping_address')}}</span>
-                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('Shipping_address')}}</span>
+                                <span class="d-none d-sm-inline">{{ \App\CPU\translate('alamat_pengiriman')}}</span>
+                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('alamat_pengiriman')}}</span>
                             </a>
                         </div>
                         <div class="col-6">

@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-12 mb-5 pt-5">
                 <div class="feature_header" style="background: #dcdcdc;line-height: 1px">
-                    <span>{{ \App\CPU\translate('payment_method')}}</span>
+                    <span>{{ \App\CPU\translate('Metode _pembayaran')}}</span>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
                 <!-- Payment methods accordion-->
                 @php($ship = App\Model\CartShipping::where('cart_group_id', session()->get('cart_group_id'))->first())
                 @if ($ship->shipping_cost !== "0.00")
-                <h2 class="h6 pb-3 mb-2 mt-5">{{\App\CPU\translate('choose_payment')}}</h2>
+                <h2 class="h6 pb-3 mb-2 mt-5">{{\App\CPU\translate('Pilih_pembayaran')}}</h2>
 
                 <div class="row">
                     @php($config=\App\CPU\Helpers::get_business_settings('cash_on_delivery'))

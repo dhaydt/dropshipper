@@ -1,5 +1,5 @@
 <div class="feature_header">
-    <span>{{ \App\CPU\translate('shopping_cart')}}</span>
+    <span>{{ \App\CPU\translate('Keranjang_belanja')}}</span>
 </div>
 
 <!-- Grid-->
@@ -161,21 +161,21 @@
 
             @if( $cart->count() == 0)
                 <div class="d-flex justify-content-center align-items-center">
-                    <h4 class="text-danger text-capitalize">{{\App\CPU\translate('cart_empty')}}</h4>
+                    <h4 class="text-danger text-capitalize">{{\App\CPU\translate('keranjang_kosong')}}</h4>
                 </div>
             @endif
         </div>
         <div class="row pt-2">
             <div class="col-6">
                 <a href="{{route('home')}}" class="btn btn-primary">
-                    <i class="fa fa-{{Session::get('direction') === "rtl" ? 'forward' : 'backward'}} px-1"></i> {{\App\CPU\translate('continue_shopping')}}
+                    <i class="fa fa-{{Session::get('direction') === "rtl" ? 'forward' : 'backward'}} px-1"></i> {{\App\CPU\translate('lanjutkan_belanja')}}
                 </a>
             </div>
             <div class="col-6">
                 @if (auth('customer')->check())
                 <a href="{{route('checkout-details')}}"
                    class="btn btn-primary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
-                    {{\App\CPU\translate('Select_address')}}
+                    {{\App\CPU\translate('Pilih_alamat')}}
                     <i class="fa fa-{{Session::get('direction') === "rtl" ? 'backward' : 'forward'}} px-1"></i>
                 </a>
                 @elseif(auth('seller')->check())

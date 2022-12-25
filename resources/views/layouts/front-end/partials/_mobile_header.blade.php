@@ -140,7 +140,7 @@
                                     ? 'right' : 'left' }}">
                                     <form action="{{route('products')}}" type="submit" class="search_form">
                                         <input class="form-control search-mobile-input appended-form-control search-bar-input" type="text"
-                                            autocomplete="off" placeholder="{{\App\CPU\translate('search')}}" name="name"
+                                            autocomplete="off" placeholder="{{\App\CPU\translate('Cari')}}" name="name"
                                             style="border: 2px solid white;">
                                         <button class="input-group-append-overlay search_button" type="submit"
                                             style="border: 2px solid white; border-left: none; background-color: transparent !important; border-radius: 0 10px 10px 0;">
@@ -160,7 +160,7 @@
                                 <!-- Toolbar-->
                                 <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
                                     <a class="navbar-tool navbar-stuck-toggler" href="#">
-                                        <span class="navbar-tool-tooltip">Expand menu</span>
+                                        <span class="navbar-tool-tooltip">Lebarkan Menu</span>
                                         <div class="navbar-tool-icon-box">
                                             <i class="navbar-tool-icon czi-menu"></i>
                                         </div>

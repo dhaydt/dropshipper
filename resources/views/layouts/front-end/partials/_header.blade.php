@@ -216,7 +216,7 @@
                     @php
                         if(auth('customer')->check()){
                             $prof = 'storage/profile/'.auth('customer')->user()->image;
-                            $name = auth('customer')->user()->f_name;
+                            $name = auth('customer')->user()->name;
                         }else{
                             $prof = 'storage/seller/'.auth('seller')->user()->image;
                             $name = auth('seller')->user()->f_name;
@@ -228,25 +228,25 @@
                     class="img-profile rounded-circle">
                 </div>
               </div>
-              <div class="navbar-tool-text">
-                <small>Hello, {{ $name }}</small>
-                Dashboard
+              <div class="navbar-tool-text text-capitalize">
+                <small>Halo,</small>
+                {{ $name }}
               </div>
             </a>
             @if (session()->get('user_is') == 'customer')
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="{{route('account-oder')}}"> {{ \App\CPU\translate('my_order')}} </a>
-              <a class="dropdown-item" href="{{route('account-address')}}"> {{ \App\CPU\translate('my_address')}} </a>
-              <a class="dropdown-item" href="{{route('account-tickets')}}"> {{ \App\CPU\translate('my_tickets')}} </a>
-              <a class="dropdown-item" href="{{route('user-account')}}"> {{ \App\CPU\translate('my_profile')}}</a>
+              <a class="dropdown-item" href="{{route('account-oder')}}"> {{ \App\CPU\translate('order_saya')}} </a>
+              <a class="dropdown-item" href="{{route('account-address')}}"> {{ \App\CPU\translate('alamat_saya')}} </a>
+              {{-- <a class="dropdown-item" href="{{route('account-tickets')}}"> {{ \App\CPU\translate('tiket_saya')}} </a> --}}
+              <a class="dropdown-item" href="{{route('user-account')}}"> {{ \App\CPU\translate('profil_saya')}}</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
+              <a class="dropdown-item" href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('keluar')}}</a>
             </div>
             @else
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="{{route('seller.dashboard.index')}}"> {{ \App\CPU\translate('Dropship_Dashboard')}} </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{route('seller.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
+                <a class="dropdown-item" href="{{route('seller.auth.logout')}}">{{ \App\CPU\translate('keluar')}}</a>
             </div>
             @endif
           </div>

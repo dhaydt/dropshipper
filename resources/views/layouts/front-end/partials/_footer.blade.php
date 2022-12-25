@@ -80,7 +80,7 @@
 
             <!-- Grid column -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('special')}}</h6>
+                <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('spesial')}}</h6>
                 <ul class="widget-list" style="padding-bottom: 10px">
                     @php($flash_deals=\App\Model\FlashDeal::where(['status'=>1,'deal_type'=>'flash_deal'])->whereDate('start_date','<=',date('Y-m-d'))->whereDate('end_date','>=',date('Y-m-d'))->first())
                     @if(isset($flash_deals))
@@ -95,20 +95,20 @@
                                                     href="{{route('products',['data_from'=>'featured','page'=>1])}}">{{\App\CPU\translate('featured_products')}}</a>
                     </li>
                     <li class="widget-list-item"><a class="widget-list-link"
-                                                    href="{{route('products',['data_from'=>'latest','page'=>1])}}">{{\App\CPU\translate('latest_products')}}</a>
+                                                    href="{{route('products',['data_from'=>'latest','page'=>1])}}">{{\App\CPU\translate('produk_terbaru')}}</a>
                     </li>
                     <li class="widget-list-item"><a class="widget-list-link"
-                                                    href="{{route('products',['data_from'=>'best-selling','page'=>1])}}">{{\App\CPU\translate('best_selling_product')}}</a>
+                                                    href="{{route('products',['data_from'=>'best-selling','page'=>1])}}">{{\App\CPU\translate('produk_terlaris')}}</a>
                     </li>
-                    <li class="widget-list-item"><a class="widget-list-link"
+                    {{-- <li class="widget-list-item"><a class="widget-list-link"
                                                     href="{{route('products',['data_from'=>'top-rated','page'=>1])}}">{{\App\CPU\translate('top_rated_product')}}</a>
-                    </li>
+                    </li> --}}
 
-                    <li class="widget-list-item"><a class="widget-list-link"
+                    {{-- <li class="widget-list-item"><a class="widget-list-link"
                                                     href="{{route('brands')}}">{{\App\CPU\translate('all_brand')}}</a>
-                    </li>
+                    </li> --}}
                     <li class="widget-list-item"><a class="widget-list-link"
-                                                    href="{{route('categories')}}">{{\App\CPU\translate('all_category')}}</a>
+                                                    href="{{route('categories')}}">{{\App\CPU\translate('Semua_kategori')}}</a>
                     </li>
 
                 </ul>
@@ -119,14 +119,14 @@
 
             <!-- Grid column -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('account&shipping_info')}}</h6>
+                <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('akun&info_pengiriman')}}</h6>
                 @if(auth('customer')->check())
                     <ul class="widget-list" style="padding-bottom: 10px">
                         <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{route('user-account')}}">{{\App\CPU\translate('profile_info')}}</a>
+                                                        href="{{route('user-account')}}">{{\App\CPU\translate('info_profil')}}</a>
                         </li>
                         <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{route('wishlists')}}">{{\App\CPU\translate('wish_list')}}</a>
+                                                        href="{{route('wishlists')}}">{{\App\CPU\translate('favorit')}}</a>
                         </li>
                         {{--<li class="widget-list-item">
                             <a class="widget-list-link"
@@ -134,14 +134,14 @@
                             </a>
                         </li>--}}
                         <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{route('track-order.index')}}">{{\App\CPU\translate('track_order')}}</a>
+                                                        href="{{route('track-order.index')}}">{{\App\CPU\translate('lacak_order')}}</a>
                         </li>
                         <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{ route('account-address') }}">{{\App\CPU\translate('address')}}</a>
+                                                        href="{{ route('account-address') }}">{{\App\CPU\translate('alamat')}}</a>
                         </li>
-                        <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{ route('account-tickets') }}">{{\App\CPU\translate('support_ticket')}}</a>
-                        </li>
+                        {{-- <li class="widget-list-item"><a class="widget-list-link"
+                                                        href="{{ route('account-tickets') }}">{{\App\CPU\translate('tiket_bantuan')}}</a>
+                        </li> --}}
                         {{--<li class="widget-list-item">
                             <a class="widget-list-link"
                                href="{{route('customer.auth.login')}}">{{\App\CPU\translate('tansction_history')}}
@@ -151,10 +151,10 @@
                 @else
                     <ul class="widget-list" style="padding-bottom: 10px">
                         <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{route('customer.auth.login')}}">{{\App\CPU\translate('profile_info')}}</a>
+                                                        href="{{route('customer.auth.login')}}">{{\App\CPU\translate('info_profil')}}</a>
                         </li>
                         <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{route('customer.auth.login')}}">{{\App\CPU\translate('wish_list')}}</a>
+                                                        href="{{route('customer.auth.login')}}">{{\App\CPU\translate('favorit')}}</a>
                         </li>
                         {{--<li class="widget-list-item">
                             <a class="widget-list-link"
@@ -162,14 +162,14 @@
                             </a>
                         </li>--}}
                         <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{route('track-order.index')}}">{{\App\CPU\translate('track_order')}}</a>
+                                                        href="{{route('track-order.index')}}">{{\App\CPU\translate('lacak_order')}}</a>
                         </li>
                         <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{route('customer.auth.login')}}">{{\App\CPU\translate('address')}}</a>
+                                                        href="{{route('customer.auth.login')}}">{{\App\CPU\translate('alamat')}}</a>
                         </li>
-                        <li class="widget-list-item"><a class="widget-list-link"
-                                                        href="{{route('customer.auth.login')}}">{{\App\CPU\translate('support_ticket')}}</a>
-                        </li>
+                        {{-- <li class="widget-list-item"><a class="widget-list-link"
+                                                        href="{{route('customer.auth.login')}}">{{\App\CPU\translate('tiket_bantuan')}}</a>
+                        </li> --}}
                         {{--to do--}}
                         {{--<li class="widget-list-item">
                             <a class="widget-list-link"
@@ -185,28 +185,28 @@
 
             <!-- Grid column -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('about_us')}}</h6>
+                <h6 class="text-uppercase mb-4 font-weight-bold footer-heder">{{\App\CPU\translate('tentang_kami')}}</h6>
 
 
                 <ul class="widget-list" style="padding-bottom: 10px">
                     {{-- <p class="widget-list-item">{!! substr($web_config['about']->value,0,100) !!}</p> --}}
                     <li class="widget-list-item"><a class="widget-list-link"
-                                                    href="{{route('about-us')}}">{{\App\CPU\translate('about_company')}}</a>
+                                                    href="{{route('about-us')}}">{{\App\CPU\translate('tentang_perusahaan')}}</a>
                     </li>
                     <li class="widget-list-item"><a class="widget-list-link"
                                                     href="{{route('helpTopic')}}">{{\App\CPU\translate('faq')}}</a></li>
                     <li class="widget-list-item "><a class="widget-list-link"
-                                                     href="{{route('terms')}}">{{\App\CPU\translate('terms_&_conditions')}}</a>
+                                                     href="{{route('terms')}}">{{\App\CPU\translate('Syarat_&_ketentuan')}}</a>
 
                     </li>
 
                     <li class="widget-list-item ">
                         <a class="widget-list-link" href="{{route('privacy-policy')}}">
-                            {{\App\CPU\translate('privacy_policy')}}
+                            {{\App\CPU\translate('Kebijakan_privasi')}}
                         </a>
                     </li>
                     <li class="widget-list-item "><a class="widget-list-link"
-                                                     href="{{route('contacts')}}">{{\App\CPU\translate('contact_us')}}</a>
+                                                     href="{{route('contacts')}}">{{\App\CPU\translate('hubungi_kami')}}</a>
 
                     </li>
                 </ul>

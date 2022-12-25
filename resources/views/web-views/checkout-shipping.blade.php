@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-md-12 mb-5 pt-5">
                 <div class="feature_header" style="background: #dcdcdc;line-height: 1px">
-                    <span>{{ \App\CPU\translate('shipping_address')}}</span>
+                    <span>{{ \App\CPU\translate('Alamat_pengiriman')}}</span>
                 </div>
             </div>
             <section class="col-lg-8">
@@ -39,7 +39,7 @@
                     <!-- Steps-->
                 @include('web-views.partials._checkout-steps',['step'=>2])
                 <!-- Shipping methods table-->
-                    <h2 class="h4 pb-3 mb-2 mt-5">{{ \App\CPU\translate('shipping_address')}} {{ \App\CPU\translate('choose_shipping_address')}}</h2>
+                    <h2 class="h4 pb-3 mb-2 mt-5">{{ \App\CPU\translate('Pilih_alamat_pengiriman')}}</h2>
                     @if (auth('seller')->check())
                     @php($shipping_addresses=\App\Model\ShippingAddress::where('slug',session()->get('customer_address'))->get())
                     @else
@@ -65,8 +65,8 @@
                                             <i class="fa fa-phone"></i> {{$address['phone']}}
                                         </small>
                                         <hr>
-                                        <span>{{ \App\CPU\translate('contact_person_name')}}: {{$address['contact_person_name']}}</span><br>
-                                        <span>{{ \App\CPU\translate('address')}} : {{$address['address']}}, {{$address['city']}}, {{$address['zip']}}, {{$address['country']}}.</span>
+                                        <span>{{ \App\CPU\translate('Nama_penerima')}}: {{$address['contact_person_name']}}</span><br>
+                                        <span>{{ \App\CPU\translate('alamat')}} : {{$address['address']}}, {{$address['city']}}, {{$address['zip']}}, {{$address['country']}}.</span>
                                     </li>
                                 @endforeach
                                 {{-- {{ dd(session()) }} --}}
@@ -79,7 +79,7 @@
                                            style="background: {{$web_config['primary_color']}}; color:white !important;">
                                         <i class="fa fa-plus-circle"></i></label>
                                     <button type="button" class="btn btn-outline" data-toggle="collapse"
-                                            data-target="#collapseThree">{{ \App\CPU\translate('Another')}} {{ \App\CPU\translate('address')}}
+                                            data-target="#collapseThree">{{ \App\CPU\translate('Alamat')}} {{ \App\CPU\translate('lain')}}
                                     </button>
                                     <div id="accordion">
                                         <div id="collapseThree"
@@ -89,20 +89,20 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label
-                                                        for="exampleInputEmail1">{{ \App\CPU\translate('contact_person_name')}}
+                                                        for="exampleInputEmail1">{{ \App\CPU\translate('Nama_penerima')}}
                                                         <span style="color: red">*</span></label>
                                                     <input type="text" class="form-control"
                                                            name="contact_person_name" {{$shipping_addresses->count()==0?'required':''}}>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">{{ \App\CPU\translate('Phone')}}<span
+                                                    <label for="exampleInputEmail1">{{ \App\CPU\translate('No_Handphone')}}<span
                                                             style="color: red">*</span></label>
                                                     <input type="text" class="form-control"
                                                            name="phone" {{$shipping_addresses->count()==0?'required':''}}>
                                                 </div>
                                                 <div class="form-group">
                                                     <label
-                                                        for="exampleInputPassword1">{{ \App\CPU\translate('address')}} {{ \App\CPU\translate('Type')}}</label>
+                                                        for="exampleInputPassword1">{{ \App\CPU\translate('Tipe')}} {{ \App\CPU\translate('Alamat')}}</label>
                                                     <select class="form-control" name="address_type">
                                                         <option
                                                             value="permanent">{{ \App\CPU\translate('Permanent')}}</option>
@@ -114,10 +114,10 @@
 
                                                 <div class="form-group">
                                                     @php($province = App\CPU\Helpers::province())
-                                                    <label for="province">{{ \App\CPU\translate('Province')}} <span
+                                                    <label for="province">{{ \App\CPU\translate('Provinsi')}} <span
                                                             style="color: red">*</span></label>
                                                             <select class="form-control" name="state" {{$shipping_addresses->count()==0?'required':''}}>
-                                                                <option value="">Select your Province Address</option>
+                                                                <option value="">Pilih alamat prvinsi anda</option>
                                                                 @foreach($province as $p)
                                                                 <option value="{{$p['province_id'].','. $p['province']}}"
                                                                     provincename="{{$p['province']}}">
@@ -128,12 +128,12 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="city">{{ \App\CPU\translate('City')}} <span
+                                                    <label for="city">{{ \App\CPU\translate('Kota')}} <span
                                                             style="color: red">*</span></label>
                                                             <select disabled class="form-control" name="city" id="city" placeholder="Select your city address" {{$shipping_addresses->count()==0?'required':''}}
                                                             style="text-align: {{Session::get('direction') === " rtl" ? 'right' : 'left'
                                                             }};">
-                                                            <option value="">Select your city address</option>
+                                                            <option value="">Pilih alamat kota anda</option>
                                                         </select>
                                                 </div>
 
@@ -149,7 +149,7 @@
 
                                                 <div class="form-group">
                                                     <label
-                                                        for="exampleInputEmail1">{{ \App\CPU\translate('zip_code')}} <span
+                                                        for="exampleInputEmail1">{{ \App\CPU\translate('kode_pos')}} <span
                                                             style="color: red">*</span></label>
                                                     <input type="number" class="form-control"
                                                            name="zip" {{$shipping_addresses->count()==0?'required':''}}>
@@ -157,7 +157,7 @@
 
                                                 <div class="form-group">
                                                     <label
-                                                        for="exampleInputEmail1">{{ \App\CPU\translate('address')}} <span
+                                                        for="exampleInputEmail1">{{ \App\CPU\translate('Alamat')}} <span
                                                             style="color: red">*</span></label>
                                                     <textarea class="form-control"
                                                               name="address" {{$shipping_addresses->count()==0?'required':''}}></textarea>
@@ -166,7 +166,7 @@
                                                     <input type="checkbox" name="save_address" class="form-check-input"
                                                            id="exampleCheck1">
                                                     <label class="form-check-label" for="exampleCheck1" style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 1.09rem">
-                                                        {{ \App\CPU\translate('save_this_address')}}
+                                                        {{ \App\CPU\translate('simpan_alamat_ini')}}
                                                     </label>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary" style="display: none"
@@ -183,14 +183,14 @@
                         <div class="col-6">
                             <a class="btn btn-secondary btn-block" href="{{route('shop-cart')}}">
                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} mt-sm-0 mx-1"></i>
-                                <span class="d-none d-sm-inline">{{ \App\CPU\translate('shop_cart')}}</span>
-                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('shop_cart')}}</span>
+                                <span class="d-none d-sm-inline">{{ \App\CPU\translate('keranjang')}}</span>
+                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('keranjang')}}</span>
                             </a>
                         </div>
                         <div class="col-6">
                             <a class="btn btn-primary btn-block" href="javascript:" onclick="proceed_to_next()">
-                                <span class="d-none d-sm-inline">{{ \App\CPU\translate('select_shipping')}}</span>
-                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('Next')}}</span>
+                                <span class="d-none d-sm-inline">{{ \App\CPU\translate('Pilih_pengiriman')}}</span>
+                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('Berikutnya')}}</span>
                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} mt-sm-0 mx-1"></i>
                             </a>
                         </div>

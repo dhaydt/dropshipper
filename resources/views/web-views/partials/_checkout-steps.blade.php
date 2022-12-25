@@ -26,7 +26,7 @@
             <span class="step-count"><i class="czi-user-circle"></i></span>
         </div>
         <div class="step-label">
-            {{\App\CPU\translate('sing_in')}} / {{\App\CPU\translate('sing_up')}}
+            {{\App\CPU\translate('Masuk')}} / {{\App\CPU\translate('Daftar')}}
         </div>
     </a>
     <a class="step-item {{$step>=2?'active':''}} {{$step==2?'current':''}}" href="{{route('checkout-shipping')}}">
@@ -34,7 +34,7 @@
             <span class="step-count"><i class="czi-package"></i></span>
         </div>
         <div class="step-label">
-            {{\App\CPU\translate('Shipping')}}
+            {{\App\CPU\translate('Pengiriman')}}
         </div>
     </a>
     <a class="step-item {{$step>=3?'active':''}} {{$step==3?'current':''}}" href="{{route('checkout-payment')}}">
@@ -42,7 +42,7 @@
             <span class="step-count"><i class="czi-card"></i></span>
         </div>
         <div class="step-label">
-            {{\App\CPU\translate('Payment')}}
+            {{\App\CPU\translate('Pembayaran')}}
         </div>
     </a>
 </div>

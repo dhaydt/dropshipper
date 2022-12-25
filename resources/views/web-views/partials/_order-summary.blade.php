@@ -47,26 +47,26 @@
             </span>
         </div>
         <div class="d-flex justify-content-between">
-            <span class="cart_title">{{\App\CPU\translate('tax')}}</span>
+            <span class="cart_title">{{\App\CPU\translate('Pajak')}}</span>
             <span class="cart_value">
                 {{\App\CPU\Helpers::currency_converter($total_tax)}}
             </span>
         </div>
         <div class="d-flex justify-content-between">
-            <span class="cart_title">{{\App\CPU\translate('shipping')}}</span>
+            <span class="cart_title">{{\App\CPU\translate('Pengiriman')}}</span>
             <span class="cart_value">
                 {{\App\CPU\Helpers::currency_converter($total_shipping_cost)}}
             </span>
         </div>
         <div class="d-flex justify-content-between">
-            <span class="cart_title">{{\App\CPU\translate('discount_on_product')}}</span>
+            <span class="cart_title">{{\App\CPU\translate('diskon_pada_produk')}}</span>
             <span class="cart_value">
                 - {{\App\CPU\Helpers::currency_converter($total_discount_on_product)}}
             </span>
         </div>
         @if(session()->has('coupon_discount'))
             <div class="d-flex justify-content-between">
-                <span class="cart_title">{{\App\CPU\translate('coupon_code')}}</span>
+                <span class="cart_title">{{\App\CPU\translate('kode_kupon')}}</span>
                 <span class="cart_value" id="coupon-discount-amount">
                     - {{session()->has('coupon_discount')?\App\CPU\Helpers::currency_converter(session('coupon_discount')):0}}
                 </span>
@@ -76,11 +76,11 @@
             <div class="mt-2">
                 <form class="needs-validation" method="post" novalidate id="coupon-code-ajax">
                     <div class="form-group">
-                        <input class="form-control input_code" type="text" name="code" placeholder="{{\App\CPU\translate('Coupon code')}}"
+                        <input class="form-control input_code" type="text" name="code" placeholder="{{\App\CPU\translate('Kode_Kupon')}}"
                                required>
                         <div class="invalid-feedback">{{\App\CPU\translate('please_provide_coupon_code')}}</div>
                     </div>
-                    <button class="btn btn-primary btn-block" type="button" onclick="couponCode()">{{\App\CPU\translate('apply_code')}}
+                    <button class="btn btn-primary btn-block" type="button" onclick="couponCode()">{{\App\CPU\translate('terapkan_Kupon')}}
                     </button>
                 </form>
             </div>

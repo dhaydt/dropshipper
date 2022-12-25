@@ -144,10 +144,6 @@
                 display: flex;
             }
 
-            .order_table_info_div_1 {
-                width: 50%;
-            }
-
             .order_table_info_div_2 {
                 width: 49%;
                 text-align: {{Session::get('direction') === "rtl" ? 'left' : 'right'}}        !important;
@@ -167,7 +163,10 @@
             .amount {
                 font-size: 13px;
                 margin- {{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 0px;
+            }
 
+            .order_table_info_div_1 {
+                width: 50%;
             }
 
         }

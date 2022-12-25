@@ -348,7 +348,7 @@
                     <!-- Quantity + Add to cart -->
                         <div class="row no-gutters">
                             <div class="col-2">
-                                <div class="product-description-label mt-2">{{\App\CPU\translate('Quantity')}}:</div>
+                                <div class="product-description-label mt-2">{{\App\CPU\translate('Jumlah')}}:</div>
                             </div>
                             <div class="col-10">
                                 <div class="product-quantity d-flex align-items-center">
@@ -378,7 +378,7 @@
 
                         <div class="row flex-start no-gutters d-none mt-2" id="chosen_price_div">
                             <div class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}">
-                                <div class="product-description-label">{{\App\CPU\translate('total_price')}}:</div>
+                                <div class="product-description-label">{{\App\CPU\translate('total_harga')}}:</div>
                             </div>
                             <div class="d-flex align-items-center">
                                 <div class="product-price for-total-price mt-0">
@@ -614,7 +614,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#overview" data-toggle="tab" role="tab"
                                style="color: black !important;">
-                                {{\App\CPU\translate('Product_Information')}}
+                                {{\App\CPU\translate('Informasi_Produk')}}
                             </a>
                         </li>
                     </ul>
@@ -653,7 +653,7 @@
     <div class="container mt-3 mb-3 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
         <div class="flex-between">
             <div class="feature_header">
-                <span style="background-color: transparent !important;">{{ \App\CPU\translate('similar_products')}}</span>
+                <span style="background-color: transparent !important;">{{ \App\CPU\translate('Produk_Mirip')}}</span>
             </div>
 
             <div class="view_all ">

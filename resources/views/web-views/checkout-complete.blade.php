@@ -1,6 +1,6 @@
 @extends('layouts.front-end.app')
 
-@section('title',\App\CPU\translate('Order Complete'))
+@section('title',\App\CPU\translate('Order Sukses'))
 
 @push('css_or_js')
     <style>
@@ -89,7 +89,7 @@
                         <div class=" p-5">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5 style="font-size: 20px; font-weight: 900">{{\App\CPU\translate('your_order_has_been_placed_successfully!')}}
+                                    <h5 style="font-size: 20px; font-weight: 900">{{\App\CPU\translate('Order_kamu_berhasil_disimpan!')}}
                                         !</h5>
                                 </div>
                             </div>
@@ -102,20 +102,20 @@
                                 </div>
                             </div>
 
-                            <span class="font-weight-bold d-block mt-4" style="font-size: 17px;">{{\App\CPU\translate('Hello')}}, {{auth('customer')->user()->f_name}}</span>
-                            <span>{{\App\CPU\translate('You order with order number '.$order_id.' was placed successfully, please copmlete order payment to processing order!')}}</span>
+                            <span class="font-weight-bold d-block mt-4" style="font-size: 17px;">{{\App\CPU\translate('Halo')}}, {{auth('customer')->user()->f_name}}</span>
+                            <span>{{\App\CPU\translate('Order_kamu_dengan_nomor_'.$order_id.'_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!')}}</span>
 
                             <div class="row mt-4">
                                 <div class="col-6">
                                     <a href="{{route('home')}}" class="btn btn-primary">
-                                        {{\App\CPU\translate('go_to_shopping')}}
+                                        {{\App\CPU\translate('pergi_belanja')}}
                                     </a>
                                 </div>
 
                                 <div class="col-6">
                                     <a href="{{route('account-oder')}}"
                                        class="btn btn-secondary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
-                                        {{\App\CPU\translate('check_orders')}}
+                                        {{\App\CPU\translate('cek_order')}}
                                     </a>
                                 </div>
                             </div>
