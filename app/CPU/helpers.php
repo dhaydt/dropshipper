@@ -885,20 +885,18 @@ class Helpers
                     $str = substr($desc, 0, 100);
                     $url = env('ETOKO_URL').'/'.'generated'.'/'.$dropship['id'].'/'.urlencode($dropship->shop->name).'_'.$dropship->l_name.'/'.$data['slug'];
                     $data['share_url'] = $url;
+
+                    $direct = [
+                        'phone' => '62'.(int) $dropship->phone,
+                        'product' => $data['name'],
+                        'price' => $data['unit_price'],
+                        'link' => URL::to('/product/'.$data['slug']),
+                    ];
+
+                    $data['direct_wa'] = Helpers::directWa($direct);
+                } else {
+                    $data['direct_wa'] = '';
                 }
-            }
-
-            if ($dropship) {
-                $direct = [
-                    'phone' => '62'.(int) $dropship->phone,
-                    'product' => $data['name'],
-                    'price' => $data['unit_price'],
-                    'link' => URL::to('/product/'.$data['slug']),
-                ];
-
-                $data['direct_wa'] = Helpers::directWa($direct);
-            } else {
-                $data['direct_wa'] = '';
             }
         }
 
