@@ -419,7 +419,7 @@
                             @if ($type == 'dropship')
                             @php($seller = auth('seller')->user())
                             <div class="text-left" style="margin-left: 2px;">
-                                <a class="btn btn-success" href="{{ route('generate', ['seller_id' => $seller->id, 'seller_name' => $seller->shop->name, 'product_slug' => $product->slug]) }}" target="_blank">
+                                <a class="btn btn-success" href="{{env('ETOKO_URL').'/generated/'.$seller['id'].'/'.$seller->shop['name'].'/'.$product['slug']  }}" target="_blank">
                                     <i class="fa fa-share-alt" aria-hidden="true"></i>
                                 </a>
                             </div>

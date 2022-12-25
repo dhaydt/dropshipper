@@ -196,7 +196,7 @@
                     <li class="widget-list-item"><a class="widget-list-link"
                                                     href="{{route('helpTopic')}}">{{\App\CPU\translate('faq')}}</a></li>
                     <li class="widget-list-item "><a class="widget-list-link"
-                                                     href="{{route('terms')}}">{{\App\CPU\translate('Syarat_&_ketentuan')}}</a>
+                                                    href="{{route('terms')}}">{{\App\CPU\translate('Syarat_&_ketentuan')}}</a>
 
                     </li>
 
@@ -206,7 +206,7 @@
                         </a>
                     </li>
                     <li class="widget-list-item "><a class="widget-list-link"
-                                                     href="{{route('contacts')}}">{{\App\CPU\translate('hubungi_kami')}}</a>
+                                                    href="{{route('contacts')}}">{{\App\CPU\translate('hubungi_kami')}}</a>
 
                     </li>
                 </ul>

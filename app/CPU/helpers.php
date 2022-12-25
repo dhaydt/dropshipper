@@ -888,10 +888,9 @@ class Helpers
                 }
             }
 
-            $phone = BusinessSetting::where('type', 'company_phone')->first();
-            if ($phone->value !== null || $phone->value != '') {
+            if ($dropship) {
                 $direct = [
-                    'phone' => '62'.(int) $phone->value,
+                    'phone' => '62'.(int) $dropship->phone,
                     'product' => $data['name'],
                     'price' => $data['unit_price'],
                     'link' => URL::to('/product/'.$data['slug']),
