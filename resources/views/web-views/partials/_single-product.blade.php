@@ -207,14 +207,14 @@
             </div>
         </div>
         @php($user_is = session()->get('user_is'))
-        <div class="card-body inline_product text-center p-1 clickable">
-            <div style="position: relative;" class="product-title1">
+        <div class="card-body inline_product text-center p-1 clickable w-100">
+            <div style="position: relative; font-size: 14px !important;" class="product-title1 text-left px-1 w-100">
                 <a href="{{route('product',$product->slug)}}">
-                    {{ Str::limit($product['name'], 25) }}
+                    {{ Str::limit($product['name'], 40) }}
                 </a>
             </div>
-            <div class="justify-content-between text-center">
-                <div class="product-price text-center">
+            <div class="justify-content-between text-left pl-1">
+                <div class="product-price text-left">
                     @if($product->discount > 0)
                     <strike class="strike-price">
                         @if ($user_is == 'dropship')
@@ -225,7 +225,7 @@
                     </strike><br>
                     @endif
                     @if($product->discount > 0)
-                    <div class="text-center discount-div" style="">
+                    <div class="text-left discount-div" style="">
                         <span class="new-discoutn-value">
                             {{\App\CPU\translate('off')}}
                             @if ($product->discount_type == 'percent')

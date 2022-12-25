@@ -525,7 +525,7 @@ a .footer_banner_img {
 @section('content')
 <!-- Hero (Banners + Slider)-->
 <section class="bg-transparent mb-1">
-  <div class="container px-0">
+  <div class="container px-1">
     <div class="row ">
       <div class="col-12">
         @include('web-views.partials._home-top-slider')

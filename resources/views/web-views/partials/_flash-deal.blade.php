@@ -288,8 +288,8 @@
                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" />
                 </div>
                 <div class="flash_deal_product_details pl-2 pr-1 py-2 d-flex align-items-center">
-                  <div>
-                    <h6 class="flash-product-title">
+                  <div class="w-100 text-left">
+                    <h6 class="flash-product-title text-left">
                       {{$deal->product['name']}}
                     </h6>
                     <div class="flash-product-price">
@@ -299,7 +299,7 @@
                             </strike>
                             @endif
                             @if($deal->product->discount > 0)
-                          <div class="text-center mb-1" style="">
+                          <div class="text-left mb-1" style="">
                               <span class="new-discoutn-value">
                                   {{\App\CPU\translate('OFF')}}
                                   @if ($deal->product->discount_type == 'percent')

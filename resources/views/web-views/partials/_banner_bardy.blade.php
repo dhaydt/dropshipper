@@ -197,8 +197,8 @@
             }
         }
         .bardy-container{
-            max-height: 700px;
-            min-height: 700px;
+            max-height: 520px;
+            min-height: 520px;
             overflow: hidden;
             border-radius: 10px;
             margin: 0;
@@ -209,7 +209,7 @@
             max-height: 700px;
         }
         .banner-item{
-            height: 350px;
+            height: 260px;
             position: relative;
         }
 
@@ -221,10 +221,10 @@
             display:flex;
             justify-content: center;
             align-items:center;
-            height: 70px;
+            height: 50px;
         }
         .desc-banner .title{
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #fff;
         }
@@ -251,16 +251,16 @@
               </div>
               {{-- New Bardy --}}
               <div class="row bardy-container" style="background-color: {{ $unggulan['background_color'] }}">
-                <div class="col-5 col-md-4 p-0 banner-col">
+                <div class="col-5 col-md-3 p-0 banner-col">
                     <div class="banner-bardy w-100 d-flex justify-content-center align-items-center position-relative">
                         <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{ asset('storage/deal').'/'.$unggulan['banner'] }}" alt="" style="position: absolute; height: 100%; width:auto;">
                     </div>
                 </div>
-                <div class="col-7 col-md-8 p-0 h-100">
+                <div class="col-7 col-md-9 p-0 h-100">
                     <div class="row h-100">
                         {{-- {{ dd($unggulan['products'][1]) }} --}}
                         @foreach ($unggulan['products'] as $key=>$deal)
-                        <div class="col-6 col-md-4 p-0 position-relative">
+                        <div class="col-6 col-md-3 p-0 position-relative">
                             <div class="banner-item">
                                 <a href="{{route('product',$product->slug)}}">
                                     @if ($deal->product['icon'] !== 'def.png' && $deal->product['icon'] !== NULL)
