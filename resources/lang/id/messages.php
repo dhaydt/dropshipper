@@ -1,4 +1,6 @@
-<?php return array (
+<?php
+
+return [
   'Dashboard' => 'Dashboard',
   'order_management' => 'Order management',
   'orders' => 'Orders',
@@ -1557,4 +1559,4 @@
   'Lihat_semua' => 'Lihat semua',
   'Produk_terbaru' => 'Produk terbaru',
   'Produk_Terlaris' => 'Produk Terlaris',
-);
+];
