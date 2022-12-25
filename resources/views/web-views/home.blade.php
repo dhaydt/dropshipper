@@ -21,6 +21,9 @@
 .bg-transparent {
     margin-top: 15px;
 }
+.btn-sm.viw-btn-a{
+    font-size: 16px;
+}
 
 .mt-2rem{
     margin-top: 2rem;
@@ -248,6 +251,26 @@ a .footer_banner_img {
   }
 
   @media (max-width: 600px) {
+    .btn-sm.viw-btn-a{
+        font-size: 12px;
+    }
+    .container.flash.mt-2rem{
+        margin-top: 0;
+    }
+    .container.bardy.mt-5{
+        margin-top: 2rem !important;
+    }
+    .container.latest.mt-2rem{
+        margin-bottom: 1rem !important;
+    }
+    .container.categorie.mt-4{
+        margin-top: 3rem !important;
+    }
+
+    .container.pantene.my-5{
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
     .cat-owl .owl-stage-outer .owl-item {
         height: 115px;
     }
@@ -578,7 +601,7 @@ a .footer_banner_img {
 <=',date('Y-m-d'))->whereDate('end_date','>=',date('Y-m-d'))->first())
 
   @if (isset($flash_deals))
-  <div class="container mb-1 mt-2rem">
+  <div class="container flash mb-1 mt-2rem">
     <div class="row">
       <div class="col-md-12">
         <div class="section-header mb-2 fd rtl row justify-content-between">
@@ -631,7 +654,7 @@ a .footer_banner_img {
   @endif
 
   <!-- Latest Product -->
-    <section class="container rtl mt-2rem" style="margin-bottom: -20px;">
+    <section class="container latest rtl mt-2rem" style="margin-bottom: -20px;">
         <!-- Heading-->
         <div class="section-header">
             <div class="feature_header">
@@ -670,7 +693,7 @@ a .footer_banner_img {
     @php($unggulans=\App\Model\FlashDeal::with(['products.product.reviews'])->where(['status'=>1])->where(['deal_type'=>'unggulan'])->get())
     @if (count($unggulans) > 0)
     @foreach ($unggulans as $unggulan)
-    <div class="container mb-1 mt-5">
+    <div class="container bardy mb-1 mt-5">
         @include('web-views.partials._banner_bardy')
     </div>
     @endforeach
@@ -678,7 +701,7 @@ a .footer_banner_img {
 
     @php($berlimpah=\App\Model\FlashDeal::with(['products.product.reviews'])->where(['status'=>1])->where(['deal_type'=>'berlimpah'])->first())
     @if ($berlimpah)
-    <div class="container my-5">
+    <div class="container pantene my-5">
         @include('web-views.partials._banner_pantene')
     </div>
     @endif
@@ -836,7 +859,7 @@ a .footer_banner_img {
   {{-- Categorized product --}}
   @foreach($home_categories as $category)
   @if(App\CPU\CategoryManager::products($category['id'])->count()>0)
-  <section class="container rtl mt-4">
+  <section class="container categorie rtl mt-4">
     <!-- Heading-->
     <div class="section-header">
       <div class="feature_header">
