@@ -200,7 +200,7 @@
             max-height: 520px;
             min-height: 520px;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 0;
             margin: 0;
             box-shadow: 2px 2px 3px #00000030 !important;
         }
