@@ -357,7 +357,12 @@
             <div class="css-13ekl7h" data-testid="master-product-card">
                 <div class="css-2lm59p" data-testid="">
                     <div class="pcv3__container css-gfx8z3">
-                        <div class="css-zimbi">
+                        <div class="css-zimbi position-relative" style="overflow-hidden">
+                            @if ($deal->product->icon !== 'def.png' && $deal->product->icon !== NULL)
+                                    <div class="ketupat">
+                                        <img src="{{\App\CPU\ProductManager::product_image_path('icon')}}/{{$deal->product['icon']}}" alt="">
+                                    </div>
+                                    @endif
                             @if($deal->product->label)
                 <div class="d-flex justify-content-end for-dicount-div discount-hed" style="right: 0;position: absolute; z-index: 1;">
                     <span class="for-discoutn-value">
@@ -377,17 +382,17 @@
                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                         title="" alt=""></div></div>
                         <div class="css-974ipl">
-                            <h6 class="flash-product-title">
-                                {{$deal->product['name']}}
+                            <h6 class="flash-product-title  text-left w-100">
+                                {{Str::limit($deal->product['name'], 30)}}
                               </h6>
-                              <div class="flash-product-price">
+                              <div class="flash-product-price text-left w-100">
                                 @if($deal->product->discount > 0)
                                 <strike style="font-size: 12px!important;color: grey!important;">
                                   {{\App\CPU\Helpers::currency_converter($deal->product->unit_price)}}
                                 </strike>
                                 @endif
                                   @if($deal->product->discount > 0)
-                                  <div class="text-center" style="">
+                                  <div class="text-left" style="">
                                       <span class="new-discoutn-value mobile-discount">
                                           {{\App\CPU\translate('OFF')}}
                                           @if ($deal->product->discount_type == 'percent')
