@@ -206,7 +206,7 @@
         }
         .banner-bardy{
             height: 100%;
-            max-height: 700px;
+            max-height: 520px;
         }
         .banner-item{
             height: 260px;
