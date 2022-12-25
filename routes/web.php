@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], funct
     Route::get('quick-view', 'WebController@quick_view')->name('quick-view');
     Route::get('searched-products', 'WebController@searched_products')->name('searched-products');
 
-    Route::get('generated/{seller_id}/{seller_name}/{product_slug}/{description}', [GenerateController::class, 'generate'])->name('generate');
+    Route::get('generated/{seller_id}/{seller_name}/{product_slug}', [GenerateController::class, 'generate'])->name('generate');
 
     Route::get('shortBy/{country}', 'ShortHomeController@shortBy')->name('shortBy');
 

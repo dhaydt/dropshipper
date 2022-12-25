@@ -248,11 +248,11 @@
 
                         {{-- <span style="width: 0px;height: 10px;border: 0.5px solid #707070; margin-top: 6px">
                         </span> --}}
-                        <span
+                        {{-- <span
                             class="font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-1 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-1 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}}">{{$countOrder}} {{\App\CPU\translate('orders')}}   </span>
                         <span style="width: 0px;height: 10px;border: 0.5px solid #707070; margin-top: 6px">    </span>
                         <span
-                            class=" font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}}">  {{$countWishlist}} {{\App\CPU\translate('wish')}} </span>
+                            class=" font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}}">  {{$countWishlist}} {{\App\CPU\translate('wish')}} </span> --}}
 
                     </div>
                     <div class="mb-3">
@@ -278,10 +278,10 @@
                         </div>
                     @endif
 
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <strong>{{\App\CPU\translate('tax')}} : </strong>
                         <strong id="set-tax-amount"></strong>
-                    </div>
+                    </div> --}}
                     <form id="add-to-cart-form" class="mb-2">
                         @csrf
                         <input type="hidden" name="id" value="{{ $product->id }}">
@@ -380,8 +380,8 @@
                             <div class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}">
                                 <div class="product-description-label">{{\App\CPU\translate('total_price')}}:</div>
                             </div>
-                            <div>
-                                <div class="product-price for-total-price">
+                            <div class="d-flex align-items-center">
+                                <div class="product-price for-total-price mt-0">
                                     <strong id="chosen_price"></strong>
                                 </div>
                             </div>
@@ -393,20 +393,20 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-2">
-                            <button
+                        <div class="d-flex justify-content-left mt-2">
+                            {{-- <button
                                 class="btn btn-secondary element-center btn-gap-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
                                 onclick="buy_now()"
                                 type="button"
                                 style="width:37%; height: 45px">
                                 <span class="string-limit">{{\App\CPU\translate('buy_now')}}</span>
-                            </button>
+                            </button> --}}
                             <button
                                 class="btn btn-primary element-center btn-gap-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}"
                                 onclick="addToCart()"
                                 type="button"
-                                style="width:37%; height: 45px">
-                                <span class="string-limit">{{\App\CPU\translate('add_to_cart')}}</span>
+                                style="width:65%; height: 45px">
+                                <span class="string-limit"><i class="fa fa-plus"></i> {{\App\CPU\translate('Keranjang')}}</span>
                             </button>
                             <button type="button" onclick="addWishlist('{{$product['id']}}')"
                                     class="btn btn-dark for-hover-bg"
@@ -415,21 +415,19 @@
                                    aria-hidden="true"></i>
                                 <span class="countWishlist-{{$product['id']}}">{{$countWishlist}}</span>
                             </button>
+                            @php($type = session()->get('user_is'))
+                            @if ($type == 'dropship')
+                            @php($seller = auth('seller')->user())
+                            <div class="text-left" style="margin-left: 2px;">
+                                <a class="btn btn-success" href="{{ route('generate', ['seller_id' => $seller->id, 'seller_name' => $seller->shop->name, 'product_slug' => $product->slug]) }}" target="_blank">
+                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            @else
+
+                            @endif
                         </div>
                     </form>
-                    <hr style="padding-bottom: 10px">
-                    @php($type = session()->get('user_is'))
-                    @if ($type == 'dropship')
-                    @php($seller = auth('seller')->user())
-                    <div class="text-left">
-                        <a class="btn btn-sm btn-success" href="{{ route('generate', ['seller_id' => $seller->id, 'seller_name' => $seller->f_name, 'product_slug' => $product->slug]) }}" target="_blank">
-                            <i class="fa fa-share" aria-hidden="true"></i>
-                            <span> Bagikan</span>
-                        </a>
-                    </div>
-                    @else
-
-                    @endif
                     {{-- <div style="text-align:{{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
                          class="sharethis-inline-share-buttons">
                     </div> --}}
