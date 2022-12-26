@@ -1615,4 +1615,13 @@
   'Syarat_&_ketentuan' => 'Syarat & ketentuan',
   'Kebijakan_privasi' => 'Kebijakan privasi',
   'hubungi_kami' => 'Hubungi kami',
+  'keranjang_kosong' => 'Keranjang kosong',
+  'alamat_pengiriman' => 'Alamat pengiriman',
+  'Proses' => 'Proses',
+  'Order Sukses' => 'Order Sukses',
+  'Order_kamu_berhasil_disimpan!' => 'Order kamu berhasil disimpan!',
+  'Halo' => 'Halo',
+  'Order_kamu_dengan_nomor_100074_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100074 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'pergi_belanja' => 'Pergi belanja',
+  'cek_order' => 'Cek order',
 );

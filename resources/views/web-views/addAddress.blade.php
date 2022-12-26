@@ -187,7 +187,7 @@
 @section('content')
     <div class="container pb-5 mb-2 mt-3 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};" id="cart-summary">
        <div class="feature_header">
-        <span>{{ \App\CPU\translate('fill_address')}}</span>
+        <span class="d-none d-md-block">{{ \App\CPU\translate('fill_address')}}</span>
 
         <div class="container">
             <div class="modal-dialog  modal-lg" role="document">
@@ -206,7 +206,7 @@
                             <div class="col-md-12" style="display: flex">
                                 <!-- Nav pills -->
 
-                                <ul class="donate-now">
+                                <ul class="donate-now" style="z-index: 0">
                                     @if (session()->get('user_is') !== 'dropship')
                                     <li>
                                         <input type="radio" id="a25" name="addressAs" value="permanent" />

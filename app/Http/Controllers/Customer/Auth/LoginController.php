@@ -84,6 +84,7 @@ class LoginController extends Controller
     {
         auth()->guard('customer')->logout();
         session()->forget('wish_list');
+        session()->forget('user_is');
         Toastr::info('Come back soon, '.'!');
         session()->put('hide_banner', false);
 

@@ -176,13 +176,13 @@
                             <a class="btn btn-secondary btn-block" href="{{route('checkout-details')}}">
                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} mt-sm-0 mx-1"></i>
                                 <span class="d-none d-sm-inline">{{ \App\CPU\translate('alamat_pengiriman')}}</span>
-                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('alamat_pengiriman')}}</span>
+                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('Alamat')}}</span>
                             </a>
                         </div>
                         <div class="col-6">
                             <a class="btn btn-primary btn-block" href="{{ route('checkout-complete') }}">
                                 <span class="d-none d-sm-inline">{{ \App\CPU\translate('Proses_order')}}</span>
-                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('Proses_order')}}</span>
+                                <span class="d-inline d-sm-none">{{ \App\CPU\translate('Proses')}}</span>
                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} mt-sm-0 mx-1"></i>
                             </a>
                         </div>

@@ -12,7 +12,7 @@
     }
 </style>
 
-<footer class="page-footer font-small mdb-color pt-3 rtl">
+<footer class="page-footer font-small mdb-color pt-3 rtl d-none d-md-block">
     <!-- Footer Links -->
     <div class="container text-center" style="padding-bottom: 13px;">
 

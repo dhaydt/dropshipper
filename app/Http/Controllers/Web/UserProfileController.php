@@ -140,16 +140,14 @@ class UserProfileController extends Controller
             'zip' => 'required',
             'phone' => 'required',
             'state' => 'required',
-            'country' => 'required',
             'district' => 'required',
         ],
-            [
-                'name' => 'Contact person name is required',
-                'address' => 'Address is required',
-                'zip' => 'ZIP code is required',
-                'phone' => 'Phone is required',
+        [
+            'name' => 'Contact person name is required',
+            'address' => 'Address is required',
+            'zip' => 'ZIP code is required',
+            'phone' => 'Phone is required',
                 'state' => 'State / Province is required',
-                'country' => 'Country is required',
                 'District' => 'District is required',
             ]);
 
@@ -187,7 +185,7 @@ class UserProfileController extends Controller
             'phone' => $request->phone,
             'state' => $state,
             'province' => $state,
-            'country' => $request->country,
+            'country' => 'ID',
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -208,7 +206,7 @@ class UserProfileController extends Controller
                 'phone' => $request->phone,
                 'state' => $state,
                 'province' => $state,
-                'country' => $request->country,
+                'country' => 'ID',
                 'user_is' => 'dropship',
                 'slug' => $slug,
                 'created_at' => now(),
@@ -236,16 +234,16 @@ class UserProfileController extends Controller
         }
 
         if (auth('customer')->check()) {
-            DB::table('users')->where('id', $id)->limit(1)->update([
-                'province' => $state,
-                'country' => $request->country,
-                'city' => $city,
-                'city_type' => $city_type,
-                'zip' => $request->zip,
-                'city_id' => $city_id,
-                'district' => $district,
-                'district_id' => $district_id,
-            ]);
+            $customer = User::find(auth('customer')->id());
+            $customer->province = $state;
+            $customer->country = 'ID';
+            $customer->city = $city;
+            $customer->city_type = $city_type;
+            $customer->zip = $request->zip;
+            $customer->city_id = $city_id;
+            $customer->district = $district;
+            $customer->district_id = $district_id;
+            $customer->save();
         }
 
         return redirect('/shop-cart');

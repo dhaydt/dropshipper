@@ -94,6 +94,7 @@ class WebController extends Controller
 
     public function home()
     {
+        session()->forget('category');
         $home_categories = Category::where('home_status', true)->get();
         $home_categories->map(function ($data) {
             $data['products'] = Product::active()->whereJsonContains('category_ids', ['id' => (string) $data['id']])->inRandomOrder()->take(12)->get();
@@ -254,7 +255,6 @@ class WebController extends Controller
         $data = [
             'name' => 'Alamat Pengiriman',
         ];
-        // dd($data);
         session()->put('category', $data);
 
         if (auth('seller')->check()) {
@@ -263,8 +263,9 @@ class WebController extends Controller
             return view('web-views.addAddress', compact('country'));
         }
         $check = session()->has('customer_address');
-        if (session()->get('user_is') !== 'dropship') {
-            if (auth('customer')->user()->district == null) {
+        if (session()->get('user_is') == 'customer') {
+            $userShipp = ShippingAddress::where('customer_id', auth('customer')->id())->get();
+            if (count($userShipp) < 1) {
                 // dd('no distrcit');
                 $country = DB::table('country')->get();
 
@@ -299,6 +300,8 @@ class WebController extends Controller
 
     public function shipping_method()
     {
+        $data['name'] = 'Metode Pengiriman';
+        session()->put('category', $data);
         $cart = \App\CPU\CartManager::get_cart();
 
         $cart_id = $cart[0]['cart_group_id'];
@@ -333,6 +336,8 @@ class WebController extends Controller
 
     public function checkout_complete(Request $request)
     {
+        $data['name'] = 'Order Berhasil!';
+        session()->put('category', $data);
         $unique_id = OrderManager::gen_unique_id();
         $order_ids = [];
         $order_id = '';
