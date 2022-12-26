@@ -253,6 +253,54 @@ class WebController extends Controller
     public function checkout_details(Request $request)
     {
         $data = [
+            'name' => 'Keranjang Belanja',
+        ];
+        session()->put('category', $data);
+
+        if (auth('seller')->check()) {
+            $country = DB::table('country')->get();
+
+            return view('web-views.addAddress', compact('country'));
+        }
+        $check = session()->has('customer_address');
+        if (session()->get('user_is') == 'customer') {
+            $userShipp = ShippingAddress::where('customer_id', auth('customer')->id())->get();
+            if (count($userShipp) < 1) {
+                // dd('no distrcit');
+                $country = DB::table('country')->get();
+
+                Toastr::warning(translate('Please fill your address first'));
+
+                return view('web-views.addAddress', compact('country'));
+            }
+        } elseif (session()->get('user_is') == 'dropship' && !$check) {
+            $country = 'ID';
+            Toastr::warning(translate('Please fill your customer address first'));
+
+            return view('web-views.addAddress', compact('country'));
+        }
+
+        $cart_group_ids = CartManager::get_cart_group_ids();
+        // dd($cart_group_ids);
+        // if (CartShipping::whereIn('cart_group_id', $cart_group_ids)->count() != count($cart_group_ids)) {
+        //     Toastr::info(translate('select_shipping_method_first'));
+
+        //     return redirect('shop-cart');
+        // }
+
+        if (count($cart_group_ids) > 0) {
+            // session(['address_changed' => 0]);
+            return view('web-views.shop-cart');
+        }
+
+        Toastr::info(translate('no_items_in_basket'));
+
+        return redirect('/');
+    }
+
+    public function checkout_shipping(Request $request)
+    {
+        $data = [
             'name' => 'Alamat Pengiriman',
         ];
         session()->put('category', $data);
@@ -373,7 +421,9 @@ class WebController extends Controller
 
     public function shop_cart()
     {
-        if (auth('customer')->check() && Cart::where(['customer_id' => auth('customer')->id(), 'buyer_is' => 'customer'])->count() > 0) {
+        $cart = Cart::where(['customer_id' => auth('customer')->id(), 'buyer_is' => null])->get();
+        // dd($cart)
+        if (auth('customer')->check() && count($cart) > 0) {
             if (auth('customer')->user()->district == null) {
                 // dd('no distrcit');
                 $country = DB::table('country')->get();
@@ -392,7 +442,9 @@ class WebController extends Controller
             return view('web-views.shop-cart');
         }
 
-        if (auth('seller')->check() && Cart::where(['customer_id' => auth('seller')->id(), 'user_is' => 'dropship'])) {
+        $cart = Cart::where(['customer_id' => auth('seller')->id(), 'buyer_is' => 'dropship'])->get();
+
+        if (auth('seller')->check() && count($cart) > 0) {
             $user = auth('seller')->id();
             $address = ShippingAddress::where('customer_id', $user)->orderBy('created_at', 'desc')->first();
 

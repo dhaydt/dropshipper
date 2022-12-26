@@ -1012,6 +1012,7 @@
                 CloseButton: true,
                 ProgressBar: true
             });
+            location.reload();
         });
     }
 
@@ -1136,6 +1137,7 @@
                 $('#cart-summary').empty().html(response);
             }
         });
+        location.reload();
     }
 
     $('#add-to-cart-form input').on('change', function () {

@@ -1628,4 +1628,9 @@
   'Daftar_Kostumer' => 'Daftar Kostumer',
   'Masuk_Dropship' => 'Masuk Dropship',
   'Daftar_Dropship' => 'Daftar Dropship',
+  'Checkout Process Start' => 'Checkout Process Start',
+  'Kamu_sudah_masuk' => 'Kamu sudah masuk',
+  'Credential not matched' => 'Credential not matched',
+  'something went wrong' => 'Something went wrong',
+  'Order_kamu_dengan_nomor_100076_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100076 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
 );

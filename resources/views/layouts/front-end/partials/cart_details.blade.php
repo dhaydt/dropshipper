@@ -173,7 +173,7 @@
             </div>
             <div class="col-6">
                 @if (auth('customer')->check())
-                <a href="{{route('checkout-details')}}"
+                <a href="{{route('checkout-shipping')}}"
                    class="btn btn-primary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
                     {{\App\CPU\translate('Pilih_alamat')}}
                     <i class="fa fa-{{Session::get('direction') === "rtl" ? 'backward' : 'forward'}} px-1"></i>
