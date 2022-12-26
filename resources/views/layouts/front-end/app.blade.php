@@ -61,6 +61,7 @@
         @media(max-width: 600px){
             .bod {
                 padding-bottom: 70px;
+                margin-top: 85px;
             }
 
             .loading-mobile{
@@ -726,11 +727,9 @@
 <!-- Navbar Electronics Store-->
 @include('layouts.front-end.partials._header')
 {{-- Mobile navbar --}}
-@if (\Request::route()->getName() == 'home')
 <header class="box-shadow-sm rtl d-block d-md-none">
     @include('layouts.front-end.partials._mobile_header')
 </header>
-@endif
 <!-- Page title-->
 
 {{--loader--}}

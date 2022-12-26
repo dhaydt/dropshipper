@@ -28,11 +28,11 @@
 @section('content')
     <div class="container pb-5 mb-2 mb-md-4 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
         <div class="row">
-            <div class="col-md-12 mb-5 pt-5">
+            {{-- <div class="col-md-12 mb-5 pt-5">
                 <div class="feature_header" style="background: #dcdcdc;line-height: 1px">
                     <span>{{ \App\CPU\translate('Alamat_pengiriman')}}</span>
                 </div>
-            </div>
+            </div> --}}
             <section class="col-lg-8">
                 <hr>
                 <div class="checkout_details mt-3">

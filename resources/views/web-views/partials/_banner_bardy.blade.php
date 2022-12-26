@@ -262,7 +262,7 @@
                         @foreach ($unggulan['products'] as $key=>$deal)
                         <div class="col-6 col-md-3 p-0 position-relative">
                             <div class="banner-item">
-                                <a href="{{route('product',$product->slug)}}">
+                                <a href="{{route('product',$deal->product->slug)}}">
                                     @if ($deal->product['icon'] !== 'def.png' && $deal->product['icon'] !== NULL)
                                     <div class="ketupat">
                                         <img src="{{\App\CPU\ProductManager::product_image_path('icon')}}/{{$deal->product['icon']}}" alt="">

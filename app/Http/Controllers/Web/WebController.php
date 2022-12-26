@@ -251,6 +251,12 @@ class WebController extends Controller
 
     public function checkout_details(Request $request)
     {
+        $data = [
+            'name' => 'Alamat Pengiriman',
+        ];
+        // dd($data);
+        session()->put('category', $data);
+
         if (auth('seller')->check()) {
             $country = DB::table('country')->get();
 

@@ -58,6 +58,9 @@
             top: 0;
             z-index: 11;
         }
+        .mobile-head.not-home {
+            background-color: {{ $web_config['primary_color'] }}
+        }
 
         .bg-dark {
             padding: 0 !important;
@@ -105,8 +108,9 @@
     }
 </style>
 @php($cat = session()->get('category'))
+{{-- {{ dd($cat) }} --}}
     @if (isset($cat))
-    <div class="navbar-sticky mobile-head">
+    <div class="navbar-sticky mobile-head not-home">
         <div class="navbar navbar-expand-md navbar-dark p-2" style="height: 52px">
             <div class="container">
                 <div class="row w-100">
