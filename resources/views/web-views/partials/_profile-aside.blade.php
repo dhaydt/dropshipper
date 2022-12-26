@@ -49,7 +49,7 @@
 
 </style>
 
-<div class="sidebarR col-lg-3 col-md-3">
+<div class="sidebarR col-lg-3 col-md-3 d-none d-md-block">
     <!--Price Sidebar-->
     <div class="price_sidebar rounded-lg box-shadow-sm" id="shop-sidebar" style="margin-bottom: -10px;background: white">
         <div class="box-shadow-sm">

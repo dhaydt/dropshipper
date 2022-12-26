@@ -16,12 +16,21 @@
                     src="https://assets.tokopedia.net/assets-tokopedia-lite/v2/atreus/kratos/eb6fad37.svg"
                     alt="wishlist" class="css-mw28ox"></div>Wish List
         </a>
+        @if (auth('seller')->check())
+        <a class="css-11rf802" href="{{route('seller.orders.list', ['all'])}}" data-cy="bottomnavFeed" id="bottomnavFeed"
+            data-testid="icnFooterFeed">
+            <div class="css-mw28ox"><img width="24" height="24"
+                    src="https://assets.tokopedia.net/assets-tokopedia-lite/v2/atreus/kratos/66eb4811.svg" alt="feed"
+                    class="css-mw28ox"></div>Transaksi
+        </a>
+        @else
         <a class="css-11rf802" href="{{route('account-oder')}}" data-cy="bottomnavFeed" id="bottomnavFeed"
             data-testid="icnFooterFeed">
             <div class="css-mw28ox"><img width="24" height="24"
                     src="https://assets.tokopedia.net/assets-tokopedia-lite/v2/atreus/kratos/66eb4811.svg" alt="feed"
                     class="css-mw28ox"></div>Transaksi
         </a>
+        @endif
         @if(auth('customer')->check())
             <a class="css-11rf802" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-transform: capitalize">
                 <div class="">
@@ -41,6 +50,23 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
             </div>
+        @elseif(auth('seller')->check())
+        <a class="css-11rf802" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-transform: capitalize">
+            <div class="">
+                <div class="">
+                    <img style="width: 24px;height: 24px"
+                        src="{{asset('storage/app/public/profile/'.auth('seller')->user()->image)}}"
+                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                        class="img-profile rounded-circle">
+                </div>
+            </div>
+            {{auth('seller')->user()->f_name}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{route('seller.dashboard.index')}}"> {{ \App\CPU\translate('Dashboard')}} </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{route('seller.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
+        </div>
         @else
             <a class="css-11rf802 profile-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="">
@@ -54,12 +80,20 @@
                 style="text-align: {{Session::get('direction') === " rtl" ? 'right' : 'left' }};">
                 <a class="dropdown-item" href="{{route('customer.auth.login')}}">
                     <i class="fa fa-sign-in {{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}"></i>
-                    {{\App\CPU\translate('sign_in')}}
+                    {{\App\CPU\translate('Masuk_Kostumer')}}
                 </a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{route('customer.auth.register')}}">
                     <i class="fa fa-user-circle {{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2'
-                        }}"></i>{{\App\CPU\translate('sign_up')}}
+                        }}"></i>{{\App\CPU\translate('Daftar_Kostumer')}}
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{route('seller.auth.login')}}">
+                    <i class="fa fa-sign-in {{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}"></i>
+                    {{\App\CPU\translate('Masuk_Dropship')}}
+                </a>
+                <a class="dropdown-item" href="{{route('shop.apply')}}">
+                    <i class="fa fa-user-circle {{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2'
+                        }}"></i>{{\App\CPU\translate('Daftar_Dropship')}}
                 </a>
             </div>
         @endif

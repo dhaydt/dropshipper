@@ -1624,4 +1624,8 @@
   'Order_kamu_dengan_nomor_100074_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100074 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
   'pergi_belanja' => 'Pergi belanja',
   'cek_order' => 'Cek order',
+  'Masuk_Kostumer' => 'Masuk Kostumer',
+  'Daftar_Kostumer' => 'Daftar Kostumer',
+  'Masuk_Dropship' => 'Masuk Dropship',
+  'Daftar_Dropship' => 'Daftar Dropship',
 );
