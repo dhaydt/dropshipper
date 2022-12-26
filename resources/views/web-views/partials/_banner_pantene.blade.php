@@ -36,16 +36,16 @@
             <i class="czi-arrow-{{Session::get('direction') === " rtl" ? 'left mr-1 ml-n1' : 'right ml-1 mr-n1' }}"></i>
           </a>
         </div> --}}
-      </div>
-      <div class="section-body row">
+    </div>
+    <div class="section-body row">
         @foreach ($berlimpah['products'] as $key => $b_p)
             <div class="col-lg-2 col-md-3 col-4">
                 <div class="pantene-card">
-                    <div class="head text-center d-flex justify-content-center align-items-center">
+                    <a href="{{route('products',['id'=> $b_p['category_id'],'data_from'=>'category','page'=>1])}}" class="head text-center d-flex justify-content-center align-items-center">
                         <div class="img">
                             <img onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" src="{{ asset('storage/deal').'/'.$b_p['images'] }}" alt="" class="" style="max-height: 100%">
                         </div>
-                    </div>
+                    </a>
                     {{-- <div class="pantene-desc bg-green">
                         {{ $title[$key] }}
                     </div> --}}

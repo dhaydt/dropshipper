@@ -664,7 +664,8 @@ class WebController extends Controller
             ], 200);
         }
         if ($request['data_from'] == 'category') {
-            $data['brand_name'] = Category::find((int) $request['id'])->name;
+            $cat = Category::find((int) $request['id']);
+            $data['brand_name'] = $cat ? $cat->name : 'Kesalahan data kategori';
         }
         if ($request['data_from'] == 'brand') {
             $data['brand_name'] = Brand::find((int) $request['id'])->name;
