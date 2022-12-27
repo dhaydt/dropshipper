@@ -84,6 +84,9 @@
             .feature_header span {
                 margin-bottom: -40px;
             }
+            .container.mt-4.prod-detail{
+                margin-top: -20px;
+            }
 
             .for-total-price {
                 padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 30%;
@@ -180,7 +183,7 @@
     $rating = \App\CPU\ProductManager::get_rating($product->reviews);
     ?>
     <!-- Page Content-->
-    <div class="container mt-4 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+    <div class="container mt-4 rtl prod-detail" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
         <!-- General info tab-->
         <div class="row" style="direction: ltr">
             <!-- Product gallery-->
