@@ -427,19 +427,59 @@
                         </table>
                     </div>
                 </div>
+                @php($payment = \App\CPU\Helpers::payment())
                 <div class="justify-content mt-4 for-mobile-glaxy ">
                     <a href="{{route('generate-invoice',[$order->id])}}" class="btn btn-primary for-glaxy-mobile"
                        style="width:49%;">
                         {{\App\CPU\translate('generate_invoice')}}
                     </a>
-                    <a class="btn btn-secondary" type="button"
-                       href="{{route('track-order.result',['order_id'=>$order['id']])}}"
-                       style="width:50%; color: white">
-                        {{\App\CPU\translate('Track')}} {{\App\CPU\translate('Order')}}
-                    </a>
+                    <button type="button" class="btn btn-secondary for-glaxy-mobile" style="width:50%;" data-toggle="modal" data-target="#pay{{ $order->id }}">
+                        {{\App\CPU\translate('Bayar')}} {{\App\CPU\translate('Sekarang')}}
+                    </button>
 
                 </div>
             </section>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pay{{ $order->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pilih metode pembayaran untuk order {{ $order->id }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+                @foreach ($payment as $p)
+                    <div class="col-md-6 mb-4" style="cursor: pointer">
+                        <div class="card">
+                            <div class="card-body" style="height: 100px">
+                                <form class="needs-validation" target="_blank" method="POST" id="payment-form"
+                                    action="{{route('xendit-payment.vaInvoice')}}">
+
+                                    <input type="hidden" name="type" value="{{ $p['code'] }}">
+                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                    {{-- <input class="price" type="hidden" name="price" value="price"> --}}
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-block" type="submit">
+                                        <img width="150" style="margin-top: -10px"
+                                        src="{{asset('assets/front-end/img/'.strtolower($p['code']).'.png')}}" />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
         </div>
     </div>
 
