@@ -171,8 +171,6 @@
         }
 
         @media screen and (min-width: 800px) {
-
-
             .for-tab-display {
                 display: none !important;
             }
@@ -182,7 +180,11 @@
         @media (max-width: 768px) {
             .headerTitle {
                 font-size: 23px;
+            }
 
+            .product-card.card .card-header.inline_product{
+                min-height: 180px;
+                max-height: 180px;
             }
 
             .openbtn-tab {
@@ -210,7 +212,7 @@
                 </a></div> --}}
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 d-none d-md-block">
                         {{-- if need data from also --}}
                         {{-- <h1 class="h3 text-dark mb-0 headerTitle text-uppercase">{{\App\CPU\translate('product_by')}} {{$data['data_from']}} ({{ isset($brand_name) ? $brand_name : $data_from}})</h1> --}}
                         <h1 class="h3 text-dark mb-3 headerTitle text-uppercase">
@@ -218,7 +220,7 @@
                             <label>( {{$products->total()}} {{\App\CPU\translate('items found')}} )</label>
                         </h1>
                     </div>
-                    <div class="row col-md-6 for-display mx-0">
+                    <div class="row col-md-6 d-none for-display mx-0">
 
                         {{-- <button class="openbtn text-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}" onclick="openNav()">
                             <div style="margin-bottom: -30%;">

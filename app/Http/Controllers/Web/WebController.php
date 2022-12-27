@@ -730,6 +730,8 @@ class WebController extends Controller
             $data['brand_name'] = Brand::find((int) $request['id'])->name;
         }
 
+        session()->put('category', $data);
+
         return view('web-views.products.view', compact('products', 'data'), $data);
     }
 
