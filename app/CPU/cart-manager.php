@@ -347,6 +347,8 @@ class CartManager
         $qty = 0;
         if ($request->type == 'dropship') {
             $cart = Cart::where(['id' => $request->key, 'customer_id' => $user->id, 'buyer_is' => 'dropship'])->first();
+        } elseif ($request->type == 'customer') {
+            $cart = Cart::where(['id' => $request->key, 'customer_id' => $user->id, 'buyer_is' => 'customer'])->first();
         } else {
             $cart = Cart::where(['id' => $request->key, 'customer_id' => $user->id, 'buyer_is' => null])->first();
         }

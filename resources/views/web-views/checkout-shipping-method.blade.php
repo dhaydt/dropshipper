@@ -58,6 +58,24 @@
                     {{-- <section class="col-lg-8"> --}}
                         <div class="cart_information">
                             @foreach($cart as $group_key=>$group)
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-1">Nama: </div>
+                                        <div class="col-md-6">{{ $address['contact_person_name'] }}</div>
+                                        <div class="col-md-6 mb-1">Handphone: </div>
+                                        <div class="col-md-6">{{ $address['phone'] }}</div>
+                                        <div class="col-md-6 mb-1">Alamat: </div>
+                                        <div class="col-md-6">{{ $address['address'] }}</div>
+                                        <div class="col-md-6 mb-1">Kecamatan: </div>
+                                        <div class="col-md-6">{{ $address['district'] }}</div>
+                                        <div class="col-md-6 mb-1">Kota: </div>
+                                        <div class="col-md-6">{{ $address['city'] }}</div>
+                                        <div class="col-md-6 mb-1">Provinsi: </div>
+                                        <div class="col-md-6">{{ $address['province'] }}</div>
+                                    </div>
+                                </div>
+                            </div>
                                 @foreach($group as $cart_key=>$cartItem)
                                     {{-- @if($cart_key==0)
                                         @if($cartItem->seller_is=='admin')
@@ -67,24 +85,7 @@
                                         @endif
                                     @endif --}}
                                     {{-- {{ dd($address) }} --}}
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6 mb-1">Nama: </div>
-                                                <div class="col-md-6">{{ $address['contact_person_name'] }}</div>
-                                                <div class="col-md-6 mb-1">Handphone: </div>
-                                                <div class="col-md-6">{{ $address['phone'] }}</div>
-                                                <div class="col-md-6 mb-1">Alamat: </div>
-                                                <div class="col-md-6">{{ $address['address'] }}</div>
-                                                <div class="col-md-6 mb-1">Kecamatan: </div>
-                                                <div class="col-md-6">{{ $address['district'] }}</div>
-                                                <div class="col-md-6 mb-1">Kota: </div>
-                                                <div class="col-md-6">{{ $address['city'] }}</div>
-                                                <div class="col-md-6 mb-1">Provinsi: </div>
-                                                <div class="col-md-6">{{ $address['province'] }}</div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     @if($cart_key==$group->count()-1)
                                     <!-- choosen shipping method-->
                             @php($choosen_shipping=\App\Model\CartShipping::where(['cart_group_id'=>$cartItem['cart_group_id']])->first())
