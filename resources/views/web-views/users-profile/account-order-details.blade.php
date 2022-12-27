@@ -429,13 +429,16 @@
                 </div>
                 @php($payment = \App\CPU\Helpers::payment())
                 <div class="justify-content mt-4 for-mobile-glaxy ">
+                    @if ($order->order_status == 'pending')
+                    <button type="button" class="btn btn-secondary" style="width:50%;" data-toggle="modal" data-target="#pay{{ $order->id }}">
+                        {{\App\CPU\translate('Bayar')}} {{\App\CPU\translate('Sekarang')}}
+                    </button>
+                    @endif
                     <a href="{{route('generate-invoice',[$order->id])}}" class="btn btn-primary for-glaxy-mobile"
                        style="width:49%;">
                         {{\App\CPU\translate('generate_invoice')}}
                     </a>
-                    <button type="button" class="btn btn-secondary for-glaxy-mobile" style="width:50%;" data-toggle="modal" data-target="#pay{{ $order->id }}">
-                        {{\App\CPU\translate('Bayar')}} {{\App\CPU\translate('Sekarang')}}
-                    </button>
+
 
                 </div>
             </section>
