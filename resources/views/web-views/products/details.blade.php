@@ -85,7 +85,7 @@
                 margin-bottom: -40px;
             }
             .container.mt-4.prod-detail{
-                margin-top: -20px;
+                margin-top: -20px !important;
             }
 
             .for-total-price {
