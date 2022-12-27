@@ -251,6 +251,9 @@ a .footer_banner_img {
   }
 
   @media (max-width: 600px) {
+    .bg-transparent.banner-home{
+        margin-top: -85px;
+    }
     .btn-sm.viw-btn-a{
         font-size: 12px;
     }
@@ -550,8 +553,8 @@ a .footer_banner_img {
 @endpush
 
 @section('content')
-<!-- Hero (Banners + Slider)-->
-<section class="bg-transparent mb-1">
+<!-- Hero (Banners + Sliderssssss)-->
+<section class="bg-transparent mb-1 banner-home">
   <div class="container px-1">
     <div class="row ">
       <div class="col-12">

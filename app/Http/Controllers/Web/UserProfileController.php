@@ -327,6 +327,8 @@ class UserProfileController extends Controller
     {
         $orders = Order::where('customer_id', auth('customer')->id())->orderBy('id', 'DESC')->get();
         $payment = Helpers::payment();
+        $data['name'] = 'Transaksi';
+        session()->put('category', $data);
 
         return view('web-views.users-profile.account-orders', compact('orders', 'payment'));
     }

@@ -142,7 +142,7 @@
 </style>
 
 <div class="row rtl">
-    <div class="col-xl-12 col-md-12 carousel-banner-row">
+    <div class="col-xl-12 col-md-12 carousel-banner-row px-0">
         @php($main_banner=\App\Model\Banner::where('banner_type','Main Banner')->where('published',1)->orderBy('id','desc')->get())
         <div class="owl-carousel owl-carousel-banner client-testimonial-carousel">
             @foreach($main_banner as $key=>$banner)

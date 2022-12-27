@@ -80,7 +80,7 @@
 
 @section('content')
 
-    <div class="container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+    <div class="container rtl d-none d-md-block" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-9 sidebar_heading">
