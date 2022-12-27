@@ -1633,4 +1633,7 @@
   'Credential not matched' => 'Credential not matched',
   'something went wrong' => 'Something went wrong',
   'Order_kamu_dengan_nomor_100076_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100076 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100079_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100079 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100080_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100080 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100081_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100081 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
 );

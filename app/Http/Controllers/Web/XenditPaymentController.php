@@ -204,14 +204,14 @@ class XenditPaymentController extends Controller
             }
         }
         session()->forget('customer_address');
-        if (auth('customer')->check() || session()->get('user_is') == 'dropship') {
-            Toastr::success('Payment success.');
+        if (auth('customer')->check() || auth('seller')->check()) {
+            Toastr::success('Pembayaran Berhasil.');
 
-            if (!$order_id) {
-                return redirect()->route('customer.account-oder');
+            if (auth('customer')->check()) {
+                return redirect()->route('account-oder');
+            } else {
+                return redirect()->route('seller.orders.list', ['all']);
             }
-
-            return view('web-views.checkout-complete', compact('order_id'));
         }
 
         return response()->json(['message' => 'Payment succeeded'], 200);

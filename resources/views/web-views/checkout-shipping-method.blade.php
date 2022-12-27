@@ -22,6 +22,9 @@
         .btn-outline:focus {
             /* border-color: {{$web_config['primary_color']}}   !important; */
         }
+        .disabled-link{
+            pointer-events: none;
+        }
     </style>
 @endpush
 
@@ -180,7 +183,7 @@
                             </a>
                         </div>
                         <div class="col-6">
-                            <a class="btn btn-primary btn-block" href="{{ route('checkout-complete') }}">
+                            <a class="btn btn-primary btn-block" id="buttonOrder" href="{{ route('checkout-complete') }}" onclick="process()">
                                 <span class="d-none d-sm-inline">{{ \App\CPU\translate('Proses_order')}}</span>
                                 <span class="d-inline d-sm-none">{{ \App\CPU\translate('Proses')}}</span>
                                 <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} mt-sm-0 mx-1"></i>
@@ -198,6 +201,10 @@
 @push('script')
 <script>
     cartQuantityInitialize();
+    function process(){
+        $('#loading').show();
+        $('#buttonOrder').addClass('disabled-link');
+    }
 
 function set_shipping_id(id, cart_group_id) {
     $.get({
@@ -214,7 +221,6 @@ function set_shipping_id(id, cart_group_id) {
             location.reload();
         },
         complete: function () {
-            $('#loading').hide();
         },
     });
 }

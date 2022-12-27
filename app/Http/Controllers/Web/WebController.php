@@ -409,9 +409,11 @@ class WebController extends Controller
 
             return redirect()->route('home');
         }
+
+        $payment = Helpers::payment();
         session()->forget('customer_address');
 
-        return view('web-views.checkout-complete', compact('order_id'));
+        return view('web-views.checkout-complete', compact('order_id', 'payment'));
     }
 
     public function order_placed()
