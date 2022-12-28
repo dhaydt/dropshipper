@@ -153,7 +153,7 @@
                                         @else
                                             <span class="badge badge-info text-capitalize">
                                                 @if($order['order_status'] == 'pending')
-                                                    Menunggu
+                                                    Menunggu Pembayaran
                                                 @else
                                                     {{\App\CPU\translate($order['order_status'])}}
                                                 @endif
