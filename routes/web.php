@@ -12,6 +12,7 @@
  */
 
 use App\Http\Controllers\Web\GenerateController;
+use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::get('/storage-link', function () {
 Route::get('/passport', function () {
     Artisan::call('passport:install --force');
 });
+
+Route::get('reminder', [WebController::class, 'reminder_flash_deal']);
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], function () {
     Route::get('/', 'WebController@home')->name('home');

@@ -28,13 +28,55 @@ use App\Model\Seller;
 use App\Model\ShippingAddress;
 use App\Model\Shop;
 use App\Model\Wishlist;
+use App\User;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class WebController extends Controller
 {
+    public function reminder_flash_deal()
+    {
+        $date = Carbon::now()->addDay(3)->format('Y-m-d');
+        $check = FlashDeal::where('status', 1)->get();
+        if ($check) {
+            foreach ($check as $c) {
+                if ($c->end_date !== null) {
+                    if ($c->end_date->format('Y-m-d') == $date) {
+                        $users = User::where('is_phone_verified', 1)->get();
+                        $seller = Seller::where(['is_phone_verified' => 1, 'status' => 'approved'])->get();
+                        $data = [
+                            'title' => 'Flash deal '.$c->title.' akan berakhir!',
+                            'description' => $c->title.' akan berakhir besok!',
+                            'image' => 'def.png',
+                            'order_id' => 0,
+                        ];
+
+                        foreach ($users as $u) {
+                            $fcm = $u->cm_firebase_token;
+                            if ($fcm !== null) {
+                                Helpers::send_push_notif_to_device($fcm, $data);
+                            }
+                        }
+
+                        foreach ($seller as $s) {
+                            $fcms = $s->cm_firebase_token;
+                            if ($fcms !== null) {
+                                Helpers::send_push_notif_to_device($fcms, $data);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return 'work';
+        }
+
+        return 'no';
+    }
+
     public function request_product(Request $request)
     {
         $image = $request->file('image');
