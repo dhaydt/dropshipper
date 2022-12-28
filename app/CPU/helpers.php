@@ -895,7 +895,14 @@ class Helpers
 
                     $data['direct_wa'] = Helpers::directWa($direct);
                 } else {
-                    $data['direct_wa'] = '';
+                    $wa = BusinessSetting::where('type', 'company_phone')->first();
+                    $direct = [
+                        'phone' => '62'.(int) $wa->value,
+                        'product' => $data['name'],
+                        'price' => $data['unit_price'],
+                        'link' => URL::to('/product/'.$data['slug']),
+                    ];
+                    $data['direct_wa'] = Helpers::directWa($direct);
                 }
             }
         }
