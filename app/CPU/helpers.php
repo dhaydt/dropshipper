@@ -878,33 +878,14 @@ class Helpers
                 ]);
             }
             $data['variation'] = $variation;
-            if ($check !== null) {
-                if ($check['success'] == 1) {
-                    $dropship = Seller::with('shop')->find($check['data']['id']);
-                    $desc = urlencode(strip_tags($data['details']));
-                    $str = substr($desc, 0, 100);
-                    $url = env('ETOKO_URL').'/'.'generated'.'/'.$dropship['id'].'/'.urlencode($dropship->shop->name).'_'.$dropship->l_name.'/'.$data['slug'];
-                    $data['share_url'] = $url;
-
-                    $direct = [
-                        'phone' => '62'.(int) $dropship->phone,
-                        'product' => $data['name'],
-                        'price' => $data['unit_price'],
-                        'link' => URL::to('/product/'.$data['slug']),
-                    ];
-
-                    $data['direct_wa'] = Helpers::directWa($direct);
-                } else {
-                    $wa = BusinessSetting::where('type', 'company_phone')->first();
-                    $direct = [
+            $wa = BusinessSetting::where('type', 'company_phone')->first();
+            $direct = [
                         'phone' => '62'.(int) $wa->value,
                         'product' => $data['name'],
                         'price' => $data['unit_price'],
                         'link' => URL::to('/product/'.$data['slug']),
                     ];
-                    $data['direct_wa'] = Helpers::directWa($direct);
-                }
-            }
+            $data['direct_wa'] = Helpers::directWa($direct);
         }
 
         return $data;
