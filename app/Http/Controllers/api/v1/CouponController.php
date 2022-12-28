@@ -26,6 +26,10 @@ class CouponController extends Controller
             return response()->json(['errors' => $e], 403);
         }
 
+        if ($coupon == null) {
+            return response()->json(['status' => 'fail', 'message' => 'coupon not found']);
+        }
+
         return response()->json($coupon, 200);
     }
 }
