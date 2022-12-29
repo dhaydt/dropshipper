@@ -50,7 +50,7 @@ class WebController extends Controller
                         $data = [
                             'title' => 'Flash deal '.$c->title.' akan berakhir!',
                             'description' => $c->title.' akan berakhir besok!',
-                            'image' => 'def.png',
+                            'image' => 'assets/front-end/img/ezren_logo.png',
                             'order_id' => 0,
                         ];
 
