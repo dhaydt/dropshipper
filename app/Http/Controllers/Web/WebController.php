@@ -452,6 +452,23 @@ class WebController extends Controller
             return redirect()->route('home');
         }
 
+        $check = auth('seller')->check();
+
+        $data = [
+            'title' => 'Order kamu berhasil!',
+            'description' => 'Silahkan lakukan pembayaran agar order dapat diproses',
+            'order_id' => $order_id,
+            'image' => 'def.png',
+        ];
+        $user_is = session()->get('user_is');
+
+        if ($user_is == 'customer') {
+            $fcm_token = auth('customer')->user()->cm_firebase_token;
+        } else {
+            $fcm_token = auth('seller')->user()->cm_firebase_token;
+        }
+        Helpers::send_push_notif_to_device($fcm_token, $data);
+
         $payment = Helpers::payment();
         session()->forget('customer_address');
 
