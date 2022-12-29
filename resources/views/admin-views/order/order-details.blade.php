@@ -48,7 +48,7 @@
 
                         @if($order['order_status']=='pending')
                             <span class="badge badge-soft-info ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-info text"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-info text"></span>Menunggu Pembayaran
                             </span>
                         @elseif($order['order_status']=='failed')
                             <span class="badge badge-danger ml-2 ml-sm-3 text-capitalize">
@@ -56,15 +56,15 @@
                             </span>
                         @elseif($order['order_status']=='processing' || $order['order_status']=='out_for_delivery')
                             <span class="badge badge-soft-warning ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-warning"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-warning"></span>Diproses
                             </span>
                         @elseif($order['order_status']=='delivered' || $order['order_status']=='confirmed')
                             <span class="badge badge-soft-success ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-success"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-success"></span>Dikirim
                             </span>
                         @else
                             <span class="badge badge-soft-danger ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-danger"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-danger"></span>Dibatalkan
                             </span>
                         @endif
                         <span class="ml-2 ml-sm-3">
@@ -104,21 +104,21 @@
                                             data-id="{{$order['id']}}">
 
                                         <option
-                                            value="pending" {{$order->order_status == 'pending'?'selected':''}} > {{\App\CPU\translate('Pending')}}</option>
+                                            value="pending" {{$order->order_status == 'pending'?'selected':''}} > {{\App\CPU\translate('Menunggu_Pembayaran')}}</option>
+                                        {{-- <option
+                                            value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{\App\CPU\translate('Confirmed')}}</option> --}}
                                         <option
-                                            value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{\App\CPU\translate('Confirmed')}}</option>
+                                            value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{\App\CPU\translate('Diproses')}} </option>
+                                        {{-- <option class="text-capitalize"
+                                                value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{\App\CPU\translate('out_for_delivery')}} </option> --}}
                                         <option
-                                            value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{\App\CPU\translate('Processing')}} </option>
-                                        <option class="text-capitalize"
-                                                value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{\App\CPU\translate('out_for_delivery')}} </option>
+                                            value="delivered" {{$order->order_status == 'delivered'?'selected':''}} >{{\App\CPU\translate('Dikirim')}} </option>
+                                        {{-- <option
+                                            value="returned" {{$order->order_status == 'returned'?'selected':''}} > {{\App\CPU\translate('Returned')}}</option> --}}
+                                        {{-- <option
+                                            value="failed" {{$order->order_status == 'failed'?'selected':''}} >{{\App\CPU\translate('Failed')}} </option> --}}
                                         <option
-                                            value="delivered" {{$order->order_status == 'delivered'?'selected':''}} >{{\App\CPU\translate('Delivered')}} </option>
-                                        <option
-                                            value="returned" {{$order->order_status == 'returned'?'selected':''}} > {{\App\CPU\translate('Returned')}}</option>
-                                        <option
-                                            value="failed" {{$order->order_status == 'failed'?'selected':''}} >{{\App\CPU\translate('Failed')}} </option>
-                                        <option
-                                            value="canceled" {{$order->order_status == 'canceled'?'selected':''}} >{{\App\CPU\translate('Canceled')}} </option>
+                                            value="canceled" {{$order->order_status == 'canceled'?'selected':''}} >{{\App\CPU\translate('Dibatalkan')}} </option>
                                     </select>
                                 </div>
                             </div>

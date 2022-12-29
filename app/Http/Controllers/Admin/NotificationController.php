@@ -6,11 +6,10 @@ use App\CPU\Helpers;
 use App\CPU\ImageManager;
 use App\Http\Controllers\Controller;
 use App\Model\Notification;
+use App\Model\Seller;
+use App\User;
 use Brian2694\Toastr\Facades\Toastr;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
 class NotificationController extends Controller
 {
@@ -18,8 +17,7 @@ class NotificationController extends Controller
     {
         $query_param = [];
         $search = $request['search'];
-        if ($request->has('search'))
-        {
+        if ($request->has('search')) {
             $key = explode(' ', $request['search']);
             $notifications = Notification::where(function ($q) use ($key) {
                 foreach ($key as $value) {
@@ -27,23 +25,24 @@ class NotificationController extends Controller
                 }
             });
             $query_param = ['search' => $request['search']];
-        }else{
+        } else {
             $notifications = new Notification();
         }
         $notifications = $notifications->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
-        return view('admin-views.notification.index', compact('notifications','search'));
+
+        return view('admin-views.notification.index', compact('notifications', 'search'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
         ], [
             'title.required' => 'title is required!',
         ]);
 
-        $notification = new Notification;
+        $notification = new Notification();
         $notification->title = $request->title;
         $notification->description = $request->description;
 
@@ -56,19 +55,40 @@ class NotificationController extends Controller
         $notification->status = 1;
         $notification->save();
 
+        $users = User::where('is_phone_verified', 1)->get();
+        $sellers = Seller::where(['is_phone_verified' => 1, 'status' => 'approved'])->get();
+
+        $tokens = [];
+        foreach ($users as $u) {
+            $fcm = $u->cm_firebase_token;
+            if ($fcm !== null && $fcm !== '') {
+                array_push($tokens, $fcm);
+            }
+        }
+        foreach ($sellers as $s) {
+            $fcms = $s->cm_firebase_token;
+            if ($fcms !== null && $fcms !== '') {
+                array_push($tokens, $fcms);
+            }
+        }
+
         try {
-            Helpers::send_push_notif_to_topic($notification);
+            foreach ($tokens as $token) {
+                Helpers::send_push_notif_to_topic($token, $notification);
+            }
         } catch (\Exception $e) {
             Toastr::warning('Push notification failed!');
         }
 
         Toastr::success('Notification sent successfully!');
+
         return back();
     }
 
     public function edit($id)
     {
         $notification = Notification::find($id);
+
         return view('admin-views.notification.edit', compact('notification'));
     }
 
@@ -88,6 +108,7 @@ class NotificationController extends Controller
         $notification->save();
 
         Toastr::success('Notification updated successfully!');
+
         return back();
     }
 
@@ -98,6 +119,7 @@ class NotificationController extends Controller
             $notification->status = $request->status;
             $notification->save();
             $data = $request->status;
+
             return response()->json($data);
         }
     }
@@ -105,8 +127,9 @@ class NotificationController extends Controller
     public function delete(Request $request)
     {
         $notification = Notification::find($request->id);
-        ImageManager::delete('/notification/' . $notification['image']);
+        ImageManager::delete('/notification/'.$notification['image']);
         $notification->delete();
+
         return response()->json();
     }
 }

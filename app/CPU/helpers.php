@@ -1149,7 +1149,7 @@ class Helpers
         return $result;
     }
 
-    public static function send_push_notif_to_topic($data)
+    public static function send_push_notif_to_topic($token, $data)
     {
         $key = BusinessSetting::where(['type' => 'push_notification_key'])->first()->value;
 
@@ -1158,24 +1158,34 @@ class Helpers
             'content-type: application/json',
         ];
 
+        if (isset($data['order_id']) == false) {
+            $data['order_id'] = null;
+        }
+
         $image = asset('storage/app/public/notification').'/'.$data['image'];
+        $img = $image ? $image : asset('assets/front-end/img/ezren_logo.png');
+
+        $notif = [
+            'title' => $data['title'],
+            'body' => $data['description'],
+            'image' => $img,
+            'order_id' => $data['order_id'],
+            'title_loc_key' => $data['order_id'],
+            'is_read' => 0,
+            'icon' => $img,
+            'sound' => 'default',
+        ];
+
         $postdata = '{
-            "to" : "/topics/sixvalley",
+            "to" : "'.$token.'",
             "data" : {
-                "title":"'.$data->title.'",
-                "body" : "'.$data->description.'",
-                "image" : "'.$image.'",
+                "title" :"'.$data['title'].'",
+                "body" : "'.$data['description'].'",
+                "image" : "'.$img.'",
+                "order_id":"'.$data['order_id'].'",
                 "is_read": 0
-              },
-              "notification" : {
-                "title":"'.$data->title.'",
-                "body" : "'.$data->description.'",
-                "image" : "'.$image.'",
-                "title_loc_key":"'.$data['order_id'].'",
-                "is_read": 0,
-                "icon" : "new",
-                "sound" : "default"
-              }
+                },
+            "notification" : '.json_encode($notif).'
         }';
 
         $ch = curl_init();
