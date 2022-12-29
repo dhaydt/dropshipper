@@ -259,7 +259,7 @@ class XenditPaymentController extends Controller
 
                 $data = [
                     'title' => 'Pembayaran berhasil!',
-                    'description' => 'Order anda sedang diproses!',
+                    'description' => 'Pembayaran telah diterima pesanan segera diproses!',
                     'order_id' => $order_id,
                     'image' => 'def.png',
                 ];
