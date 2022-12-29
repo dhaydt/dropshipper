@@ -133,7 +133,11 @@ class OrderController extends Controller
     public function status(Request $request)
     {
         $order = Order::find($request->id);
-        $fcm_token = $order->customer->cm_firebase_token;
+        if ($order->user_is == 'customer') {
+            $fcm_token = $order->customer->cm_firebase_token;
+        } else {
+            $fcm_token = $order->seller->cm_firebase_token;
+        }
         $value = Helpers::order_status_update_message($request->order_status);
         try {
             if ($value) {

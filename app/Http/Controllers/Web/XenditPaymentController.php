@@ -67,9 +67,21 @@ class XenditPaymentController extends Controller
     public function invoice(Request $request)
     {
         // dd($request);
+        $order = Order::find($request->order_id);
+        if ($order['order_status'] == 'processing') {
+            Toastr::success('Order ini sudah dibayar!');
+
+            return redirect()->back();
+        }
+
+        if ($order['order_status'] !== 'pending') {
+            Toastr::warning('Status order ini sudah berubah, tidak dapat melakukan pembayaran!');
+
+            return redirect()->back();
+        }
         $customer = auth('customer')->user();
         $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
-        $value = Order::find($request->order_id)['order_amount'];
+        $value = $order['order_amount'];
         $tran = OrderManager::gen_unique_id();
         $order = Order::find($request->order_id);
         $order_address = json_decode($order->shipping_address_data);
@@ -146,33 +158,6 @@ class XenditPaymentController extends Controller
 
     public function success($type, $group)
     {
-        // dd($type);
-        // $order = Order::find($request->id);
-
-        // $unique_id = OrderManager::gen_unique_id();
-        // $order_ids = [];
-        // foreach (CartManager::get_cart_group_ids() as $group_id) {
-        //     $data = [
-        //         'payment_method' => 'Virtual Account'.$type,
-        //         'order_status' => 'processing',
-        //         'payment_status' => 'paid',
-        //         'transaction_ref' => session('transaction_ref'),
-        //         'order_group_id' => $unique_id,
-        //         'cart_group_id' => $group_id,
-        //     ];
-        //     $order_id = OrderManager::generate_order($data);
-        //     array_push($order_ids, $order_id);
-        // }
-        // CartManager::cart_clean();
-        // session()->forget('customer_address');
-        // if (auth('customer')->check() || session()->get('user_is') == 'dropship') {
-        //     Toastr::success('Payment success.');
-
-        //     return view('web-views.checkout-complete');
-        // }
-
-        // return response()->json(['message' => 'Payment succeeded'], 200);
-
         $order = Order::find($group);
 
         $order->order_status = 'processing';
@@ -190,15 +175,15 @@ class XenditPaymentController extends Controller
         } else {
             $user = User::where('id', $order->customer_id)->first();
         }
-        if (!$user) {
+        if ($user) {
             if ($user->cm_firebase_token !== null) {
                 $fcm_token = $user->cm_firebase_token;
 
                 $data = [
-                    'title' => 'Payment Successfully',
-                    'description' => 'Your payment Success',
-                    'order_id' => $order->id,
-                    'image' => '',
+                    'title' => 'Pembayaran berhasil!',
+                    'description' => 'Order anda sedang diproses!',
+                    'order_id' => $order_id,
+                    'image' => 'def.png',
                 ];
                 Helpers::send_push_notif_to_device($fcm_token, $data);
             }
@@ -268,15 +253,15 @@ class XenditPaymentController extends Controller
         } else {
             $user = User::where('id', $order->customer_id)->first();
         }
-        if (!$user) {
+        if ($user) {
             if ($user->cm_firebase_token !== null) {
                 $fcm_token = $user->cm_firebase_token;
 
                 $data = [
-                    'title' => 'Payment Successfully',
-                    'description' => 'Your payment Success',
-                    'order_id' => $order->id,
-                    'image' => '',
+                    'title' => 'Pembayaran berhasil!',
+                    'description' => 'Order anda sedang diproses!',
+                    'order_id' => $order_id,
+                    'image' => 'def.png',
                 ];
                 Helpers::send_push_notif_to_device($fcm_token, $data);
             }

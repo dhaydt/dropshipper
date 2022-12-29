@@ -1640,4 +1640,5 @@
   'Sekarang' => 'Sekarang',
   'Order_kamu_dengan_nomor_100084_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100084 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
   'Order_kamu_dengan_nomor_100085_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100085 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100086_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100086 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
 );
