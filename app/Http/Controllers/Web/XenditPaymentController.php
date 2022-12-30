@@ -103,7 +103,7 @@ class XenditPaymentController extends Controller
             $phone = $customer->phone;
             $address = $order_address->district.', '.$order_address->city.', '.$order_address->province;
             $id = $customer->id;
-            $email = $customer->email;
+            $email = $customer->email ? $customer->email : 'invalid@customer.email';
         }
         if (session()->get('user_is') == 'dropship') {
             $customer = auth('seller')->user();
@@ -116,10 +116,10 @@ class XenditPaymentController extends Controller
         }
 
         $user = [
-            'given_names' => $name,
+            'given_names' => $name ? $name : 'invalid name',
             'email' => $email,
-            'mobile_number' => $phone,
-            'address' => $address,
+            'mobile_number' => $phone ? $phone : '0000',
+            'address' => $address ? $address : 'Invalid address data',
         ];
 
         // dd($user);
