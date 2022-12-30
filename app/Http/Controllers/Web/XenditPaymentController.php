@@ -106,12 +106,13 @@ class XenditPaymentController extends Controller
             $email = $customer->email;
         }
         if (session()->get('user_is') == 'dropship') {
+            $customer = auth('seller')->user();
             $custom = ShippingAddress::where('slug', session()->get('customer_address'))->first();
             $name = $custom->contact_person_name;
             $phone = $custom->phone;
             $address = $order_address->district.', '.$order_address->city.', '.$order_address->province;
             $id = $custom->customer_id;
-            $email = 'dropshipper@ezren.id';
+            $email = $customer->email ? $customer->email : 'invalid@dropship.email';
         }
 
         $user = [
