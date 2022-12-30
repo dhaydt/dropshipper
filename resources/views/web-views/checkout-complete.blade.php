@@ -146,20 +146,21 @@
                         <span class="font-weight-bold d-block mt-4" style="font-size: 17px;">{{\App\CPU\translate('Hello')}}, {{auth('seller')->user()->f_name}}</span>
                         <span>{{\App\CPU\translate('You order has been confirmed and will be shipped according to the method you selected!')}}</span>
 
-                        <div class="row mt-4">
+                        <div class="row mt-4 justify-content-between">
                             <div class="col-4">
                                 <a href="{{route('home')}}" class="btn btn-primary">
                                     {{\App\CPU\translate('go_to_shopping')}}
                                 </a>
                             </div>
-
+                            @if (isset($order_id))
                             <div class="col-4">
                                 <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#pay{{ $order_id }}">
                                 Bayar Sekarang
                                 </button>
                             </div>
+                            @endif
 
-                            <div class="col-4">
+                            <div class="col-4 d-flex justify-content-end">
                                 <a href="{{route('seller.orders.list', ['all'])}}"
                                    class="btn btn-secondary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
                                     {{\App\CPU\translate('Check_Order')}}
@@ -168,6 +169,7 @@
                         </div>
                     </div>
                     @endif
+                    @if (isset($order_id))
                     <div class="modal fade" id="pay{{ $order_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
@@ -208,6 +210,7 @@
                         </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

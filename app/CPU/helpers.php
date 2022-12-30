@@ -158,7 +158,6 @@ class Helpers
                 'name' => $detail->product['name'],
             ]);
         }
-        // dd($products);
         if ($request->user_is == 'customer') {
             $name = $customer->name ? $customer->name : $customer->f_name;
             $phone = $customer->phone;
@@ -172,7 +171,7 @@ class Helpers
             $phone = $customer->phone;
             $address = 'no_data';
             $id = $customer->id;
-            $email = $customer->email;
+            $email = $customer->email ? $customer->email : 'invalid@customer.email';
         }
 
         $user = [
