@@ -1107,7 +1107,7 @@ class Helpers
         }
 
         // $img = asset('assets/front-end/img/notif.png');
-        $img = 'https://ezren.id/assets/front-end/img/notif.png';
+        $img = 'https://ezren.id/assets/front-end/img/in.png';
 
         $notif = [
             'title' => $data['title'],
@@ -1125,6 +1125,7 @@ class Helpers
             "data" : {
                 "title" :"'.$data['title'].'",
                 "body" : "'.$data['description'].'",
+                "image" : "'.$img.'",
                 "icon" : "'.$img.'",
                 "order_id":"'.$data['order_id'].'",
                 "is_read": 0
