@@ -1106,12 +1106,13 @@ class Helpers
             $data['order_id'] = null;
         }
 
-        $img = asset('assets/front-end/img/notif.png');
+        // $img = asset('assets/front-end/img/notif.png');
+        $img = 'https://ezren.id/assets/front-end/img/notif.png';
 
         $notif = [
             'title' => $data['title'],
             'body' => $data['description'],
-            'image' => $img,
+            // 'image' => $img,
             'order_id' => $data['order_id'],
             'title_loc_key' => $data['order_id'],
             'is_read' => 0,
@@ -1124,7 +1125,6 @@ class Helpers
             "data" : {
                 "title" :"'.$data['title'].'",
                 "body" : "'.$data['description'].'",
-                "image" : "'.$img.'",
                 "icon" : "'.$img.'",
                 "order_id":"'.$data['order_id'].'",
                 "is_read": 0
