@@ -1161,8 +1161,7 @@ class Helpers
             $data['order_id'] = null;
         }
 
-        $image = asset('storage/notification').'/'.$data['image'];
-        $img = $image ? $image : asset('assets/front-end/img/ezren_logo.png');
+        $img = asset('assets/front-end/img/ezren_logo.png');
         $images = asset('storage/notification').'/'.$data['image'];
 
         $notif = [
