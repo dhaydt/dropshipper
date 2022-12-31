@@ -1107,6 +1107,7 @@ class Helpers
         }
 
         // $img = asset('assets/front-end/img/notif.png');
+        $img = 'https://ezren.id/assets/front-end/img/e.ico';
         $img = 'https://ezren.id/assets/front-end/img/ejren.jpg';
 
         $notif = [
@@ -1163,7 +1164,7 @@ class Helpers
             $data['order_id'] = null;
         }
 
-        $img = 'https://ezren.id/assets/front-end/img/ejren.jpg';
+        $img = 'https://ezren.id/assets/front-end/img/e.ico';
         $images = asset('storage/notification').'/'.$data['image'];
 
         $notif = [
