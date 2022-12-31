@@ -1115,7 +1115,7 @@ class Helpers
             'order_id' => $data['order_id'],
             'title_loc_key' => $data['order_id'],
             'is_read' => 0,
-            'icon' => 'new',
+            'icon' => $img,
             'sound' => 'default',
         ];
 
@@ -1125,6 +1125,7 @@ class Helpers
                 "title" :"'.$data['title'].'",
                 "body" : "'.$data['description'].'",
                 "image" : "'.$img.'",
+                "icon" : "'.$img.'",
                 "order_id":"'.$data['order_id'].'",
                 "is_read": 0
                 },
