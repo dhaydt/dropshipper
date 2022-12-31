@@ -1107,11 +1107,12 @@ class Helpers
         }
 
         $img = asset('assets/front-end/img/ezren_logo.png');
+        $image = 'def.png';
 
         $notif = [
             'title' => $data['title'],
             'body' => $data['description'],
-            'image' => $img,
+            'image' => $image,
             'order_id' => $data['order_id'],
             'title_loc_key' => $data['order_id'],
             'is_read' => 0,
@@ -1124,7 +1125,7 @@ class Helpers
             "data" : {
                 "title" :"'.$data['title'].'",
                 "body" : "'.$data['description'].'",
-                "image" : "'.$img.'",
+                "image" : "'.$image.'",
                 "order_id":"'.$data['order_id'].'",
                 "is_read": 0
                 },
