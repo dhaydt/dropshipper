@@ -1163,7 +1163,7 @@ class Helpers
             $data['order_id'] = null;
         }
 
-        $img = asset('assets/front-end/img/ezren_logo.png');
+        $img = 'https://ezren.id/assets/front-end/img/ejren.jpg';
         $images = asset('storage/notification').'/'.$data['image'];
 
         $notif = [
