@@ -1106,7 +1106,7 @@ class Helpers
             $data['order_id'] = null;
         }
 
-        $img = asset('assets/front-end/img/ezren_logo.png');
+        $img = asset('assets/front-end/img/notif.png');
 
         $notif = [
             'title' => $data['title'],
