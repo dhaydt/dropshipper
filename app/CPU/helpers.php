@@ -1181,6 +1181,7 @@ class Helpers
                 "title" :"'.$data['title'].'",
                 "body" : "'.$data['description'].'",
                 "image" : "'.$images.'",
+                "icon" : "'.$img.'",
                 "order_id":"'.$data['order_id'].'",
                 "is_read": 0
                 },
