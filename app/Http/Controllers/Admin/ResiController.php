@@ -42,9 +42,25 @@ class ResiController extends Controller
         if (!$order) {
             return response()->json(['success' => 0, 'message' => 'Order tidak ditemukan']);
         } else {
+            if ($order->user_is == 'customer') {
+                $fcm_token = $order->customer->cm_firebase_token;
+            } else {
+                $fcm_token = $order->seller->cm_firebase_token;
+            }
+
+            $value = Helpers::order_status_update_message('delivered');
+
             $order->no_resi = $request['no_resi'];
             $order->order_status = 'delivered';
             $order->save();
+
+            $data = [
+                'title' => 'Pesanan anda dalam perjalanan',
+                'description' => $value,
+                'order_id' => $order['id'],
+                'image' => '',
+            ];
+            Helpers::send_push_notif_to_device($fcm_token, $data);
 
             return response()->json(['success' => 1, 'message' => 'No Resi berhasil diPerbarui!']);
         }

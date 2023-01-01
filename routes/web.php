@@ -21,6 +21,10 @@ Route::get('maintenance-mode', 'Web\WebController@maintenance_mode')->name('main
 Route::get('/storage-link', function () {
     Artisan::call('storage:link');
 });
+Route::get('/migrate', function () {
+    Artisan::call('migrate');
+    dd('migrated!');
+});
 
 Route::get('/passport', function () {
     Artisan::call('passport:install --force');

@@ -24,6 +24,7 @@ return array(
     'Amirami\\Localizator\\Services\\Writers\\DefaultWriter' => $vendorDir . '/amirami/localizator/src/Services/Writers/DefaultWriter.php',
     'Amirami\\Localizator\\Services\\Writers\\JsonWriter' => $vendorDir . '/amirami/localizator/src/Services/Writers/JsonWriter.php',
     'App\\Console\\Commands\\DatabaseRefresh' => $baseDir . '/app/Console/Commands/DatabaseRefresh.php',
+    'App\\Console\\Commands\\DemoCron' => $baseDir . '/app/Console/Commands/DemoCron.php',
     'App\\Console\\Commands\\InstallablePackage' => $baseDir . '/app/Console/Commands/InstallablePackage.php',
     'App\\Console\\Commands\\UpdatePackage' => $baseDir . '/app/Console/Commands/UpdatePackage.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
