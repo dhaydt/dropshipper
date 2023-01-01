@@ -22,7 +22,9 @@ Route::get('/storage-link', function () {
     Artisan::call('storage:link');
 });
 Route::get('/migrate', function () {
-    Artisan::call('migrate');
+    Artisan::call('migrate', [
+        '--force' => true,
+     ]);
     dd('migrated!');
 });
 
