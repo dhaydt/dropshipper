@@ -235,6 +235,7 @@
             </a>
             @if (session()->get('user_is') == 'customer')
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="javascript:" data-toggle="modal" data-target="#login_shop"> {{ \App\CPU\translate('toko_saya')}} </a>
               <a class="dropdown-item" href="{{route('account-oder')}}"> {{ \App\CPU\translate('order_saya')}} </a>
               <a class="dropdown-item" href="{{route('account-address')}}"> {{ \App\CPU\translate('alamat_saya')}} </a>
               {{-- <a class="dropdown-item" href="{{route('account-tickets')}}"> {{ \App\CPU\translate('tiket_saya')}} </a> --}}
@@ -242,6 +243,116 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('keluar')}}</a>
             </div>
+            <!-- Modal -->
+                <div class="modal fade" id="login_shop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        @php($shop = \App\Model\Seller::where('phone', auth('customer')->user()->phone)->first())
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            @if (isset($shop))
+                                Masuk ke toko
+                            @else
+                                Daftarkan Toko
+                            @endif
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        @if (isset($shop))
+                            <form action="{{ route('seller.auth.login') }}" method="POST">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="js-form-message form-group">
+                                        <label class="input-label" for="signinSrEmail">Nomor Handphone</label>
+                                        <input type="text" class="form-control form-control-lg" value="{{ auth('customer')->user()['phone'] }}"  name="user_id" id="signinSrEmail"
+                                            style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
+                                            tabindex="1" placeholder="" aria-label=""
+                                            readonly data-msg="">
+                                    </div>
+                                    <div class="js-form-message form-group">
+                                        <label class="input-label" for="signupSrPassword" tabindex="0">
+                                            <span class="d-flex justify-content-between align-items-center" style="direction: {{Session::get('direction')}}">
+                                            {{\App\CPU\translate('password')}}
+                                            </span>
+                                        </label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="password" class="js-toggle-password form-control form-control-lg"
+                                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
+                                                name="password" id="signupSrPassword" placeholder="8+ characters required"
+                                                aria-label="8+ characters required" required
+                                                data-msg="Your password is invalid. Please try again."
+                                                data-hs-toggle-password-options='{
+                                                            "target": "#changePassTarget",
+                                                    "defaultClass": "tio-hidden-outlined",
+                                                    "showClass": "tio-visible-outlined",
+                                                    "classChangeTarget": "#changePassIcon"
+                                                    }'>
+                                            <div id="changePassTarget" class="input-group-append">
+                                                <a class="input-group-text" href="javascript:">
+                                                    <i id="changePassIcon" class="tio-visible-outlined"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Masuk toko</button>
+                                </div>
+                            </form>
+                        @else
+                        @php($user = auth('customer')->user())
+                        <form class="user" action="{{route('shop.apply')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 ">
+                                        <label class="input-label" for="signinSrEmail">Nama Toko</label>
+                                        <input type="text" class="form-control form-control-user" id="shop_name" name="shop_name" placeholder="{{\App\CPU\translate('nama_toko')}}" value="{{old('shop_name')}}"required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="input-label" for="signinSrEmail">Nama pengguna</label>
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" name="f_name" value="{{$user['name']}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label class="input-label" for="signinSrEmail">Email</label>
+                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" value="{{$user['email']}}" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="input-label" for="signinSrEmail">Nomor Handphone</label>
+                                        <input type="number" class="form-control form-control-user" id="exampleInputPhone" name="phone" value="{{$user['phone']}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label class="input-label" for="signinSrEmail">Password</label>
+                                        <input type="password" class="form-control form-control-user" minlength="6" id="exampleInputPassword" name="password" placeholder="{{\App\CPU\translate('password')}}" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="input-label" for="signinSrEmail">Konfimasi password</label>
+                                        <input type="password" class="form-control form-control-user" minlength="6" id="exampleRepeatPassword" placeholder="{{\App\CPU\translate('ulangi_password')}}" required>
+                                        <div class="pass invalid-feedback">{{\App\CPU\translate('Ulangi')}},  {{\App\CPU\translate('password')}} {{\App\CPU\translate('tidak_sama')}} .</div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="country" value="ID">
+                                <input type="hidden" name="image">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary btn-user btn-block" id="apply">{{\App\CPU\translate('Daftar')}} {{\App\CPU\translate('Toko')}} </button>
+                            </div>
+                        </form>
+                        @endif
+
+
+                    </div>
+                    </div>
+                </div>
             @else
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="{{route('seller.dashboard.index')}}"> {{ \App\CPU\translate('Dropship_Dashboard')}} </a>
@@ -642,6 +753,18 @@
             $('#cartNumber').text($('#cartCount').val())
         }
         setInterval(function() { ObserveInputValue() }, 2000);
+
+        // INITIALIZATION OF SHOW PASSWORD
+        // =======================================================
+        $('.js-toggle-password').each(function () {
+            new HSTogglePassword(this).init()
+        });
+
+        // INITIALIZATION OF FORM VALIDATION
+        // =======================================================
+        $('.js-validate').each(function () {
+            $.HSCore.components.HSValidation.init($(this));
+        });
     });
 </script>
 @endpush

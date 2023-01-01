@@ -69,7 +69,10 @@ class LoginController extends Controller
                     'updated_at' => now(),
                 ]);
             }
-
+            auth()->guard('customer')->logout();
+            session()->forget('wish_list');
+            session()->forget('user_is');
+            session()->put('user_is', 'dropship');
             $request->session()->put('user_is', 'dropship');
             // return redirect()->route('seller.dashboard.index');
             return redirect()->route('home');
@@ -82,7 +85,7 @@ class LoginController extends Controller
         }
 
         return redirect()->back()->withInput($request->only('email', 'remember'))
-            ->withErrors(['Credentials does not match.']);
+            ->withErrors(['No Handphone atau password salah.']);
     }
 
     public function logout(Request $request)
@@ -91,6 +94,6 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect()->route('seller.auth.login');
+        return redirect()->route('home');
     }
 }

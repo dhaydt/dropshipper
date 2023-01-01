@@ -1643,4 +1643,5 @@
   'Order_kamu_dengan_nomor_100086_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100086 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
   'Menunggu_Pembayaran' => 'Menunggu Pembayaran',
   'Order_kamu_dengan_nomor_100089_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100089 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'toko_saya' => 'Toko saya',
 );

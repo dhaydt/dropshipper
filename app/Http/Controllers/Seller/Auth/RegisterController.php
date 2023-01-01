@@ -32,6 +32,9 @@ class RegisterController extends Controller
             'email' => 'required|unique:sellers',
             'phone' => 'required|unique:sellers',
             'password' => 'required|min:8',
+        ], [
+            'email.unique' => 'email sudah digunakan toko lain!',
+            'phone.unique' => 'Nomor handphone sudah digunakan toko lain!',
         ]);
 
         $seller = new Seller();
@@ -74,7 +77,7 @@ class RegisterController extends Controller
             return redirect()->route('seller.auth.check', [$seller->id]);
         }
 
-        Toastr::success('Dropshipper apply successfully!');
+        Toastr::success('Toko berhasil didaftarkan!');
         // Toastr::success('Please wait for admin to review!');
 
         return redirect()->route('seller.auth.login');
