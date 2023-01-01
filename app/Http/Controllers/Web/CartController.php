@@ -4,14 +4,45 @@ namespace App\Http\Controllers\Web;
 
 use App\CPU\CartManager;
 use App\CPU\Helpers;
+use App\CPU\ImageManager;
 use App\Http\Controllers\Controller;
 use App\Model\Cart;
+use App\Model\CartShipping;
 use App\Model\Color;
 use App\Model\Product;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    public function delete_resi($group_id)
+    {
+        $cart = CartShipping::where('cart_group_id', $group_id)->first();
+        ImageManager::delete('/resi/'.$cart['resi_kurir']);
+        $cart->resi_kurir = null;
+        $cart->invoice_kurir = null;
+        $cart->save();
+
+        Toastr::success('Resi berhasil dihapus!');
+
+        return redirect()->back();
+    }
+
+    public function upload_resi(Request $request)
+    {
+        $cart = CartShipping::where('cart_group_id', $request['cart_group_id'])->get();
+        foreach ($cart as $c) {
+            $c->resi_kurir = ImageManager::update('resi/', $c->resi_kurir, 'png', $request->file('resi_kurir'));
+            $c->invoice_kurir = $request->invoice_kurir;
+            $c->shipping_cost = 0;
+            $c->shipping_service = null;
+            $c->save();
+        }
+        Toastr::success('Resi Kurir berhasil ditambahkan!');
+
+        return redirect()->back();
+    }
+
     public function variant_price(Request $request)
     {
         $type = session()->get('user_is');
@@ -116,6 +147,8 @@ class CartController extends Controller
     public function updateQuantity(Request $request)
     {
         $response = CartManager::update_cart_qty($request);
+
+        // return response()->json($response);
 
         session()->forget('coupon_code');
         session()->forget('coupon_discount');

@@ -56,6 +56,44 @@
                     @php($shipping_addresses=\App\Model\ShippingAddress::where('customer_id',auth('customer')->id())->get())
                     @endif
                     {{-- <section class="col-lg-8"> --}}
+                        @if(auth('seller')->check())
+                        <div class="card mb-4">
+                            @foreach($cart as $group_key=>$group)
+                            <form action="{{ route('cart.upload_resi') }}" method="POST" enctype="multipart/form-data">
+                            <div class="card-body">
+                                    @csrf
+                                    <input type="hidden" name="cart_group_id" value="{{ $group_key }}">
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label for="" class="d-block w-100">Upload kode booking kurir untuk bebas ongkir</label>
+                                            @php($shipping = \App\Model\CartShipping::where('cart_group_id', $group_key)->first())
+                                            @if($shipping['resi_kurir'] !== null)
+                                            <img src="{{ asset('storage/resi'.'/'.$shipping['resi_kurir']) }}" alt="" id="preview" class="" style="height: 200px; width: 150px;">
+                                            @else
+                                            <img src="" alt="" id="preview" class="d-none" style="height: 200px; width: 150px;">
+                                            @endif
+                                            <input type="file" class="form-control" name="resi_kurir" id="resi_kurir"/>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="">Kode invoice pesanan di Marketplace</label>
+                                            @if ($shipping['resi_kurir'] !== null)
+                                            <input type="text" class="form-control" name="invoice_kurir" id="invoice_kurir" value="{{ $shipping['invoice_kurir'] }}"/>
+                                            @else
+                                            <input type="text" class="form-control" name="invoice_kurir" id="invoice_kurir" disabled/>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-end">
+                                    @if($shipping['resi_kurir'] !== null)
+                                    <a href="{{ route('cart.delete_resi', [$group_key]) }}" onclick="loading()" class="btn btn-danger mr-2 btn-sm" type="submit">Hapus resi</a>
+                                    @endif
+                                    <button class="btn btn-primary btn-sm" type="submit">Simpan resi</button>
+                                </div>
+                            </form>
+                            @endforeach
+                        </div>
+                        @endif
                         <div class="cart_information">
                             @foreach($cart as $group_key=>$group)
                             <div class="card">
@@ -94,6 +132,8 @@
                             @endif
 
                             @if($shippingMethod=='sellerwise_shipping')
+                            @php($shipping = \App\Model\CartShipping::where('cart_group_id', $group_key)->first())
+                            @if ($shipping['resi_kurir'] == null)
                             @php($shippings=\App\CPU\Helpers::get_shipping_methods($group_key))
                             <div class="row">
                                 @php($chosen = $choosen_shipping['shipping_service'])
@@ -145,6 +185,7 @@
                                     </select>
                                 </div>
                             </div>
+                            @endif
                             @endif
                             @endif
                             @endforeach
@@ -201,10 +242,24 @@
 
 @push('script')
 <script>
+    $(document).ready(function (e) {
+        $('#resi_kurir').change(function(){
+            $('#preview').removeClass('d-none');
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                $('#preview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+            $('#invoice_kurir').removeAttr('disabled');
+        });
+    });
     cartQuantityInitialize();
     function process(){
         $('#loading').show();
         $('#buttonOrder').addClass('disabled-link');
+    }
+    function loading(){
+        $('#loading').show();
     }
 
 function set_shipping_id(id, cart_group_id) {

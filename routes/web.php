@@ -177,6 +177,8 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Web'], functi
     Route::post('remove', 'CartController@removeFromCart')->name('remove');
     Route::post('nav-cart-items', 'CartController@updateNavCart')->name('nav-cart');
     Route::post('updateQuantity', 'CartController@updateQuantity')->name('updateQuantity');
+    Route::post('upload_resi', 'CartController@upload_resi')->name('upload_resi');
+    Route::get('delete_resi/{group_id}', 'CartController@delete_resi')->name('delete_resi');
 });
 
 //Seller shop apply

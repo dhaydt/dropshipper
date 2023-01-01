@@ -1127,7 +1127,7 @@
             quantity: quantity,
             type: `{{ session()->get('user_is') }}`,
         }, function (response) {
-            console.log('resp', response)
+            // console.log('resp', response)
             if (response.status == 0) {
                 toastr.error(response.message, {
                     CloseButton: true,

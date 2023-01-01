@@ -337,6 +337,8 @@ class CartManager
             $check = Helpers::get_seller_by_token($request);
             if ($check['success'] == 1) {
                 $user = $check['data'];
+            } elseif (auth('seller')->check()) {
+                $user = auth('seller')->user();
             } else {
                 return response()->json([
                     'auth-001' => translate('Your existing session token does not authorize you any more'),

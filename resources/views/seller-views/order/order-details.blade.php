@@ -227,7 +227,6 @@
                     @php($shipping=0)
                     @php($discount=0)
                     @php($tax=0)
-
                     @foreach($order->details as $detail)
                         @if($detail->product)
 

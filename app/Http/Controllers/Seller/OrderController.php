@@ -41,10 +41,7 @@ class OrderController extends Controller
     public function details($id)
     {
         $sellerId = auth('seller')->id();
-        $order = Order::with(['details' => function ($query) use ($sellerId) {
-            $query->where('seller_id', $sellerId);
-        }])->with('customer', 'shipping')
-            ->where('id', $id)->first();
+        $order = Order::with(['details', 'customer', 'shipping'])->where(['id' => $id, 'user_is' => 'dropship'])->first();
 
         return view('seller-views.order.order-details', compact('order'));
     }
