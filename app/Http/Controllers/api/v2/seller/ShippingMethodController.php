@@ -97,6 +97,9 @@ class ShippingMethodController extends Controller
         $ship = explode(',', $shipp);
         $service = $ship[0];
         $cost = $ship[1];
+        if ($shipping !== null) {
+            $cost = 0;
+        }
         $price = Convert::idrTousd($cost);
         $ship_method = 'NULL';
         // $customer =
