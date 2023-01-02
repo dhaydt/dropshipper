@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('maintenance-mode', 'Web\WebController@maintenance_mode')->name('maintenance-mode');
 Route::get('/storage-link', function () {
     Artisan::call('storage:link');
+    dd('Storage linked!');
+});
+Route::get('/config-cache', function () {
+    Artisan::call('config:cache');
+    dd('config cleared!');
 });
 Route::get('/migrate', function () {
     Artisan::call('migrate', [
