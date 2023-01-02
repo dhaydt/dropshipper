@@ -57,6 +57,9 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
             Route::get('by-seller/{id}/{seller_is}', 'ShippingMethodController@shipping_methods_by_seller');
             Route::post('choose-for-order', 'ShippingMethodController@choose_for_order');
             Route::get('chosen', 'ShippingMethodController@chosen_shipping_methods');
+            Route::post('set-kurir', 'ResiController@set_kurir');
+            Route::delete('delete-kurir/', 'ResiController@delete_kurir');
+            Route::get('get-kurir/', 'ResiController@get_kurir');
 
             Route::get('ongkir', 'ShippingMethodController@get_rajaongkir');
         });

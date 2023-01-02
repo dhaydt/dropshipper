@@ -6,7 +6,6 @@ use App\CPU\BackEndHelper;
 use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
 use App\Model\ShippingMethod;
-use App\Model\BusinessSetting;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,14 +16,13 @@ class ShippingMethodController extends Controller
     {
         $shippingMethod = Helpers::get_business_settings('shipping_method');
 
-        if($shippingMethod=='sellerwise_shipping')
-        {
+        if ($shippingMethod == 'sellerwise_shipping') {
             $shipping_methods = ShippingMethod::where(['creator_id' => auth('seller')->id(), 'creator_type' => 'seller'])->latest()->paginate(Helpers::pagination_limit());
+
             return view('seller-views.shipping-method.add-new', compact('shipping_methods'));
-        }else{
+        } else {
             return back();
         }
-
     }
 
     public function store(Request $request)
@@ -32,7 +30,7 @@ class ShippingMethodController extends Controller
         $request->validate([
             'title' => 'required|max:200',
             'duration' => 'required',
-            'cost' => 'numeric'
+            'cost' => 'numeric',
         ]);
 
         DB::table('shipping_methods')->insert([
@@ -43,18 +41,20 @@ class ShippingMethodController extends Controller
             'cost' => BackEndHelper::currency_to_usd($request['cost']),
             'status' => 1,
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
 
         Toastr::success('Successfully added.');
+
         return back();
     }
 
     public function status_update(Request $request)
     {
         ShippingMethod::where(['id' => $request['id']])->update([
-            'status' => $request['status']
+            'status' => $request['status'],
         ]);
+
         return response()->json([
             'success' => 1,
         ], 200);
@@ -64,11 +64,11 @@ class ShippingMethodController extends Controller
     {
         $shippingMethod = Helpers::get_business_settings('shipping_method');
 
-        if($shippingMethod=='sellerwise_shipping')
-        {
+        if ($shippingMethod == 'sellerwise_shipping') {
             $method = ShippingMethod::where(['id' => $id])->first();
+
             return view('seller-views.shipping-method.edit', compact('method'));
-        }else{
+        } else {
             return redirect('/seller/dashboard');
         }
     }
@@ -78,7 +78,7 @@ class ShippingMethodController extends Controller
         $request->validate([
             'title' => 'required|max:200',
             'duration' => 'required',
-            'cost' => 'numeric'
+            'cost' => 'numeric',
         ]);
 
         DB::table('shipping_methods')->where(['id' => $id])->update([
@@ -89,10 +89,11 @@ class ShippingMethodController extends Controller
             'cost' => BackEndHelper::currency_to_usd($request['cost']),
             'status' => 1,
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
 
         Toastr::success('Successfully updated.');
+
         return redirect()->route('seller.business-settings.shipping-method.add');
     }
 
@@ -101,6 +102,7 @@ class ShippingMethodController extends Controller
         $shipping = ShippingMethod::find($request->id);
 
         $shipping->delete();
+
         return response()->json();
     }
 }
