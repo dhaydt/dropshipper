@@ -88,7 +88,7 @@
                                     @if($shipping['resi_kurir'] !== null)
                                     <a href="{{ route('cart.delete_resi', [$group_key]) }}" onclick="loading()" class="btn btn-danger mr-2 btn-sm" type="submit">Hapus resi</a>
                                     @endif
-                                    <button class="btn btn-primary btn-sm" type="submit">Simpan resi</button>
+                                    <button class="btn btn-primary btn-sm" type="submit" onclick="loading()">Simpan resi</button>
                                 </div>
                             </form>
                             @endforeach
@@ -133,7 +133,6 @@
 
                             @if($shippingMethod=='sellerwise_shipping')
                             @php($shipping = \App\Model\CartShipping::where('cart_group_id', $group_key)->first())
-                            @if ($shipping['resi_kurir'] == null)
                             @php($shippings=\App\CPU\Helpers::get_shipping_methods($group_key))
                             <div class="row">
                                 @php($chosen = $choosen_shipping['shipping_service'])
@@ -145,33 +144,56 @@
                                         @if ($shippings[0][0][0]['costs'])
                                         @foreach($shippings[0][0][0]['costs'] as $ship)
                                         {{-- {{ dd($ship) }} --}}
+                                        @if ($shipping->resi_kurir != null)
+                                        <option value="{{'JNE- '.$ship['service'].','.$ship['cost'][0]['value']}}"
+                                            {{$chosen=='JNE- '.$ship['service']?'selected':''}}>
+                                            {{"JNE - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
+                                            '.'Rp. 0'}}
+                                        </option>
+                                        @else
                                         <option value="{{'JNE- '.$ship['service'].','.$ship['cost'][0]['value']}}"
                                             {{$chosen=='JNE- '.$ship['service']?'selected':''}}>
                                             {{"JNE - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
                                             '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
                                         </option>
+                                        @endif
                                         @endforeach
                                         @endif
 
                                         @if ($shippings[0][1][0]['costs'])
                                         @foreach($shippings[0][1][0]['costs'] as $ship)
-                                        {{-- {{ dd($ship) }} --}}
-                                       <option value="{{'TIKI- '.$ship['service'].','.$ship['cost'][0]['value']}}"
-                                            {{$chosen=='TIKI- '.$ship['service']?'selected':''}}>
-                                            {{"TIKI - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
-                                           '.\App\CPU\Helpers::currency_converter($ship['cost'][0]['value'])}}
+                                        @if ($shipping->resi_kurir != null)
+                                        <option value="{{'TIKI- '.$ship['service'].','.$ship['cost'][0]['value']}}"
+                                                {{$chosen=='TIKI- '.$ship['service']?'selected':''}}>
+                                                {{"TIKI - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
+                                                '.'Rp. 0'}}
                                         </option>
+                                        @else
+                                        <option value="{{'TIKI- '.$ship['service'].','.$ship['cost'][0]['value']}}"
+                                                {{$chosen=='TIKI- '.$ship['service']?'selected':''}}>
+                                                {{"TIKI - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
+                                                '.\App\CPU\Helpers::currency_converter($ship['cost'][0]['value'])}}
+                                        </option>
+                                        @endif
                                         @endforeach
                                         @endif
 
                                         @if ($shippings[0][2][0]['costs'])
                                         @foreach($shippings[0][2][0]['costs'] as $ship)
-                                        {{-- {{ dd($ship) }} --}}
+                                        @if ($shipping->resi_kurir != null)
                                         <option value="{{'SiCepat- '.$ship['service'].','.$ship['cost'][0]['value']}}"
                                             {{$chosen=='SiCepat- '.$ship['service']?'selected':''}}>
                                             {{"SiCepat - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
-                                           '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
+                                            '.'Rp. 0'}}
                                         </option>
+                                        @else
+
+                                        <option value="{{'SiCepat- '.$ship['service'].','.$ship['cost'][0]['value']}}"
+                                            {{$chosen=='SiCepat- '.$ship['service']?'selected':''}}>
+                                            {{"SiCepat - ".''.$ship['service'].' ( '.$ship['cost'][0]['etd'].' Days)
+                                            '.\App\CPU\Helpers::currency_converter(\App\CPU\Convert::idrTousd($ship['cost'][0]['value']))}}
+                                        </option>
+                                        @endif
                                         @endforeach
 
                                         @endif
@@ -185,7 +207,6 @@
                                     </select>
                                 </div>
                             </div>
-                            @endif
                             @endif
                             @endif
                             @endforeach

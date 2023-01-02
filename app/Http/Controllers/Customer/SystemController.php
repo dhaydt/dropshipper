@@ -74,7 +74,9 @@ class SystemController extends Controller
         }
         // $customer =
         // dd($customer);
-
+        if ($shipping['resi_kurir'] != null) {
+            $price = 0;
+        }
         // dd($cost);
         // dd($request);
         $shipping['cart_group_id'] = $request['cart_group_id'];
