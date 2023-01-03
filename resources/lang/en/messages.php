@@ -1397,4 +1397,5 @@
   'otp_verified' => 'Otp verified',
   'successfully added address!' => 'Successfully added address!',
   'Wrong password' => 'Wrong password',
+  'User Not Found' => 'User Not Found',
 );

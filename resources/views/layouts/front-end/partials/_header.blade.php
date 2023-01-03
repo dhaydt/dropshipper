@@ -52,6 +52,10 @@
         color: #9d9d9d;
         font-weight: 700;
     }
+    .disable-button{
+        pointer-events: none;
+        opacity: 0.5;
+    }
     .nav-line-2.nav-progressive-content {
         font-size: 16px;
         font-weight: 700;
@@ -344,7 +348,7 @@
                                 <input type="hidden" name="image">
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary btn-user btn-block" id="apply">{{\App\CPU\translate('Daftar')}} {{\App\CPU\translate('Toko')}} </button>
+                                <button type="submit" class="btn btn-primary btn-user btn-block disable-button" id="apply">{{\App\CPU\translate('Daftar')}} {{\App\CPU\translate('Toko')}} </button>
                             </div>
                         </form>
                         @endif
@@ -647,26 +651,6 @@
             </li>
             @php($seller_registration=\App\Model\BusinessSetting::where(['type'=>'seller_registration'])->first()->value)
             @if($seller_registration)
-            <!--   <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            style="color: white;margin-top: 5px; padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 0">
-                                        <b>{{ \App\CPU\translate('Seller')}}  {{ \App\CPU\translate('zone')}} </b>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                         style="min-width: 165px !important; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                        <a class="dropdown-item" href="{{route('shop.apply')}}">
-                                            <b>{{ \App\CPU\translate('Become a')}} {{ \App\CPU\translate('Seller')}}</b>
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{route('seller.auth.login')}}">
-                                            <b>{{ \App\CPU\translate('Seller')}}  {{ \App\CPU\translate('login')}} </b>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li> -->
-
             <li class="nav-item dropdown">
               <a class="nav-link text-dark border-right py-2 mt-2" style="color: black !important"
                 href="{{url('track-order')}}">
@@ -747,6 +731,18 @@
 
 @push('script')
 <script>
+    $('#exampleInputPassword ,#exampleRepeatPassword').on('keyup',function () {
+        var pass = $("#exampleInputPassword").val();
+        var passRepeat = $("#exampleRepeatPassword").val();
+        if (pass==passRepeat){
+            $('.pass').hide();
+            $('#apply').removeClass('disable-button');
+        }
+        else{
+            $('.pass').show();
+            $('#apply').addClass('disable-button');
+        }
+    });
     $(document).ready(function(){
         function ObserveInputValue() {
             // console.log($('#cartCount').val());

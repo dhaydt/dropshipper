@@ -42,6 +42,10 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
         Route::post('create-invoice', 'PaymentController@invoice');
     });
 
+    Route::group(['prefix' => 'dropship', 'middleware' => 'auth:api'], function () {
+        Route::post('check-dropship-account', 'CustomerController@checkDropship');
+    });
+
     Route::group(['prefix' => 'config'], function () {
         Route::get('/', 'ConfigController@configuration');
     });
@@ -51,7 +55,6 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
         Route::get('by-seller/{id}/{seller_is}', 'ShippingMethodController@shipping_methods_by_seller');
         Route::post('choose-for-order', 'ShippingMethodController@choose_for_order');
         Route::get('chosen', 'ShippingMethodController@chosen_shipping_methods');
-
         Route::get('ongkir', 'ShippingMethodController@get_rajaongkir');
     });
 

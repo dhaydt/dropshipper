@@ -20,6 +20,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
+    public function checkDropship(Request $request)
+    {
+        $user = $request->user();
+
+        dd($user);
+    }
+
     public function info(Request $request)
     {
         return response()->json($request->user(), 200);

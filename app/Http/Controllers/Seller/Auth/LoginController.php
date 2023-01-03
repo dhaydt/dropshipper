@@ -78,10 +78,10 @@ class LoginController extends Controller
             return redirect()->route('home');
         } elseif (isset($se) && $se['status'] == 'pending') {
             return redirect()->back()->withInput($request->only('email', 'remember'))
-                ->withErrors(['Your account is not approved yet.']);
+                ->withErrors(['Akun anda belum dikonfirmasi!']);
         } elseif (isset($se) && $se['status'] == 'suspended') {
             return redirect()->back()->withInput($request->only('email', 'remember'))
-                ->withErrors(['Your account has been suspended!.']);
+                ->withErrors(['Akun anda sudah diblokir!.']);
         }
 
         return redirect()->back()->withInput($request->only('email', 'remember'))

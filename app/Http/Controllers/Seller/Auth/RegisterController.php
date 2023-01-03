@@ -46,7 +46,7 @@ class RegisterController extends Controller
             $seller->email = $request->email;
             $seller->image = ImageManager::upload('seller/', 'png', $request->file('image'));
             $seller->password = bcrypt($request->password);
-            $seller->status = 'approved';
+            $seller->status = 'pending';
             $seller->is_phone_verified = 0;
             $seller->save();
 
@@ -80,7 +80,7 @@ class RegisterController extends Controller
         Toastr::success('Toko berhasil didaftarkan!');
         // Toastr::success('Please wait for admin to review!');
 
-        return redirect()->route('seller.auth.login');
+        return redirect()->route('home');
     }
 
     public static function check($id)
@@ -160,6 +160,8 @@ class RegisterController extends Controller
             }
         }
 
-        return redirect(route('seller.auth.login'));
+        Toastr::success('Toko berhasil didaftarkan. Mohon menunggu konfimasi kami');
+
+        return redirect(route('home'));
     }
 }
