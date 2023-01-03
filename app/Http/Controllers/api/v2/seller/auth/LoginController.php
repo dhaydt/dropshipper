@@ -52,7 +52,7 @@ class LoginController extends Controller
             $seller->email = $request->email;
             $seller->image = ImageManager::upload('seller/', 'png', $request->file('profile_img'));
             $seller->password = bcrypt($request->password);
-            $seller->status = 'approved';
+            $seller->status = 'pending';
             $seller->temporary_token = $temporary_token;
             $seller->save();
 
