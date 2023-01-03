@@ -156,15 +156,62 @@
                     <!-- Header -->
                     <div class="card-header" style="display: block!important;">
                         <div class="row">
-                            <div class="col-12 pb-2 border-bottom">
+                            <div class="col-12 pb-2 border-bottom d-flex justify-content-between">
                                 <h4 class="card-header-title">
                                     {{\App\CPU\translate('Order')}} {{\App\CPU\translate('details')}}
                                     <span
                                         class="badge badge-soft-dark rounded-circle ml-1">{{$order->details->count()}}</span>
                                 </h4>
+                                @if (isset($order->resi_kurir))
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#resi_kurir">Resi Marketplace</button>
+                                    <div class="modal fade" id="resi_kurir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-8 px-0">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <img src="{{ asset('storage/resi'.'/'.$order->resi_kurir) }}" class="w-100" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 px-0">
+                                                        <div class="card p-2">
+                                                            <form action="{{ route('admin.orders.cetak-resi') }}" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="order_id" value="{{ $order['id'] }}">
+                                                                <div class="d-flex flex-column">
+                                                                    <label for="" class="d-block" style="font-weight: 600">Ukuran kertas</label>
+                                                                    <div class="d-flex">
+                                                                        <span class="mr-5 ml-2">
+                                                                            <input type="radio" class="mr-2" name="kertas" value="a4"><span> A4</span
+                                                                        </span>
+                                                                        <span>
+                                                                            <input type="radio" class="mr-2" name="kertas" value="a6"><span> A6</span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <label for="" class="d-block mt-5" style="font-weight: 600">Info Tambahan</label>
+                                                                    <span>
+                                                                        <input type="checkbox" class="mr-2" name="product_list"><span>Cetak dengan daftar produk</span>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="d-flex w-100 mt-3">
+                                                                    <button type="submit" class="btn btn-success w-100">Cetak label</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                            <div class="col-6 pt-2">
 
+
+                            <div class="col-6 pt-2">
                             </div>
                             <div class="col-6 col-md-4 pt-2 flex-end">
                                 <div class="d-flex justify-content-between">

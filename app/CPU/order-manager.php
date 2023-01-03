@@ -312,6 +312,8 @@ class OrderManager
             'shipping_cost' => CartManager::get_shipping_cost($data['cart_group_id']),
             'shipping_method_id' => CartShipping::where(['cart_group_id' => $cart_group_id])->first()->shipping_method_id,
             'shipping' => $shipSelected,
+            'resi_kurir' => CartShipping::where(['cart_group_id' => $cart_group_id])->first()->resi_kurir,
+            'invoice_kurir' => CartShipping::where(['cart_group_id' => $cart_group_id])->first()->invoice_kurir,
             'created_at' => now(),
             'updated_at' => now(),
         ];

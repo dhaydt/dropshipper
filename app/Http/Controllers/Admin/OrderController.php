@@ -9,10 +9,47 @@ use App\Http\Controllers\Controller;
 use App\Model\Order;
 use App\Model\OrderTransaction;
 use App\Model\Seller;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
+    public function cetak_resi(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'kertas' => 'required',
+        ], [
+            'kertas.required' => 'Pilih ukuran kertas!',
+        ]);
+
+        if ($validator->errors()->count() > 0) {
+            $err = Helpers::error_processor($validator);
+            foreach ($err as $e) {
+                Toastr::error($e['message']);
+            }
+
+            return redirect()->back();
+        }
+
+        $order = Order::find($request->order_id);
+        if (!$order) {
+            Toastr::error('Order not found');
+
+            return redirect()->back();
+        }
+        $kertas = $request->kertas;
+        $list = $request->product_list;
+
+        $file = 'resi_kurir-order-'.$order['id'].'.pdf';
+
+        // return view('admin-views.order.resi_kurir', ['data' => $order]);
+        $pdf = PDF::loadView('admin-views.order.resi_kurir', ['data' => $order])->setPaper('a4');
+
+        return $pdf->download($file);
+    }
+
     public function list(Request $request, $status)
     {
         $query_param = [];

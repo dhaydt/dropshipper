@@ -11,7 +11,7 @@
         "php": "^7.2",
         "ext-curl": "*",
         "ext-zip": "*",
-        "barryvdh/laravel-dompdf": "^0.8.6",
+        "barryvdh/laravel-dompdf": "^2.0",
         "brian2694/laravel-toastr": "^5.54",
         "ckeditor/ckeditor": "^4.15",
         "doctrine/dbal": "^2.6",
