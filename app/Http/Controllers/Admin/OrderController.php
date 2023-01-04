@@ -81,9 +81,9 @@ class OrderController extends Controller
 
         $file = 'resi_kurir-order-'.$order['id'].'.pdf';
         $mpdf_view = \View::make('admin-views.order.resi_kurir')->with('order', $order);
-        Helpers::gen_mpdf($mpdf_view, 'resi_kurir_', $order->id);
+        // Helpers::gen_mpdf($mpdf_view, 'resi_kurir_', $order->id);
 
-        // return view('admin-views.order.resi_kurir')->with('order', $order);
+        return view('admin-views.order.resi_kurir')->with('order', $order);
     }
 
     public function list(Request $request, $status)
