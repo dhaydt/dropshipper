@@ -11,8 +11,8 @@
             justify-content: center;
         }
         .row img{
-            height: 100%;
-            width: auto;
+            height: auto;
+            width: 100%;
         }
     </style>
 </head>
