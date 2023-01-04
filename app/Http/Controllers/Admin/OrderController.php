@@ -52,6 +52,40 @@ class OrderController extends Controller
         // return $pdf->download($file);
     }
 
+    public function new_cetak_resi(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'kertas' => 'required',
+        ], [
+            'kertas.required' => 'Pilih ukuran kertas!',
+        ]);
+
+        if ($validator->errors()->count() > 0) {
+            $err = Helpers::error_processor($validator);
+            foreach ($err as $e) {
+                Toastr::error($e['message']);
+            }
+
+            return redirect()->back();
+        }
+
+        $order = Order::find($request->order_id);
+        if (!$order) {
+            Toastr::error('Order not found');
+
+            return redirect()->back();
+        }
+        $kertas = $request->kertas;
+        $list = $request->product_list;
+        $url = 'https://ezren.id/storage/resi/';
+
+        $file = 'resi_kurir-order-'.$order['id'].'.pdf';
+        $mpdf_view = \View::make('admin-views.order.resi_kurir')->with('data', $order);
+        Helpers::gen_mpdf($mpdf_view, 'resi_kurir_', $order->id);
+
+        // return view('admin-views.order.resi_kurir')->with('data', $order);
+    }
+
     public function list(Request $request, $status)
     {
         $query_param = [];

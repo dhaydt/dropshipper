@@ -372,7 +372,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::post('productStatus', 'OrderController@productStatus')->name('productStatus');
             Route::get('generate-invoice/{id}', 'OrderController@generate_invoice')->name('generate-invoice');
             Route::get('inhouse-order-filter', 'OrderController@inhouse_order_filter')->name('inhouse-order-filter');
-            Route::post('cetak-resi', 'OrderController@cetak_resi')->name('cetak-resi');
+            Route::post('cetak-resi', 'OrderController@new_cetak_resi')->name('cetak-resi');
         });
 
         Route::group(['prefix' => 'resi', 'as' => 'resi.', 'middleware' => ['module:order_management']], function () {
