@@ -46,13 +46,13 @@ class OrderController extends Controller
 
         // return view('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']);
         // $pdf = PDF::loadView('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']])->setPaper('a4');
-        $mpdf_view = \View::make('admin-views.order.resi_kurir')->with('data', $url.$order['resi_kurir']);
+        $mpdf_view = \View::make('admin-views.order.resi_kurirs')->with('data', $url.$order['resi_kurir']);
         Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
 
         // return $pdf->download($file);
     }
 
-    public function new_cetak_resi(Request $request)
+    public function cetak_cetak_resi(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'kertas' => 'required',
@@ -80,10 +80,10 @@ class OrderController extends Controller
         $url = 'https://ezren.id/storage/resi/';
 
         $file = 'resi_kurir-order-'.$order['id'].'.pdf';
-        $mpdf_view = \View::make('admin-views.order.resi_kurir')->with('order', $order);
-        // Helpers::gen_mpdf($mpdf_view, 'resi_kurir_', $order->id);
+        $mpdf_view = \View::make('admin-views.order.resi_kurirs')->with('order', $order);
+        Helpers::gen_resi_mpdf($mpdf_view, 'resi_kurir_', $order->id);
 
-        return view('admin-views.order.resi_kurir')->with('order', $order);
+        // return view('admin-views.order.resi_kurirs')->with('order', $order);
     }
 
     public function list(Request $request, $status)

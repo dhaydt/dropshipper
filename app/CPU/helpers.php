@@ -1371,6 +1371,16 @@ class Helpers
         $mpdf->WriteHTML($mpdf_view);
         $mpdf->Output($file_prefix.$file_postfix.'.pdf', 'D');
     }
+
+    public static function gen_resi_mpdf($view, $file_prefix, $file_postfix)
+    {
+        $mpdf = new \Mpdf\Mpdf();
+
+        $mpdf_view = $view;
+        $mpdf_view = $mpdf_view->render();
+        $mpdf->WriteHTML($mpdf_view);
+        $mpdf->Output($file_prefix.$file_postfix.'.pdf', 'D');
+    }
 }
 
 if (!function_exists('currency_symbol')) {

@@ -178,7 +178,7 @@
                                                     </div>
                                                     <div class="col-4 px-0">
                                                         <div class="card p-2">
-                                                            <form action="{{ route('admin.orders.print-resi') }}" method="POST">
+                                                            <form action="{{ route('admin.orders.printout-resi') }}" method="POST">
                                                                 @csrf
                                                                 <input type="hidden" name="order_id" value="{{ $order['id'] }}">
                                                                 <div class="d-flex flex-column">
