@@ -184,6 +184,30 @@
                                         :</h6>
                                     <h6 class="mx-1" style="color: #8a8a8a;">{{$order->shipping}}</h6>
                                 </div>
+                                @if (isset($order->resi_kurir))
+                                <div class="flex-end">
+                                    <h6 style="color: #8a8a8a;">{{\App\CPU\translate('Resi')}} {{\App\CPU\translate('method')}}
+                                        :</h6>
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#resi_kurir">Resi Kurir</button>
+                                        <div class="modal fade" id="resi_kurir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-12 px-0">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <img src="{{ asset('storage/resi'.'/'.$order->resi_kurir) }}" class="w-100" alt="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
                             </div>
                         </div>
                     </div>
