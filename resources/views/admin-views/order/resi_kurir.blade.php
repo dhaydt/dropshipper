@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="row">
-        <img src="https://ezren.id/storage/resi/{{ $data->resi_kurir }}" alt="">
+        <img src="{{ $data }}" alt="">
     </div>
 </body>
 </html>

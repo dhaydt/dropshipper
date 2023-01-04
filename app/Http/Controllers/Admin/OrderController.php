@@ -41,11 +41,12 @@ class OrderController extends Controller
         }
         $kertas = $request->kertas;
         $list = $request->product_list;
+        $url = 'storage/resi/';
 
         $file = 'resi_kurir-order-'.$order['id'].'.pdf';
 
-        // return view('admin-views.order.resi_kurir', ['data' => $order]);
-        $pdf = PDF::loadView('admin-views.order.resi_kurir', ['data' => $order])->setPaper('a4');
+        // return view('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']);
+        $pdf = PDF::loadView('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']])->setPaper('a4');
 
         return $pdf->download($file);
     }
