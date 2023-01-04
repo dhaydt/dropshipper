@@ -352,6 +352,72 @@
       ),
     ),
   ),
+  'dompdf' => 
+  array (
+    'show_warnings' => false,
+    'public_path' => NULL,
+    'convert_entities' => true,
+    'options' => 
+    array (
+      'font_dir' => 'D:\\CODE\\dropship\\storage\\fonts',
+      'font_cache' => 'D:\\CODE\\dropship\\storage\\fonts',
+      'temp_dir' => 'C:\\Users\\siste\\AppData\\Local\\Temp',
+      'chroot' => 'D:\\CODE\\dropship',
+      'allowed_protocols' => 
+      array (
+        'file://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+        'http://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+        'https://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'log_output_file' => NULL,
+      'enable_font_subsetting' => false,
+      'pdf_backend' => 'CPDF',
+      'default_media_type' => 'screen',
+      'default_paper_size' => 'a4',
+      'default_paper_orientation' => 'portrait',
+      'default_font' => 'serif',
+      'dpi' => 96,
+      'enable_php' => false,
+      'enable_javascript' => true,
+      'enable_remote' => true,
+      'font_height_ratio' => 1.1,
+      'enable_html5_parser' => true,
+    ),
+    'orientation' => 'portrait',
+    'defines' => 
+    array (
+      'font_dir' => 'D:\\CODE\\dropship\\storage\\fonts/',
+      'font_cache' => 'D:\\CODE\\dropship\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\siste\\AppData\\Local\\Temp',
+      'chroot' => 'D:\\CODE\\dropship',
+      'enable_font_subsetting' => false,
+      'pdf_backend' => 'CPDF',
+      'default_media_type' => 'screen',
+      'default_paper_size' => 'a4',
+      'default_font' => 'serif',
+      'dpi' => 96,
+      'enable_php' => false,
+      'enable_javascript' => true,
+      'enable_remote' => true,
+      'font_height_ratio' => 1.1,
+      'enable_html5_parser' => false,
+    ),
+  ),
   'filesystems' => 
   array (
     'default' => 'local',
@@ -836,29 +902,6 @@
     'route_domain' => NULL,
     'theme' => 'auto',
     'debug_backtrace_limit' => 50,
-  ),
-  'dompdf' => 
-  array (
-    'show_warnings' => false,
-    'orientation' => 'portrait',
-    'defines' => 
-    array (
-      'font_dir' => 'D:\\CODE\\dropship\\storage\\fonts/',
-      'font_cache' => 'D:\\CODE\\dropship\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\siste\\AppData\\Local\\Temp',
-      'chroot' => 'D:\\CODE\\dropship',
-      'enable_font_subsetting' => false,
-      'pdf_backend' => 'CPDF',
-      'default_media_type' => 'screen',
-      'default_paper_size' => 'a4',
-      'default_font' => 'serif',
-      'dpi' => 96,
-      'enable_php' => false,
-      'enable_javascript' => true,
-      'enable_remote' => true,
-      'font_height_ratio' => 1.1,
-      'enable_html5_parser' => false,
-    ),
   ),
   'flare' => 
   array (
