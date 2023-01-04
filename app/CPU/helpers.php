@@ -885,9 +885,11 @@ class Helpers
                         'link' => URL::to('/product/'.$data['slug']),
                     ];
             $data['direct_wa'] = Helpers::directWa($direct);
-            if ($check['success'] == 1) {
-                $seller = $check['data'];
-                $data['share_url'] = env('ETOKO_URL', 'http://etoko.xyz').'/generated/'.$seller['id'].'/'.urlencode($seller->shop['name']).'/'.$data['slug'];
+            if ($check != null) {
+                if ($check['success'] == 1) {
+                    $seller = $check['data'];
+                    $data['share_url'] = env('ETOKO_URL', 'http://etoko.xyz').'/generated/'.$seller['id'].'/'.urlencode($seller->shop['name']).'/'.$data['slug'];
+                }
             }
         }
 
