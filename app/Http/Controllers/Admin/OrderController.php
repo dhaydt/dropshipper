@@ -69,7 +69,7 @@ class OrderController extends Controller
             return redirect()->back();
         }
 
-        $order = Order::find($request->order_id);
+        $order = Order::with('seller')->with('shipping')->with('details')->where('id', $request->order_id)->first();
         if (!$order) {
             Toastr::error('Order not found');
 
@@ -80,10 +80,10 @@ class OrderController extends Controller
         $url = 'https://ezren.id/storage/resi/';
 
         $file = 'resi_kurir-order-'.$order['id'].'.pdf';
-        $mpdf_view = \View::make('admin-views.order.resi_kurir')->with('data', $order);
-        Helpers::gen_mpdf($mpdf_view, 'resi_kurir_', $order->id);
+        $mpdf_view = \View::make('admin-views.order.resi_kurir')->with('order', $order);
+        // Helpers::gen_mpdf($mpdf_view, 'resi_kurir_', $order->id);
 
-        // return view('admin-views.order.resi_kurir')->with('data', $order);
+        return view('admin-views.order.resi_kurir')->with('order', $order);
     }
 
     public function list(Request $request, $status)
@@ -257,11 +257,20 @@ class OrderController extends Controller
     {
         $order = Order::with('seller')->with('shipping')->with('details')->where('id', $id)->first();
         $seller = Seller::findOrFail($order->details->first()->seller_id);
-        $data['email'] = $order->customer['email'];
-        $data['client_name'] = $order->customer['f_name'].' '.$order->customer['l_name'];
+        if ($order['user_is'] == 'dropship') {
+            $data['email'] = $order->seller['email'];
+            $data['client_name'] = $order->seller['name'];
+        } else {
+            $data['email'] = $order->customer['email'];
+            $data['client_name'] = $order->customer['f_name'].' '.$order->customer['l_name'];
+        }
         $data['order'] = $order;
 
-        $mpdf_view = \View::make('admin-views.order.invoice')->with('order', $order)->with('seller', $seller);
+        if ($order['user_is'] == 'dropship') {
+            $mpdf_view = \View::make('admin-views.order.invoice_dropship')->with('order', $order)->with('seller', $seller);
+        } else {
+            $mpdf_view = \View::make('admin-views.order.invoice')->with('order', $order)->with('seller', $seller);
+        }
         Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
     }
 

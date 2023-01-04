@@ -343,14 +343,13 @@
     $company_name =BusinessSetting::where('type', 'company_name')->first()->value;
     $company_web_logo =BusinessSetting::where('type', 'company_web_logo')->first()->value;
     $company_mobile_logo =BusinessSetting::where('type', 'company_mobile_logo')->first()->value;
-    $img = asset('storage/resi'.'/'.$order['resi_kurir'])
+    $user = json_decode($order['shipping_address_data']);
 @endphp
-
 <div class="first" style="display: block; height:auto !important;background-color: #E6E6E6">
     <table class="content-position">
         <tr>
             <th style="text-align: left">
-                <img height="70" width="200" src="{{ $img }}"
+                <img height="70" width="200" src="{{asset("storage/company/$company_web_logo")}}"
                      alt="">
             </th>
             <th style="text-align: right">
@@ -396,12 +395,11 @@
                 </td>
                 <td>
                     <div class="h4 montserrat-normal-600">
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->seller['name']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->seller['email']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->seller['phone']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->shippingAddress ? $order->shippingAddress['address'] : ""}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->shippingAddress ? $order->shippingAddress['city'] : ""}} {{$order->shippingAddress ? $order->shippingAddress['zip'] : ""}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->shippingAddress ? $order->shippingAddress['country'] : ""}}</p>
+                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$user->contact_person_name}}</p>
+                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$user->phone}}</p>
+                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$user->address}}</p>
+                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$user->city}} {{$user->zip}}</p>
+                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$user->province}}</p>
                     </div>
                 </td>
             </tr>
@@ -454,6 +452,12 @@
                 </tr>
 
                 @php
+                        $subtotal=0;
+                        $total=0;
+                        $sub_total=0;
+                        $total_tax=0;
+                        $total_shipping_cost=0;
+                        $total_discount_on_product=0;
                     $sub_total+=$details['price']*$details['qty'];
                     $total_tax+=$details['tax'];
                     $total_shipping_cost+=$details->shipping ? $details->shipping->cost :0;
