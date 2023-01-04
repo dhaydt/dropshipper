@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Model\Order;
 use App\Model\OrderTransaction;
 use App\Model\Seller;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -41,7 +40,7 @@ class OrderController extends Controller
         }
         $kertas = $request->kertas;
         $list = $request->product_list;
-        $url = 'storage/resi/';
+        $url = 'https://ezren.id/storage/resi/';
 
         $file = 'resi_kurir-order-'.$order['id'].'.pdf';
 
