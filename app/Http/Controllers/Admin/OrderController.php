@@ -46,9 +46,11 @@ class OrderController extends Controller
         $file = 'resi_kurir-order-'.$order['id'].'.pdf';
 
         // return view('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']);
-        $pdf = PDF::loadView('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']])->setPaper('a4');
+        // $pdf = PDF::loadView('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']])->setPaper('a4');
+        $mpdf_view = \View::make('admin-views.order.resi_kurir')->with('data', $url.$order['resi_kurir']);
+        Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
 
-        return $pdf->download($file);
+        // return $pdf->download($file);
     }
 
     public function list(Request $request, $status)
