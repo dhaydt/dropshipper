@@ -12,47 +12,11 @@ use App\Model\Seller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Mccarlosen\LaravelMpdf\Facades\LaravelMpdf as PDF;
 
 class OrderController extends Controller
 {
-    public function cetak_resi(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'kertas' => 'required',
-        ], [
-            'kertas.required' => 'Pilih ukuran kertas!',
-        ]);
-
-        if ($validator->errors()->count() > 0) {
-            $err = Helpers::error_processor($validator);
-            foreach ($err as $e) {
-                Toastr::error($e['message']);
-            }
-
-            return redirect()->back();
-        }
-
-        $order = Order::find($request->order_id);
-        if (!$order) {
-            Toastr::error('Order not found');
-
-            return redirect()->back();
-        }
-        $kertas = $request->kertas;
-        $list = $request->product_list;
-        $url = 'https://ezren.id/storage/resi/';
-
-        $file = 'resi_kurir-order-'.$order['id'].'.pdf';
-
-        // return view('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']);
-        // $pdf = PDF::loadView('admin-views.order.resi_kurir', ['data' => $url.$order['resi_kurir']])->setPaper('a4');
-        $mpdf_view = \View::make('admin-views.order.resi_kurirs')->with('data', $url.$order['resi_kurir']);
-        Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
-
-        // return $pdf->download($file);
-    }
-
-    public function cetak_cetak_resi(Request $request)
+    public function prints(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'kertas' => 'required',
@@ -75,16 +39,50 @@ class OrderController extends Controller
 
             return redirect()->back();
         }
-        $kertas = $request->kertas;
-        $list = $request->product_list;
-        $url = 'https://ezren.id/storage/resi/';
+        $data['order'] = $order;
+        $pdf = PDF::loadView('admin-views.order.resi_kurirs', $data);
 
-        $file = 'resi_kurir-order-'.$order['id'].'.pdf';
-        $mpdf_view = \View::make('admin-views.order.resi_kurirs')->with('order', $order);
-        Helpers::gen_resi_mpdf($mpdf_view, 'resi_kurir_', $order->id);
-
-        // return view('admin-views.order.resi_kurirs')->with('order', $order);
+        return $pdf->stream('document.pdf');
+        // $dir = 'storage/resi/'.$order['resi_kurir'];
+        // $mpdf = new \Mpdf\Mpdf();
+        // $mpdf->WriteHTML('<img style="width:100%; height:auto;" src="'.$dir.'"
+        // alt="">');
+        // $mpdf->stream();
     }
+
+    // public function cetak_cetak_resi(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'kertas' => 'required',
+    //     ], [
+    //         'kertas.required' => 'Pilih ukuran kertas!',
+    //     ]);
+
+    //     if ($validator->errors()->count() > 0) {
+    //         $err = Helpers::error_processor($validator);
+    //         foreach ($err as $e) {
+    //             Toastr::error($e['message']);
+    //         }
+
+    //         return redirect()->back();
+    //     }
+
+    //     $order = Order::with('seller')->with('shipping')->with('details')->where('id', $request->order_id)->first();
+    //     if (!$order) {
+    //         Toastr::error('Order not found');
+
+    //         return redirect()->back();
+    //     }
+    //     $kertas = $request->kertas;
+    //     $list = $request->product_list;
+    //     $url = 'https://ezren.id/storage/resi/';
+
+    //     $file = 'resi_kurir-order-'.$order['id'].'.pdf';
+    //     $mpdf_view = \View::make('admin-views.order.resi_kurirs')->with('order', $order);
+    //     Helpers::gen_resi_mpdf($mpdf_view, 'resi_kurir_', $order->id);
+
+    //     // return view('admin-views.order.resi_kurirs')->with('order', $order);
+    // }
 
     public function list(Request $request, $status)
     {

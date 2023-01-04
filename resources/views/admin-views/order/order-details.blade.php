@@ -171,14 +171,14 @@
                                                 <div class="row">
                                                     <div class="col-8 px-0">
                                                         <div class="card">
-                                                            <div class="card-body">
-                                                                <img src="{{ asset('storage/resi'.'/'.$order->resi_kurir) }}" class="w-100" alt="">
+                                                            <div class="card-body" id="printthis">
+                                                                <img src="{{ asset('storage/resi'.'/'.$order->resi_kurir) }}" class="w-100" style="height: auto;" alt="">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-4 px-0">
                                                         <div class="card p-2">
-                                                            <form action="{{ route('admin.orders.printout-resi') }}" method="POST">
+                                                            <form action="{{ route('admin.orders.prints') }}" method="POST">
                                                                 @csrf
                                                                 <input type="hidden" name="order_id" value="{{ $order['id'] }}">
                                                                 <div class="d-flex flex-column">
@@ -197,7 +197,8 @@
                                                                     </span>
                                                                 </div>
                                                                 <div class="d-flex w-100 mt-3">
-                                                                    <button type="submit" class="btn btn-success w-100">Cetak label</button>
+                                                                    <input type='button' id='btn' value='Cetak label' class="btn btn-success w-100" onclick='printDiv();'>
+                                                                    {{-- <button type="submit" class="btn btn-success w-100">Cetak label</button> --}}
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -627,6 +628,17 @@
 
 @push('script_2')
     <script>
+        function printDiv()
+        {
+
+        var divToPrint=document.getElementById('printthis');
+        var newWin=window.open('','Print-Window');
+        newWin.document.open();
+        newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+        newWin.document.close();
+        setTimeout(function(){newWin.close();},10);
+        }
+
         $(document).on('change', '.payment_status', function () {
             var id = $(this).attr("data-id");
             var value = $(this).val();

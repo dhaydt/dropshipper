@@ -13,6 +13,7 @@
         "ext-zip": "*",
         "barryvdh/laravel-dompdf": "^2.0",
         "brian2694/laravel-toastr": "^5.54",
+        "carlos-meneses/laravel-mpdf": "^2.1",
         "ckeditor/ckeditor": "^4.15",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "^4.0",

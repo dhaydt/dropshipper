@@ -40,6 +40,17 @@
       'Toastr' => 'Brian2694\\Toastr\\Facades\\Toastr',
     ),
   ),
+  'carlos-meneses/laravel-mpdf' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mccarlosen\\LaravelMpdf\\LaravelMpdfServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Mccarlosen\\LaravelMpdf\\Facades\\LaravelMpdf',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 

@@ -358,6 +358,65 @@
             "install-path": "../brian2694/laravel-toastr"
         },
         {
+            "name": "carlos-meneses/laravel-mpdf",
+            "version": "2.1.11",
+            "version_normalized": "2.1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mccarlosen/laravel-mpdf.git",
+                "reference": "cb52e5c17df9caa340eaed8566cfb1e3c7b37c33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mccarlosen/laravel-mpdf/zipball/cb52e5c17df9caa340eaed8566cfb1e3c7b37c33",
+                "reference": "cb52e5c17df9caa340eaed8566cfb1e3c7b37c33",
+                "shasum": ""
+            },
+            "require": {
+                "mpdf/mpdf": "^8.0",
+                "php": "^5.6|^7.0|^8.0"
+            },
+            "time": "2022-12-28T02:20:09+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mccarlosen\\LaravelMpdf\\LaravelMpdfServiceProvider"
+                    ],
+                    "aliases": {
+                        "PDF": "Mccarlosen\\LaravelMpdf\\Facades\\LaravelMpdf"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Mccarlosen\\LaravelMpdf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Laravel Mpdf: Using Mpdf in Laravel to generate Pdfs.",
+            "keywords": [
+                "laravel",
+                "mpdf",
+                "pdf"
+            ],
+            "support": {
+                "issues": "https://github.com/mccarlosen/laravel-mpdf/issues",
+                "source": "https://github.com/mccarlosen/laravel-mpdf/tree/2.1.11"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/mccarlosen",
+                    "type": "custom"
+                }
+            ],
+            "install-path": "../carlos-meneses/laravel-mpdf"
+        },
+        {
             "name": "ckeditor/ckeditor",
             "version": "4.16.2",
             "version_normalized": "4.16.2.0",

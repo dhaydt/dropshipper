@@ -67,6 +67,7 @@ return array(
     'Nexmo\\' => array($vendorDir . '/vonage/client-core/src'),
     'Mpdf\\' => array($vendorDir . '/mpdf/mpdf/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Mccarlosen\\LaravelMpdf\\' => array($vendorDir . '/carlos-meneses/laravel-mpdf/src'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
     'Maherelgamil\\LaravelFawry\\' => array($vendorDir . '/maherelgamil/laravel-fawry/src'),
     'Madnest\\Madzipper\\' => array($vendorDir . '/madnest/madzipper/src/Madnest/Madzipper'),
