@@ -887,7 +887,7 @@ class Helpers
             $data['direct_wa'] = Helpers::directWa($direct);
             if ($check['success'] == 1) {
                 $seller = $check['data'];
-                $data['share_url'] = env('ETOKO_URL', 'http://etoko.xyz').'/generated/'.$seller['id'].'/'.$seller->shop['name'].'/'.$data['slug'];
+                $data['share_url'] = env('ETOKO_URL', 'http://etoko.xyz').'/generated/'.$seller['id'].'/'.urlencode($seller->shop['name']).'/'.$data['slug'];
             }
         }
 
