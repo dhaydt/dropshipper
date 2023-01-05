@@ -251,6 +251,7 @@
                 <td>Ongkos Kirim</td>
                 <td>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($shipping))}}</td>
             </tr>
+            @if ($order->discount_amount != 0)
             <tr>
                 <td></td>
                 <td></td>
@@ -258,6 +259,8 @@
                 <td>Diskon Kupon</td>
                 <td>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->discount_amount))}}</td>
             </tr>
+            @endif
+            @if ($total_discount_on_product != 0)
             <tr style="border-bottom: 1px solid #000;">
                 <td></td>
                 <td></td>
@@ -265,6 +268,7 @@
                 <td>Diskon produk</td>
                 <td>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_discount_on_product))}}</td>
             </tr>
+            @endif
             <tr>
                 <td></td>
                 <td></td>
