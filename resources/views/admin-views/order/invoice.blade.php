@@ -439,7 +439,8 @@
             @endphp
             <tbody>
             @foreach($order->details as $key=>$details)
-                @php $subtotal=($details['price'])*$details->qty @endphp
+                @php $subtotal=($details['price'])*$details->qty
+                @endphp
                 <tr class="for-tb" style=" border: 1px solid #D8D8D8;margin-top: 5px">
                     <td class="for-tb for-th-font-bold">{{$key+1}}</td>
                     <td class="for-tb">

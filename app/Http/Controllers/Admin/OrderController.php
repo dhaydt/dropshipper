@@ -267,7 +267,8 @@ class OrderController extends Controller
         if ($order['user_is'] == 'dropship') {
             $mpdf_view = \View::make('admin-views.order.invoice_dropship')->with('order', $order)->with('seller', $seller);
         } else {
-            $mpdf_view = \View::make('admin-views.order.invoice')->with('order', $order)->with('seller', $seller);
+            return view('admin-views.order.new_invoice', $data);
+            $mpdf_view = \View::make('admin-views.order.new_invoice')->with('order', $order)->with('seller', $seller);
         }
         Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
     }
