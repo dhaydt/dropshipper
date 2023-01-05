@@ -21,10 +21,10 @@
 
         body {
             position: relative;
-            width: 21cm;
-            height: 29.7cm;
-            margin: 0 auto;
             color: #001028;
+            padding: 0 20px;
+            width: 14.8cm;
+            height: 21cm;
             background: #FFFFFF;
             font-family: Arial, sans-serif;
             font-size: 12px;

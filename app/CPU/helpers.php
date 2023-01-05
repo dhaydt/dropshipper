@@ -1363,7 +1363,7 @@ class Helpers
 
     public static function gen_mpdf($view, $file_prefix, $file_postfix)
     {
-        $mpdf = new \Mpdf\Mpdf(['default_font' => 'FreeSerif', 'mode' => 'utf-8', 'format' => [190, 236]]);
+        $mpdf = new \Mpdf\Mpdf(['default_font' => 'FreeSerif', 'mode' => 'utf-8', 'format' => [210, 184]]);
         $mpdf->AddPage('L', '', '', '', '', 0, 0, 0, '', '', '');
         $mpdf->autoScriptToLang = true;
         $mpdf->autoLangToFont = true;

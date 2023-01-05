@@ -95,6 +95,9 @@
                         <th>{{\App\CPU\translate('Date')}}</th>
                         <th>{{\App\CPU\translate('customer_name')}}</th>
                         <th>{{\App\CPU\translate('Status')}}</th>
+                        @if ($orders[0]['user_is'] == 'dropship')
+                        <th>Resi Pengiriman</th>
+                        @endif
                         <th>{{\App\CPU\translate('Total')}}</th>
                         <th>{{\App\CPU\translate('Order')}} {{\App\CPU\translate('Status')}} </th>
                         <th>{{\App\CPU\translate('Action')}}</th>
@@ -142,6 +145,9 @@
                                     </span>
                                 @endif
                             </td>
+                            @if ($order['user_is'] == 'dropship')
+                                <td class="text-center"><img width="100px" src="{{ asset('storage/resi'.'/'.$order['resi_kurir']) }}" alt=""></td>
+                            @endif
                             <td> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->order_amount))}}</td>
                             <td class="text-capitalize">
                                 @if($order['order_status']=='pending')

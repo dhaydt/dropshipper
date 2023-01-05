@@ -251,7 +251,7 @@ class OrderController extends Controller
         }
     }
 
-    public function generate_invoice($id)
+    public function generate_invoicess($id)
     {
         $order = Order::with('seller')->with('shipping')->with('details')->where('id', $id)->first();
         $seller = Seller::findOrFail($order->details->first()->seller_id);
@@ -267,7 +267,7 @@ class OrderController extends Controller
         if ($order['user_is'] == 'dropship') {
             $mpdf_view = \View::make('admin-views.order.invoice_dropship')->with('order', $order)->with('seller', $seller);
         } else {
-            return view('admin-views.order.new_invoice', $data);
+            // return view('admin-views.order.new_invoice')->with('order', $order);
             $mpdf_view = \View::make('admin-views.order.new_invoice')->with('order', $order)->with('seller', $seller);
         }
         Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
