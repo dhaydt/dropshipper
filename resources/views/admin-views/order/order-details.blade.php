@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-md-6 mt-2">
                         <a class="text-body mr-3" target="_blank"
-                           href={{route('admin.orders.generate-invoice',[$order['id']])}}>
+                           href={{route('admin.orders.generate-invoicen',[$order['id']])}}>
                             <i class="tio-print mr-1"></i> {{\App\CPU\translate('Print')}} {{\App\CPU\translate('invoice')}}
                         </a>
                     </div>

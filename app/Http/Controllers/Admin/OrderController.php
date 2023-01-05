@@ -265,6 +265,7 @@ class OrderController extends Controller
         $data['order'] = $order;
 
         if ($order['user_is'] == 'dropship') {
+            // return view('admin-views.order.invoice_dropship')->with('order', $order)->with('seller', $seller);
             $mpdf_view = \View::make('admin-views.order.invoice_dropship')->with('order', $order)->with('seller', $seller);
         } else {
             // return view('admin-views.order.new_invoice')->with('order', $order);

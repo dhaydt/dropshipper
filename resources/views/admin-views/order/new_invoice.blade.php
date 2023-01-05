@@ -166,23 +166,23 @@
     @endphp
     <header class="clearfix">
         <div id="logo">
-            <img src="{{ asset('assets/front-end/img/ejren.jpg') }}">
+            <img src="{{ asset('storage/company'.'/'.$company_web_logo) }}">
         </div>
         <h1>INVOICE {{ $order['id'] }}</h1>
-        <div id="company" class="clearfix">
+        <div id="company" class="clearfix" style="padding-right: 20px">
             <div>{{ $company_name }},<br /> {{ $district }}, {{ $city }}, {{ $province }}, ID</div>
             <div>{{ $company_phone }}</div>
             <div><a href="mailto:company@example.com">{{ $company_email }}</a></div>
         </div>
-        <div id="project">
-            <div><span>PENERIMA</span> {{ $cus->contact_person_name }}</div>
-            <div><span>ALAMAT</span> {{ $cus->district }}, {{ $cus->city }}, {{ $cus->province }}, ID</div>
-            <div><span>HANDPHONE</span> {{ $cus->phone }}</div>
-            <div><span>TANGGAL</span> {{date('d-m-Y h:i:s a',strtotime($order['created_at']))}}</div>
+        <div id="project" style="padding-left: 20px">
+            <div><span>PENERIMA</span> :{{ $cus->contact_person_name }}</div>
+            <div><span>ALAMAT</span> :{{ $cus->district }}, {{ $cus->city }}, {{ $cus->province }}, ID</div>
+            <div><span>HANDPHONE</span> :{{ $cus->phone }}</div>
+            <div><span>TANGGAL</span> :{{date('d-m-Y h:i:s a',strtotime($order['created_at']))}}</div>
         </div>
     </header>
     <main>
-        <table class="table">
+        <table class="table" style="padding: 0 20px;">
             <thead>
                 <tr>
                     <th>NO.</th>
@@ -222,7 +222,7 @@
             </tbody>
         </table>
         @php($shipping=$order['shipping_cost'])
-        <table>
+        <table style="padding-right: 20px;">
             <thead>
                 <tr>
                     <th style="width:200px;"></th>
@@ -258,7 +258,7 @@
                 <td>Diskon Kupon</td>
                 <td>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->discount_amount))}}</td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 1px solid #000;">
                 <td></td>
                 <td></td>
                 <td></td>
