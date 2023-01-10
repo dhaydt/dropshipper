@@ -865,7 +865,9 @@ class WebController extends Controller
     //for Contact US Page
     public function contacts()
     {
-        return view('web-views.contacts');
+        $contact = BusinessSetting::where('type', 'contact_us')->first();
+
+        return view('web-views.contacts', compact('contact'));
     }
 
     public function about_us()

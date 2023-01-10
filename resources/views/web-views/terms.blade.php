@@ -34,7 +34,7 @@
 @endpush
 
 @section('content')
-    <div class="container for-container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+    <div class="container for-container rtl" style=" min-height:50vh; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
         <h2 class="text-center mt-3 headerTitle">{{\App\CPU\translate('Terms and Condition')}}</h2>
         <div class="for-padding">
             {!! $terms_condition['value'] !!}
