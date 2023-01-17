@@ -123,7 +123,7 @@ class XenditPaymentController extends Controller
         ];
 
         // dd($user);
-        $redirect_url = env('APP_URL') ? env('APP_URL') : 'http://ezren.id';
+        $redirect_url = env('APP_URL') ? env('APP_URL') : 'https://ezren.id';
 
         $params = [
             'external_id' => 'ezren'.$phone.$id,
