@@ -1647,4 +1647,6 @@
   'Resi' => 'Resi',
   'You are logged in' => 'You are logged in',
   'Toggle navigation' => 'Toggle navigation',
+  'Order_kamu_dengan_nomor_100095_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100095 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100096_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100096 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
 );

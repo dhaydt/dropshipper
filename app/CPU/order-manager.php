@@ -289,7 +289,15 @@ class OrderManager
             $shipSelected = null;
         }
 
+        $order_amounts = CartManager::cart_grand_total($cart_group_id, $user_is) - $discount;
+
         $seller_data = Cart::where(['cart_group_id' => $cart_group_id])->first();
+        $ship_address = ShippingAddress::find($address_id);
+        $ship_cost = CartManager::get_shipping_cost($data['cart_group_id']);
+        $ship_method = CartShipping::where(['cart_group_id' => $cart_group_id])->first()->shipping_method_id;
+        $resik = CartShipping::where(['cart_group_id' => $cart_group_id])->first()->resi_kurir;
+        $inpoice = CartShipping::where(['cart_group_id' => $cart_group_id])->first()->invoice_kurir;
+
         $or = [
             'id' => $order_id,
             'verification_code' => rand(100000, 999999),
@@ -306,14 +314,14 @@ class OrderManager
             'discount_amount' => $discount,
             'discount_type' => $discount == 0 ? null : 'coupon_discount',
             'coupon_code' => $coupon_code,
-            'order_amount' => CartManager::cart_grand_total($cart_group_id, $user_is) - $discount,
+            'order_amount' => $order_amounts,
             'shipping_address' => $address_id,
-            'shipping_address_data' => ShippingAddress::find($address_id),
-            'shipping_cost' => CartManager::get_shipping_cost($data['cart_group_id']),
-            'shipping_method_id' => CartShipping::where(['cart_group_id' => $cart_group_id])->first()->shipping_method_id,
+            'shipping_address_data' => $ship_address,
+            'shipping_cost' => $ship_cost,
+            'shipping_method_id' => $ship_method,
             'shipping' => $shipSelected,
-            'resi_kurir' => CartShipping::where(['cart_group_id' => $cart_group_id])->first()->resi_kurir,
-            'invoice_kurir' => CartShipping::where(['cart_group_id' => $cart_group_id])->first()->invoice_kurir,
+            'resi_kurir' => $resik,
+            'invoice_kurir' => $inpoice,
             'created_at' => now(),
             'updated_at' => now(),
         ];
