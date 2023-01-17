@@ -57,7 +57,7 @@ class XenditPaymentController extends Controller
     ];
 
         $virtual = \Xendit\VirtualAccounts::create($params);
-        dd($virtual);
+        // dd($virtual);
 
         return view('web-views.finish-payment', compact('virtual'));
 
@@ -123,18 +123,19 @@ class XenditPaymentController extends Controller
         ];
 
         // dd($user);
+        $redirect_url = env('APP_URL') ? env('APP_URL') : 'http://ezren.id';
 
         $params = [
             'external_id' => 'ezren'.$phone.$id,
-            'amount' => $value,
+            'amount' => round($value, 0),
             'payer_email' => $email,
-            'description' => env('APP_NAME'),
+            'description' => env('APP_NAME') ? env('APP_NAME') : 'Ezren',
             'payment_methods' => [$type],
             'fixed_va' => true,
             'should_send_email' => true,
             'customer' => $user,
             // 'items' => $products,
-            'success_redirect_url' => env('APP_URL').'/xendit-payment/success/'.$type.'/'.$request->order_id,
+            'success_redirect_url' => $redirect_url.'/xendit-payment/success/'.$type.'/'.$request->order_id,
         ];
 
         // dd($params);

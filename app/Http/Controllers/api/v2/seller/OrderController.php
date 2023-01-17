@@ -124,7 +124,9 @@ class OrderController extends Controller
             $unique_id = $check['data']['id'].'-'.rand(000001, 999999).'-'.time();
             $order_ids = [];
             $group = Cart::where('cart_group_id', $request->cart_group_id)->get();
-            // dd($group);
+            if (count($group) < 1) {
+                return response()->json(['status' => 'fail', 'message' => 'cart_group_id not found']);
+            }
 
             foreach ($group as $group_id) {
                 $data = [

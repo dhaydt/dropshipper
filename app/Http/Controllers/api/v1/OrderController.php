@@ -48,20 +48,20 @@ class OrderController extends Controller
             array_push($order_ids, $order_id);
         }
 
-        $fcm_token = $request->user()->cm_firebase_token;
-        $value = 'Pesanan anda telah diterima, mohon lakukan pembayaran';
-        try {
-            if ($value) {
-                $data = [
-                    'title' => 'Order Berhasil',
-                    'description' => $value,
-                    'order_id' => $order_id,
-                    'image' => 'def.png',
-                ];
-                Helpers::send_push_notif_to_device($fcm_token, $data);
-            }
-        } catch (\Exception $e) {
-        }
+        // $fcm_token = $request->user()->cm_firebase_token;
+        // $value = 'Pesanan anda telah diterima, mohon lakukan pembayaran';
+        // try {
+        //     if ($value) {
+        //         $data = [
+        //             'title' => 'Order Berhasil',
+        //             'description' => $value,
+        //             'order_id' => $order_id,
+        //             'image' => 'def.png',
+        //         ];
+        //         Helpers::send_push_notif_to_device($fcm_token, $data);
+        //     }
+        // } catch (\Exception $e) {
+        // }
 
         CartManager::cart_clean($request);
 
