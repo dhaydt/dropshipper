@@ -160,7 +160,7 @@ class XenditPaymentController extends Controller
 
     public function success($type, $group)
     {
-        $order = Order::find($group);
+        $order = Order::with('details')->find($group);
 
         $order->order_status = 'processing';
         $order->payment_status = 'paid';
@@ -176,6 +176,14 @@ class XenditPaymentController extends Controller
             $user = Seller::where('id', $order->customer_id)->first();
         } else {
             $user = User::where('id', $order->customer_id)->first();
+
+            $check = str_contains(strtolower($order['shipping']), strtolower("jne"));
+
+            if($check){
+                $resi = Helpers::c_note($order);
+                dd($resi);
+            };
+            
         }
         if ($user) {
             if ($user->cm_firebase_token !== null) {

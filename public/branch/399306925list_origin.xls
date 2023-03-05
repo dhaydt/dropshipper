@@ -1,0 +1,1810 @@
+
+<table>
+	<tr>
+    	<td><strong>Origin code</strong></td><td><strong>Origin name</strong></td>
+    </tr>
+            <tr>
+        	<td>AMI10000</td><td>MATARAM</td>
+        </tr>
+            <tr>
+        	<td>AMI20100</td><td>BIMA</td>
+        </tr>
+            <tr>
+        	<td>AMI20200</td><td>DOMPU,KAB.DOMPU</td>
+        </tr>
+            <tr>
+        	<td>AMI20300</td><td>PRAYA,KAB.LOMBOK TENGAH</td>
+        </tr>
+            <tr>
+        	<td>AMI20400</td><td>SELONG,KAB.LOMBOK TIMUR</td>
+        </tr>
+            <tr>
+        	<td>AMI20500</td><td>SUMBAWA BESAR</td>
+        </tr>
+            <tr>
+        	<td>AMI20800</td><td>GERUNG, KAB.LOMBOK BARAT</td>
+        </tr>
+            <tr>
+        	<td>AMI20807</td><td>TANJUNG, GERUNG</td>
+        </tr>
+            <tr>
+        	<td>AMI20900</td><td>TALIWANG, KAB.SUMBAWA BARAT</td>
+        </tr>
+            <tr>
+        	<td>AMQ10000</td><td>AMBON</td>
+        </tr>
+            <tr>
+        	<td>AMQ20100</td><td>MASOHI,KAB.MALUKU TENGAH</td>
+        </tr>
+            <tr>
+        	<td>AMQ20101</td><td>BANDA,MASOHI</td>
+        </tr>
+            <tr>
+        	<td>AMQ20108</td><td>PULAU HARUKU,MASOHI</td>
+        </tr>
+            <tr>
+        	<td>AMQ20200</td><td>TUAL</td>
+        </tr>
+            <tr>
+        	<td>AMQ20300</td><td>NAMLEA,KAB.BURU</td>
+        </tr>
+            <tr>
+        	<td>AMQ20307</td><td>NAMROLE,BURU SEL.</td>
+        </tr>
+            <tr>
+        	<td>AMQ20400</td><td>DOBO, DOBO</td>
+        </tr>
+            <tr>
+        	<td>AMQ20600</td><td>PIRU, PIRU</td>
+        </tr>
+            <tr>
+        	<td>AMQ20700</td><td>DATARAN HUNIMOA</td>
+        </tr>
+            <tr>
+        	<td>AMQ20800</td><td>SAUMLAKI,KAB.MALUKU TENGGARA</td>
+        </tr>
+            <tr>
+        	<td>AMQ20900</td><td>MOA LAKOR,MALUKU BARAT DAYA</td>
+        </tr>
+            <tr>
+        	<td>BDJ10000</td><td>BANJARMASIN</td>
+        </tr>
+            <tr>
+        	<td>BDJ10100</td><td>BARABAI,KAB.HULU SUNGAI TNGH</td>
+        </tr>
+            <tr>
+        	<td>BDJ10200</td><td>KANDANGAN,KAB.HULU SUNGAI SLTN</td>
+        </tr>
+            <tr>
+        	<td>BDJ10300</td><td>KOTABARU,PULAULAUT</td>
+        </tr>
+            <tr>
+        	<td>BDJ10302</td><td>HAMPANG,KOTABARUPULAULAUT</td>
+        </tr>
+            <tr>
+        	<td>BDJ10323</td><td>KELUMPANG HILIR,KOTA BARU</td>
+        </tr>
+            <tr>
+        	<td>BDJ10400</td><td>TANJUNG,KAB.TABALONG</td>
+        </tr>
+            <tr>
+        	<td>BDJ10404</td><td>KELUA,TANJUNG</td>
+        </tr>
+            <tr>
+        	<td>BDJ10500</td><td>BANJARBARU</td>
+        </tr>
+            <tr>
+        	<td>BDJ20100</td><td>AMUNTAI</td>
+        </tr>
+            <tr>
+        	<td>BDJ20200</td><td>MARABAHAN,KAB.BARITO KUALA</td>
+        </tr>
+            <tr>
+        	<td>BDJ20202</td><td>ANJIR PASAR,MARABAHAN</td>
+        </tr>
+            <tr>
+        	<td>BDJ20300</td><td>MARTAPURA,KAB.BANJAR</td>
+        </tr>
+            <tr>
+        	<td>BDJ20303</td><td>GAMBUT,MARTAPURA</td>
+        </tr>
+            <tr>
+        	<td>BDJ20400</td><td>PELAIHARI, KAB.BANJARMASIN</td>
+        </tr>
+            <tr>
+        	<td>BDJ20401</td><td>BATI-BATI,PELAIHARI</td>
+        </tr>
+            <tr>
+        	<td>BDJ20402</td><td>JORONG,PELAIHARI</td>
+        </tr>
+            <tr>
+        	<td>BDJ20500</td><td>RANTAU</td>
+        </tr>
+            <tr>
+        	<td>BDJ20502</td><td>BINUANG,RANTAU</td>
+        </tr>
+            <tr>
+        	<td>BDJ20700</td><td>MUARATEWEH</td>
+        </tr>
+            <tr>
+        	<td>BDJ20800</td><td>TAMIANGLAYANG</td>
+        </tr>
+            <tr>
+        	<td>BDJ20803</td><td>DUSUN TENGAH,TAMIANGLAYANG</td>
+        </tr>
+            <tr>
+        	<td>BDJ20900</td><td>PURUK CAHU</td>
+        </tr>
+            <tr>
+        	<td>BDJ21100</td><td>BUNTOK</td>
+        </tr>
+            <tr>
+        	<td>BDJ21200</td><td>PARINGIN, KAB BALANGAN</td>
+        </tr>
+            <tr>
+        	<td>BDJ21300</td><td>BATULICIN, KAB TANAH BUMBU</td>
+        </tr>
+            <tr>
+        	<td>BDJ21301</td><td>KUSAN HILIR,BATULICIN</td>
+        </tr>
+            <tr>
+        	<td>BDJ21303</td><td>SATUI,BATULICIN</td>
+        </tr>
+            <tr>
+        	<td>BDJ21304</td><td>SUNGAI LOBAN,BATULICIN</td>
+        </tr>
+            <tr>
+        	<td>BDO10000</td><td>BANDUNG</td>
+        </tr>
+            <tr>
+        	<td>BDO10100</td><td>BANDUNG KAB, SOREANG</td>
+        </tr>
+            <tr>
+        	<td>BDO10129</td><td>RANCAEKEK,SOREANG</td>
+        </tr>
+            <tr>
+        	<td>BDO20200</td><td>SUMEDANG</td>
+        </tr>
+            <tr>
+        	<td>BDO20700</td><td>GARUT, KAB. GARUT</td>
+        </tr>
+            <tr>
+        	<td>BDO21000</td><td>BANDUNG BARAT KAB, NGAMPRAH</td>
+        </tr>
+            <tr>
+        	<td>BDO21200</td><td>CIANJUR, CIANJUR</td>
+        </tr>
+            <tr>
+        	<td>BDO21222</td><td>CIANJUR SELATAN, TANGGEUNG</td>
+        </tr>
+            <tr>
+        	<td>BKI10000</td><td>BEKASI</td>
+        </tr>
+            <tr>
+        	<td>BKS10000</td><td>BENGKULU</td>
+        </tr>
+            <tr>
+        	<td>BKS20100</td><td>ARGAMAKMUR, KAB.BENGKULU UTARA</td>
+        </tr>
+            <tr>
+        	<td>BKS20110</td><td>KETAHUN,ARGAMAKMUR</td>
+        </tr>
+            <tr>
+        	<td>BKS20116</td><td>PUTRI HIJAU,ARGAMAKMUR</td>
+        </tr>
+            <tr>
+        	<td>BKS20200</td><td>CURUP, KAB.REJANG LEBONG</td>
+        </tr>
+            <tr>
+        	<td>BKS20300</td><td>KOTA MANNA, KAB.BENGKULU SLTN</td>
+        </tr>
+            <tr>
+        	<td>BKS21100</td><td>KAUR,KAB.KAUR</td>
+        </tr>
+            <tr>
+        	<td>BKS21200</td><td>KEPAHIANG,KAB.KEPAHIANG</td>
+        </tr>
+            <tr>
+        	<td>BKS21300</td><td>LEBONG</td>
+        </tr>
+            <tr>
+        	<td>BKS21400</td><td>MUKO-MUKO,BENGKULU</td>
+        </tr>
+            <tr>
+        	<td>BKS23000</td><td>TAIS, KAB.SELUMA</td>
+        </tr>
+            <tr>
+        	<td>BOO10000</td><td>BOGOR</td>
+        </tr>
+            <tr>
+        	<td>BPN10000</td><td>BALIKPAPAN</td>
+        </tr>
+            <tr>
+        	<td>BPN10008</td><td>SAMBOJA, KUTAI KARTANEGARA</td>
+        </tr>
+            <tr>
+        	<td>BPN10014</td><td>MUARA JAWA/HANDIL,KUKAR</td>
+        </tr>
+            <tr>
+        	<td>BPN20100</td><td>TANAH GROGOT, KAB PASER</td>
+        </tr>
+            <tr>
+        	<td>BPN20101</td><td>BATU SOPANG,TANAH GROGOT</td>
+        </tr>
+            <tr>
+        	<td>BPN20200</td><td>TANJUNGREDEB, KAB.BERAU</td>
+        </tr>
+            <tr>
+        	<td>BPN20300</td><td>PENAJAM, PENAJAM PASER UTARA</td>
+        </tr>
+            <tr>
+        	<td>BTG10000</td><td>BONTANG</td>
+        </tr>
+            <tr>
+        	<td>BTG20100</td><td>SANGGATA, KUTAI TIMUR</td>
+        </tr>
+            <tr>
+        	<td>BTG20103</td><td>BENGALON , SANGATA</td>
+        </tr>
+            <tr>
+        	<td>BTG20112</td><td>MUARA WAHAU , SANGATA</td>
+        </tr>
+            <tr>
+        	<td>BTG20116</td><td>SANGKULIRANG , SANGATA</td>
+        </tr>
+            <tr>
+        	<td>BTH10000</td><td>BATAM</td>
+        </tr>
+            <tr>
+        	<td>BTH10200</td><td>DAIK</td>
+        </tr>
+            <tr>
+        	<td>BTH10204</td><td>SINGKEP, DAIK</td>
+        </tr>
+            <tr>
+        	<td>BTH10300</td><td>RANAI, KAB. NATUNA</td>
+        </tr>
+            <tr>
+        	<td>BTH10306</td><td>JEMAJA,KEP.ANAMBAS</td>
+        </tr>
+            <tr>
+        	<td>BTH10400</td><td>TANJUNG BALAI KARIMUN</td>
+        </tr>
+            <tr>
+        	<td>BTH10403</td><td>KUNDUR, KAB. KARIMUN</td>
+        </tr>
+            <tr>
+        	<td>BTJ10000</td><td>BANDAACEH</td>
+        </tr>
+            <tr>
+        	<td>BTJ10100</td><td>LANGSA</td>
+        </tr>
+            <tr>
+        	<td>BTJ10200</td><td>LHOKSEUMAWE</td>
+        </tr>
+            <tr>
+        	<td>BTJ20100</td><td>BIREUEN</td>
+        </tr>
+            <tr>
+        	<td>BTJ20200</td><td>KUTACANE</td>
+        </tr>
+            <tr>
+        	<td>BTJ20300</td><td>MEULABOH</td>
+        </tr>
+            <tr>
+        	<td>BTJ20400</td><td>SIGLI,KAB.PIDIE</td>
+        </tr>
+            <tr>
+        	<td>BTJ20500</td><td>TAKENGON</td>
+        </tr>
+            <tr>
+        	<td>BTJ20600</td><td>TAPAKTUAN,KAB.ACEH SELATAN</td>
+        </tr>
+            <tr>
+        	<td>BTJ20700</td><td>SABANG,KOTA SABANG</td>
+        </tr>
+            <tr>
+        	<td>BTJ21000</td><td>BLANGPIDIE</td>
+        </tr>
+            <tr>
+        	<td>BTJ21100</td><td>KRUENG SABEE/CALANG</td>
+        </tr>
+            <tr>
+        	<td>BTJ21300</td><td>KUALASIMPANG,KAB.ACEH TAMIANG</td>
+        </tr>
+            <tr>
+        	<td>BTJ21400</td><td>IDI RAYEUK,KAB.ACEH TIMUR</td>
+        </tr>
+            <tr>
+        	<td>BTJ21500</td><td>LHOKSUKON,KAB.ACEH UTARA</td>
+        </tr>
+            <tr>
+        	<td>BTJ21600</td><td>SIMPANG TIGA REDELON</td>
+        </tr>
+            <tr>
+        	<td>BTJ21700</td><td>BLANGKEJEREN,KAB.GAYOLUES</td>
+        </tr>
+            <tr>
+        	<td>BTJ21800</td><td>SUKA MAKMUE</td>
+        </tr>
+            <tr>
+        	<td>BTJ21900</td><td>MEUREUDU,KAB.PIDIE JAYA</td>
+        </tr>
+            <tr>
+        	<td>BTJ22100</td><td>SINABANG</td>
+        </tr>
+            <tr>
+        	<td>BTJ22200</td><td>SUBULUSSALAM</td>
+        </tr>
+            <tr>
+        	<td>BUX10000</td><td>GATEWAY, BANDUNG</td>
+        </tr>
+            <tr>
+        	<td>CBN10000</td><td>CIREBON</td>
+        </tr>
+            <tr>
+        	<td>CBN20100</td><td>INDRAMAYU</td>
+        </tr>
+            <tr>
+        	<td>CBN20200</td><td>KUNINGAN, KAB KUNINGAN</td>
+        </tr>
+            <tr>
+        	<td>CBN20300</td><td>MAJALENGKA</td>
+        </tr>
+            <tr>
+        	<td>CBN20420</td><td>KLANGENAN, SUMBER</td>
+        </tr>
+            <tr>
+        	<td>CBN20426</td><td>PABUARAN, SUMBER</td>
+        </tr>
+            <tr>
+        	<td>CGK10000</td><td>JAKARTA</td>
+        </tr>
+            <tr>
+        	<td>CGK10600</td><td>PULAU PRAMUKA</td>
+        </tr>
+            <tr>
+        	<td>CKR10000</td><td>CIKARANG,KAB.BEKASI</td>
+        </tr>
+            <tr>
+        	<td>CLG10000</td><td>CILEGON</td>
+        </tr>
+            <tr>
+        	<td>CLG20100</td><td>PANDEGLANG,KAB.PANDEGLANG</td>
+        </tr>
+            <tr>
+        	<td>CLG20200</td><td>RANGKASBITUNG</td>
+        </tr>
+            <tr>
+        	<td>CXP10000</td><td>CILACAP</td>
+        </tr>
+            <tr>
+        	<td>CXP10011</td><td>KESUGIHAN,CILACAP</td>
+        </tr>
+            <tr>
+        	<td>CXP10017</td><td>SIDAREJA,CILACAP</td>
+        </tr>
+            <tr>
+        	<td>CXP10021</td><td>CIMANGGU,CILACAP</td>
+        </tr>
+            <tr>
+        	<td>CXP10023</td><td>BANTASARI,CILACAP</td>
+        </tr>
+            <tr>
+        	<td>CXP20000</td><td>KROYA,CILACAP</td>
+        </tr>
+            <tr>
+        	<td>DJB10000</td><td>JAMBI</td>
+        </tr>
+            <tr>
+        	<td>DJB10100</td><td>KUALATUNGKAL</td>
+        </tr>
+            <tr>
+        	<td>DJB20100</td><td>BANGKO,KAB.MERANGIN</td>
+        </tr>
+            <tr>
+        	<td>DJB20200</td><td>MUARABULIAN,KAB.BATANG HARI</td>
+        </tr>
+            <tr>
+        	<td>DJB20204</td><td>MUARATEMBESI,MUARABULIAN</td>
+        </tr>
+            <tr>
+        	<td>DJB20300</td><td>MUARABUNGO,KAB.BUNGO</td>
+        </tr>
+            <tr>
+        	<td>DJB20400</td><td>SUNGAIPENUH,KAB.KERINCI</td>
+        </tr>
+            <tr>
+        	<td>DJB20403</td><td>DANAU KERINCI,SUNGAIPENUH</td>
+        </tr>
+            <tr>
+        	<td>DJB20607</td><td>SUNGAI BAHAR,SENGETI</td>
+        </tr>
+            <tr>
+        	<td>DJB20700</td><td>SAROLANGUN,KAB.SAROLANGUN</td>
+        </tr>
+            <tr>
+        	<td>DJB20704</td><td>PAUH,SAROLANGUN</td>
+        </tr>
+            <tr>
+        	<td>DJB20800</td><td>MUARA SABAK,KAB.TNJ JABUNG TMR</td>
+        </tr>
+            <tr>
+        	<td>DJB20900</td><td>MUARA TEBO</td>
+        </tr>
+            <tr>
+        	<td>DJB20901</td><td>RIMBO BUJANG,MUARA TEBO</td>
+        </tr>
+            <tr>
+        	<td>DJJ10000</td><td>JAYAPURA</td>
+        </tr>
+            <tr>
+        	<td>DJJ10015</td><td>SENTANI,JAYAPURA</td>
+        </tr>
+            <tr>
+        	<td>DJJ10026</td><td>NIMBOKRANG,JAYAPURA</td>
+        </tr>
+            <tr>
+        	<td>DJJ10031</td><td>MUARA TAM,JAYAPURA</td>
+        </tr>
+            <tr>
+        	<td>DJJ10036</td><td>YAPSI,JAYAPURA</td>
+        </tr>
+            <tr>
+        	<td>DJJ20100</td><td>BIAK</td>
+        </tr>
+            <tr>
+        	<td>DJJ20500</td><td>NABIRE,KAB.NABIRE</td>
+        </tr>
+            <tr>
+        	<td>DJJ20600</td><td>SERUI</td>
+        </tr>
+            <tr>
+        	<td>DJJ21001</td><td>ARSO,WARIS</td>
+        </tr>
+            <tr>
+        	<td>DPK10000</td><td>DEPOK</td>
+        </tr>
+            <tr>
+        	<td>DPS10000</td><td>DENPASAR</td>
+        </tr>
+            <tr>
+        	<td>DPS20108</td><td>KARANGASEM,AMLAPURA</td>
+        </tr>
+            <tr>
+        	<td>DPS20200</td><td>BANGLI,KAB.BANGLI</td>
+        </tr>
+            <tr>
+        	<td>DPS20300</td><td>GIANYAR</td>
+        </tr>
+            <tr>
+        	<td>DPS20400</td><td>NEGARA,KAB.JEMBRANA</td>
+        </tr>
+            <tr>
+        	<td>DPS20502</td><td>KLUNGKUNG,SEMARAPURA</td>
+        </tr>
+            <tr>
+        	<td>DPS20503</td><td>NUSAPENIDA,SEMARAPURA</td>
+        </tr>
+            <tr>
+        	<td>DPS20609</td><td>BULELENG,SINGARAJA</td>
+        </tr>
+            <tr>
+        	<td>DPS20700</td><td>TABANAN</td>
+        </tr>
+            <tr>
+        	<td>DPS21100</td><td>BADUNG KAB, MENGWI</td>
+        </tr>
+            <tr>
+        	<td>DTB10000</td><td>BALIGE, KAB.TOBA SAMOSIR</td>
+        </tr>
+            <tr>
+        	<td>DTB20100</td><td>GUNUNGSITOLI,GUNUNGSITOLI</td>
+        </tr>
+            <tr>
+        	<td>DTB20106</td><td>SIROMBU,NIAS BARAT</td>
+        </tr>
+            <tr>
+        	<td>DTB20200</td><td>TELUK DALAM,KAB.NIAS SELATAN</td>
+        </tr>
+            <tr>
+        	<td>DTB20300</td><td>LAHEWA,NIAS UTARA</td>
+        </tr>
+            <tr>
+        	<td>DTB20400</td><td>SIBOLGA,SIBOLGA</td>
+        </tr>
+            <tr>
+        	<td>DTB20500</td><td>PADANGSIDEMPUAN</td>
+        </tr>
+            <tr>
+        	<td>DTB20600</td><td>TARUTUNG, KAB.TAPANULI UTARA</td>
+        </tr>
+            <tr>
+        	<td>DTB20700</td><td>GUNUNG TUA,GUNUNG TUA</td>
+        </tr>
+            <tr>
+        	<td>DTB20800</td><td>DOLOKSANGGUL,KAB.HUMBANG</td>
+        </tr>
+            <tr>
+        	<td>DTB20900</td><td>PANYABUNGAN</td>
+        </tr>
+            <tr>
+        	<td>DTB21000</td><td>SIBUHUAN,SIBUHUAN</td>
+        </tr>
+            <tr>
+        	<td>DTB21100</td><td>SIPIROK</td>
+        </tr>
+            <tr>
+        	<td>DTB21200</td><td>BATANG TORU,TAPANULI SELATAN</td>
+        </tr>
+            <tr>
+        	<td>GTO10000</td><td>GORONTALO</td>
+        </tr>
+            <tr>
+        	<td>GTO20100</td><td>LIMBOTO,KAB.GORONTALO</td>
+        </tr>
+            <tr>
+        	<td>GTO20200</td><td>TILAMUTA,KAB.BOALEMO</td>
+        </tr>
+            <tr>
+        	<td>GTO20204</td><td>PAGUYAMAN,TILAMUTA</td>
+        </tr>
+            <tr>
+        	<td>GTO20302</td><td>KABILA,SUWAWA</td>
+        </tr>
+            <tr>
+        	<td>GTO20400</td><td>KWANDANG,KAB.GORONTALO UTARA</td>
+        </tr>
+            <tr>
+        	<td>GTO20500</td><td>MARISA,KAB.PAHUWATO</td>
+        </tr>
+            <tr>
+        	<td>GTO20504</td><td>POPAYATO,MARISA</td>
+        </tr>
+            <tr>
+        	<td>JBR10000</td><td>JEMBER</td>
+        </tr>
+            <tr>
+        	<td>JBR20100</td><td>BANYUWANGI, KAB BANYUWANGI</td>
+        </tr>
+            <tr>
+        	<td>JBR20200</td><td>BONDOWOSO, KAB BONDOWOSO</td>
+        </tr>
+            <tr>
+        	<td>JOG10000</td><td>YOGYAKARTA</td>
+        </tr>
+            <tr>
+        	<td>JOG20100</td><td>BANTUL,KAB.BANTUL</td>
+        </tr>
+            <tr>
+        	<td>JOG20400</td><td>WATES,KAB.KULON PROGO</td>
+        </tr>
+            <tr>
+        	<td>JOG20500</td><td>WONOSARI,KAB.GN.KIDUL</td>
+        </tr>
+            <tr>
+        	<td>KDI10000</td><td>KENDARI</td>
+        </tr>
+            <tr>
+        	<td>KDI20100</td><td>BAU-BAU</td>
+        </tr>
+            <tr>
+        	<td>KDI20200</td><td>KOLAKA,KAB.KOLAKA</td>
+        </tr>
+            <tr>
+        	<td>KDI20209</td><td>TIRAWUTA,KOLAKA TIMUR</td>
+        </tr>
+            <tr>
+        	<td>KDI20300</td><td>RAHA,KAB.MUNA</td>
+        </tr>
+            <tr>
+        	<td>KDI20306</td><td>KULISUSU,RAHA</td>
+        </tr>
+            <tr>
+        	<td>KDI20400</td><td>UNAAHA,KAB.KONAWE</td>
+        </tr>
+            <tr>
+        	<td>KDI20500</td><td>RUMBIA,KAB.BOMBANA</td>
+        </tr>
+            <tr>
+        	<td>KDI20600</td><td>PASAR WAJO,KAB.BUTON</td>
+        </tr>
+            <tr>
+        	<td>KDI20601</td><td>BATAUGA, BUTON SELATAN</td>
+        </tr>
+            <tr>
+        	<td>KDI20603</td><td>GU,BUTON TENGAH</td>
+        </tr>
+            <tr>
+        	<td>KDI20700</td><td>LASUSUA,KAB.KOLAKA UTARA</td>
+        </tr>
+            <tr>
+        	<td>KDI20800</td><td>WANGGODO/ANDOLO,KAB.KONAWE</td>
+        </tr>
+            <tr>
+        	<td>KOE10000</td><td>KUPANG</td>
+        </tr>
+            <tr>
+        	<td>KOE10104</td><td>KATIKUTANA,WAIBAKUL</td>
+        </tr>
+            <tr>
+        	<td>KOE20100</td><td>ATAMBUA,KAB.BELU</td>
+        </tr>
+            <tr>
+        	<td>KOE20101</td><td>KOBALIMA,BETUN</td>
+        </tr>
+            <tr>
+        	<td>KOE20104</td><td>MALAKA TENGAH,ATAMBUA</td>
+        </tr>
+            <tr>
+        	<td>KOE20200</td><td>KALABAHI</td>
+        </tr>
+            <tr>
+        	<td>KOE20300</td><td>KEFAMENANU,KAB.TIMOR TGH UTARA</td>
+        </tr>
+            <tr>
+        	<td>KOE20400</td><td>LARANTUKA,KAB.FLORES TIMUR</td>
+        </tr>
+            <tr>
+        	<td>KOE20500</td><td>MAUMERE,KAB.SIKKA</td>
+        </tr>
+            <tr>
+        	<td>KOE20600</td><td>LANGKE REMBONG,RUTENG</td>
+        </tr>
+            <tr>
+        	<td>KOE20700</td><td>SOE,KAB.TIMOR TENGAH SELATAN</td>
+        </tr>
+            <tr>
+        	<td>KOE20800</td><td>ENDE,KAB.ENDE</td>
+        </tr>
+            <tr>
+        	<td>KOE20900</td><td>BAJAWA,KAB.NGADA</td>
+        </tr>
+            <tr>
+        	<td>KOE21000</td><td>WAINGAPU,KAB.SUMBA TIMUR</td>
+        </tr>
+            <tr>
+        	<td>KOE21100</td><td>WAIKABUBAK</td>
+        </tr>
+            <tr>
+        	<td>KOE21200</td><td>LABUAN BAJO, LABUAN BAJO</td>
+        </tr>
+            <tr>
+        	<td>KOE21300</td><td>BORONG,KAB.MANGGARAI TIMUR</td>
+        </tr>
+            <tr>
+        	<td>KOE21400</td><td>MBAY,KAB.NAGEKEO</td>
+        </tr>
+            <tr>
+        	<td>KOE21500</td><td>BAA, BAA</td>
+        </tr>
+            <tr>
+        	<td>KOE21600</td><td>TAMBOLAKA, TAMBOLAKA</td>
+        </tr>
+            <tr>
+        	<td>KOE21800</td><td>LEWOLEBA, LEMBATA</td>
+        </tr>
+            <tr>
+        	<td>KOE21900</td><td>OELAMASI,KAB.OELAMASI</td>
+        </tr>
+            <tr>
+        	<td>KOE21920</td><td>SABU LIAE,OELAMASI</td>
+        </tr>
+            <tr>
+        	<td>KRW10000</td><td>KARAWANG</td>
+        </tr>
+            <tr>
+        	<td>KRW10003</td><td>CIKAMPEK,KARAWANG</td>
+        </tr>
+            <tr>
+        	<td>KRW10012</td><td>RENGASDENGKLOK,KARAWANG</td>
+        </tr>
+            <tr>
+        	<td>MDC20100</td><td>KOTAMOBAGU,KOTAMOBAGU</td>
+        </tr>
+            <tr>
+        	<td>MDC20200</td><td>TAHUNA,KEP.SANGIHE</td>
+        </tr>
+            <tr>
+        	<td>MDC20300</td><td>TONDANO,KAB.MINAHASA</td>
+        </tr>
+            <tr>
+        	<td>MDC20700</td><td>MELONGUANE</td>
+        </tr>
+            <tr>
+        	<td>MDC20800</td><td>AIRMADIDI,KAB.MINAHASA UTARA</td>
+        </tr>
+            <tr>
+        	<td>MDC20900</td><td>AMURANG, MINAHASA SELATAN</td>
+        </tr>
+            <tr>
+        	<td>MDC21000</td><td>RATAHAN,KAB.MINAHASA TENGGARA</td>
+        </tr>
+            <tr>
+        	<td>MDC21100</td><td>TOMOHON</td>
+        </tr>
+            <tr>
+        	<td>MDC21500</td><td>SIAU BARAT UTR,KP SIAU T BIARO</td>
+        </tr>
+            <tr>
+        	<td>MDN10000</td><td>MADIUN</td>
+        </tr>
+            <tr>
+        	<td>MDN10100</td><td>CARUBAN,KAB.MADIUN</td>
+        </tr>
+            <tr>
+        	<td>MDN20100</td><td>MAGETAN, KAB MAGETAN</td>
+        </tr>
+            <tr>
+        	<td>MDN20200</td><td>NGAWI, KAB NGAWI</td>
+        </tr>
+            <tr>
+        	<td>MDN20300</td><td>PACITAN, KAB PACITAN</td>
+        </tr>
+            <tr>
+        	<td>MDN20400</td><td>PONOROGO, KAB PONOROGO</td>
+        </tr>
+            <tr>
+        	<td>MES10000</td><td>MEDAN</td>
+        </tr>
+            <tr>
+        	<td>MES10100</td><td>KISARAN, KAB.ASAHAN</td>
+        </tr>
+            <tr>
+        	<td>MES10300</td><td>SIDIKALANG, KAB.DAIRI</td>
+        </tr>
+            <tr>
+        	<td>MES10600</td><td>LUBUK PAKAM,KAB.DELI SERDANG</td>
+        </tr>
+            <tr>
+        	<td>MES10606</td><td>PANCUR BATU,LUBUK PAKAM</td>
+        </tr>
+            <tr>
+        	<td>MES20200</td><td>BINJAI, KOTA BINJAI</td>
+        </tr>
+            <tr>
+        	<td>MES20601</td><td>BANDAR,SIMALUNGUN</td>
+        </tr>
+            <tr>
+        	<td>MES20700</td><td>RANTAUPRAPAT, KAB.LABUHAN BATU</td>
+        </tr>
+            <tr>
+        	<td>MES20704</td><td>KOTAPINANG, LABUHAN BATU SLTN</td>
+        </tr>
+            <tr>
+        	<td>MES20713</td><td>AEK KUO,LABUHANBATU</td>
+        </tr>
+            <tr>
+        	<td>MES20800</td><td>KABANJAHE, KAB.KARO</td>
+        </tr>
+            <tr>
+        	<td>MES20900</td><td>STABAT, KAB.LANGKAT</td>
+        </tr>
+            <tr>
+        	<td>MES20915</td><td>BINJAI,LANGKAT</td>
+        </tr>
+            <tr>
+        	<td>MES21100</td><td>TEBINGTINGGI</td>
+        </tr>
+            <tr>
+        	<td>MES21508</td><td>SEI SUKA,LIMAPULUH</td>
+        </tr>
+            <tr>
+        	<td>MES22100</td><td>SALAK,KAB.PAKPAK BARAT</td>
+        </tr>
+            <tr>
+        	<td>MES22200</td><td>PANGURURAN,KAB.SAMOSIR</td>
+        </tr>
+            <tr>
+        	<td>MES22300</td><td>SEI RAMPAH,KAB.SERDANG BEDAGAI</td>
+        </tr>
+            <tr>
+        	<td>MES22500</td><td>TANJUNG BALAI</td>
+        </tr>
+            <tr>
+        	<td>MES22600</td><td>PEMATANGSIANTAR</td>
+        </tr>
+            <tr>
+        	<td>MGL10000</td><td>MAGELANG</td>
+        </tr>
+            <tr>
+        	<td>MGL10100</td><td>KEBUMEN</td>
+        </tr>
+            <tr>
+        	<td>MGL10200</td><td>WONOSOBO</td>
+        </tr>
+            <tr>
+        	<td>MGL10300</td><td>PURWOREJO,KAB.PURWOREJO</td>
+        </tr>
+            <tr>
+        	<td>MGL10400</td><td>TEMANGGUNG,KAB.TEMANGGUNG</td>
+        </tr>
+            <tr>
+        	<td>MJK10000</td><td>MOJOKERTO</td>
+        </tr>
+            <tr>
+        	<td>MJK10100</td><td>JOMBANG,KAB. JOMBANG</td>
+        </tr>
+            <tr>
+        	<td>MJK10200</td><td>NGANJUK,KAB. NGANJUK</td>
+        </tr>
+            <tr>
+        	<td>MKQ10000</td><td>MERAUKE,MERAUKE</td>
+        </tr>
+            <tr>
+        	<td>MKQ20100</td><td>TANAH MERAH,BOVEN DIGOEL
+</td>
+        </tr>
+            <tr>
+        	<td>MKQ20101</td><td>JAIR,BOVEN DIGOEL </td>
+        </tr>
+            <tr>
+        	<td>MKQ20200</td><td>KEPI,MAPPI</td>
+        </tr>
+            <tr>
+        	<td>MKQ20300</td><td>AGATS,ASMAT </td>
+        </tr>
+            <tr>
+        	<td>MXG10000</td><td>MALANG</td>
+        </tr>
+            <tr>
+        	<td>MXG20100</td><td>BLITAR</td>
+        </tr>
+            <tr>
+        	<td>MXG20200</td><td>BATU</td>
+        </tr>
+            <tr>
+        	<td>MXG20300</td><td>KEPANJEN,KAB. MALANG</td>
+        </tr>
+            <tr>
+        	<td>MXG20303</td><td>BULULAWANG, KAB.MALANG</td>
+        </tr>
+            <tr>
+        	<td>MXG20323</td><td>TUREN, KABUPATEN MALANG</td>
+        </tr>
+            <tr>
+        	<td>PBL10000</td><td>PROBOLINGGO</td>
+        </tr>
+            <tr>
+        	<td>PBL20100</td><td>LUMAJANG,KAB.LUMAJANG</td>
+        </tr>
+            <tr>
+        	<td>PBL20200</td><td>SITUBONDO,KAB.SITUBONDO</td>
+        </tr>
+            <tr>
+        	<td>PDG10000</td><td>PADANG</td>
+        </tr>
+            <tr>
+        	<td>PDG20100</td><td>BATUSANGKAR</td>
+        </tr>
+            <tr>
+        	<td>PDG20200</td><td>BUKITTINGGI</td>
+        </tr>
+            <tr>
+        	<td>PDG20300</td><td>LUBUKSIKAPING,KAB,PASAMAN</td>
+        </tr>
+            <tr>
+        	<td>PDG20500</td><td>PAINAN,KAB.PESISIR SELATAN</td>
+        </tr>
+            <tr>
+        	<td>PDG20600</td><td>PARIAMAN,KAB.PADANG PARIAMAN</td>
+        </tr>
+            <tr>
+        	<td>PDG20700</td><td>PAYAKUMBUH</td>
+        </tr>
+            <tr>
+        	<td>PDG20800</td><td>SAWAHLUNTO</td>
+        </tr>
+            <tr>
+        	<td>PDG20900</td><td>SOLOK</td>
+        </tr>
+            <tr>
+        	<td>PDG21100</td><td>PADANGPANJANG</td>
+        </tr>
+            <tr>
+        	<td>PDG21200</td><td>PULAU PUNJUNG,KAB.DHARMASRAYA</td>
+        </tr>
+            <tr>
+        	<td>PDG21400</td><td>TUAPEJAT</td>
+        </tr>
+            <tr>
+        	<td>PDG21403</td><td>SIBERUT SELATAN,TUAPEJAT</td>
+        </tr>
+            <tr>
+        	<td>PDG21500</td><td>SIMPANG EMPAT</td>
+        </tr>
+            <tr>
+        	<td>PDG21503</td><td>LEMBAH MELINTANG,SIMPANG EMPAT</td>
+        </tr>
+            <tr>
+        	<td>PDG21710</td><td>LEMBAH GUMANTI,AROSUKA</td>
+        </tr>
+            <tr>
+        	<td>PDG21800</td><td>PADANG ARO</td>
+        </tr>
+            <tr>
+        	<td>PDG21900</td><td>MUARA,KAB.SIJUNJUNG</td>
+        </tr>
+            <tr>
+        	<td>PDG22200</td><td>LUBUK BASUNG,KAB.AGAM</td>
+        </tr>
+            <tr>
+        	<td>PGK10000</td><td>PANGKALPINANG</td>
+        </tr>
+            <tr>
+        	<td>PGK10200</td><td>SUNGAI LIAT,BANGKA</td>
+        </tr>
+            <tr>
+        	<td>PGK10201</td><td>BELINYU,BANGKA</td>
+        </tr>
+            <tr>
+        	<td>PGK10206</td><td>MERAWANG,BANGKA</td>
+        </tr>
+            <tr>
+        	<td>PGK10300</td><td>KELAPA,BANGKA BARAT</td>
+        </tr>
+            <tr>
+        	<td>PGK10301</td><td>MENTOK (MUNTOK),BANGKA BARAT</td>
+        </tr>
+            <tr>
+        	<td>PGK10302</td><td>TEMPILANG,BANGKA BARAT</td>
+        </tr>
+            <tr>
+        	<td>PGK10304</td><td>JEBUS,BANGKA BARAT</td>
+        </tr>
+            <tr>
+        	<td>PGK10305</td><td>PARITTIGA,BANGKA BARAT</td>
+        </tr>
+            <tr>
+        	<td>PGK10400</td><td>KOBA,BANGKA TENGAH</td>
+        </tr>
+            <tr>
+        	<td>PGK10401</td><td>SUNGAI SELAN,BANGKA TENGAH</td>
+        </tr>
+            <tr>
+        	<td>PGK10402</td><td>SIMPANG KATIS,BANGKA TENGAH</td>
+        </tr>
+            <tr>
+        	<td>PGK10405</td><td>LUBUK BESAR,BANGKA TENGAH</td>
+        </tr>
+            <tr>
+        	<td>PGK10500</td><td>TOBOALI,BANGKA SELATAN</td>
+        </tr>
+            <tr>
+        	<td>PGK10502</td><td>PAYUNG,BANGKA SELATAN</td>
+        </tr>
+            <tr>
+        	<td>PGK10504</td><td>SIMPANG RIMBA,BANGKA SELATAN</td>
+        </tr>
+            <tr>
+        	<td>PGK10505</td><td>PULAU BESAR,BANGKA SELATAN</td>
+        </tr>
+            <tr>
+        	<td>PKU10000</td><td>PEKANBARU</td>
+        </tr>
+            <tr>
+        	<td>PKU10100</td><td>DUMAI, KOTA DUMAI</td>
+        </tr>
+            <tr>
+        	<td>PKU20100</td><td>BANGKINANG, KAB KAMPAR</td>
+        </tr>
+            <tr>
+        	<td>PKU20101</td><td>KAMPAR,BANGKINANG</td>
+        </tr>
+            <tr>
+        	<td>PKU20112</td><td>BANGKINANG BARAT,BANGKINANG</td>
+        </tr>
+            <tr>
+        	<td>PKU20113</td><td>BANGKINANG SEBERANG</td>
+        </tr>
+            <tr>
+        	<td>PKU20114</td><td>GUNUNG SAHILAN, BANGKINANG</td>
+        </tr>
+            <tr>
+        	<td>PKU20119</td><td>PERHENTIAN RAJA, BANGKINANG</td>
+        </tr>
+            <tr>
+        	<td>PKU20123</td><td>TAPUNG, BANGKINANG</td>
+        </tr>
+            <tr>
+        	<td>PKU20124</td><td>TAPUNG HILIR, BANGKINANG</td>
+        </tr>
+            <tr>
+        	<td>PKU20200</td><td>BENGKALIS, KAB BENGKALIS</td>
+        </tr>
+            <tr>
+        	<td>PKU20217</td><td>DURI-MANDAU,BENGKALIS</td>
+        </tr>
+            <tr>
+        	<td>PKU20300</td><td>RENGAT, KAB INDRAGIRI HULU</td>
+        </tr>
+            <tr>
+        	<td>PKU20305</td><td>PASIR PENYU,RENGAT</td>
+        </tr>
+            <tr>
+        	<td>PKU20307</td><td>SIBERIDA,RENGAT</td>
+        </tr>
+            <tr>
+        	<td>PKU20400</td><td>TEMBILAHAN, INDRAGIRI HILIR</td>
+        </tr>
+            <tr>
+        	<td>PKU20412</td><td>KEMUNING, TEMBILAHAN</td>
+        </tr>
+            <tr>
+        	<td>PKU20414</td><td>PULAU BURUNG, TEMBILAHAN</td>
+        </tr>
+            <tr>
+        	<td>PKU20500</td><td>BAGANSIAPIAPI, KAB ROKAN HILIR</td>
+        </tr>
+            <tr>
+        	<td>PKU20506</td><td>TANAH PUTIH, KAB ROKAN HILIR</td>
+        </tr>
+            <tr>
+        	<td>PKU20507</td><td>BAGAN SINEMBAH, ROKAN</td>
+        </tr>
+            <tr>
+        	<td>PKU20509</td><td>BANGKO PUSAKO, KAB ROKAN HILIR</td>
+        </tr>
+            <tr>
+        	<td>PKU20900</td><td>TELUK KUANTAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21000</td><td>PANGKALAN KERINCI,PALALAWAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21009</td><td>UKUI,KAB.PALALAWAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21011</td><td>SOREK, KAB PELALAWAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21012</td><td>BANDAR SEI KIJANG,PELALAWAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21100</td><td>PASIR PANGARAIAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21104</td><td>KUNTODARUSSALAM,P.PANGARAIAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21109</td><td>TANDUN,PASIR PANGARAIAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21112</td><td>UJUNGBATU,PASIR PANGARAIAN</td>
+        </tr>
+            <tr>
+        	<td>PKU21113</td><td>TAMBUSAI UTARA,ROKAN HULU</td>
+        </tr>
+            <tr>
+        	<td>PKU21115</td><td>PENDALIAN V KOTO,ROKAN HULU</td>
+        </tr>
+            <tr>
+        	<td>PKU21204</td><td>KANDIS,SIAKSRIINDAPURA</td>
+        </tr>
+            <tr>
+        	<td>PKU21206</td><td>KOTO GASIP,SIAKSRIINDAPURA</td>
+        </tr>
+            <tr>
+        	<td>PKU21208</td><td>MINAS,SIAKSRIINDAPURA</td>
+        </tr>
+            <tr>
+        	<td>PKU21209</td><td>SIAK</td>
+        </tr>
+            <tr>
+        	<td>PKU21212</td><td>TUALANG,SIAKSRIINDAPURA</td>
+        </tr>
+            <tr>
+        	<td>PKU21301</td><td>SELAT PANJANG, KAB MERANTI</td>
+        </tr>
+            <tr>
+        	<td>PKY10000</td><td>PALANGKARAYA</td>
+        </tr>
+            <tr>
+        	<td>PKY20200</td><td>KASONGAN,KAB.KATINGAN</td>
+        </tr>
+            <tr>
+        	<td>PKY20300</td><td>KUALAKAPUAS</td>
+        </tr>
+            <tr>
+        	<td>PKY20400</td><td>KURUN,KAB.GUNUNG MAS</td>
+        </tr>
+            <tr>
+        	<td>PKY20500</td><td>KUALA PEMBUANG</td>
+        </tr>
+            <tr>
+        	<td>PKY20700</td><td>PANGKALANBUN</td>
+        </tr>
+            <tr>
+        	<td>PKY20800</td><td>SAMPIT</td>
+        </tr>
+            <tr>
+        	<td>PKY20806</td><td>PARENGGEAN,SAMPIT</td>
+        </tr>
+            <tr>
+        	<td>PKY21300</td><td>SUKAMARA,KAB.SUKAMARA</td>
+        </tr>
+            <tr>
+        	<td>PLM10000</td><td>PALEMBANG</td>
+        </tr>
+            <tr>
+        	<td>PLM10300</td><td>MUARA BELITI BARU, MUSI RAWAS</td>
+        </tr>
+            <tr>
+        	<td>PLM20100</td><td>BATURAJA</td>
+        </tr>
+            <tr>
+        	<td>PLM20200</td><td>KAYUAGUNG,KAB.OGAN KOMERING</td>
+        </tr>
+            <tr>
+        	<td>PLM20300</td><td>LAHAT,KAB.LAHAT</td>
+        </tr>
+            <tr>
+        	<td>PLM20500</td><td>MUARAENIM,KAB.MUARAENIM</td>
+        </tr>
+            <tr>
+        	<td>PLM20508</td><td>LAWANG KIDUL - TJ.ENIM,MR ENIM</td>
+        </tr>
+            <tr>
+        	<td>PLM20517</td><td>TALANG UBI,MUARA ENIM</td>
+        </tr>
+            <tr>
+        	<td>PLM20600</td><td>PAGARALAM</td>
+        </tr>
+            <tr>
+        	<td>PLM20700</td><td>PRABUMULIH</td>
+        </tr>
+            <tr>
+        	<td>PLM20800</td><td>SEKAYU,KAB.MUSI BANYUASIN</td>
+        </tr>
+            <tr>
+        	<td>PLM20806</td><td>SUNGAI LILIN,SEKAYU</td>
+        </tr>
+            <tr>
+        	<td>PLM21000</td><td>PANGKALANBALAI,KAB.BANYUASIN</td>
+        </tr>
+            <tr>
+        	<td>PLM21001</td><td>BANYUASIN I,PANGKALANBALAI</td>
+        </tr>
+            <tr>
+        	<td>PLM21005</td><td>BETUNG,PANGKALANBALAI</td>
+        </tr>
+            <tr>
+        	<td>PLM21011</td><td>TALANGKELAPA,PANGKALANBALAI</td>
+        </tr>
+            <tr>
+        	<td>PLM21100</td><td>TEBING TINGGI,KAB.EMPAT LAWANG</td>
+        </tr>
+            <tr>
+        	<td>PLM21300</td><td>INDRALAYA,KAB.OGAN ILIR</td>
+        </tr>
+            <tr>
+        	<td>PLM21400</td><td>MARTAPURA,KAB.OGAN KOMERING</td>
+        </tr>
+            <tr>
+        	<td>PLM21401</td><td>BELITANG, MARTAPURA</td>
+        </tr>
+            <tr>
+        	<td>PLM21500</td><td>MUARADUA,KAB.OGAN KOMERING ULU</td>
+        </tr>
+            <tr>
+        	<td>PLM21600</td><td>LUBUK LINGGAU</td>
+        </tr>
+            <tr>
+        	<td>PLW10000</td><td>PALU</td>
+        </tr>
+            <tr>
+        	<td>PLW20100</td><td>LUWUK,KAB.BANGGAI</td>
+        </tr>
+            <tr>
+        	<td>PLW20103</td><td>BATUI,LUWUK</td>
+        </tr>
+            <tr>
+        	<td>PLW20117</td><td>TOILI,LUWUK</td>
+        </tr>
+            <tr>
+        	<td>PLW20200</td><td>POSO</td>
+        </tr>
+            <tr>
+        	<td>PLW20212</td><td>PAMONA SELATAN,POSO</td>
+        </tr>
+            <tr>
+        	<td>PLW20300</td><td>TOLITOLI,KAB.TOLITOLI</td>
+        </tr>
+            <tr>
+        	<td>PLW20500</td><td>BANGGAI,KAB.BANGGAI KEP.</td>
+        </tr>
+            <tr>
+        	<td>PLW20600</td><td>BUOL, KAB. BUOL</td>
+        </tr>
+            <tr>
+        	<td>PLW20700</td><td>BANAWA,KAB.DONGGALA</td>
+        </tr>
+            <tr>
+        	<td>PLW20709</td><td>SIGI BIROMARU</td>
+        </tr>
+            <tr>
+        	<td>PLW20800</td><td>BUNGKU, KAB. MOROWALI</td>
+        </tr>
+            <tr>
+        	<td>PLW20900</td><td>PARIGI,KAB.PARIGI MOUTONG</td>
+        </tr>
+            <tr>
+        	<td>PLW21000</td><td>AMPANA KOTA,AMPANA</td>
+        </tr>
+            <tr>
+        	<td>PNK10000</td><td>PONTIANAK</td>
+        </tr>
+            <tr>
+        	<td>PNK10100</td><td>KETAPANG, KAB.KETAPANG</td>
+        </tr>
+            <tr>
+        	<td>PNK10105</td><td>NANGA TAYAP,KETAPANG</td>
+        </tr>
+            <tr>
+        	<td>PNK10200</td><td>SANGGAU, KAB SANGGAU</td>
+        </tr>
+            <tr>
+        	<td>PNK10214</td><td>SEKAYAM BK,SANGGAU</td>
+        </tr>
+            <tr>
+        	<td>PNK10223</td><td>ENTIKONG, SANGGAU</td>
+        </tr>
+            <tr>
+        	<td>PNK10300</td><td>SINGKAWANG</td>
+        </tr>
+            <tr>
+        	<td>PNK10400</td><td>SINTANG,KAB.SINTANG</td>
+        </tr>
+            <tr>
+        	<td>PNK20200</td><td>PUTUSSIBAU, KAB.KAPUAS HULU</td>
+        </tr>
+            <tr>
+        	<td>PNK20600</td><td>BENGKAYANG, KAB BENGKAYANG</td>
+        </tr>
+            <tr>
+        	<td>PNK20700</td><td>NGABANG, KAB LANDAK</td>
+        </tr>
+            <tr>
+        	<td>PNK20800</td><td>NANGA PINOH, KAB MELAWI</td>
+        </tr>
+            <tr>
+        	<td>PNK20900</td><td>MEMPAWAH,KAB MEMPAWAH</td>
+        </tr>
+            <tr>
+        	<td>PNK21000</td><td>SAMBAS, KAB SAMBAS</td>
+        </tr>
+            <tr>
+        	<td>PNK21100</td><td>SEKADAU HILIR, KAB SEKADAU</td>
+        </tr>
+            <tr>
+        	<td>PSR10000</td><td>PASURUAN, PASURUAN</td>
+        </tr>
+            <tr>
+        	<td>PWT10000</td><td>PURWAKARTA,KAB.PURWAKARTA</td>
+        </tr>
+            <tr>
+        	<td>PWT20000</td><td>SUBANG,KAB.SUBANG</td>
+        </tr>
+            <tr>
+        	<td>SMD10007</td><td>PALARAN</td>
+        </tr>
+            <tr>
+        	<td>SMD20100</td><td>TENGGARONG,KAB.KUTAI</td>
+        </tr>
+            <tr>
+        	<td>SMD20108</td><td>KOTA BANGUN,TENGGARONG</td>
+        </tr>
+            <tr>
+        	<td>SMD20123</td><td>SEBULU,TENGGARONG</td>
+        </tr>
+            <tr>
+        	<td>SMD20127</td><td>MUARA BADAK</td>
+        </tr>
+            <tr>
+        	<td>SMD20128</td><td>SANGA-SANGA</td>
+        </tr>
+            <tr>
+        	<td>SMD20133</td><td>ANGGANA,TENGGARONG</td>
+        </tr>
+            <tr>
+        	<td>SMD20210</td><td>MELAK, SENDAWAR</td>
+        </tr>
+            <tr>
+        	<td>SMI10000</td><td>SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10005</td><td>CIBADAK,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10007</td><td>CICURUG,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10014</td><td>CIKEMBAR,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10023</td><td>JAMPANG KULON,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10024</td><td>JAMPANG TENGAH,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10034</td><td>PARUNGKUDA,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10036</td><td>PELABUHANRATU,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10038</td><td>SAGARANTEN,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SMI10042</td><td>SUKARAJA,SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>SOC10000</td><td>SOLO</td>
+        </tr>
+            <tr>
+        	<td>SOC20100</td><td>BOYOLALI,KAB.BOYOLALI</td>
+        </tr>
+            <tr>
+        	<td>SOC20200</td><td>KARANGANYAR,KAB.KARANGANYAR</td>
+        </tr>
+            <tr>
+        	<td>SOC20300</td><td>KLATEN</td>
+        </tr>
+            <tr>
+        	<td>SOC20400</td><td>SRAGEN</td>
+        </tr>
+            <tr>
+        	<td>SOC20500</td><td>SUKOHARJO</td>
+        </tr>
+            <tr>
+        	<td>SOC20600</td><td>WONOGIRI,KAB.WONOGIRI</td>
+        </tr>
+            <tr>
+        	<td>SOQ10000</td><td>SORONG</td>
+        </tr>
+            <tr>
+        	<td>SOQ10010</td><td>SAUSAPOR,SORONG</td>
+        </tr>
+            <tr>
+        	<td>SOQ10019</td><td>AIMAS,SORONG</td>
+        </tr>
+            <tr>
+        	<td>SOQ20000</td><td>FAK-FAK</td>
+        </tr>
+            <tr>
+        	<td>SOQ20100</td><td>KAIMANA</td>
+        </tr>
+            <tr>
+        	<td>SOQ20300</td><td>WAISAI,KAB.RAJA AMPAT</td>
+        </tr>
+            <tr>
+        	<td>SOQ20400</td><td>TEMINABUAN,KAB.SORONG SELATAN</td>
+        </tr>
+            <tr>
+        	<td>SOQ20404</td><td>AYAMARU,TEMINABUAN</td>
+        </tr>
+            <tr>
+        	<td>SOQ20500</td><td>BINTUNI,KAB. TELUK BINTUNI</td>
+        </tr>
+            <tr>
+        	<td>SOQ20603</td><td>WASIOR,RASEI</td>
+        </tr>
+            <tr>
+        	<td>SOQ20608</td><td>MANOKWARI</td>
+        </tr>
+            <tr>
+        	<td>SOQ20612</td><td>ORANSBARI, MANOKWARI</td>
+        </tr>
+            <tr>
+        	<td>SOQ20613</td><td>RANSIKI, MANOKWARI</td>
+        </tr>
+            <tr>
+        	<td>SOQ20617</td><td>PRAFI, MANOKWARI</td>
+        </tr>
+            <tr>
+        	<td>SRG10000</td><td>SEMARANG</td>
+        </tr>
+            <tr>
+        	<td>SRG10100</td><td>JEPARA,KAB.JEPARA</td>
+        </tr>
+            <tr>
+        	<td>SRG10200</td><td>KUDUS,KAB.KUDUS</td>
+        </tr>
+            <tr>
+        	<td>SRG10300</td><td>PEKALONGAN</td>
+        </tr>
+            <tr>
+        	<td>SRG20200</td><td>BATANG ,KAB BATANG</td>
+        </tr>
+            <tr>
+        	<td>SRG20300</td><td>BLORA,KAB.BLORA</td>
+        </tr>
+            <tr>
+        	<td>SRG20309</td><td>CEPU,BLORA</td>
+        </tr>
+            <tr>
+        	<td>SRG20400</td><td>BOJONEGORO,KAB.BOJONEGORO</td>
+        </tr>
+            <tr>
+        	<td>SRG20700</td><td>DEMAK</td>
+        </tr>
+            <tr>
+        	<td>SRG20800</td><td>KENDAL,KAB.KENDAL</td>
+        </tr>
+            <tr>
+        	<td>SRG20900</td><td>PATI,KAB.PATI</td>
+        </tr>
+            <tr>
+        	<td>SRG21000</td><td>PEMALANG,KAB.PEMALANG</td>
+        </tr>
+            <tr>
+        	<td>SRG21100</td><td>PURWODADI,KAB.GROBOGAN</td>
+        </tr>
+            <tr>
+        	<td>SRG21200</td><td>REMBANG,KAB.REMBANG</td>
+        </tr>
+            <tr>
+        	<td>SRG21300</td><td>SALATIGA</td>
+        </tr>
+            <tr>
+        	<td>SRG21600</td><td>UNGARAN</td>
+        </tr>
+            <tr>
+        	<td>SRG21602</td><td>AMBARAWA, UNGARAN</td>
+        </tr>
+            <tr>
+        	<td>SRG21700</td><td>PURBALINGGA,KAB.PURBALINGGA</td>
+        </tr>
+            <tr>
+        	<td>SRG21800</td><td>BANJARNEGARA,KAB.BANJARNEGARA</td>
+        </tr>
+            <tr>
+        	<td>SUB10000</td><td>SURABAYA</td>
+        </tr>
+            <tr>
+        	<td>SUB10100</td><td>GRESIK,KAB.GRESIK</td>
+        </tr>
+            <tr>
+        	<td>SUB10200</td><td>LAMONGAN,KAB.LAMONGAN</td>
+        </tr>
+            <tr>
+        	<td>SUB20100</td><td>BANGKALAN,KAB.BANGKALAN</td>
+        </tr>
+            <tr>
+        	<td>SUB20500</td><td>PAMEKASAN,KAB.PAMEKASAN</td>
+        </tr>
+            <tr>
+        	<td>SUB20600</td><td>SAMPANG,KAB.SAMPANG</td>
+        </tr>
+            <tr>
+        	<td>SUB20800</td><td>SUMENEP,KAB.SUMENEP</td>
+        </tr>
+            <tr>
+        	<td>SUB20900</td><td>TUBAN,KAB.TUBAN</td>
+        </tr>
+            <tr>
+        	<td>SUB21000</td><td>TULUNGAGUNG,KAB.TULUNGAGUNG</td>
+        </tr>
+            <tr>
+        	<td>TGL10000</td><td>TEGAL</td>
+        </tr>
+            <tr>
+        	<td>TGL10200</td><td>SLAWI,KAB.TEGAL</td>
+        </tr>
+            <tr>
+        	<td>TGL20000</td><td>BREBES,KAB.BREBES</td>
+        </tr>
+            <tr>
+        	<td>TGL20002</td><td>BUMIAYU,BREBES</td>
+        </tr>
+            <tr>
+        	<td>TGL30000</td><td>PURWOKERTO, BANYUMAS</td>
+        </tr>
+            <tr>
+        	<td>TGR10000</td><td>TANGERANG</td>
+        </tr>
+            <tr>
+        	<td>TIM10000</td><td>TIMIKA</td>
+        </tr>
+            <tr>
+        	<td>TJQ10000</td><td>TANJUNGPANDAN</td>
+        </tr>
+            <tr>
+        	<td>TJQ10100</td><td>MANGGAR,KAB.BELITUNG TIMUR</td>
+        </tr>
+            <tr>
+        	<td>TJQ10102</td><td>GANTUNG,BELITUNG TIMUR</td>
+        </tr>
+            <tr>
+        	<td>TJQ10103</td><td>KELAPA KAMPIT,BELITUNG TIMUR</td>
+        </tr>
+            <tr>
+        	<td>TKG10000</td><td>BANDARLAMPUNG</td>
+        </tr>
+            <tr>
+        	<td>TKG20100</td><td>KALIANDA, KAB.LAMPUNG SELATAN</td>
+        </tr>
+            <tr>
+        	<td>TKG20104</td><td>TANJUNG BINTANG, LAMPUNG SEL</td>
+        </tr>
+            <tr>
+        	<td>TKG20106</td><td>JATI AGUNG, KAB.LAMPUNG SEL</td>
+        </tr>
+            <tr>
+        	<td>TKG20107</td><td>KATIBUNG, KAB.LAMPUNG SELATAN</td>
+        </tr>
+            <tr>
+        	<td>TKG20200</td><td>KOTABUMI, KAB.LAMPUNG UTARA</td>
+        </tr>
+            <tr>
+        	<td>TKG20300</td><td>METRO, KOTA METRO</td>
+        </tr>
+            <tr>
+        	<td>TKG20400</td><td>LIWA, LAMPUNG BARAT</td>
+        </tr>
+            <tr>
+        	<td>TKG20404</td><td>KRUI, PESISIR BARAT</td>
+        </tr>
+            <tr>
+        	<td>TKG20906</td><td>TERBANGGIBESAR / BANDARJAYA</td>
+        </tr>
+            <tr>
+        	<td>TKG21008</td><td>WAY JEPARA, SUKADANA</td>
+        </tr>
+            <tr>
+        	<td>TKG21102</td><td>BARADATU, BLAMPANGAN UMPU</td>
+        </tr>
+            <tr>
+        	<td>TKG21201</td><td>MESUJI, MESUJI</td>
+        </tr>
+            <tr>
+        	<td>TKG21204</td><td>BANJAR AGUNG, MENGGALA</td>
+        </tr>
+            <tr>
+        	<td>TKG21214</td><td>TUMIJAJAR, MENGGALA</td>
+        </tr>
+            <tr>
+        	<td>TKG21300</td><td>KOTA AGUNG, KAB.TANGGAMUS</td>
+        </tr>
+            <tr>
+        	<td>TKG21303</td><td>PRINGSEWU, PRINGSEWU</td>
+        </tr>
+            <tr>
+        	<td>TKG21400</td><td>GEDONG TATAAN,KAB.PESAWARAN</td>
+        </tr>
+            <tr>
+        	<td>TNJ10000</td><td>TANJUNGPINANG</td>
+        </tr>
+            <tr>
+        	<td>TNJ10102</td><td>BINTAN UTARA, KAB.BINTAN</td>
+        </tr>
+            <tr>
+        	<td>TRK10000</td><td>TARAKAN</td>
+        </tr>
+            <tr>
+        	<td>TRK20100</td><td>TANJUNG SELOR, KAB BULUNGAN</td>
+        </tr>
+            <tr>
+        	<td>TRK20105</td><td>PULAU BUNYU, TANJUNGSELOR</td>
+        </tr>
+            <tr>
+        	<td>TRK20200</td><td>MALINAU, KAB MALINAU</td>
+        </tr>
+            <tr>
+        	<td>TRK20300</td><td>NUNUKAN, KAB NUNUKAN</td>
+        </tr>
+            <tr>
+        	<td>TRK20301</td><td>KRAYAN, NUNUKAN</td>
+        </tr>
+            <tr>
+        	<td>TRK20304</td><td>SEBATIK , NUNUKAN</td>
+        </tr>
+            <tr>
+        	<td>TRK20400</td><td>TANA TIDUNG, KAB TANA TIDUNG</td>
+        </tr>
+            <tr>
+        	<td>TSM10000</td><td>TASIKMALAYA</td>
+        </tr>
+            <tr>
+        	<td>TSM10100</td><td>SINGAPARNA , TASIKMALAYA</td>
+        </tr>
+            <tr>
+        	<td>TSM20000</td><td>BANJAR , BANJAR</td>
+        </tr>
+            <tr>
+        	<td>TSM30000</td><td>CIAMIS , CIAMIS</td>
+        </tr>
+            <tr>
+        	<td>TSM40000</td><td>PANGANDARAN , PANGANDARAN</td>
+        </tr>
+            <tr>
+        	<td>TTE10000</td><td>TERNATE</td>
+        </tr>
+            <tr>
+        	<td>TTE20200</td><td>JAILOLO</td>
+        </tr>
+            <tr>
+        	<td>TTE20300</td><td>LABUHA</td>
+        </tr>
+            <tr>
+        	<td>TTE20307</td><td>OBI,LABUHA</td>
+        </tr>
+            <tr>
+        	<td>TTE20400</td><td>WEDA,KAB.HALMAHERA TENGAH</td>
+        </tr>
+            <tr>
+        	<td>TTE20500</td><td>MABA,KAB.HALMAHERA TIMUR</td>
+        </tr>
+            <tr>
+        	<td>TTE20501</td><td>MABA SELATAN,MABA</td>
+        </tr>
+            <tr>
+        	<td>TTE20600</td><td>TOBELO,KAB.HALMAHERA UTARA</td>
+        </tr>
+            <tr>
+        	<td>TTE20700</td><td>SANANA,KAB.KEP.SULA</td>
+        </tr>
+            <tr>
+        	<td>TTE20800</td><td>TIDORE</td>
+        </tr>
+            <tr>
+        	<td>TTE20802</td><td>OBA UTARA,TIDORE</td>
+        </tr>
+            <tr>
+        	<td>TTE20900</td><td>MOROTAI TIMUR,PULAU MOROTAI</td>
+        </tr>
+            <tr>
+        	<td>UPG10000</td><td>MAKASAR</td>
+        </tr>
+            <tr>
+        	<td>UPG20100</td><td>BANTAENG,KAB.BANTAENG</td>
+        </tr>
+            <tr>
+        	<td>UPG20200</td><td>BARRU,KAB.BARRU</td>
+        </tr>
+            <tr>
+        	<td>UPG20300</td><td>BULUKUMBA</td>
+        </tr>
+            <tr>
+        	<td>UPG20400</td><td>ENREKANG,KAB.ENREKANG</td>
+        </tr>
+            <tr>
+        	<td>UPG20500</td><td>JENEPONTO,KAB.JENEPONTO</td>
+        </tr>
+            <tr>
+        	<td>UPG20600</td><td>MAKALE,KAB.TANA TORAJA</td>
+        </tr>
+            <tr>
+        	<td>UPG20605</td><td>RANTEPAO KAB. TANA TORAJA UTR</td>
+        </tr>
+            <tr>
+        	<td>UPG20700</td><td>MAMUJU,MAMUJU</td>
+        </tr>
+            <tr>
+        	<td>UPG20715</td><td>TOPOYO,MAMUJU</td>
+        </tr>
+            <tr>
+        	<td>UPG20800</td><td>MAROS</td>
+        </tr>
+            <tr>
+        	<td>UPG20900</td><td>MAJENE,MAJENE</td>
+        </tr>
+            <tr>
+        	<td>UPG21000</td><td>PALOPO</td>
+        </tr>
+            <tr>
+        	<td>UPG21100</td><td>PINRANG</td>
+        </tr>
+            <tr>
+        	<td>UPG21200</td><td>POLEWALI,POLEWALI MANDAR</td>
+        </tr>
+            <tr>
+        	<td>UPG21208</td><td>WONOMULYO,POLEWALI MANDAR</td>
+        </tr>
+            <tr>
+        	<td>UPG21300</td><td>SIDENRENG,KAB.SIDENRENG</td>
+        </tr>
+            <tr>
+        	<td>UPG21400</td><td>SENGKANG, WAJO</td>
+        </tr>
+            <tr>
+        	<td>UPG21500</td><td>SINJAI</td>
+        </tr>
+            <tr>
+        	<td>UPG21600</td><td>SUNGGUMINASA,KAB.GOWA</td>
+        </tr>
+            <tr>
+        	<td>UPG21700</td><td>TAKALAR</td>
+        </tr>
+            <tr>
+        	<td>UPG21800</td><td>WATAMPONE,KAB.BONE</td>
+        </tr>
+            <tr>
+        	<td>UPG21811</td><td>LIBURENG,WATAMPONE</td>
+        </tr>
+            <tr>
+        	<td>UPG21900</td><td>WATANSOPPENG</td>
+        </tr>
+            <tr>
+        	<td>UPG22000</td><td>BENTENG,KAB.SELAYAR</td>
+        </tr>
+            <tr>
+        	<td>UPG22100</td><td>PANGKAJENE,KEP.PANGKAJENE</td>
+        </tr>
+            <tr>
+        	<td>UPG22300</td><td>PARE-PARE</td>
+        </tr>
+            <tr>
+        	<td>UPG23100</td><td>BELOPA,KAB.LUWU</td>
+        </tr>
+            <tr>
+        	<td>UPG23112</td><td>WALENRANG,BELOPA</td>
+        </tr>
+            <tr>
+        	<td>UPG23200</td><td>MALILI,KAB.LUWU TIMUR</td>
+        </tr>
+            <tr>
+        	<td>UPG23203</td><td>MANGKUTANA,KAB.LUWU TIMUR</td>
+        </tr>
+            <tr>
+        	<td>UPG23204</td><td>SOROAKO/NUHA,KAB.LUWU TIMUR</td>
+        </tr>
+            <tr>
+        	<td>UPG23300</td><td>MASAMBA,KAB.LUWU UTARA</td>
+        </tr>
+            <tr>
+        	<td>UPG23400</td><td>MAMASA,MAMASA</td>
+        </tr>
+            <tr>
+        	<td>UPG23500</td><td>PASANGKAYU,MAMUJU UTARA</td>
+        </tr>
+            <tr>
+        	<td>WGX10000</td><td>GATEWAY, WANGON</td>
+        </tr>
+            <tr>
+        	<td>DJJ21300</td><td>OKSIBIL,KAB.PEG.BINTANG</td>
+        </tr>
+            <tr>
+        	<td>DJJ21400</td><td>MULIA KAB.PUNCAK JAYA</td>
+        </tr>
+            <tr>
+        	<td>DJJ21500</td><td>SARMI,KAB.SARMI</td>
+        </tr>
+            <tr>
+        	<td>PWT20017</td><td>SUBANG UTARA, PAMANUKAN</td>
+        </tr>
+            <tr>
+        	<td>PWT20028</td><td>SUBANG BARAT, PURWADADI</td>
+        </tr>
+            <tr>
+        	<td>SDA10000</td><td>SIDOARJO,SIDOARJO</td>
+        </tr>
+            <tr>
+        	<td>SMD10000</td><td>SAMARINDA</td>
+        </tr>
+            <tr>
+        	<td>KDI20900</td><td>WANGI WANGI,KAB.WAKATOBI</td>
+        </tr>
+            <tr>
+        	<td>KDI21104</td><td>ANDOWIA,KONAWE UTR            </td>
+        </tr>
+            <tr>
+        	<td>KDI21200</td><td>WAWONII BARAT,KONAWE</td>
+        </tr>
+            <tr>
+        	<td>KDR10000</td><td>KEDIRI</td>
+        </tr>
+            <tr>
+        	<td>KDR10100</td><td>TULUNGAGUNG,TULUNGAGUNG</td>
+        </tr>
+            <tr>
+        	<td>KDR10200</td><td>TRENGGALEK,TRENGGALEK</td>
+        </tr>
+            <tr>
+        	<td>DJJ20700</td><td>WAMENA,KAB.JAYAWIJAYA</td>
+        </tr>
+            <tr>
+        	<td>MDC10000</td><td>MANADO</td>
+        </tr>
+    </table>

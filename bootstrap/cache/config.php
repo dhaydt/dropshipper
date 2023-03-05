@@ -37,16 +37,18 @@
       20 => 'Illuminate\\Validation\\ValidationServiceProvider',
       21 => 'Illuminate\\View\\ViewServiceProvider',
       22 => 'App\\Providers\\SocialLoginServiceProvider',
-      23 => 'App\\Providers\\AppServiceProvider',
-      24 => 'App\\Providers\\AuthServiceProvider',
-      25 => 'App\\Providers\\EventServiceProvider',
-      26 => 'App\\Providers\\RouteServiceProvider',
-      27 => 'Intervention\\Image\\ImageServiceProvider',
-      28 => 'App\\Providers\\MailConfigServiceProvider',
-      29 => 'App\\Providers\\PaymentConfigProvider',
-      30 => 'App\\Providers\\ConfigServiceProvider',
-      31 => 'Laravelpkg\\Laravelchk\\LaravelchkServiceProvider',
-      32 => 'Amirami\\Localizator\\ServiceProvider',
+      23 => 'Mccarlosen\\LaravelMpdf\\LaravelMpdfServiceProvider',
+      24 => 'App\\Providers\\AppServiceProvider',
+      25 => 'App\\Providers\\AuthServiceProvider',
+      26 => 'App\\Providers\\EventServiceProvider',
+      27 => 'App\\Providers\\RouteServiceProvider',
+      28 => 'Intervention\\Image\\ImageServiceProvider',
+      29 => 'App\\Providers\\MailConfigServiceProvider',
+      30 => 'App\\Providers\\PaymentConfigProvider',
+      31 => 'App\\Providers\\ConfigServiceProvider',
+      32 => 'Laravelpkg\\Laravelchk\\LaravelchkServiceProvider',
+      33 => 'Amirami\\Localizator\\ServiceProvider',
+      34 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     ),
     'aliases' => 
     array (
@@ -87,6 +89,8 @@
       'View' => 'Illuminate\\Support\\Facades\\View',
       'Image' => 'Intervention\\Image\\Facades\\Image',
       'Helper' => 'App\\CPU\\Helpers',
+      'PDF' => 'Mccarlosen\\LaravelMpdf\\Facades\\LaravelMpdf',
+      'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
     ),
   ),
   'auth' => 
@@ -416,6 +420,118 @@
       'enable_remote' => true,
       'font_height_ratio' => 1.1,
       'enable_html5_parser' => false,
+    ),
+  ),
+  'excel' => 
+  array (
+    'exports' => 
+    array (
+      'chunk_size' => 1000,
+      'pre_calculate_formulas' => false,
+      'strict_null_comparison' => false,
+      'csv' => 
+      array (
+        'delimiter' => ',',
+        'enclosure' => '"',
+        'line_ending' => '
+',
+        'use_bom' => false,
+        'include_separator_line' => false,
+        'excel_compatibility' => false,
+        'output_encoding' => '',
+        'test_auto_detect' => true,
+      ),
+      'properties' => 
+      array (
+        'creator' => '',
+        'lastModifiedBy' => '',
+        'title' => '',
+        'description' => '',
+        'subject' => '',
+        'keywords' => '',
+        'category' => '',
+        'manager' => '',
+        'company' => '',
+      ),
+    ),
+    'imports' => 
+    array (
+      'read_only' => true,
+      'ignore_empty' => false,
+      'heading_row' => 
+      array (
+        'formatter' => 'slug',
+      ),
+      'csv' => 
+      array (
+        'delimiter' => NULL,
+        'enclosure' => '"',
+        'escape_character' => '\\',
+        'contiguous' => false,
+        'input_encoding' => 'UTF-8',
+      ),
+      'properties' => 
+      array (
+        'creator' => '',
+        'lastModifiedBy' => '',
+        'title' => '',
+        'description' => '',
+        'subject' => '',
+        'keywords' => '',
+        'category' => '',
+        'manager' => '',
+        'company' => '',
+      ),
+    ),
+    'extension_detector' => 
+    array (
+      'xlsx' => 'Xlsx',
+      'xlsm' => 'Xlsx',
+      'xltx' => 'Xlsx',
+      'xltm' => 'Xlsx',
+      'xls' => 'Xls',
+      'xlt' => 'Xls',
+      'ods' => 'Ods',
+      'ots' => 'Ods',
+      'slk' => 'Slk',
+      'xml' => 'Xml',
+      'gnumeric' => 'Gnumeric',
+      'htm' => 'Html',
+      'html' => 'Html',
+      'csv' => 'Csv',
+      'tsv' => 'Csv',
+      'pdf' => 'Dompdf',
+    ),
+    'value_binder' => 
+    array (
+      'default' => 'Maatwebsite\\Excel\\DefaultValueBinder',
+    ),
+    'cache' => 
+    array (
+      'driver' => 'memory',
+      'batch' => 
+      array (
+        'memory_limit' => 60000,
+      ),
+      'illuminate' => 
+      array (
+        'store' => NULL,
+      ),
+    ),
+    'transactions' => 
+    array (
+      'handler' => 'db',
+      'db' => 
+      array (
+        'connection' => NULL,
+      ),
+    ),
+    'temporary_files' => 
+    array (
+      'local_path' => 'D:\\CODE\\dropship\\storage\\framework/cache/laravel-excel',
+      'remote_disk' => NULL,
+      'remote_prefix' => NULL,
+      'force_resync_remote' => NULL,
     ),
   ),
   'filesystems' => 
@@ -902,6 +1018,42 @@
     'route_domain' => NULL,
     'theme' => 'auto',
     'debug_backtrace_limit' => 50,
+  ),
+  'pdf' => 
+  array (
+    'mode' => '',
+    'format' => 'A4',
+    'default_font_size' => '12',
+    'default_font' => 'sans-serif',
+    'margin_left' => 10,
+    'margin_right' => 10,
+    'margin_top' => 10,
+    'margin_bottom' => 10,
+    'margin_header' => 0,
+    'margin_footer' => 0,
+    'orientation' => 'P',
+    'title' => 'Laravel mPDF',
+    'subject' => '',
+    'author' => '',
+    'watermark' => '',
+    'show_watermark' => false,
+    'show_watermark_image' => false,
+    'watermark_font' => 'sans-serif',
+    'display_mode' => 'fullpage',
+    'watermark_text_alpha' => 0.1,
+    'watermark_image_path' => '',
+    'watermark_image_alpha' => 0.2,
+    'watermark_image_size' => 'D',
+    'watermark_image_position' => 'P',
+    'custom_font_dir' => '',
+    'custom_font_data' => 
+    array (
+    ),
+    'auto_language_detection' => false,
+    'temp_dir' => 'D:\\CODE\\dropship\\storage\\app',
+    'pdfa' => false,
+    'pdfaauto' => false,
+    'use_active_forms' => false,
   ),
   'flare' => 
   array (

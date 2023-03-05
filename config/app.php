@@ -180,6 +180,7 @@ return [
         \App\Providers\ConfigServiceProvider::class,
         Laravelpkg\Laravelchk\LaravelchkServiceProvider::class,
         Amirami\Localizator\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -232,5 +233,6 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Helper' => \App\CPU\Helpers::class,
         'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 ];

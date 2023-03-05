@@ -781,6 +781,15 @@
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                     style="display: {{Request::is('adminpanel/business-settings/shipping-method*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('adminpanel/business-settings/shipping-method/jne')?'active':''}}">
+                                        <a class="nav-link"
+                                           href="{{route('admin.business-settings.shipping-method.jne')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">
+                                              {{\App\CPU\translate('JNE_Config')}}
+                                            </span>
+                                        </a>
+                                    </li>
                                     <li class="nav-item {{Request::is('adminpanel/business-settings/shipping-method/by/admin')?'active':''}}">
                                         <a class="nav-link"
                                            href="{{route('admin.business-settings.shipping-method.by.admin')}}">

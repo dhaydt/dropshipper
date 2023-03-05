@@ -25,6 +25,7 @@
         "laravel/tinker": "^2.0",
         "laravelpkg/laravelchk": "dev-master",
         "lcobucci/jwt": "3.3.3",
+        "maatwebsite/excel": "^3.1",
         "madnest/madzipper": "*",
         "maherelgamil/laravel-fawry": "^0.1.1",
         "mpdf/mpdf": "^8.0",

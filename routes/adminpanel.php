@@ -299,6 +299,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::post('update-fcm-messages', 'BusinessSettingsController@update_fcm_messages')->name('update-fcm-messages');
 
             Route::group(['prefix' => 'shipping-method', 'as' => 'shipping-method.', 'middleware' => ['module:business_settings']], function () {
+                Route::get('jne', 'ShippingMethodController@jne_config')->name('jne');
+                Route::post('jne/store', 'ShippingMethodController@jne_config_store')->name('jne.store');
+                Route::post('jne/setting', 'ShippingMethodController@jne_config_store_setting')->name('jne.store.setting');
                 Route::get('by/admin', 'ShippingMethodController@index_admin')->name('by.admin');
                 //Route::get('by/seller', 'ShippingMethodController@index_seller')->name('by.seller');
                 Route::post('add', 'ShippingMethodController@store')->name('add');

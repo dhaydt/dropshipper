@@ -1649,4 +1649,9 @@
   'Toggle navigation' => 'Toggle navigation',
   'Order_kamu_dengan_nomor_100095_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100095 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
   'Order_kamu_dengan_nomor_100096_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100096 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100101_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100101 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100102_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100102 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'JNE_config' => 'JNE config',
+  'JNE_Config' => 'JNE Config',
+  'JNE_Configuration' => 'JNE Configuration',
 );

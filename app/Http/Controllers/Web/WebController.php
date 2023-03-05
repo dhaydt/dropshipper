@@ -31,12 +31,179 @@ use App\Model\Wishlist;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class WebController extends Controller
 {
+    public function jneTest2(){
+
+        $data = [
+            'username'=>'TESTAPI',
+            'api_key'=>'25c898a9faea1a100859ecd9ef674548',
+            'OLSHOP_ORDERID'=>'DUMMY-ORDER-ID-4',
+            'OLSHOP_SERVICE'=>'REG',
+            'OLSHOP_BRANCH'=>'TGR000',
+            'OLSHOP_CUST'=>'10950700',
+            'OLSHOP_ORIG'=>'TGR10000',
+            'OLSHOP_DEST'=>'CGK10302',
+            'OLSHOP_SHIPPER_NAME'=>'Shipper name',
+            'OLSHOP_SHIPPER_PHONE'=>'0812345678',
+            'OLSHOP_SHIPPER_ADDR1'=>'Shipper Address 1',
+            'OLSHOP_SHIPPER_ADDR2'=>'Shipper Address 2',
+            'OLSHOP_SHIPPER_ADDR3'=>'Shipper Address 3',
+            'OLSHOP_SHIPPER_ZIP'=>'11111',
+            'OLSHOP_SHIPPER_CITY'=>'TANGERANG',
+            'OLSHOP_SHIPPER_REGION'=>'CISAUK',
+            'OLSHOP_RECEIVER_NAME'=>'Receiver name',
+            'OLSHOP_RECEIVER_PHONE'=>'0887654321',
+            'OLSHOP_RECEIVER_ADDR1'=>'Receiver Address 1',
+            'OLSHOP_RECEIVER_ADDR2'=>'Receiver Address 2',
+            'OLSHOP_RECEIVER_ADDR3'=>'Receiver Address 3',
+            'OLSHOP_RECEIVER_ZIP'=>'222222',
+            'OLSHOP_RECEIVER_CITY'=>'JAKARTA, PUSAT',
+            'OLSHOP_RECEIVER_REGION'=>'GAMBIR',
+            'OLSHOP_INS_FLAG'=>'Y',
+            'OLSHOP_INST'=>'This is notes/instruction',
+            'OLSHOP_COD_FLAG'=>'N',
+            'OLSHOP_COD_AMOUNT'=>'0',
+            'OLSHOP_GOODSDESC'=>'Elektronik',
+            'OLSHOP_GOODSTYPE'=>'2',
+            'OLSHOP_GOODSVALUE'=>'1',
+            'OLSHOP_WEIGHT'=>'1',
+            'OLSHOP_QTY'=>'1',
+        ];
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://apiv2.jne.co.id:10102/tracing/api/generatecnote",// your preferred link
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                // Set Here Your Requesred Headers
+                'Content-Type: application/x-www-form-urlencoded',
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            print_r(json_decode($response));
+        }
+    }
+    public function jneTest(){
+        $apikey= '25c898a9faea1a100859ecd9ef674548';
+
+        $username = 'TESTAPI';
+
+        $main_api = 'http://apiv2.jne.co.id:10102/tracing/api/generatecnote';
+
+        // $api = $main_api.'/data_skpd';
+
+        $header = [
+            // 'Authorization' => 'Bearer'.$key,
+            'Content-Type' => 'application/x-www-form-urlencoded',
+        ];
+
+        $data = [
+            'username'=>'TESTAPI',
+            'api_key'=>'25c898a9faea1a100859ecd9ef674548',
+            'OLSHOP_ORDERID'=>'2023030200001BBA',
+            'OLSHOP_SERVICE'=>'REG',
+            'OLSHOP_BRANCH'=>'CGK000',
+            'OLSHOP_CUST'=>'TESTAKUN',
+            'OLSHOP_ORIG'=>'CGK10000',
+            'OLSHOP_DEST'=>'CGK10302',
+            'OLSHOP_SHIPPER_NAME'=>'Shipper name',
+            'OLSHOP_SHIPPER_PHONE'=>'0812345678',
+            'OLSHOP_SHIPPER_ADDR1'=>'Shipper Address 1',
+            'OLSHOP_SHIPPER_ADDR2'=>'Shipper Address 2',
+            'OLSHOP_SHIPPER_ADDR3'=>'Shipper Address 3',
+            'OLSHOP_SHIPPER_ZIP'=>'11111',
+            'OLSHOP_SHIPPER_CITY'=>'TANGERANG',
+            'OLSHOP_SHIPPER_REGION'=>'CISAUK',
+            'OLSHOP_RECEIVER_NAME'=>'Receiver name',
+            'OLSHOP_RECEIVER_PHONE'=>'0887654321',
+            'OLSHOP_RECEIVER_ADDR1'=>'Receiver Address 1',
+            'OLSHOP_RECEIVER_ADDR2'=>'Receiver Address 2',
+            'OLSHOP_RECEIVER_ADDR3'=>'Receiver Address 3',
+            'OLSHOP_RECEIVER_ZIP'=>'222222',
+            'OLSHOP_RECEIVER_CITY'=>'JAKARTA, PUSAT',
+            'OLSHOP_RECEIVER_REGION'=>'GAMBIR',
+            'OLSHOP_INS_FLAG'=>'Y',
+            'OLSHOP_INST'=>'This is notes/instruction',
+            'OLSHOP_COD_FLAG'=>'N',
+            'OLSHOP_COD_AMOUNT'=>'0',
+            'OLSHOP_GOODSDESC'=>'Elektronik',
+            'OLSHOP_GOODSTYPE'=>'2',
+            'OLSHOP_GOODSVALUE'=>'1',
+            'OLSHOP_WEIGHT'=>'1',
+            'OLSHOP_QTY'=>'1',
+        ];
+
+        dd($data);
+
+        try {
+            $client = new Client();
+
+            $response = $client->request('POST', $main_api, [
+                'headers' => $header,
+                'form_params' => $data
+            ]);
+
+            
+            $status = $response->getStatusCode();
+            
+            
+            if ($status == 200) {
+                $resp = json_decode($response->getBody());
+                dd($resp);
+
+                if ($resp == 0) {
+                    $data = [
+                        'code' => 404,
+                        'message' => 'SKPD tidak ditemukan',
+                    ];
+
+                    return $data;
+                } else {
+                    $skpd = json_decode($response->getBody())->data;
+
+                    foreach ($skpd as $s) {
+                        $check = Skpd::where('id_skpd', $s->id_skpd)->first();
+                        if ($check) {
+                            $check->id_skpd = $s->id_skpd;
+                            $check->nmskpd = $s->nmskpd;
+                        } else {
+                            $check = new Skpd();
+                            $check->id_skpd = $s->id_skpd;
+                            $check->nmskpd = $s->nmskpd;
+                        }
+                        $check->save();
+                    }
+
+                    $data = [
+                        'code' => 200,
+                        'message' => 'Data SKPD berhasil diperbarui!!!',
+                    ];
+
+                    return $data;
+                }
+            }
+        } catch (ClientException $e) {
+            // $this->getSkpd($request);
+        }
+    }
     public function reminder_flash_deal()
     {
         $date = Carbon::now()->addDay(3)->format('Y-m-d');

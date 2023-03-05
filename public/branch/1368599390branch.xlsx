@@ -1,0 +1,963 @@
+
+<table>
+	<tr>
+    	<td><strong>Branch code</strong></td><td><strong>Branch name</strong></td>
+    </tr>
+            <tr>
+        	<td>MGL000</td><td>JNE MAGELANG</td>
+        </tr>
+            <tr>
+        	<td>TJQ000</td><td>JNE TANJUNG PANDAN</td>
+        </tr>
+            <tr>
+        	<td>TNJ000</td><td>JNE TANJUNG PINANG</td>
+        </tr>
+            <tr>
+        	<td>UPG000</td><td>JNE MAKASSAR</td>
+        </tr>
+            <tr>
+        	<td>BTJ000</td><td>JNE BANDA ACEH</td>
+        </tr>
+            <tr>
+        	<td>CBN000</td><td>JNE CIREBON</td>
+        </tr>
+            <tr>
+        	<td>TSM000</td><td>JNE TASIKMALAYA</td>
+        </tr>
+            <tr>
+        	<td>BTH000</td><td>JNE BATAM</td>
+        </tr>
+            <tr>
+        	<td>SMD000</td><td>JNE SAMARINDA</td>
+        </tr>
+            <tr>
+        	<td>BDJ000</td><td>JNE BANJARMASIN</td>
+        </tr>
+            <tr>
+        	<td>TKG000</td><td>JNE BANDAR LAMPUNG</td>
+        </tr>
+            <tr>
+        	<td>BPN000</td><td>JNE BALIKPAPAN</td>
+        </tr>
+            <tr>
+        	<td>CXP000</td><td>JNE CILACAP</td>
+        </tr>
+            <tr>
+        	<td>DJJ000</td><td>JNE JAYAPURA</td>
+        </tr>
+            <tr>
+        	<td>KDI000</td><td>JNE KENDARI</td>
+        </tr>
+            <tr>
+        	<td>PKY000</td><td>JNE PALANGKARAYA</td>
+        </tr>
+            <tr>
+        	<td>PGK000</td><td>JNE PANGKAL PINANG</td>
+        </tr>
+            <tr>
+        	<td>CGK000</td><td>JNE JAKARTA</td>
+        </tr>
+            <tr>
+        	<td>MDC000</td><td>JNE MANADO</td>
+        </tr>
+            <tr>
+        	<td>TGR000</td><td>JNE TANGERANG</td>
+        </tr>
+            <tr>
+        	<td>TRK000</td><td>JNE TARAKAN</td>
+        </tr>
+            <tr>
+        	<td>CGK001</td><td>JNE HEAD OFFICE</td>
+        </tr>
+            <tr>
+        	<td>BDO000</td><td>JNE BANDUNG</td>
+        </tr>
+            <tr>
+        	<td>SUB000</td><td>JNE SURABAYA</td>
+        </tr>
+            <tr>
+        	<td>AMI000</td><td>JNE MATARAM</td>
+        </tr>
+            <tr>
+        	<td>AMQ000</td><td>JNE AMBON</td>
+        </tr>
+            <tr>
+        	<td>BKI000</td><td>JNE BEKASI</td>
+        </tr>
+            <tr>
+        	<td>BKS000</td><td>JNE BENGKULU</td>
+        </tr>
+            <tr>
+        	<td>BOO000</td><td>JNE BOGOR</td>
+        </tr>
+            <tr>
+        	<td>BTG000</td><td>JNE BONTANG</td>
+        </tr>
+            <tr>
+        	<td>CLG000</td><td>JNE CILEGON</td>
+        </tr>
+            <tr>
+        	<td>DJB000</td><td>JNE JAMBI</td>
+        </tr>
+            <tr>
+        	<td>DPS000</td><td>JNE DENPASAR</td>
+        </tr>
+            <tr>
+        	<td>GTO000</td><td>JNE GORONTALO</td>
+        </tr>
+            <tr>
+        	<td>JBR000</td><td>JNE JEMBER</td>
+        </tr>
+            <tr>
+        	<td>JOG000</td><td>JNE YOGYAKARTA</td>
+        </tr>
+            <tr>
+        	<td>KDR000</td><td>JNE KEDIRI</td>
+        </tr>
+            <tr>
+        	<td>KOE000</td><td>JNE KUPANG</td>
+        </tr>
+            <tr>
+        	<td>MDN000</td><td>JNE MADIUN</td>
+        </tr>
+            <tr>
+        	<td>PDG000</td><td>JNE PADANG</td>
+        </tr>
+            <tr>
+        	<td>PLM000</td><td>JNE PALEMBANG</td>
+        </tr>
+            <tr>
+        	<td>PLW000</td><td>JNE PALU</td>
+        </tr>
+            <tr>
+        	<td>PKU000</td><td>JNE PEKANBARU</td>
+        </tr>
+            <tr>
+        	<td>PNK000</td><td>JNE PONTIANAK</td>
+        </tr>
+            <tr>
+        	<td>MES000</td><td>JNE MEDAN</td>
+        </tr>
+            <tr>
+        	<td>MXG000</td><td>JNE MALANG</td>
+        </tr>
+            <tr>
+        	<td>PBL000</td><td>JNE PROBOLINGGO</td>
+        </tr>
+            <tr>
+        	<td>SRG000</td><td>JNE SEMARANG</td>
+        </tr>
+            <tr>
+        	<td>SOC000</td><td>JNE SOLO</td>
+        </tr>
+            <tr>
+        	<td>SMI000</td><td>JNE SUKABUMI</td>
+        </tr>
+            <tr>
+        	<td>MJK000</td><td>JNE MOJOKERTO</td>
+        </tr>
+            <tr>
+        	<td>TTE000</td><td>JNE TERNATE</td>
+        </tr>
+            <tr>
+        	<td>DPK000</td><td>JNE DEPOK</td>
+        </tr>
+            <tr>
+        	<td>SOQ000</td><td>JNE SORONG</td>
+        </tr>
+            <tr>
+        	<td>OSL000</td><td>OSLO</td>
+        </tr>
+            <tr>
+        	<td>KRW000</td><td>JNE KARAWANG</td>
+        </tr>
+            <tr>
+        	<td>SIN000</td><td>JNE SINGAPURA</td>
+        </tr>
+            <tr>
+        	<td>LHR000</td><td>JNE LHR</td>
+        </tr>
+            <tr>
+        	<td>HKG000</td><td>JNE HONGKONG</td>
+        </tr>
+            <tr>
+        	<td>TIM000</td><td>JNE TIMIKA</td>
+        </tr>
+            <tr>
+        	<td>SEL000</td><td>JNE KOREA</td>
+        </tr>
+            <tr>
+        	<td>USA000</td><td>JNE USA</td>
+        </tr>
+            <tr>
+        	<td>MNL000</td><td>JNE PHILIPINES</td>
+        </tr>
+            <tr>
+        	<td>BKK000</td><td>JNE THAILAND</td>
+        </tr>
+            <tr>
+        	<td>NBX000</td><td>JNE NABIRE</td>
+        </tr>
+            <tr>
+        	<td>UPX000</td><td>MAKASSAR GATEWAY</td>
+        </tr>
+            <tr>
+        	<td>CKR000</td><td>JNE CIKARANG</td>
+        </tr>
+            <tr>
+        	<td>SUX000</td><td>SURABAYA GATEWAY</td>
+        </tr>
+            <tr>
+        	<td>CGX000</td><td>JAKARTA GATEWAY</td>
+        </tr>
+            <tr>
+        	<td>ADX000</td><td>ANDORRA</td>
+        </tr>
+            <tr>
+        	<td>AEX000</td><td>UNITED ARAB EMIRATES</td>
+        </tr>
+            <tr>
+        	<td>AFX000</td><td>AFGHANISTAN</td>
+        </tr>
+            <tr>
+        	<td>AGX000</td><td>ANTIGUA</td>
+        </tr>
+            <tr>
+        	<td>AIX000</td><td>ANGUILLA</td>
+        </tr>
+            <tr>
+        	<td>ALX000</td><td>ALBANIA</td>
+        </tr>
+            <tr>
+        	<td>AMX000</td><td>ARMENIA</td>
+        </tr>
+            <tr>
+        	<td>AOX000</td><td>ANGOLA</td>
+        </tr>
+            <tr>
+        	<td>ARX000</td><td>ARGENTINA</td>
+        </tr>
+            <tr>
+        	<td>ASX000</td><td>AMERICAN SAMOA</td>
+        </tr>
+            <tr>
+        	<td>ATX000</td><td>AUSTRIA</td>
+        </tr>
+            <tr>
+        	<td>AUX000</td><td>AUSTRALIA</td>
+        </tr>
+            <tr>
+        	<td>AWX000</td><td>ARUBA</td>
+        </tr>
+            <tr>
+        	<td>AZX000</td><td>AZERBAIJAN</td>
+        </tr>
+            <tr>
+        	<td>BAX000</td><td>BOSNIA & HERZEGOVINA</td>
+        </tr>
+            <tr>
+        	<td>BBX000</td><td>BARBADOS</td>
+        </tr>
+            <tr>
+        	<td>BDX000</td><td>BANGLADESH</td>
+        </tr>
+            <tr>
+        	<td>BEX000</td><td>BELGIUM</td>
+        </tr>
+            <tr>
+        	<td>BFX000</td><td>BURKINA FASO</td>
+        </tr>
+            <tr>
+        	<td>BGX000</td><td>BULGARIA</td>
+        </tr>
+            <tr>
+        	<td>BHX000</td><td>BAHRAIN</td>
+        </tr>
+            <tr>
+        	<td>BIX000</td><td>BURUNDI</td>
+        </tr>
+            <tr>
+        	<td>BJX000</td><td>BENIN</td>
+        </tr>
+            <tr>
+        	<td>BMX000</td><td>BERMUDA</td>
+        </tr>
+            <tr>
+        	<td>BNX000</td><td>BRUNEI</td>
+        </tr>
+            <tr>
+        	<td>BOX000</td><td>BOLIVIA</td>
+        </tr>
+            <tr>
+        	<td>BRX000</td><td>BRAZIL</td>
+        </tr>
+            <tr>
+        	<td>BSX000</td><td>BAHAMAS</td>
+        </tr>
+            <tr>
+        	<td>BTX000</td><td>BHUTAN</td>
+        </tr>
+            <tr>
+        	<td>BWX000</td><td>BOTSWANA</td>
+        </tr>
+            <tr>
+        	<td>BYX000</td><td>BELARUS</td>
+        </tr>
+            <tr>
+        	<td>BZX000</td><td>BELIZE</td>
+        </tr>
+            <tr>
+        	<td>CAX000</td><td>CANADA</td>
+        </tr>
+            <tr>
+        	<td>CDX000</td><td>CONGO, THE DEMOCRATIC REPUBLIC</td>
+        </tr>
+            <tr>
+        	<td>CFX000</td><td>CENTRAL AFRICAN REP.</td>
+        </tr>
+            <tr>
+        	<td>CHX000</td><td>SWITZERLAND</td>
+        </tr>
+            <tr>
+        	<td>CIX000</td><td>COTE D IVOIRE</td>
+        </tr>
+            <tr>
+        	<td>CKX000</td><td>COOK ISLANDS</td>
+        </tr>
+            <tr>
+        	<td>CLX000</td><td>CHILE</td>
+        </tr>
+            <tr>
+        	<td>CMX000</td><td>CAMEROON</td>
+        </tr>
+            <tr>
+        	<td>COX000</td><td>COLOMBIA</td>
+        </tr>
+            <tr>
+        	<td>CNX000</td><td>CHINA I</td>
+        </tr>
+            <tr>
+        	<td>CNY000</td><td>CHINA II</td>
+        </tr>
+            <tr>
+        	<td>CRX000</td><td>COSTA RICA</td>
+        </tr>
+            <tr>
+        	<td>CUX000</td><td>CUBA</td>
+        </tr>
+            <tr>
+        	<td>CVX000</td><td>CAPE VERDE</td>
+        </tr>
+            <tr>
+        	<td>CYX000</td><td>CYPRUS</td>
+        </tr>
+            <tr>
+        	<td>CZX000</td><td>CZECH REPUBLIC</td>
+        </tr>
+            <tr>
+        	<td>DEX000</td><td>GERMANY</td>
+        </tr>
+            <tr>
+        	<td>DJX000</td><td>DJIBOUTI</td>
+        </tr>
+            <tr>
+        	<td>DKX000</td><td>DENMARK</td>
+        </tr>
+            <tr>
+        	<td>DMX000</td><td>DOMINICA</td>
+        </tr>
+            <tr>
+        	<td>DOX000</td><td>DOMINICAN REPUBLIC</td>
+        </tr>
+            <tr>
+        	<td>DZX000</td><td>ALGERIA</td>
+        </tr>
+            <tr>
+        	<td>ECX000</td><td>ECUADOR</td>
+        </tr>
+            <tr>
+        	<td>EEX000</td><td>ESTONIA</td>
+        </tr>
+            <tr>
+        	<td>EGX000</td><td>EGYPT</td>
+        </tr>
+            <tr>
+        	<td>ERX000</td><td>ERITREA</td>
+        </tr>
+            <tr>
+        	<td>ESX000</td><td>SPAIN</td>
+        </tr>
+            <tr>
+        	<td>ETX000</td><td>ETHIOPIA</td>
+        </tr>
+            <tr>
+        	<td>FIX000</td><td>FINLAND</td>
+        </tr>
+            <tr>
+        	<td>FJX000</td><td>FIJI</td>
+        </tr>
+            <tr>
+        	<td>FKX000</td><td>FALKLAND ISLANDS</td>
+        </tr>
+            <tr>
+        	<td>FMX000</td><td>MICRONESIA, FEDERATED STATES O</td>
+        </tr>
+            <tr>
+        	<td>FOX000</td><td>FAROE ISLANDS</td>
+        </tr>
+            <tr>
+        	<td>FRX000</td><td>FRANCE</td>
+        </tr>
+            <tr>
+        	<td>GAX000</td><td>GABON</td>
+        </tr>
+            <tr>
+        	<td>GBX000</td><td>UNITED KINGDOM</td>
+        </tr>
+            <tr>
+        	<td>GDX000</td><td>GRENADA</td>
+        </tr>
+            <tr>
+        	<td>GEX000</td><td>GEORGIA</td>
+        </tr>
+            <tr>
+        	<td>GFX000</td><td>FRENCH GUYANA</td>
+        </tr>
+            <tr>
+        	<td>GGX000</td><td>GUERNSEY</td>
+        </tr>
+            <tr>
+        	<td>GHX000</td><td>GHANA</td>
+        </tr>
+            <tr>
+        	<td>GIX000</td><td>GIBRALTAR</td>
+        </tr>
+            <tr>
+        	<td>GLX000</td><td>GREENLAND</td>
+        </tr>
+            <tr>
+        	<td>GMX000</td><td>GAMBIA</td>
+        </tr>
+            <tr>
+        	<td>GNX000</td><td>GUINEA REPUBLIC</td>
+        </tr>
+            <tr>
+        	<td>GPX000</td><td>GUADELOUPE</td>
+        </tr>
+            <tr>
+        	<td>GQX000</td><td>GUINEA EQUATORIAL</td>
+        </tr>
+            <tr>
+        	<td>GRX000</td><td>GREECE</td>
+        </tr>
+            <tr>
+        	<td>GTX000</td><td>GUATEMALA</td>
+        </tr>
+            <tr>
+        	<td>GUX000</td><td>GUAM</td>
+        </tr>
+            <tr>
+        	<td>GWX000</td><td>GUINEA-BISSAU</td>
+        </tr>
+            <tr>
+        	<td>GYX000</td><td>GUYANA (BRITISH)</td>
+        </tr>
+            <tr>
+        	<td>HKX000</td><td>HONG KONG</td>
+        </tr>
+            <tr>
+        	<td>HNX000</td><td>HONDURAS</td>
+        </tr>
+            <tr>
+        	<td>HRX000</td><td>CROATIA</td>
+        </tr>
+            <tr>
+        	<td>HTX000</td><td>HAITI</td>
+        </tr>
+            <tr>
+        	<td>HUX000</td><td>HUNGARY</td>
+        </tr>
+            <tr>
+        	<td>ICX000</td><td>CANARY ISLANDS, THE</td>
+        </tr>
+            <tr>
+        	<td>IEX000</td><td>IRELAND</td>
+        </tr>
+            <tr>
+        	<td>ILX000</td><td>ISRAEL</td>
+        </tr>
+            <tr>
+        	<td>INX000</td><td>INDIA</td>
+        </tr>
+            <tr>
+        	<td>IQX000</td><td>IRAQ</td>
+        </tr>
+            <tr>
+        	<td>IRX000</td><td>IRAN (ISLAMIC REPUBLIC OF)</td>
+        </tr>
+            <tr>
+        	<td>ISX000</td><td>ICELAND</td>
+        </tr>
+            <tr>
+        	<td>ITX000</td><td>ITALY</td>
+        </tr>
+            <tr>
+        	<td>JEX000</td><td>JERSEY</td>
+        </tr>
+            <tr>
+        	<td>JMX000</td><td>JAMAICA</td>
+        </tr>
+            <tr>
+        	<td>JOX000</td><td>JORDAN</td>
+        </tr>
+            <tr>
+        	<td>JPX000</td><td>JAPAN</td>
+        </tr>
+            <tr>
+        	<td>KEX000</td><td>KENYA</td>
+        </tr>
+            <tr>
+        	<td>KGX000</td><td>KYRGYZSTAN</td>
+        </tr>
+            <tr>
+        	<td>KHX000</td><td>CAMBODIA</td>
+        </tr>
+            <tr>
+        	<td>KIX000</td><td>KIRIBATI</td>
+        </tr>
+            <tr>
+        	<td>KMX000</td><td>COMOROS</td>
+        </tr>
+            <tr>
+        	<td>KNX000</td><td>ST. KITTS</td>
+        </tr>
+            <tr>
+        	<td>KPX000</td><td>KOREA, THE D.P.R OF (NORTH K.)</td>
+        </tr>
+            <tr>
+        	<td>KRX000</td><td>KOREA, REPUBLIC OF (SOUTH K.)</td>
+        </tr>
+            <tr>
+        	<td>KVX000</td><td>KOSOVO</td>
+        </tr>
+            <tr>
+        	<td>KWX000</td><td>KUWAIT</td>
+        </tr>
+            <tr>
+        	<td>KYX000</td><td>CAYMAN ISLANDS</td>
+        </tr>
+            <tr>
+        	<td>KZX000</td><td>KAZAKHSTAN</td>
+        </tr>
+            <tr>
+        	<td>LAX000</td><td>LAO PEOPLES DEMOCRATIC REPUBLI</td>
+        </tr>
+            <tr>
+        	<td>LBX000</td><td>LEBANON</td>
+        </tr>
+            <tr>
+        	<td>LCX000</td><td>ST. LUCIA</td>
+        </tr>
+            <tr>
+        	<td>LIX000</td><td>LIECHTENSTEIN</td>
+        </tr>
+            <tr>
+        	<td>LKX000</td><td>SRI LANKA</td>
+        </tr>
+            <tr>
+        	<td>LRX000</td><td>LIBERIA</td>
+        </tr>
+            <tr>
+        	<td>LSX000</td><td>LESOTHO</td>
+        </tr>
+            <tr>
+        	<td>LTX000</td><td>LITHUANIA</td>
+        </tr>
+            <tr>
+        	<td>LUX000</td><td>LUXEMBOURG</td>
+        </tr>
+            <tr>
+        	<td>LVX000</td><td>LATVIA</td>
+        </tr>
+            <tr>
+        	<td>LYX000</td><td>LIBYA</td>
+        </tr>
+            <tr>
+        	<td>MAX000</td><td>MOROCCO</td>
+        </tr>
+            <tr>
+        	<td>MCX000</td><td>MONACO</td>
+        </tr>
+            <tr>
+        	<td>MDX000</td><td>MOLDOVA, REPUBLIC OF</td>
+        </tr>
+            <tr>
+        	<td>MEX000</td><td>MEXICO CITY, MEXICO</td>
+        </tr>
+            <tr>
+        	<td>MGX000</td><td>MADAGASCAR</td>
+        </tr>
+            <tr>
+        	<td>MHX000</td><td>MARSHALL ISLANDS</td>
+        </tr>
+            <tr>
+        	<td>MKX000</td><td>MACEDONIA, REPUBLIC OF</td>
+        </tr>
+            <tr>
+        	<td>XEX000</td><td>ST. EUSTATIUS</td>
+        </tr>
+            <tr>
+        	<td>XMX000</td><td>ST. MAARTEN</td>
+        </tr>
+            <tr>
+        	<td>XNX000</td><td>NEVIS</td>
+        </tr>
+            <tr>
+        	<td>XSX000</td><td>SOMALILAND, REP OF (NORTH SOMA</td>
+        </tr>
+            <tr>
+        	<td>XYX000</td><td>ST. BARTHELEMY</td>
+        </tr>
+            <tr>
+        	<td>YEX000</td><td>YEMEN, REPUBLIC OF</td>
+        </tr>
+            <tr>
+        	<td>YTX000</td><td>MAYOTTE</td>
+        </tr>
+            <tr>
+        	<td>ZAX000</td><td>SOUTH AFRICA</td>
+        </tr>
+            <tr>
+        	<td>ZMX000</td><td>ZAMBIA</td>
+        </tr>
+            <tr>
+        	<td>ZWX000</td><td>ZIMBABWE</td>
+        </tr>
+            <tr>
+        	<td>PSR000</td><td>JNE PASURUAN</td>
+        </tr>
+            <tr>
+        	<td>PWT000</td><td>JNE PURWAKARTA</td>
+        </tr>
+            <tr>
+        	<td>SDA000</td><td>JNE SIDOARJO</td>
+        </tr>
+            <tr>
+        	<td>TGL000</td><td>JNE TEGAL</td>
+        </tr>
+            <tr>
+        	<td>BUX000</td><td>BANDUNG GATEWAY</td>
+        </tr>
+            <tr>
+        	<td>GZA000</td><td>PALESTINE</td>
+        </tr>
+            <tr>
+        	<td>GCX000</td><td>CANARY ISLANDS</td>
+        </tr>
+            <tr>
+        	<td>GLA000</td><td>SCOTLAND</td>
+        </tr>
+            <tr>
+        	<td>ION000</td><td>UNITED KINGDOM</td>
+        </tr>
+            <tr>
+        	<td>9UX000</td><td>MOLDOVA</td>
+        </tr>
+            <tr>
+        	<td>YMX000</td><td>MONTENEGRO</td>
+        </tr>
+            <tr>
+        	<td>CWX000</td><td>MARSHAL ISLAND</td>
+        </tr>
+            <tr>
+        	<td>INI000</td><td>MACEDONIA</td>
+        </tr>
+            <tr>
+        	<td>SLI000</td><td>SIERRA LEONE</td>
+        </tr>
+            <tr>
+        	<td>USV000</td><td>VIRGIN ISLANDS (US)</td>
+        </tr>
+            <tr>
+        	<td>TYO000</td><td>OKINAWA-JAPAN</td>
+        </tr>
+            <tr>
+        	<td>DTB000</td><td>JNE SILANGIT</td>
+        </tr>
+            <tr>
+        	<td>WGX000</td><td>WANGON GATEWAY</td>
+        </tr>
+            <tr>
+        	<td>MKQ000</td><td>JNE MERAUKE</td>
+        </tr>
+            <tr>
+        	<td>MLX000</td><td>MALI</td>
+        </tr>
+            <tr>
+        	<td>MMX000</td><td>MYANMAR</td>
+        </tr>
+            <tr>
+        	<td>MNX000</td><td>MONGOLIA</td>
+        </tr>
+            <tr>
+        	<td>MOX000</td><td>MACAU</td>
+        </tr>
+            <tr>
+        	<td>MPX000</td><td>COMMONWEALTH NO. MARIANA ISLAN</td>
+        </tr>
+            <tr>
+        	<td>MQX000</td><td>MARTINIQUE</td>
+        </tr>
+            <tr>
+        	<td>MRX000</td><td>MAURITANIA</td>
+        </tr>
+            <tr>
+        	<td>MSX000</td><td>MONTSERRAT</td>
+        </tr>
+            <tr>
+        	<td>MTX000</td><td>MALTA</td>
+        </tr>
+            <tr>
+        	<td>MUX000</td><td>MAURITIUS</td>
+        </tr>
+            <tr>
+        	<td>MVX000</td><td>MALDIVES</td>
+        </tr>
+            <tr>
+        	<td>MWX000</td><td>MALAWI</td>
+        </tr>
+            <tr>
+        	<td>MXX000</td><td>MEXICO</td>
+        </tr>
+            <tr>
+        	<td>MYX000</td><td>MALAYSIA</td>
+        </tr>
+            <tr>
+        	<td>MZX000</td><td>MOZAMBIQUE</td>
+        </tr>
+            <tr>
+        	<td>NAX000</td><td>NAMIBIA</td>
+        </tr>
+            <tr>
+        	<td>NCX000</td><td>NEW CALEDONIA</td>
+        </tr>
+            <tr>
+        	<td>NEX000</td><td>NIGER</td>
+        </tr>
+            <tr>
+        	<td>NGX000</td><td>NIGERIA</td>
+        </tr>
+            <tr>
+        	<td>NIX000</td><td>NICARAGUA</td>
+        </tr>
+            <tr>
+        	<td>NLX000</td><td>NETHERLANDS</td>
+        </tr>
+            <tr>
+        	<td>NOX000</td><td>NORWAY</td>
+        </tr>
+            <tr>
+        	<td>NPX000</td><td>NEPAL</td>
+        </tr>
+            <tr>
+        	<td>NRX000</td><td>NAURU, REPUBLIC OF</td>
+        </tr>
+            <tr>
+        	<td>NUX000</td><td>NIUE</td>
+        </tr>
+            <tr>
+        	<td>NZX000</td><td>NEW ZEALAND</td>
+        </tr>
+            <tr>
+        	<td>OMX000</td><td>OMAN</td>
+        </tr>
+            <tr>
+        	<td>PAX000</td><td>PANAMA</td>
+        </tr>
+            <tr>
+        	<td>PEX000</td><td>PERU</td>
+        </tr>
+            <tr>
+        	<td>PFX000</td><td>TAHITI</td>
+        </tr>
+            <tr>
+        	<td>PGX000</td><td>PAPUA NEW GUINEA</td>
+        </tr>
+            <tr>
+        	<td>PHX000</td><td>PHILIPPINES</td>
+        </tr>
+            <tr>
+        	<td>PKX000</td><td>PAKISTAN</td>
+        </tr>
+            <tr>
+        	<td>PLX000</td><td>POLAND</td>
+        </tr>
+            <tr>
+        	<td>PRX000</td><td>PUERTO RICO</td>
+        </tr>
+            <tr>
+        	<td>PTX000</td><td>PORTUGAL</td>
+        </tr>
+            <tr>
+        	<td>PWX000</td><td>PALAU</td>
+        </tr>
+            <tr>
+        	<td>PYX000</td><td>PARAGUAY</td>
+        </tr>
+            <tr>
+        	<td>QAX000</td><td>QATAR</td>
+        </tr>
+            <tr>
+        	<td>REX000</td><td>REUNION, ISLAND OF</td>
+        </tr>
+            <tr>
+        	<td>ROX000</td><td>ROMANIA</td>
+        </tr>
+            <tr>
+        	<td>RSX000</td><td>SERBIA, REPUBLIC OF</td>
+        </tr>
+            <tr>
+        	<td>RUX000</td><td>RUSSIAN FEDERATION</td>
+        </tr>
+            <tr>
+        	<td>RWX000</td><td>RWANDA</td>
+        </tr>
+            <tr>
+        	<td>SAX000</td><td>SAUDI ARABIA</td>
+        </tr>
+            <tr>
+        	<td>SBX000</td><td>SOLOMON ISLANDS</td>
+        </tr>
+            <tr>
+        	<td>SCX000</td><td>SEYCHELLES</td>
+        </tr>
+            <tr>
+        	<td>SDX000</td><td>SUDAN</td>
+        </tr>
+            <tr>
+        	<td>SEX000</td><td>SWEDEN</td>
+        </tr>
+            <tr>
+        	<td>SGX000</td><td>SINGAPORE</td>
+        </tr>
+            <tr>
+        	<td>SHX000</td><td>SAINT HELENA</td>
+        </tr>
+            <tr>
+        	<td>SIX000</td><td>SLOVENIA</td>
+        </tr>
+            <tr>
+        	<td>SKX000</td><td>SLOVAKIA</td>
+        </tr>
+            <tr>
+        	<td>SLX000</td><td>SIERRA LEONE</td>
+        </tr>
+            <tr>
+        	<td>SMX000</td><td>SAN MARINO</td>
+        </tr>
+            <tr>
+        	<td>SNX000</td><td>SENEGAL</td>
+        </tr>
+            <tr>
+        	<td>SOX000</td><td>SOMALIA</td>
+        </tr>
+            <tr>
+        	<td>SRX000</td><td>SURINAME</td>
+        </tr>
+            <tr>
+        	<td>SSX000</td><td>SOUTH SUDAN</td>
+        </tr>
+            <tr>
+        	<td>STX000</td><td>SAINT CROIX</td>
+        </tr>
+            <tr>
+        	<td>SVX000</td><td>EL SALVADOR</td>
+        </tr>
+            <tr>
+        	<td>SYX000</td><td>SYRIA</td>
+        </tr>
+            <tr>
+        	<td>SZX000</td><td>SWAZILAND</td>
+        </tr>
+            <tr>
+        	<td>TCX000</td><td>TURKS AND CAICOS ISLANDS</td>
+        </tr>
+            <tr>
+        	<td>TDX000</td><td>CHAD</td>
+        </tr>
+            <tr>
+        	<td>TGX000</td><td>TOGO</td>
+        </tr>
+            <tr>
+        	<td>THX000</td><td>THAILAND</td>
+        </tr>
+            <tr>
+        	<td>TJX000</td><td>TAJIKISTAN</td>
+        </tr>
+            <tr>
+        	<td>TLX000</td><td>EAST TIMOR</td>
+        </tr>
+            <tr>
+        	<td>TNX000</td><td>TUNISIA</td>
+        </tr>
+            <tr>
+        	<td>TOX000</td><td>TONGA</td>
+        </tr>
+            <tr>
+        	<td>TRX000</td><td>TURKEY</td>
+        </tr>
+            <tr>
+        	<td>TTX000</td><td>TRINIDAD AND TOBAGO</td>
+        </tr>
+            <tr>
+        	<td>TVX000</td><td>TUVALU</td>
+        </tr>
+            <tr>
+        	<td>TWX000</td><td>TAIWAN</td>
+        </tr>
+            <tr>
+        	<td>TZX000</td><td>TANZANIA</td>
+        </tr>
+            <tr>
+        	<td>UAX000</td><td>UKRAINE</td>
+        </tr>
+            <tr>
+        	<td>UGX000</td><td>UGANDA</td>
+        </tr>
+            <tr>
+        	<td>USX000</td><td>UNITED STATES OF AMERICA</td>
+        </tr>
+            <tr>
+        	<td>UYX000</td><td>URUGUAY</td>
+        </tr>
+            <tr>
+        	<td>UZX000</td><td>UZBEKISTAN</td>
+        </tr>
+            <tr>
+        	<td>VCX000</td><td>ST. VINCENT</td>
+        </tr>
+            <tr>
+        	<td>VEX000</td><td>VENEZUELA</td>
+        </tr>
+            <tr>
+        	<td>VGX000</td><td>VIRGIN ISLANDS (BRITISH)</td>
+        </tr>
+            <tr>
+        	<td>VIX000</td><td>VIRGIN ISLANDS (US)</td>
+        </tr>
+            <tr>
+        	<td>VNX000</td><td>VIETNAM</td>
+        </tr>
+            <tr>
+        	<td>VUX000</td><td>VANUATU</td>
+        </tr>
+            <tr>
+        	<td>WSX000</td><td>SAMOA</td>
+        </tr>
+            <tr>
+        	<td>XBX000</td><td>BONAIRE</td>
+        </tr>
+            <tr>
+        	<td>XCX000</td><td>CURACAO</td>
+        </tr>
+    </table>

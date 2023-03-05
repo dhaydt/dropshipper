@@ -37,6 +37,8 @@ Route::get('/passport', function () {
     Artisan::call('passport:install --force');
 });
 
+Route::get('jne', [WebController::class, 'jneTest']);
+
 Route::get('reminder', [WebController::class, 'reminder_flash_deal']);
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], function () {

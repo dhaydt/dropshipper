@@ -19,13 +19,148 @@ use App\Model\ShippingAddress;
 use App\Model\ShippingMethod;
 use App\User;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
+use phpDocumentor\Reflection\Types\Integer;
+use Throwable;
 use Xendit\Xendit;
 
 class Helpers
 {
+    public static function c_note($data){
+        $apikey= '25c898a9faea1a100859ecd9ef674548';
+
+        $username = 'TESTAPI';
+
+        $main_api = 'http://apiv2.jne.co.id:10102/tracing/api/generatecnote';
+
+        $order_id = '2023030200005BBA';
+        $branch = 'CGK000';
+        $customer = 'TESTAKUN';
+        $origin = 'CGK10000';
+        $dest = 'CGK10302';
+
+        $ship_name = 'Ezren';
+        $ship_phone = '0812345678';
+        $ship_add1 = 'Address 1';
+        $ship_add2 = 'Address 2';
+        $ship_add3 = 'Address 3';
+        $ship_zip = '11111';
+        $ship_city = 'TANGERANG';
+        $ship_region = 'CISAUK';
+
+        $receiver = json_decode($data['shipping_address_data']);
+        $r_phone = (int)$receiver->phone;
+        $items = $data['details'];
+        $weight = [];
+        $desc = [];
+        $categories = [];
+        
+        foreach($items as $i){
+            $item = json_decode($i['product_details']);
+            // dd($receiver, $data, $i, $item);
+            $berat = $item->weight * $i['qty'];
+            $descrip = $item->name;
+            $cat_id = json_decode($item->category_ids)[0]->id;
+            $cat = Category::find($cat_id)['name'] ?? 'Accesories';
+            
+            array_push($weight, $berat);
+            array_push($desc, $descrip);
+            array_push( $categories, $cat);
+        }
+
+        $service = 'REG';
+        if(str_contains(strtolower($data['shipping']), 'oke')){
+            $service = 'OKE';
+        }elseif(str_contains(strtolower($data['shipping']), 'yes')){
+            $service = 'YES';
+        }
+
+        $header = [
+            // 'Authorization' => 'Bearer'.$key,
+            'Content-Type' => 'application/x-www-form-urlencoded',
+        ];
+
+        $datas = [
+            'username'=> $username,
+            'api_key'=> $apikey,
+            'OLSHOP_ORDERID'=> $order_id,
+            'OLSHOP_SERVICE'=> $service,
+            'OLSHOP_BRANCH'=> $branch,
+            'OLSHOP_CUST'=> $customer,
+            'OLSHOP_ORIG'=> $origin,
+            'OLSHOP_DEST'=> $dest,
+            'OLSHOP_SHIPPER_NAME'=> $ship_name,
+            'OLSHOP_SHIPPER_PHONE'=> $ship_phone,
+            'OLSHOP_SHIPPER_ADDR1'=> $ship_add1,
+            'OLSHOP_SHIPPER_ADDR2'=> $ship_add2,
+            'OLSHOP_SHIPPER_ADDR3'=> $ship_add3,
+            'OLSHOP_SHIPPER_ZIP'=> $ship_zip,
+            'OLSHOP_SHIPPER_CITY'=> $ship_city,
+            'OLSHOP_SHIPPER_REGION'=> $ship_region,
+            'OLSHOP_RECEIVER_NAME'=> $receiver->contact_person_name,
+            'OLSHOP_RECEIVER_PHONE'=> $r_phone,
+            'OLSHOP_RECEIVER_ADDR1'=> $receiver->address,
+            'OLSHOP_RECEIVER_ADDR2'=> $receiver->address,
+            'OLSHOP_RECEIVER_ADDR3'=> $receiver->address,
+            'OLSHOP_RECEIVER_ZIP'=> $receiver->zip,
+            'OLSHOP_RECEIVER_CITY'=> $receiver->city,
+            'OLSHOP_RECEIVER_REGION'=> $receiver->district,
+            'OLSHOP_INS_FLAG'=> 'Y',
+            'OLSHOP_INST'=> 'This is notes/instruction',
+            'OLSHOP_COD_FLAG'=>'N',
+            'OLSHOP_COD_AMOUNT'=>'0',
+            'OLSHOP_GOODSDESC'=> implode('; ', $desc),
+            'OLSHOP_GOODSTYPE'=>'2',
+            'OLSHOP_GOODSVALUE'=> $data['order_amount'],
+            'OLSHOP_WEIGHT'=> array_sum($weight),
+            'OLSHOP_QTY'=> '1',
+        ];
+
+        // dd($datas);
+
+        try {
+            $client = new Client();
+
+            $response = $client->request('POST', $main_api, [
+                'headers' => $header,
+                'form_params' => $datas
+            ]);
+
+            
+            $status = $response->getStatusCode();
+            
+            
+            if ($status == 200) {
+                $resp = json_decode($response->getBody());
+                dd($resp);
+
+                if ($resp == 0) {
+                    $data = [
+                        'code' => 404,
+                        'message' => 'SKPD tidak ditemukan',
+                    ];
+
+                    return $data;
+                } else {
+                    $skpd = json_decode($response->getBody())->data;
+
+
+                    $data = [
+                        'code' => 200,
+                        'message' => 'Data SKPD berhasil diperbarui!!!',
+                    ];
+
+                    return $data;
+                }
+            }
+        } catch (Throwable $e) {
+            // $this->getSkpd($request);
+            dd('error',$e);
+        }
+    }
     public static function directWa($data)
     {
         $main = 'https://api.whatsapp.com/send?phone=';
