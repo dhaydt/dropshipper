@@ -29,27 +29,49 @@ use Xendit\Xendit;
 
 class Helpers
 {
-    public static function c_note($data){
-        $apikey= '25c898a9faea1a100859ecd9ef674548';
+    public static function c_note($data)
+    {
+        // dd($data);
+        $apikey = '25c898a9faea1a100859ecd9ef674548';
 
         $username = 'TESTAPI';
 
         $main_api = 'http://apiv2.jne.co.id:10102/tracing/api/generatecnote';
 
-        $order_id = '2023030200005BBA';
-        $branch = 'CGK000';
-        $customer = 'TESTAKUN';
-        $origin = 'CGK10000';
-        $dest = 'CGK10302';
+        $order_id = 'EZR'.$data['id'];
+        if (getenv('APP_MODE')  == 'development') {
+            $branch = 'CGK000';
+            $customer = 'TESTAKUN';
+            $origin = 'CGK10000';
+            $dest = 'BDO10000';
 
-        $ship_name = 'Ezren';
-        $ship_phone = '0812345678';
-        $ship_add1 = 'Address 1';
-        $ship_add2 = 'Address 2';
-        $ship_add3 = 'Address 3';
-        $ship_zip = '11111';
-        $ship_city = 'TANGERANG';
-        $ship_region = 'CISAUK';
+            $ship_name = 'ALI';
+            $ship_add1 = 'JAKARTA NO 44';
+            $ship_add2 = 'BANDUNG';
+            $ship_add3 = 'BANDUNG';
+            $ship_city = 'BANDUNG';
+            $ship_region = 'BANDUNG';
+            $ship_phone = '+6289876543212';
+            $ship_zip = '12345';
+        } else {
+            $branch = json_decode(BusinessSetting::where('type', 'jne_config')->first()->value)->branch;
+            $customer = 'TESTAKUN';
+            $origin = 'CGK10000';
+            $dest = 'CGK10302';
+
+            $ship_name = 'ALI';
+            $ship_phone = '0812345678';
+            $ship_add1 = 'BANDUNG NO 12';
+            $ship_add2 = 'BANDUNG';
+            $ship_add3 = 'BANDUNG';
+            $ship_zip = '54321';
+            $ship_city = 'BANDUNG';
+            $ship_region = 'CISAUK';
+        }
+
+        // dd(getenv('APP_MODE'));
+
+
 
         $receiver = json_decode($data['shipping_address_data']);
         $r_phone = (int)$receiver->phone;
@@ -57,24 +79,24 @@ class Helpers
         $weight = [];
         $desc = [];
         $categories = [];
-        
-        foreach($items as $i){
+
+        foreach ($items as $i) {
             $item = json_decode($i['product_details']);
             // dd($receiver, $data, $i, $item);
             $berat = $item->weight * $i['qty'];
             $descrip = $item->name;
             $cat_id = json_decode($item->category_ids)[0]->id;
             $cat = Category::find($cat_id)['name'] ?? 'Accesories';
-            
+
             array_push($weight, $berat);
             array_push($desc, $descrip);
-            array_push( $categories, $cat);
+            array_push($categories, $cat);
         }
 
         $service = 'REG';
-        if(str_contains(strtolower($data['shipping']), 'oke')){
+        if (str_contains(strtolower($data['shipping']), 'oke')) {
             $service = 'OKE';
-        }elseif(str_contains(strtolower($data['shipping']), 'yes')){
+        } elseif (str_contains(strtolower($data['shipping']), 'yes')) {
             $service = 'YES';
         }
 
@@ -84,39 +106,79 @@ class Helpers
         ];
 
         $datas = [
-            'username'=> $username,
-            'api_key'=> $apikey,
-            'OLSHOP_ORDERID'=> $order_id,
-            'OLSHOP_SERVICE'=> $service,
-            'OLSHOP_BRANCH'=> $branch,
-            'OLSHOP_CUST'=> $customer,
-            'OLSHOP_ORIG'=> $origin,
-            'OLSHOP_DEST'=> $dest,
-            'OLSHOP_SHIPPER_NAME'=> $ship_name,
-            'OLSHOP_SHIPPER_PHONE'=> $ship_phone,
-            'OLSHOP_SHIPPER_ADDR1'=> $ship_add1,
-            'OLSHOP_SHIPPER_ADDR2'=> $ship_add2,
-            'OLSHOP_SHIPPER_ADDR3'=> $ship_add3,
-            'OLSHOP_SHIPPER_ZIP'=> $ship_zip,
-            'OLSHOP_SHIPPER_CITY'=> $ship_city,
-            'OLSHOP_SHIPPER_REGION'=> $ship_region,
-            'OLSHOP_RECEIVER_NAME'=> $receiver->contact_person_name,
-            'OLSHOP_RECEIVER_PHONE'=> $r_phone,
-            'OLSHOP_RECEIVER_ADDR1'=> $receiver->address,
-            'OLSHOP_RECEIVER_ADDR2'=> $receiver->address,
-            'OLSHOP_RECEIVER_ADDR3'=> $receiver->address,
-            'OLSHOP_RECEIVER_ZIP'=> $receiver->zip,
-            'OLSHOP_RECEIVER_CITY'=> $receiver->city,
-            'OLSHOP_RECEIVER_REGION'=> $receiver->district,
-            'OLSHOP_INS_FLAG'=> 'Y',
-            'OLSHOP_INST'=> 'This is notes/instruction',
-            'OLSHOP_COD_FLAG'=>'N',
-            'OLSHOP_COD_AMOUNT'=>'0',
-            'OLSHOP_GOODSDESC'=> implode('; ', $desc),
-            'OLSHOP_GOODSTYPE'=>'2',
-            'OLSHOP_GOODSVALUE'=> $data['order_amount'],
-            'OLSHOP_WEIGHT'=> array_sum($weight),
-            'OLSHOP_QTY'=> '1',
+            'username' => $username,
+            'api_key' => $apikey,
+            'OLSHOP_BRANCH' => $branch,
+            'OLSHOP_CUST' => $customer,
+            'OLSHOP_ORDERID' => 'EZR' . sprintf($order_id),
+            'OLSHOP_SHIPPER_NAME' => strtoupper($ship_name),
+            'OLSHOP_SHIPPER_ADDR1' => strtoupper($ship_add1),
+            'OLSHOP_SHIPPER_ADDR2' => strtoupper($ship_add2),
+            'OLSHOP_SHIPPER_ADDR3' => strtoupper($ship_add3),
+            'OLSHOP_SHIPPER_CITY' => strtoupper($ship_city),
+            'OLSHOP_SHIPPER_REGION' => strtoupper($ship_region),
+            'OLSHOP_SHIPPER_ZIP' => $ship_zip,
+            'OLSHOP_SHIPPER_PHONE' => (string)$ship_phone,
+            'OLSHOP_RECEIVER_NAME' => strtoupper($receiver->contact_person_name),
+            'OLSHOP_RECEIVER_ADDR1' => strtoupper($receiver->address),
+            'OLSHOP_RECEIVER_ADDR2' => strtoupper($receiver->address),
+            'OLSHOP_RECEIVER_ADDR3' => strtoupper($receiver->address),
+            'OLSHOP_RECEIVER_CITY' => strtoupper($receiver->city),
+            'OLSHOP_RECEIVER_REGION' => strtoupper($receiver->state),
+            'OLSHOP_RECEIVER_ZIP' => (string)$receiver->zip,
+            'OLSHOP_RECEIVER_PHONE' => (string)$r_phone,
+            'OLSHOP_QTY' => '1',
+            'OLSHOP_WEIGHT' => (string)array_sum($weight),
+            'OLSHOP_GOODSDESC' => strtoupper(implode('; ', $desc)),
+            'OLSHOP_GOODSVALUE' => (string)$data['order_amount'],
+            'OLSHOP_GOODSTYPE' => '2',
+            'OLSHOP_INST' => 'TEST',
+            'OLSHOP_INS_FLAG' => 'N',
+            'OLSHOP_ORIG' => $origin,
+            'OLSHOP_DEST' => $dest,
+            'OLSHOP_SERVICE' => $service,
+            'OLSHOP_COD_FLAG' => 'N',
+            'OLSHOP_COD_AMOUNT' => '0',
+        ];
+
+        // dd($datas);
+
+
+        $datas = [
+            "username" => $username,
+            "api_key" => $apikey,
+            "OLSHOP_BRANCH" => $branch,
+            "OLSHOP_BRANCH" => strtoupper($branch),
+            "OLSHOP_CUST" => $customer,
+            "OLSHOP_ORDERID" => $order_id.'8',
+            "OLSHOP_SHIPPER_NAME" => "EZREN",
+            "OLSHOP_SHIPPER_ADDR1" => "JAKARTA NO 44",
+            "OLSHOP_SHIPPER_ADDR2" => "BANDUNG",
+            "OLSHOP_SHIPPER_ADDR3" => "BANDUNG",
+            "OLSHOP_SHIPPER_CITY" => "BANDUNG",
+            "OLSHOP_SHIPPER_REGION" => "BANDUNG",
+            "OLSHOP_SHIPPER_ZIP" => $ship_zip,
+            "OLSHOP_SHIPPER_PHONE" => (string)$ship_phone,
+            "OLSHOP_RECEIVER_NAME" => strtoupper($receiver->contact_person_name),
+            "OLSHOP_RECEIVER_ADDR1" => strtoupper($receiver->address),
+            "OLSHOP_RECEIVER_ADDR2" => strtoupper($receiver->district),
+            "OLSHOP_RECEIVER_ADDR3" => strtoupper($receiver->city),
+            "OLSHOP_RECEIVER_CITY" => strtoupper($receiver->city),
+            "OLSHOP_RECEIVER_REGION" => strtoupper($receiver->state),
+            "OLSHOP_RECEIVER_ZIP" => (string)$receiver->zip,
+            "OLSHOP_RECEIVER_PHONE" => (string)$r_phone,
+            "OLSHOP_QTY" => "1",
+            "OLSHOP_WEIGHT" => (string)array_sum($weight),
+            "OLSHOP_GOODSDESC" => strtoupper(implode('; ', $desc)),
+            "OLSHOP_GOODSVALUE" => (string)$data['order_amount'],
+            "OLSHOP_GOODSTYPE" => "1",
+            "OLSHOP_INST" => "TEST",
+            "OLSHOP_INS_FLAG" => "N",
+            "OLSHOP_ORIG" => $origin,
+            "OLSHOP_DEST" => $dest,
+            "OLSHOP_SERVICE" => "REG",
+            "OLSHOP_COD_FLAG" => "N",
+            "OLSHOP_COD_AMOUNT" => "0",
         ];
 
         // dd($datas);
@@ -129,36 +191,19 @@ class Helpers
                 'form_params' => $datas
             ]);
 
-            
+
             $status = $response->getStatusCode();
-            
-            
+
+
+
             if ($status == 200) {
                 $resp = json_decode($response->getBody());
-                dd($resp);
-
-                if ($resp == 0) {
-                    $data = [
-                        'code' => 404,
-                        'message' => 'SKPD tidak ditemukan',
-                    ];
-
-                    return $data;
-                } else {
-                    $skpd = json_decode($response->getBody())->data;
-
-
-                    $data = [
-                        'code' => 200,
-                        'message' => 'Data SKPD berhasil diperbarui!!!',
-                    ];
-
-                    return $data;
-                }
+                // dd($resp);
+                return $resp;
             }
         } catch (Throwable $e) {
             // $this->getSkpd($request);
-            dd('error',$e);
+            dd('error', $e, $datas);
         }
     }
     public static function directWa($data)
@@ -167,9 +212,9 @@ class Helpers
         $phone = $data['phone'];
         $product = ucwords($data['product']);
         $product = urlencode(substr($product, 0, 50));
-        $price = 'Rp.'.number_format($data['price']);
+        $price = 'Rp.' . number_format($data['price']);
         $link = $data['link'];
-        $url = $main.$phone.'&text='.$product.'%0A'.$price;
+        $url = $main . $phone . '&text=' . $product . '%0A' . $price;
 
         return $url;
     }
@@ -211,7 +256,7 @@ class Helpers
         if ($request->user_is == 'customer') {
             $name = $customer->name ? $customer->name : $customer->f_name;
             $phone = $customer->phone;
-            $address = $customer->district.', '.$customer->city.', '.$customer->province;
+            $address = $customer->district . ', ' . $customer->city . ', ' . $customer->province;
             $id = $customer->id;
             $email = $customer->email;
         }
@@ -219,7 +264,7 @@ class Helpers
             $custom = ShippingAddress::where('slug', session()->get('customer_address'))->first();
             $name = $custom->contact_person_name;
             $phone = $custom->phone;
-            $address = $custom->district.', '.$custom->city.', '.$custom->province;
+            $address = $custom->district . ', ' . $custom->city . ', ' . $custom->province;
             $id = $custom->customer_id;
             $email = 'dropshipper@ezren.id';
         }
@@ -235,7 +280,7 @@ class Helpers
         $group = $request->cart_group_id;
 
         $params = [
-            'external_id' => 'ezren'.$phone.$id,
+            'external_id' => 'ezren' . $phone . $id,
             'amount' => $value,
             'payer_email' => $email,
             'description' => env('APP_NAME'),
@@ -244,7 +289,7 @@ class Helpers
             'should_send_email' => true,
             'customer' => $user,
             // 'items' => $products,
-            'success_redirect_url' => 'https://ezren.id'.'/xendit-payment/success-api/'.$type.'/'.$group.'/'.$user_is,
+            'success_redirect_url' => 'https://ezren.id' . '/xendit-payment/success-api/' . $type . '/' . $group . '/' . $user_is,
         ];
         // dd($params);
         $checkout_session = \Xendit\Invoice::create($params);
@@ -296,7 +341,7 @@ class Helpers
         if ($request->user_is == 'customer') {
             $name = $customer->name ? $customer->name : $customer->f_name;
             $phone = $customer->phone;
-            $address = $customer->district.', '.$customer->city.', '.$customer->province;
+            $address = $customer->district . ', ' . $customer->city . ', ' . $customer->province;
             $id = $customer->id;
             $email = $customer->email;
         }
@@ -319,7 +364,7 @@ class Helpers
         $group = $request->order_id;
 
         $params = [
-            'external_id' => 'ezren'.$phone.$id,
+            'external_id' => 'ezren' . $phone . $id,
             'amount' => $value,
             'payer_email' => $email,
             'description' => env('APP_NAME') ? env('APP_NAME') : 'Ezren Paymnet',
@@ -328,7 +373,7 @@ class Helpers
             'should_send_email' => true,
             'customer' => $user,
             // 'items' => $products,
-            'success_redirect_url' => 'https://ezren.id'.'/xendit-payment/success-api/'.$type.'/'.$group.'/'.$user_is,
+            'success_redirect_url' => 'https://ezren.id' . '/xendit-payment/success-api/' . $type . '/' . $group . '/' . $user_is,
         ];
         // dd($params);
         $checkout_session = \Xendit\Invoice::create($params);
@@ -364,7 +409,7 @@ class Helpers
     {
         $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/subdistrict?city='.$id,
+            CURLOPT_URL => config('rajaongkir.url') . '/subdistrict?city=' . $id,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -372,7 +417,7 @@ class Helpers
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -386,7 +431,7 @@ class Helpers
         curl_close($curl);
 
         if ($err) {
-            echo 'cURL Error #:'.$err;
+            echo 'cURL Error #:' . $err;
         } else {
             return $data;
         }
@@ -396,7 +441,7 @@ class Helpers
     {
         $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/city?&province='.$id,
+            CURLOPT_URL => config('rajaongkir.url') . '/city?&province=' . $id,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -404,7 +449,7 @@ class Helpers
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -418,7 +463,7 @@ class Helpers
         curl_close($curl);
 
         if ($err) {
-            echo 'cURL Error #:'.$err;
+            echo 'cURL Error #:' . $err;
         } else {
             return $data;
         }
@@ -460,7 +505,7 @@ class Helpers
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/province',
+            CURLOPT_URL => config('rajaongkir.url') . '/province',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -468,7 +513,7 @@ class Helpers
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -482,7 +527,7 @@ class Helpers
         curl_close($curl);
 
         if ($err) {
-            echo 'cURL Error #:'.$err;
+            echo 'cURL Error #:' . $err;
         } else {
             return $prov;
         }
@@ -492,10 +537,10 @@ class Helpers
     {
         if ($transaction['paid_by'] == 'customer') {
             $user = User::find($transaction['payer_id']);
-            $payer = $user->f_name.' '.$user->l_name;
+            $payer = $user->f_name . ' ' . $user->l_name;
         } elseif ($transaction['paid_by'] == 'seller') {
             $user = Seller::find($transaction['payer_id']);
-            $payer = $user->f_name.' '.$user->l_name;
+            $payer = $user->f_name . ' ' . $user->l_name;
         } elseif ($transaction['paid_by'] == 'admin') {
             $user = Admin::find($transaction['payer_id']);
             $payer = $user->name;
@@ -503,10 +548,10 @@ class Helpers
 
         if ($transaction['paid_to'] == 'customer') {
             $user = User::find($transaction['payment_receiver_id']);
-            $receiver = $user->f_name.' '.$user->l_name;
+            $receiver = $user->f_name . ' ' . $user->l_name;
         } elseif ($transaction['paid_to'] == 'seller') {
             $user = Seller::find($transaction['payment_receiver_id']);
-            $receiver = $user->f_name.' '.$user->l_name;
+            $receiver = $user->f_name . ' ' . $user->l_name;
         } elseif ($transaction['paid_to'] == 'admin') {
             $user = Admin::find($transaction['payment_receiver_id']);
             $receiver = $user->name;
@@ -695,7 +740,7 @@ class Helpers
         $curl = curl_init();
         // JNE
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/cost',
+            CURLOPT_URL => config('rajaongkir.url') . '/cost',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -703,10 +748,10 @@ class Helpers
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             // CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType='.$from_type.'&destination='.$to_city.'&destinationType='.$to_type.'&weight='.$weight.'&courier=jne',
-            CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType=city&destination='.$to_district.'&destinationType=subdistrict&weight='.$weight.'&courier=jne',
+            CURLOPT_POSTFIELDS => 'origin=' . $from_city . '&originType=city&destination=' . $to_district . '&destinationType=subdistrict&weight=' . $weight . '&courier=jne',
             CURLOPT_HTTPHEADER => [
                 'content-type: application/x-www-form-urlencoded',
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -716,7 +761,7 @@ class Helpers
         curl_close($curl);
 
         if ($errJne) {
-            echo 'cURL Error #:'.$errJne;
+            echo 'cURL Error #:' . $errJne;
         } else {
             $response = json_decode($responseJne, true);
             $data_ongkir = $response['rajaongkir']['results'];
@@ -731,7 +776,7 @@ class Helpers
         $curl = curl_init();
         // SICEPAT
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/cost',
+            CURLOPT_URL => config('rajaongkir.url') . '/cost',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -739,10 +784,10 @@ class Helpers
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             // CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType='.$from_type.'&destination='.$to_city.'&destinationType='.$to_type.'&weight='.$weight.'&courier=jne',
-            CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType=city&destination='.$to_district.'&destinationType=subdistrict&weight='.$weight.'&courier=sicepat',
+            CURLOPT_POSTFIELDS => 'origin=' . $from_city . '&originType=city&destination=' . $to_district . '&destinationType=subdistrict&weight=' . $weight . '&courier=sicepat',
             CURLOPT_HTTPHEADER => [
                 'content-type: application/x-www-form-urlencoded',
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -752,7 +797,7 @@ class Helpers
         curl_close($curl);
 
         if ($errSicepat) {
-            echo 'cURL Error #:'.$errSicepat;
+            echo 'cURL Error #:' . $errSicepat;
         } else {
             $response = json_decode($responseSicepat, true);
             $sicepat = $response['rajaongkir']['results'];
@@ -767,17 +812,17 @@ class Helpers
         // TIKI
         $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/cost',
+            CURLOPT_URL => config('rajaongkir.url') . '/cost',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType=city&destination='.$to_district.'&destinationType=subdistrict&weight='.$weight.'&courier=tiki',
+            CURLOPT_POSTFIELDS => 'origin=' . $from_city . '&originType=city&destination=' . $to_district . '&destinationType=subdistrict&weight=' . $weight . '&courier=tiki',
             CURLOPT_HTTPHEADER => [
                 'content-type: application/x-www-form-urlencoded',
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -787,7 +832,7 @@ class Helpers
         curl_close($curl);
 
         if ($errTiki) {
-            echo 'cURL Error #:'.$errTiki;
+            echo 'cURL Error #:' . $errTiki;
         } else {
             $response = json_decode($responseTiki, true);
             $tiki = $response['rajaongkir']['results'];
@@ -839,7 +884,7 @@ class Helpers
         $curl = curl_init();
         // JNE
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/cost',
+            CURLOPT_URL => config('rajaongkir.url') . '/cost',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -847,10 +892,10 @@ class Helpers
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             // CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType='.$from_type.'&destination='.$to_city.'&destinationType='.$to_type.'&weight='.$weight.'&courier=jne',
-            CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType=city&destination='.$to_district.'&destinationType=subdistrict&weight='.$weight.'&courier=jne',
+            CURLOPT_POSTFIELDS => 'origin=' . $from_city . '&originType=city&destination=' . $to_district . '&destinationType=subdistrict&weight=' . $weight . '&courier=jne',
             CURLOPT_HTTPHEADER => [
                 'content-type: application/x-www-form-urlencoded',
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -860,7 +905,7 @@ class Helpers
         curl_close($curl);
 
         if ($errJne) {
-            echo 'cURL Error #:'.$errJne;
+            echo 'cURL Error #:' . $errJne;
         } else {
             $response = json_decode($responseJne, true);
             $data_ongkir = $response['rajaongkir']['results'];
@@ -875,7 +920,7 @@ class Helpers
         $curl = curl_init();
         // SICEPAT
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/cost',
+            CURLOPT_URL => config('rajaongkir.url') . '/cost',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -883,10 +928,10 @@ class Helpers
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             // CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType='.$from_type.'&destination='.$to_city.'&destinationType='.$to_type.'&weight='.$weight.'&courier=jne',
-            CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType=city&destination='.$to_district.'&destinationType=subdistrict&weight='.$weight.'&courier=sicepat',
+            CURLOPT_POSTFIELDS => 'origin=' . $from_city . '&originType=city&destination=' . $to_district . '&destinationType=subdistrict&weight=' . $weight . '&courier=sicepat',
             CURLOPT_HTTPHEADER => [
                 'content-type: application/x-www-form-urlencoded',
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -896,7 +941,7 @@ class Helpers
         curl_close($curl);
 
         if ($errSicepat) {
-            echo 'cURL Error #:'.$errSicepat;
+            echo 'cURL Error #:' . $errSicepat;
         } else {
             $response = json_decode($responseSicepat, true);
             $sicepat = $response['rajaongkir']['results'];
@@ -911,17 +956,17 @@ class Helpers
         // TIKI
         $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_URL => config('rajaongkir.url').'/cost',
+            CURLOPT_URL => config('rajaongkir.url') . '/cost',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => 'origin='.$from_city.'&originType=city&destination='.$to_district.'&destinationType=subdistrict&weight='.$weight.'&courier=tiki',
+            CURLOPT_POSTFIELDS => 'origin=' . $from_city . '&originType=city&destination=' . $to_district . '&destinationType=subdistrict&weight=' . $weight . '&courier=tiki',
             CURLOPT_HTTPHEADER => [
                 'content-type: application/x-www-form-urlencoded',
-                'key:'.config('rajaongkir.api_key'),
+                'key:' . config('rajaongkir.api_key'),
             ],
         ]);
 
@@ -931,7 +976,7 @@ class Helpers
         curl_close($curl);
 
         if ($errTiki) {
-            echo 'cURL Error #:'.$errTiki;
+            echo 'cURL Error #:' . $errTiki;
         } else {
             $response = json_decode($responseTiki, true);
             $tiki = $response['rajaongkir']['results'];
@@ -1014,16 +1059,16 @@ class Helpers
             $data['variation'] = $variation;
             $wa = BusinessSetting::where('type', 'company_phone')->first();
             $direct = [
-                        'phone' => '62'.(int) $wa->value,
-                        'product' => $data['name'],
-                        'price' => $data['unit_price'],
-                        'link' => URL::to('/product/'.$data['slug']),
-                    ];
+                'phone' => '62' . (int) $wa->value,
+                'product' => $data['name'],
+                'price' => $data['unit_price'],
+                'link' => URL::to('/product/' . $data['slug']),
+            ];
             $data['direct_wa'] = Helpers::directWa($direct);
             if ($check != null) {
                 if ($check['success'] == 1) {
                     $seller = $check['data'];
-                    $data['share_url'] = env('ETOKO_URL', 'http://etoko.xyz').'/generated/'.$seller['id'].'/'.urlencode($seller->shop['name']).'/'.$data['slug'];
+                    $data['share_url'] = env('ETOKO_URL', 'http://etoko.xyz') . '/generated/' . $seller['id'] . '/' . urlencode($seller->shop['name']) . '/' . $data['slug'];
                 }
             }
         }
@@ -1156,7 +1201,7 @@ class Helpers
             return $lowest_price;
         }
 
-        return $lowest_price.' - '.$highest_price;
+        return $lowest_price . ' - ' . $highest_price;
     }
 
     public static function get_product_discount($product, $price)
@@ -1239,7 +1284,8 @@ class Helpers
     {
         $key = BusinessSetting::where(['type' => 'push_notification_key'])->first()->value;
         $url = 'https://fcm.googleapis.com/fcm/send';
-        $header = ['authorization: key='.$key.'',
+        $header = [
+            'authorization: key=' . $key . '',
             'content-type: application/json',
         ];
 
@@ -1263,16 +1309,16 @@ class Helpers
         ];
 
         $postdata = '{
-            "to" : "'.$fcm_token.'",
+            "to" : "' . $fcm_token . '",
             "data" : {
-                "title" :"'.$data['title'].'",
-                "body" : "'.$data['description'].'",
-                "image" : "'.$img.'",
-                "icon" : "'.$img.'",
-                "order_id":"'.$data['order_id'].'",
+                "title" :"' . $data['title'] . '",
+                "body" : "' . $data['description'] . '",
+                "image" : "' . $img . '",
+                "icon" : "' . $img . '",
+                "order_id":"' . $data['order_id'] . '",
                 "is_read": 0
                 },
-            "notification" : '.json_encode($notif).'
+            "notification" : ' . json_encode($notif) . '
         }';
 
         $ch = curl_init();
@@ -1297,7 +1343,8 @@ class Helpers
         $key = BusinessSetting::where(['type' => 'push_notification_key'])->first()->value;
 
         $url = 'https://fcm.googleapis.com/fcm/send';
-        $header = ['authorization: key='.$key.'',
+        $header = [
+            'authorization: key=' . $key . '',
             'content-type: application/json',
         ];
 
@@ -1306,7 +1353,7 @@ class Helpers
         }
 
         $img = 'https://ezren.id/assets/front-end/img/e.ico';
-        $images = asset('storage/notification').'/'.$data['image'];
+        $images = asset('storage/notification') . '/' . $data['image'];
 
         $notif = [
             'title' => $data['title'],
@@ -1320,16 +1367,16 @@ class Helpers
         ];
 
         $postdata = '{
-            "to" : "'.$token.'",
+            "to" : "' . $token . '",
             "data" : {
-                "title" :"'.$data['title'].'",
-                "body" : "'.$data['description'].'",
-                "image" : "'.$images.'",
-                "icon" : "'.$img.'",
-                "order_id":"'.$data['order_id'].'",
+                "title" :"' . $data['title'] . '",
+                "body" : "' . $data['description'] . '",
+                "image" : "' . $images . '",
+                "icon" : "' . $img . '",
+                "order_id":"' . $data['order_id'] . '",
                 "is_read": 0
                 },
-            "notification" : '.json_encode($notif).'
+            "notification" : ' . json_encode($notif) . '
         }';
 
         $ch = curl_init();
@@ -1375,10 +1422,10 @@ class Helpers
             $objects = scandir($dir);
             foreach ($objects as $object) {
                 if ($object != '.' && $object != '..') {
-                    if (filetype($dir.'/'.$object) == 'dir') {
-                        Helpers::remove_dir($dir.'/'.$object);
+                    if (filetype($dir . '/' . $object) == 'dir') {
+                        Helpers::remove_dir($dir . '/' . $object);
                     } else {
-                        unlink($dir.'/'.$object);
+                        unlink($dir . '/' . $object);
                     }
                 }
             }
@@ -1478,9 +1525,9 @@ class Helpers
     {
         $position = Helpers::get_business_settings('currency_symbol_position');
         if (!is_null($position) && $position == 'left') {
-            $string = currency_symbol().''.number_format($amount);
+            $string = currency_symbol() . '' . number_format($amount);
         } else {
-            $string = number_format($amount).''.currency_symbol();
+            $string = number_format($amount) . '' . currency_symbol();
         }
 
         return $string;
@@ -1506,7 +1553,7 @@ class Helpers
         $mpdf_view = $view;
         $mpdf_view = $mpdf_view->render();
         $mpdf->WriteHTML($mpdf_view);
-        $mpdf->Output($file_prefix.$file_postfix.'.pdf', 'D');
+        $mpdf->Output($file_prefix . $file_postfix . '.pdf', 'D');
     }
 
     public static function gen_resi_mpdf($view, $file_prefix, $file_postfix)
@@ -1516,7 +1563,7 @@ class Helpers
         $mpdf_view = $view;
         $mpdf_view = $mpdf_view->render();
         $mpdf->WriteHTML($mpdf_view);
-        $mpdf->Output($file_prefix.$file_postfix.'.pdf', 'D');
+        $mpdf->Output($file_prefix . $file_postfix . '.pdf', 'D');
     }
 }
 
@@ -1538,7 +1585,7 @@ if (!function_exists('currency_symbol')) {
 if (!function_exists('format_price')) {
     function format_price($price)
     {
-        return number_format($price, 2).currency_symbol();
+        return number_format($price, 2) . currency_symbol();
     }
 }
 
@@ -1547,16 +1594,16 @@ function translate($key)
     $local = Helpers::default_lang();
     App::setLocale($local);
 
-    $lang_array = include base_path('resources/lang/'.$local.'/messages.php');
+    $lang_array = include base_path('resources/lang/' . $local . '/messages.php');
     $processed_key = ucfirst(str_replace('_', ' ', Helpers::remove_invalid_charcaters($key)));
 
     if (!array_key_exists($key, $lang_array)) {
         $lang_array[$key] = $processed_key;
-        $str = '<?php return '.var_export($lang_array, true).';';
-        file_put_contents(base_path('resources/lang/'.$local.'/messages.php'), $str);
+        $str = '<?php return ' . var_export($lang_array, true) . ';';
+        file_put_contents(base_path('resources/lang/' . $local . '/messages.php'), $str);
         $result = $processed_key;
     } else {
-        $result = __('messages.'.$key);
+        $result = __('messages.' . $key);
     }
 
     return $result;

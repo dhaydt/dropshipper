@@ -197,6 +197,9 @@
                     @if(\App\CPU\Helpers::get_business_settings('order_verification'))
                         <div class="card-header">
                             <h4>{{\App\CPU\translate('order_verification_code')}} : {{$order['verification_code']}}</h4>
+                            @if (isset($order['no_resi']))
+                            <h5>No. Resi Kurir : {{$order['no_resi']}}</h5>
+                            @endif
                         </div>
                     @endif
                     <div class="payment mb-3  table-responsive">

@@ -178,10 +178,16 @@ class XenditPaymentController extends Controller
             $user = User::where('id', $order->customer_id)->first();
 
             $check = str_contains(strtolower($order['shipping']), strtolower("jne"));
+            // dd($check);
 
             if($check){
                 $resi = Helpers::c_note($order);
-                dd($resi);
+                $c_note = $resi->detail[0]->cnote_no;
+                if(isset($c_note)){
+                    $update = Order::find($order['id']);
+                    $update->no_resi = $c_note;
+                    $update->save();
+                }
             };
             
         }
