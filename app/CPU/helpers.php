@@ -54,7 +54,8 @@ class Helpers
             $ship_phone = '+6289876543212';
             $ship_zip = '12345';
         } else {
-            $branch = json_decode(BusinessSetting::where('type', 'jne_config')->first()->value)->branch;
+            // $branch = json_decode(BusinessSetting::where('type', 'jne_config')->first()->value)->branch;
+            $branch = 'CGK000';
             $customer = 'TESTAKUN';
             $origin = 'CGK10000';
             $dest = 'CGK10302';
