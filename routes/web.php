@@ -11,6 +11,7 @@
 |
  */
 
+use App\Http\Controllers\Admin\ResiController;
 use App\Http\Controllers\Web\GenerateController;
 use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Artisan;
@@ -32,6 +33,7 @@ Route::get('/migrate', function () {
      ]);
     dd('migrated!');
 });
+Route::get('cetak-resi', [ResiController::class, 'printResi'])->name('cetak_resi');
 
 Route::get('/passport', function () {
     Artisan::call('passport:install --force');
@@ -45,6 +47,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode']], funct
     Route::get('/', 'WebController@home')->name('home');
     Route::get('quick-view', 'WebController@quick_view')->name('quick-view');
     Route::get('searched-products', 'WebController@searched_products')->name('searched-products');
+
+
 
     Route::get('generated/{seller_id}/{seller_name}/{product_slug}', [GenerateController::class, 'generate'])->name('generate');
 

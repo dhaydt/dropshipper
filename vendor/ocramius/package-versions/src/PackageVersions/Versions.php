@@ -84,6 +84,7 @@ final class Versions
   'phpoffice/phpspreadsheet' => '1.28.0@6e81cf39bbd93ebc3a4e8150444c41e8aa9b769a',
   'phpoption/phpoption' => '1.8.0@5455cb38aed4523f99977c4a12ef19da4bfe2a28',
   'phpseclib/phpseclib' => '2.0.34@98a6fe587f3481aea319eef7e656d02cfe1675ec',
+  'picqer/php-barcode-generator' => 'v2.2.4@b98f110cc5a79f723688fb17fd90b9325300d844',
   'psr/container' => '1.1.2@513e0666f7216c7459170d56df27dfcefe1689ea',
   'psr/http-client' => '1.0.1@2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
   'psr/http-factory' => '1.0.1@12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
@@ -178,7 +179,7 @@ final class Versions
   'sebastian/version' => '2.0.1@99732be0ddb3361e16ad77b68ba41efc8e979019',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
   'webmozart/assert' => '1.10.0@6964c76c7804814a842473e0c8fd15bab0f18e25',
-  'laravel/laravel' => 'dev-main@a6c5eac48223b529cf284613705490a729c4be42',
+  'laravel/laravel' => 'dev-main@6492ba1fb272d0702d06e23954b99488253e17c6',
 );
 
     private function __construct()

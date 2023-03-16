@@ -182,10 +182,11 @@ class XenditPaymentController extends Controller
 
             if($check){
                 $resi = Helpers::c_note($order);
-                $c_note = $resi->detail[0]->cnote_no;
+                $c_note = $resi['response']->detail[0]->cnote_no;
                 if(isset($c_note)){
                     $update = Order::find($order['id']);
                     $update->no_resi = $c_note;
+                    $update->destination_code = $resi['dest'];
                     $update->save();
                 }
             };

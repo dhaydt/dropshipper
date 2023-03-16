@@ -186,7 +186,7 @@
                                 </div>
                                 @if (isset($order->resi_kurir))
                                 <div class="flex-end">
-                                    <h6 style="color: #8a8a8a;">{{\App\CPU\translate('Resi')}} {{\App\CPU\translate('method')}}
+                                    <h6 style="color: #8a8a8a;">{{\App\CPU\translate('Resi')}} {{\App\CPU\translate('kurir')}}
                                         :</h6>
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#resi_kurir">Resi Kurir</button>
                                         <div class="modal fade" id="resi_kurir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

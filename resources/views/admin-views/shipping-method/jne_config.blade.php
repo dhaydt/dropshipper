@@ -45,7 +45,7 @@
             <select class="form-control branch" name="branch" style="width: 100%">
               <option value="">-- Pilih Branch JNE --</option>
               @foreach ($branch as $b)
-                <option value="{{ $b['branch_code'] }}" {{ $o_branch == $b['branch_code'] ? 'selected' : '' }}>{{ $b['branch_name'] }}</option>
+                <option value="{{ $b['branch_code'] }}" {{ $o_branch == $b['branch_code'] ? 'selected' : '' }}>{{ $b['branch_name'].' - '.$b['branch_code']  }}</option>
               @endforeach
             </select>
           </div>
@@ -54,7 +54,7 @@
             <select class="form-control origin" name="origin" style="width: 100%">
               <option value="">-- Pilih asal pengiriman --</option>
               @foreach ($origin as $o)
-                <option value="{{ $o['origin_code'] }}" {{ $o_origin == $o['origin_code'] ? 'selected' : '' }}>{{ $o['origin_name'] }}</option>
+                <option value="{{ $o['origin_code'] }}" {{ $o_origin == $o['origin_code'] ? 'selected' : '' }}>{{ $o['origin_name'].' - '.$o['origin_code'] }}</option>
               @endforeach
             </select>
           </div>

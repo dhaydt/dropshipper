@@ -48,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
                 'about' => Helpers::get_settings($web, 'about_us'),
                 'footer_logo' => Helpers::get_settings($web, 'company_footer_logo'),
                 'copyright_text' => Helpers::get_settings($web, 'company_copyright_text'),
+                'jne' => Helpers::get_settings($web, 'jne_config'),
             ];
 
             //language

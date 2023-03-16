@@ -191,11 +191,15 @@
                                         <i class="tio-settings"></i>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        @if (str_contains(strtolower($order['shipping']), 'jne') && $order['user_is'] == 'customer' && $order['no_resi'] != null)
+                                            <a href="{{ route('cetak_resi', ['id' => $order['id']]) }}" class="dropdown-item" target="_blank"><i
+                                                class="tio-print"></i> Cetak Resi</a>
+                                        @endif
                                         <a class="dropdown-item" data-toggle="modal" data-target="#resi{{ $order['id'] }}"
-                                           href="javascript:"><i
+                                            href="javascript:"><i
                                                 class="tio-add"></i> {{\App\CPU\translate('No_Resi')}}</a>
                                         <a class="dropdown-item"
-                                           href="{{route('admin.orders.details',['id'=>$order['id']])}}"><i
+                                            href="{{route('admin.orders.details',['id'=>$order['id']])}}"><i
                                                 class="tio-visible"></i> {{\App\CPU\translate('view')}}</a>
                                     </div>
                                 </div>
@@ -227,7 +231,7 @@
                             </div>
                             </div>
                         </div>
-                    @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>

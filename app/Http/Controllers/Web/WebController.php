@@ -151,7 +151,7 @@ class WebController extends Controller
             'OLSHOP_QTY'=>'1',
         ];
 
-        dd($data);
+        // dd($data);
 
         try {
             $client = new Client();

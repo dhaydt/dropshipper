@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
 use App\Model\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ResiController extends Controller
 {
@@ -36,6 +38,20 @@ class ResiController extends Controller
         return view('admin-views.resi.list', compact('orders', 'search'));
     }
 
+    public function printResi(Request $request){
+        $id = $request->id;
+        $order = Order::with('details')->find($id);
+        if($order){
+            $mpdf_view = \View::make('admin-views.resi.cetak-resi')->with('order', $order);
+            // $pdf = Pdf::loadView('admin-views.resi.cetak-resi', compact('order'));
+            
+            return view('admin-views.resi.cetak-resi', compact('order'));
+            Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $id);
+        }
+
+        return 'order not found';
+
+    }
     public function status(Request $request)
     {
         $order = Order::find($request['id']);

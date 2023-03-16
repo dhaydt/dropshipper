@@ -3,6 +3,7 @@
 namespace App\CPU;
 
 use App\Country;
+use App\JneDest;
 use App\Model\Admin;
 use App\Model\BusinessSetting;
 use App\Model\Cart;
@@ -31,7 +32,11 @@ class Helpers
 {
     public static function c_note($data)
     {
-        // dd($data);
+        $cust_address = json_decode($data['shipping_address_data']);
+        $city = $cust_address->city;
+        $dest = JneDest::where('city', strtoupper($city))->first();
+        $dest = $dest['tarif_code'];
+        // dd($dest);
         $apikey = '25c898a9faea1a100859ecd9ef674548';
 
         $username = 'TESTAPI';
@@ -148,7 +153,6 @@ class Helpers
         $datas = [
             "username" => $username,
             "api_key" => $apikey,
-            "OLSHOP_BRANCH" => $branch,
             "OLSHOP_BRANCH" => strtoupper($branch),
             "OLSHOP_CUST" => $customer,
             "OLSHOP_ORDERID" => $order_id.'8',
@@ -199,8 +203,9 @@ class Helpers
 
             if ($status == 200) {
                 $resp = json_decode($response->getBody());
+                $data = [ 'response' => $resp, 'dest' => $dest];
                 // dd($resp);
-                return $resp;
+                return $data;
             }
         } catch (Throwable $e) {
             // $this->getSkpd($request);
