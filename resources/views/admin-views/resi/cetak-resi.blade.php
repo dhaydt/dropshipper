@@ -43,6 +43,10 @@
       padding: 10px;
     }
 
+    .footer {
+      border-bottom: 1px dotted #000 !important;
+    }
+
     .jne-logo {
       border-right: 1px solid #787878;
     }
@@ -168,7 +172,7 @@
           </div>
           <div class="foot">
             <div class="cut-label d-block text-start ms-2 text-danger position-relative">
-              <i class="fa-solid fa-scissors position-absolute" style="margin-top: -7px;"></i>
+              <i class="fa-solid fa-scissors position-absolute" style="margin-top: -6px;"></i>
               <small class="ms-4">Lipat, sembunyikan atau pishkan bagian ini saat pengiriman</small>
             </div>
             <div class="produk-list text-start p-2 px-4">
