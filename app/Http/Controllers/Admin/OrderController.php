@@ -27,7 +27,7 @@ class OrderController extends Controller
         if ($validator->errors()->count() > 0) {
             $err = Helpers::error_processor($validator);
             foreach ($err as $e) {
-                Toastr::error($e['message']);
+                Toastr::error($e['message']); 
             }
 
             return redirect()->back();
