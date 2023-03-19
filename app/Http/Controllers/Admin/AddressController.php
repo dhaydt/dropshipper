@@ -43,7 +43,7 @@ class AddressController extends Controller
         $cit = explode(',', $cities);
         $city_id = $cit[0];
         $city = $cit[1];
-        $city_type = $cit[2];
+        // $city_type = $cit[2];
 
         $districts = $request->district;
         $dis = explode(',', $districts);

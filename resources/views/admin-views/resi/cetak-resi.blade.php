@@ -79,7 +79,7 @@
   </div>
   <div class="container" id="print-areas" style="max-width: 100vw">
     <div class="row justify-content-center">
-        <div class="child-row" style="width: 750px; height: 800px;">
+        <div class="child-row" style="width: 800px; height: 800px;">
           <div class="header d-flex justify-content-between">
             <div class="company d-flex">
               <img src="{{ asset('storage/company'.'/'.$web_config['web_logo']['value']) }}" class="me-3" height="35px"
@@ -123,7 +123,7 @@
           </div>
           <div class="address p-0">
             <div class="row">
-              <div class="col-8 p-2 text-start">
+              <div class="col-7 p-2 text-start" style="border-right: 1px solid #000">
                 <div class="row">
                   <div class="col-3 text-start">
                     <span class="title ms-4 fw-bold">
@@ -137,16 +137,26 @@
                     <span class="fw-bold">{{ $address->contact_person_name }}</span> <br>
                     <span class="fw-bold">{{ $address->address }}</span><br>
                     <span class="fw-bold">{{ $address->district.'-'.$address->city }}</span><br>
-                    <span class="fw-bold">{{ $address->city.', '.$address->province.', '.$address->zip }}</span>
+                    <span class="fw-bold">{{ $address->city.', '.$address->province.', '.$address->zip }}</span><br>
+                    <span class="fw-bold">{{ $address->phone }}</span><br>
                   </div>
                 </div>
               </div>
-              <div class="col-4 p-2 text-start">
+              <div class="col-5 p-2 text-start">
                 <span class="title ms-2 fw-bold">
-                  Shipping Notes :
+                  Pengirim :
                 </span>
                 <span class="d-block ms-2">
-                  {{-- note --}}
+                  @php
+                    $add = json_decode(\app\Model\BusinessSetting::where('type', 'address')->first()['value']);
+
+                    // dd($web_config);
+                  @endphp
+                  <span class="fw-bold">{{ $web_config['name']['vale'] }}</span><br>
+                  <span class="fw-bold">{{ $add->address }}</span><br>
+                  <span class="fw-bold">{{ $add->district.', '.$add->city }}</span><br>
+                  <span class="fw-bold">{{ $add->province }}</span><br>
+                  <span class="fw-bold">{{ $web_config['phone']['value'] }}</span><br>
                 </span>
               </div>
             </div>
