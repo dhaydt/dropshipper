@@ -63,6 +63,7 @@ class Helpers
             $branch = json_decode(BusinessSetting::where('type', 'jne_config')->first()->value)->branch;
             // $branch = 'CGK000';
             $customer = 10950700;
+            $customer = 11161200;
             $origin = json_decode(BusinessSetting::where('type', 'jne_config')->first()->value)->origin;
             $dest = $dest;
 
