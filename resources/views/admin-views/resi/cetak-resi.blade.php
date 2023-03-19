@@ -152,7 +152,7 @@
 
                     // dd($web_config);
                   @endphp
-                  <span class="fw-bold">{{ $web_config['name']['vale'] }}</span><br>
+                  <span class="fw-bold">{{ $web_config['name']['value'] }}</span><br>
                   <span class="fw-bold">{{ $add->address }}</span><br>
                   <span class="fw-bold">{{ $add->district.', '.$add->city }}</span><br>
                   <span class="fw-bold">{{ $add->province }}</span><br>
