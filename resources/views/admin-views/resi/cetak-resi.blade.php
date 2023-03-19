@@ -134,10 +134,10 @@
                     @php
                     $address = json_decode($order['shipping_address_data']);
                     @endphp
-                    <span class="fw-bold">{{ $address->contact_person_name }}</span> <br>
-                    <span class="fw-bold">{{ $address->address }}</span><br>
-                    <span class="fw-bold">{{ $address->district.'-'.$address->city }}</span><br>
-                    <span class="fw-bold">{{ $address->city.', '.$address->province.', '.$address->zip }}</span><br>
+                    <span class="fw-bold text-capitalize">{{ $address->contact_person_name }}</span> <br>
+                    <span class="fw-bold text-capitalize">{{ $address->address }}</span><br>
+                    <span class="fw-bold text-capitalize">{{ $address->district.'-'.$address->city }}</span><br>
+                    <span class="fw-bold text-capitalize">{{ $address->city.', '.$address->province.', '.$address->zip }}</span><br>
                     <span class="fw-bold">{{ $address->phone }}</span><br>
                   </div>
                 </div>
@@ -152,10 +152,10 @@
 
                     // dd($web_config);
                   @endphp
-                  <span class="fw-bold">{{ $web_config['name']['value'] }}</span><br>
-                  <span class="fw-bold">{{ $add->address }}</span><br>
-                  <span class="fw-bold">{{ $add->district.', '.$add->city }}</span><br>
-                  <span class="fw-bold">{{ $add->province }}</span><br>
+                  <span class="fw-bold text-capitalize">{{ $web_config['name']['value'] }}</span><br>
+                  <span class="fw-bold text-capitalize">{{ $add->address }}</span><br>
+                  <span class="fw-bold text-capitalize">{{ $add->district.', '.$add->city }}</span><br>
+                  <span class="fw-bold text-capitalize">{{ $add->province }}</span><br>
                   <span class="fw-bold">{{ $web_config['phone']['value'] }}</span><br>
                 </span>
               </div>
