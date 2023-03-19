@@ -1657,4 +1657,7 @@
   'Order_kamu_dengan_nomor_100103_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100103 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
   'Order_kamu_dengan_nomor_100104_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100104 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
   'Order_kamu_dengan_nomor_100105_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100105 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100106_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100106 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100107_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100107 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100108_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100108 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
 );

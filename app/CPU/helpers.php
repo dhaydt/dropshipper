@@ -36,14 +36,15 @@ class Helpers
         $city = $cust_address->city;
         $dest = JneDest::where('city', strtoupper($city))->first();
         $dest = $dest['tarif_code'];
-        // dd($dest);
-        $apikey = '25c898a9faea1a100859ecd9ef674548';
+        // dd($cust_address);
+        $apikey = 'c5a097bbd526f67d5f713cadc6beda29';
 
-        $username = 'TESTAPI';
+        $username = 'SUHARIN';
 
-        $main_api = 'http://apiv2.jne.co.id:10102/tracing/api/generatecnote';
+        // $main_api = 'http://apiv2.jne.co.id:10102/tracing/api/generatecnote';
+        $main_api = 'https://apiv2.jne.co.id:10206/tracing/api/generatecnote';
 
-        $order_id = 'EZR'.$data['id'];
+        $order_id = 'EZR' . $data['id'];
         if (getenv('APP_MODE')  == 'development') {
             $branch = 'CGK000';
             $customer = 'TESTAKUN';
@@ -59,20 +60,22 @@ class Helpers
             $ship_phone = '+6289876543212';
             $ship_zip = '12345';
         } else {
-            // $branch = json_decode(BusinessSetting::where('type', 'jne_config')->first()->value)->branch;
-            $branch = 'CGK000';
-            $customer = 'TESTAKUN';
-            $origin = 'CGK10000';
-            $dest = 'CGK10302';
+            $branch = json_decode(BusinessSetting::where('type', 'jne_config')->first()->value)->branch;
+            // $branch = 'CGK000';
+            $customer = 10950700;
+            $origin = json_decode(BusinessSetting::where('type', 'jne_config')->first()->value)->origin;
+            $dest = $dest;
 
-            $ship_name = 'ALI';
-            $ship_phone = '0812345678';
-            $ship_add1 = 'BANDUNG NO 12';
-            $ship_add2 = 'BANDUNG';
-            $ship_add3 = 'BANDUNG';
-            $ship_zip = '54321';
-            $ship_city = 'BANDUNG';
-            $ship_region = 'CISAUK';
+            $add = json_decode(BusinessSetting::where('type', 'address')->first()['value']);
+
+            $ship_name = BusinessSetting::where('type', 'company_name')->first()['value'];
+            $ship_phone = BusinessSetting::where('type', 'company_phone')->first()['value'];
+            $ship_add1 = strtoupper($add->address);
+            $ship_add2 = strtoupper($add->district . ', ' . $add->city);
+            $ship_add3 = strtoupper($add->province);
+            $ship_zip = '15510';
+            $ship_city = $add->city;
+            $ship_region = $add->district;
         }
 
         // dd(getenv('APP_MODE'));
@@ -155,7 +158,7 @@ class Helpers
             "api_key" => $apikey,
             "OLSHOP_BRANCH" => strtoupper($branch),
             "OLSHOP_CUST" => $customer,
-            "OLSHOP_ORDERID" => $order_id.'8',
+            "OLSHOP_ORDERID" => $order_id . '8',
             "OLSHOP_SHIPPER_NAME" => "EZREN",
             "OLSHOP_SHIPPER_ADDR1" => "JAKARTA NO 44",
             "OLSHOP_SHIPPER_ADDR2" => "BANDUNG",
@@ -186,6 +189,44 @@ class Helpers
             "OLSHOP_COD_AMOUNT" => "0",
         ];
 
+        $desc = substr(implode('; ', $desc), 0, 30).'...';
+
+        $datas = [
+            "username" => "SUHARIN",
+            "api_key" => "c5a097bbd526f67d5f713cadc6beda29",
+            "OLSHOP_BRANCH" => $branch,
+            "OLSHOP_CUST" => (string)$customer,
+            "OLSHOP_ORDERID" => $order_id.'E95',
+            "OLSHOP_SHIPPER_NAME" => $ship_name ?? 'Ezren',
+            "OLSHOP_SHIPPER_ADDR1" => $ship_add1,
+            "OLSHOP_SHIPPER_ADDR2" => $ship_add2,
+            "OLSHOP_SHIPPER_ADDR3" => $ship_add3,
+            "OLSHOP_SHIPPER_CITY" => $ship_city,
+            "OLSHOP_SHIPPER_REGION" => $ship_region,
+            "OLSHOP_SHIPPER_ZIP" => $ship_zip,
+            "OLSHOP_SHIPPER_PHONE" => (string)$ship_phone,
+            "OLSHOP_RECEIVER_NAME" => strtoupper($receiver->contact_person_name),
+            "OLSHOP_RECEIVER_ADDR1" => strtoupper($receiver->address),
+            "OLSHOP_RECEIVER_ADDR2" => strtoupper($receiver->district.', '.$receiver->city),
+            "OLSHOP_RECEIVER_ADDR3" => strtoupper($receiver->province),
+            "OLSHOP_RECEIVER_CITY" => strtoupper($receiver->city),
+            "OLSHOP_RECEIVER_REGION" => strtoupper($receiver->district),
+            "OLSHOP_RECEIVER_ZIP" => (string)$receiver->zip,
+            "OLSHOP_RECEIVER_PHONE" => (string)$r_phone,
+            "OLSHOP_QTY" => "1",
+            "OLSHOP_WEIGHT" => (string)array_sum($weight),
+            "OLSHOP_GOODSDESC" => $desc,
+            "OLSHOP_GOODSVALUE" => (string)$data['order_amount'],
+            "OLSHOP_GOODSTYPE" => "1",
+            "OLSHOP_INST" => "TEST",
+            "OLSHOP_INS_FLAG" => "N",
+            "OLSHOP_ORIG" => $origin,
+            "OLSHOP_DEST" => $dest,
+            "OLSHOP_SERVICE" => "REG",
+            "OLSHOP_COD_FLAG" => "N",
+            "OLSHOP_COD_AMOUNT" => "0",
+        ];
+
         // dd($datas);
 
         try {
@@ -196,6 +237,8 @@ class Helpers
                 'form_params' => $datas
             ]);
 
+            // dd($response);
+
 
             $status = $response->getStatusCode();
 
@@ -203,8 +246,8 @@ class Helpers
 
             if ($status == 200) {
                 $resp = json_decode($response->getBody());
-                $data = [ 'response' => $resp, 'dest' => $dest];
-                // dd($resp);
+                $data = ['response' => $resp, 'dest' => $dest];
+                // dd($data['response']->detail[0]);
                 return $data;
             }
         } catch (Throwable $e) {
