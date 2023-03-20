@@ -59,7 +59,7 @@
 
     th small,
     tr td {
-      font-size: 10px;
+      font-size: 12px;
     }
 
   </style>
@@ -81,9 +81,9 @@
     <div class="row justify-content-center">
         <div class="child-row" style="width: 800px; height: 800px;">
           <div class="header d-flex justify-content-between">
-            <div class="company d-flex">
-              <img src="{{ asset('storage/company'.'/'.$web_config['web_logo']['value']) }}" class="me-3" height="35px"
-                alt="">
+            <div class="company d-flex align-items-center">
+              {{-- <img src="{{ asset('storage/company'.'/'.$web_config['web_logo']['value']) }}" class="me-3" height="35px" alt=""> --}}
+              <img src="{{ asset('assets/front-end/img/ezren-logo.png') }}" class="me-3" height="35px" alt="">
               <div class="d-flex flex-column align-items-start">
                 <div class="cs">
                   <i class="fa-solid fa-headset"></i> {{ $web_config['phone']['value'] }}
@@ -99,7 +99,7 @@
               <img src="{{ asset('assets/front-end/img/hand.png') }}" alt="" height="50px">
             </div>
           </div>
-          <div class="shipping-label d-flex justify-content-between">
+          <div class="shipping-label d-flex justify-content-between align-items-center">
             <span class="text-bold fw-bold fs-6">Shipping label</span>
             {{-- {{ dd($order) }} --}}
             <span>Waktu Order: {{ \Carbon\Carbon::parse($order['updated_at'])->format('d-M-Y H:i') }}</span>
@@ -110,7 +110,7 @@
               <div class="img">
                 <img src="{{ asset('assets/front-end/img/jne2.png') }}" alt="" height="50px">
               </div>
-              <span class="mt-2" style="font-size: 12px;">JNE Cashless</span>
+              {{-- <span class="mt-2" style="font-size: 12px;">JNE Cashless</span> --}}
             </div>
             <div class="barcode d-flex justify-content-center align-items-center col-9 flex-column">
               @php
@@ -138,7 +138,7 @@
                     <span class="fw-bold text-capitalize">{{ $address->address }}</span><br>
                     <span class="fw-bold text-capitalize">{{ $address->district.'-'.$address->city }}</span><br>
                     <span class="fw-bold text-capitalize">{{ $address->city.', '.$address->province.', '.$address->zip }}</span><br>
-                    <span class="fw-bold">{{ $address->phone }}</span><br>
+                    {{-- <span class="fw-bold">{{ $address->phone }}</span><br> --}}
                   </div>
                 </div>
               </div>
@@ -164,8 +164,8 @@
           <div class="footer p-0">
             <div class="row">
               <div class="col-6 p-2 text-center">
-                <span class="fw-bold fs-1">CASHLESS</span>
-                <span class="fw-bold fs-6 d-block">Tidak perlu membayar apapun ke logistik</span>
+                <span class="fw-bold fs-1">{{ 'Rp. '.number_format($order['shipping_cost'],0,',','.') }}</span>
+                <span class="fw-bold fs-6 d-block">Biaya Ongkos Kirim</span>
               </div>
               <div class="col-3 p-2 d-flex flex-column justify-content-center text-center">
                 @php
@@ -190,17 +190,17 @@
               <table class="table mt-2" style="border: 2px solid #000; border-radius: 4px;">
                 <thead>
                   <tr>
-                    <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important;"><small>Order item
+                    <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important;" class="text-center"><small>Order item
                         ID</small></th>
-                    <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important;"><small>Nama
+                    <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important; line-height: 3;"><small>Nama
                         Produk</small></th>
                     <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important;"><small>Merchant
                         SKU</small></th>
                     <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important;"><small>Item
                         SKU</small></th>
-                    <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important;"><small>Qty</small>
+                    <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important; line-height: 3;"><small>Qty</small>
                     </th>
-                    <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important;"><small>Berat</small>
+                    <th scope="col" style="padding-top: 0 !important; padding-bottom: 0 !important; line-height: 3;"><small>Berat</small>
                     </th>
                   </tr>
                 </thead>
@@ -209,7 +209,7 @@
                   @php($product = json_decode($o['product_details']))
                   <tr>
                     <td style="padding-top: 0 !important; padding-bottom: 0 !important;">{{ $o['order_id'] }}</td>
-                    <td style="padding-top: 0 !important; padding-bottom: 0 !important;">{{ $product->name }}</td>
+                    <td style="padding-top: 0 !important; padding-bottom: 0 !important; font-size: 14px !important;">{{ $product->name }}</td>
                     <td style="padding-top: 0 !important; padding-bottom: 0 !important;"></td>
                     <td style="padding-top: 0 !important; padding-bottom: 0 !important;"></td>
                     <td style="padding-top: 0 !important; padding-bottom: 0 !important;">{{ $o['qty'] }}</td>
