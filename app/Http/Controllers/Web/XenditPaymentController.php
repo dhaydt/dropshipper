@@ -270,6 +270,21 @@ class XenditPaymentController extends Controller
             $user = Seller::where('id', $order->customer_id)->first();
         } else {
             $user = User::where('id', $order->customer_id)->first();
+
+            $check = str_contains(strtolower($order['shipping']), strtolower("jne"));
+            // dd($check);
+
+            if($check){
+                $resi = Helpers::c_note($order);
+                $c_note = $resi['response']->detail[0]->cnote_no;
+                // dd($resi['response']->detail[0]);
+                if(isset($c_note)){
+                    $update = Order::find($order['id']);
+                    $update->no_resi = $c_note;
+                    $update->destination_code = $resi['dest'];
+                    $update->save();
+                }
+            };
         }
         if ($user) {
             if ($user->cm_firebase_token !== null) {
