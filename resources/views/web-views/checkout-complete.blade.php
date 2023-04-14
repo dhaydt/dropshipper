@@ -103,7 +103,12 @@
                             </div>
 
                             <span class="font-weight-bold d-block mt-4" style="font-size: 17px;">{{\App\CPU\translate('Halo')}}, {{auth('customer')->user()->f_name}}</span>
+                            @if (isset($order_id))
                             <span>{{\App\CPU\translate('Order_kamu_dengan_nomor_'.$order_id.'_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!')}}</span>
+                            @else
+                            <h5 style="font-size: 20px; font-weight: 900">{{\App\CPU\translate('Pembayaran berhasil!')}}
+                            !</h5>
+                            @endif
 
                             <div class="row mt-4">
                                 <div class="col-4">
@@ -111,19 +116,20 @@
                                         {{\App\CPU\translate('pergi_belanja')}}
                                     </a>
                                 </div>
-
+                                @if (isset($order_id))
                                 <div class="col-4">
                                     <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#pay{{ $order_id }}">
                                     Bayar Sekarang
                                     </button>
                                 </div>
-
                                 <div class="col-4">
                                     <a href="{{route('account-oder')}}"
-                                       class="btn btn-secondary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
+                                    class="btn btn-secondary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
                                         {{\App\CPU\translate('cek_order')}}
                                     </a>
                                 </div>
+                                @endif
+
                             </div>
                         </div>
                     @elseif (auth('seller')->check())
