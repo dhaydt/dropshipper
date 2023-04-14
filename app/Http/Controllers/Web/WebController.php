@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\Session;
 class WebController extends Controller
 {
     public function expired_order(){
-        $orders = Order::where(['payment_status' => 'unpaid', 'order_status' => 'pending'])->where('payment_method', '!=', 'cash_on_delivery')->get();
+        $orders = Order::where(['payment_status' => 'unpaid', 'order_status' => 'pending'])->get();
         // dd($orders);
         $expired = config('app.expired_payment');
         $now = Carbon::now()->toDateTimeString();
