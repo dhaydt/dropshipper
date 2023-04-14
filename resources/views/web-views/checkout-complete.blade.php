@@ -168,6 +168,47 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class=" p-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 style="font-size: 20px; font-weight: 900">{{\App\CPU\translate('Pembayaran berhasil!')}}
+                                    !</h5>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <center>
+                                    <i style="font-size: 100px; color: #0f9d58" class="fa fa-check-circle"></i>
+                                </center>
+                            </div>
+                        </div>
+
+                        <span class="font-weight-bold d-block mt-4" style="font-size: 17px;">{{\App\CPU\translate('Halo')}}</span>
+                        <span>{{\App\CPU\translate('Order_kamu_sedang_diproses!')}}, Terima kasih..</span>
+
+                        {{-- <div class="row mt-4">
+                            <div class="col-4">
+                                <a href="{{route('home')}}" class="btn btn-primary">
+                                    {{\App\CPU\translate('pergi_belanja')}}
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#pay{{ $order_id }}">
+                                Bayar Sekarang
+                                </button>
+                            </div>
+
+                            <div class="col-4">
+                                <a href="{{route('account-oder')}}"
+                                   class="btn btn-secondary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
+                                    {{\App\CPU\translate('cek_order')}}
+                                </a>
+                            </div>
+                        </div> --}}
+                    </div>
                     @endif
                     @if (isset($order_id))
                     <div class="modal fade" id="pay{{ $order_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

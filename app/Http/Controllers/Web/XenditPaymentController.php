@@ -216,7 +216,7 @@ class XenditPaymentController extends Controller
             }
         }
 
-        return response()->json(['message' => 'Payment succeeded'], 200);
+        return redirect()->route('payment-complete');
     }
 
     public function OldsuccessApi($type, $group, $user_is)
@@ -305,6 +305,6 @@ class XenditPaymentController extends Controller
             return view('web-views.checkout-complete');
         }
 
-        return response()->json(['message' => 'Payment succeeded'], 200);
+        return redirect()->route('payment-complete');
     }
 }
