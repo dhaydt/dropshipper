@@ -2,6 +2,7 @@
   'app' => 
   array (
     'name' => 'Laravel',
+    'expired_payment' => '60',
     'env' => 'local',
     'debug' => true,
     'url' => 'http://dropship.test',
@@ -914,7 +915,7 @@
   ),
   'xendit' => 
   array (
-    'apikey' => 'xnd_production_Xw2cb6t7mqLQMLopM4gsQ0V3WOnjwIiIi6IcW7VTnckNBhAkm5JArpHXrUXso67p',
+    'apikey' => 'xnd_development_sHlAPGQ9jjPplhy0KbuXvFAr4GCJ4lNtk4kvNBJqB0cy4SPHxEYkDYxU8TjKN',
   ),
   'debugbar' => 
   array (

@@ -724,12 +724,14 @@
 <!-- Navbar-->
 <!-- Quick View Modal-->
 @include('layouts.front-end.partials._quick-view-modal')
+@if (\Request::route()->getName() !== 'payment-complete')
 <!-- Navbar Electronics Store-->
 @include('layouts.front-end.partials._header')
 {{-- Mobile navbar --}}
 <header class="box-shadow-sm rtl d-block d-md-none">
     @include('layouts.front-end.partials._mobile_header')
 </header>
+@endif
 <!-- Page title-->
 
 {{--loader--}}
@@ -753,8 +755,10 @@
 
 <!-- Footer-->
 <!-- Footer-->
+@if (\Request::route()->getName() !== 'payment-complete')
 @include('layouts.front-end.partials._footer')
 @include('layouts.front-end.partials._mobile_footer')
+@endif
 <!-- Toolbar for handheld devices-->
 <!--<div class="cz-handheld-toolbar" id="toolbar">
     {{--@include('layouts.front-end.partials._toolbar')--}}

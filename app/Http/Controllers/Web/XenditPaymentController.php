@@ -74,6 +74,11 @@ class XenditPaymentController extends Controller
             return redirect()->back();
         }
 
+        if($order['payment_url'] != null){
+            Toastr::success('Invoice sudah dibuat, silahkan lakukan pembayaran!');
+            return redirect()->away($order['payment_url']);
+        }
+
         if ($order['order_status'] !== 'pending') {
             Toastr::warning('Status order ini sudah berubah, tidak dapat melakukan pembayaran!');
 
@@ -153,6 +158,9 @@ class XenditPaymentController extends Controller
         //     $order_id = OrderManager::generate_order($data);
         //     array_push($order_ids, $order_id);
         // }
+
+        $order['payment_url'] = $checkout_session['invoice_url'];
+        $order->save();
 
         return redirect()->away($checkout_session['invoice_url']);
     }

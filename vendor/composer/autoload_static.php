@@ -811,6 +811,7 @@ class ComposerStaticInit5c810ba0d19412d72c885b40a9decbf5
         'Amirami\\Localizator\\Services\\Parser' => __DIR__ . '/..' . '/amirami/localizator/src/Services/Parser.php',
         'Amirami\\Localizator\\Services\\Writers\\DefaultWriter' => __DIR__ . '/..' . '/amirami/localizator/src/Services/Writers/DefaultWriter.php',
         'Amirami\\Localizator\\Services\\Writers\\JsonWriter' => __DIR__ . '/..' . '/amirami/localizator/src/Services/Writers/JsonWriter.php',
+        'App\\Console\\Commands\\CancelCron' => __DIR__ . '/../..' . '/app/Console/Commands/CancelCron.php',
         'App\\Console\\Commands\\DatabaseRefresh' => __DIR__ . '/../..' . '/app/Console/Commands/DatabaseRefresh.php',
         'App\\Console\\Commands\\DemoCron' => __DIR__ . '/../..' . '/app/Console/Commands/DemoCron.php',
         'App\\Console\\Commands\\InstallablePackage' => __DIR__ . '/../..' . '/app/Console/Commands/InstallablePackage.php',

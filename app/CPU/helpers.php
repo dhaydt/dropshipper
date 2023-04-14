@@ -374,7 +374,11 @@ class Helpers
         }
         $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
         // $value = CartManager::cart_grand_total($request->cart_group_id) - $discount;
-        $value = Order::find($request->order_id)['order_amount'];
+        $order = Order::find($request->order_id);
+        if($order['payment_url'] != null){
+            return response()->json($order['payment_url']);
+        }
+        $value = $order['order_amount'];
         // dd($value);
         $tran = OrderManager::gen_unique_id();
         $type = strtoupper($request['type']);
