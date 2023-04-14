@@ -90,7 +90,6 @@ class XenditPaymentController extends Controller
         session()->put('transaction_ref', $tran);
 
         Xendit::setApiKey(config('xendit.apikey'));
-
         $products = [];
         foreach (CartManager::get_cart() as $detail) {
             array_push($products, [

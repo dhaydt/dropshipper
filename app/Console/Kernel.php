@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\DemoCron::class,
+        Commands\CancelCron::class,
     ];
 
     /**
@@ -24,6 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('demo:cron')
+                ->everyMinute();
+        $schedule->command('cancel:cron')
                 ->everyMinute();
     }
 

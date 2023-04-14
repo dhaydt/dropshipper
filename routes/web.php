@@ -27,6 +27,7 @@ Route::get('/config-cache', function () {
     Artisan::call('config:cache');
     dd('config cleared!');
 });
+
 Route::get('/migrate', function () {
     Artisan::call('migrate', [
         '--force' => true,
@@ -34,6 +35,7 @@ Route::get('/migrate', function () {
     dd('migrated!');
 });
 Route::get('cetak-resi', [ResiController::class, 'printResi'])->name('cetak_resi');
+Route::get('cek_order', [WebController::class, 'expired_order']);
 
 Route::get('/passport', function () {
     Artisan::call('passport:install --force');

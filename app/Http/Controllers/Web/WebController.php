@@ -38,6 +38,20 @@ use Illuminate\Support\Facades\Session;
 
 class WebController extends Controller
 {
+    public function expired_order(){
+        $orders = Order::where(['payment_status' => 'unpaid', 'order_status' => 'pending'])->where('payment_method', '!=', 'cash_on_delivery')->get();
+        // dd($orders);
+        $expired = config('app.expired_payment');
+        $now = Carbon::now()->toDateTimeString();
+        foreach ($orders as $o) {
+            $ex = $o->created_at->addSeconds($expired);
+            if ($ex < $now) {
+                // dd($o->created_at->addSeconds(60)->toDateTimeString(), $now);
+                $o->order_status = 'canceled';
+                $o->save();
+            }
+        }
+    }
     public function jneTest2(){
 
         $data = [
