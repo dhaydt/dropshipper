@@ -37,7 +37,7 @@ class CancelCron extends Command
      */
     public function handle()
     {
-        \Log::info('Notif sended!');
+        \Log::info('order checked!');
 
         return \App::call('App\Http\Controllers\Web\WebController@expired_order');
     }
