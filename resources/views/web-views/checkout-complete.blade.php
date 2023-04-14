@@ -106,22 +106,22 @@
                                 </div>
                             </div>
 
+                            @if (isset($order_id))
                             <span class="font-weight-bold d-block mt-4 text-capitalize" style="font-size: 17px;">{{\App\CPU\translate('Halo')}}
-                                @if (isset($order_id))
                                 , {{auth('customer')->user()->f_name}}
-                                @endif
                             </span>
+                            @endif
                             @if (isset($order_id))
                             <span>{{\App\CPU\translate('Order_kamu_dengan_nomor_'.$order_id.'_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!')}}</span>
                             @endif
 
+                            @if (isset($order_id))
                             <div class="row mt-4">
                                 <div class="col-4">
                                     <a href="{{route('home')}}" class="btn btn-primary">
                                         {{\App\CPU\translate('pergi_belanja')}}
                                     </a>
                                 </div>
-                                @if (isset($order_id))
                                 <div class="col-4">
                                     <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#pay{{ $order_id }}">
                                     Bayar Sekarang
@@ -133,9 +133,8 @@
                                         {{\App\CPU\translate('cek_order')}}
                                     </a>
                                 </div>
-                                @endif
-
                             </div>
+                            @endif
                         </div>
                     @elseif (auth('seller')->check())
                     <div class=" p-5">
