@@ -89,8 +89,12 @@
                         <div class=" p-5">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5 style="font-size: 20px; font-weight: 900">{{\App\CPU\translate('Order_kamu_berhasil_disimpan!')}}
-                                        !</h5>
+                                    @if (isset($order_id))                                        
+                                    <h5 style="font-size: 20px; font-weight: 900">{{\App\CPU\translate('Order_kamu_berhasil_disimpan!')}} !</h5>
+                                    @else
+                                    <h5 style="font-size: 20px; font-weight: 900">{{\App\CPU\translate('Pembayaran berhasil!')}}
+                                    !</h5>
+                                    @endif
                                 </div>
                             </div>
 
@@ -102,12 +106,13 @@
                                 </div>
                             </div>
 
-                            <span class="font-weight-bold d-block mt-4" style="font-size: 17px;">{{\App\CPU\translate('Halo')}}, {{auth('customer')->user()->f_name}}</span>
+                            <span class="font-weight-bold d-block mt-4 text-capitalize" style="font-size: 17px;">{{\App\CPU\translate('Halo')}}
+                                @if (isset($order_id))
+                                , {{auth('customer')->user()->f_name}}
+                                @endif
+                            </span>
                             @if (isset($order_id))
                             <span>{{\App\CPU\translate('Order_kamu_dengan_nomor_'.$order_id.'_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!')}}</span>
-                            @else
-                            <h5 style="font-size: 20px; font-weight: 900">{{\App\CPU\translate('Pembayaran berhasil!')}}
-                            !</h5>
                             @endif
 
                             <div class="row mt-4">
