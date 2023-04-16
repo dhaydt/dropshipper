@@ -380,7 +380,12 @@ class Helpers
         }
         $value = $order['order_amount'];
         // dd($value);
-        $tran = OrderManager::gen_unique_id();
+        if(!$order['transaction_ref'] || $order['transaction_ref'] == null || $order['transaction_ref'] == ""){
+            $tran = OrderManager::gen_unique_id();
+            $order->transaction_ref = $tran;
+            $order->save();
+        }
+        $tran = $order['transaction_ref'];
         $type = strtoupper($request['type']);
         session()->put('transaction_ref', $tran);
 
@@ -418,7 +423,7 @@ class Helpers
         $group = $request->order_id;
 
         $params = [
-            'external_id' => 'ezren' . $phone . $id,
+            'external_id' => $tran,
             'amount' => $value,
             'payer_email' => $email,
             'description' => env('APP_NAME') ? env('APP_NAME') : 'Ezren Paymnet',

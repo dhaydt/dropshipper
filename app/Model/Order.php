@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 {
@@ -22,6 +23,9 @@ class Order extends Model
         return $this->hasMany(OrderDetail::class)->orderBy('seller_id', 'ASC');
     }
 
+    public function transaction(){
+        return $this->BelongsTo(OrderTransaction::class, 'order_id');
+    }
     public function seller()
     {
         return $this->belongsTo(Seller::class, 'customer_id');

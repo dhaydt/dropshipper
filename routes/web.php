@@ -14,6 +14,7 @@
 use App\Http\Controllers\Admin\ResiController;
 use App\Http\Controllers\Web\GenerateController;
 use App\Http\Controllers\Web\WebController;
+use App\Http\Controllers\Web\XenditPaymentController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -31,12 +32,13 @@ Route::get('/config-cache', function () {
 Route::get('/migrate', function () {
     Artisan::call('migrate', [
         '--force' => true,
-     ]);
+    ]);
     dd('migrated!');
 });
 Route::get('cetak-resi', [ResiController::class, 'printResi'])->name('cetak_resi');
 Route::get('cek_order', [WebController::class, 'expired_order']);
 Route::get('payment-complete', [WebController::class, 'order_placed'])->name('payment-complete');
+Route::post('payment-callback', [XenditPaymentController::class, 'callback']);
 
 Route::get('/passport', function () {
     Artisan::call('passport:install --force');

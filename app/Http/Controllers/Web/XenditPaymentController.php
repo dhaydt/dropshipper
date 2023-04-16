@@ -29,6 +29,22 @@ class XenditPaymentController extends Controller
         return view('admin-views.business-settings.payment-method.xendit', compact('bank'));
     }
 
+    public function callback(){
+        $data = request()->all();
+        // dd($data);
+        if(isset($data['status'])){
+
+            $status = $data['status'];
+            $ref_id = $data['external_id'];
+    
+            Order::where('transaction_ref', $ref_id)->update([
+                'payment_status' => $status
+            ]);
+    
+        }
+        return response()->json($data);
+    }
+
     public function getListVa()
     {
         Xendit::setApiKey(config('xendit.apikey'));
@@ -88,7 +104,13 @@ class XenditPaymentController extends Controller
         $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
         $value = $order['order_amount'];
         $tran = OrderManager::gen_unique_id();
-        $order = Order::find($request->order_id);
+        $order = Order::with('transaction')->find($request->order_id);
+        if(!$order['transaction_ref'] || $order['transaction_ref'] == null || $order['transaction_ref'] == ""){
+            $order->transaction_ref = $tran;
+            $order->save();
+        }
+        $tran = $order['transaction_ref'];
+        // dd($order);
         $order_address = json_decode($order->shipping_address_data);
         $type = strtoupper($request['type']);
 
@@ -128,9 +150,10 @@ class XenditPaymentController extends Controller
 
         // dd($user);
         $redirect_url = env('APP_URL') ? env('APP_URL') : 'https://ezren.id';
+        $ext = 'ezren'.$phone.$id;
 
         $params = [
-            'external_id' => 'ezren'.$phone.$id,
+            'external_id' => $tran,
             'amount' => round($value, 0),
             'payer_email' => $email,
             'description' => env('APP_NAME') ? env('APP_NAME') : 'Ezren',
