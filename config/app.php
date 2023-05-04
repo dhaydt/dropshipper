@@ -12,9 +12,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', '6valy'),
-    // 'expired_payment' => '86400',
-    'expired_payment' => '60',
+    'name' => env('APP_NAME', 'Ezren'),
+    'expired_payment' => '86400',
+    // 'expired_payment' => '60',
 
     /*
     |--------------------------------------------------------------------------
