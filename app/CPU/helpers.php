@@ -190,14 +190,14 @@ class Helpers
             "OLSHOP_COD_AMOUNT" => "0",
         ];
 
-        $desc = substr(implode('; ', $desc), 0, 30).'...';
+        $desc = substr(implode('; ', $desc), 0, 30) . '...';
 
         $datas = [
             "username" => "SUHARIN",
             "api_key" => "c5a097bbd526f67d5f713cadc6beda29",
             "OLSHOP_BRANCH" => $branch,
             "OLSHOP_CUST" => (string)$customer,
-            "OLSHOP_ORDERID" => $order_id.'E95',
+            "OLSHOP_ORDERID" => $order_id . 'E95',
             "OLSHOP_SHIPPER_NAME" => $ship_name ?? 'Ezren',
             "OLSHOP_SHIPPER_ADDR1" => $ship_add1,
             "OLSHOP_SHIPPER_ADDR2" => $ship_add2,
@@ -208,7 +208,7 @@ class Helpers
             "OLSHOP_SHIPPER_PHONE" => (string)$ship_phone,
             "OLSHOP_RECEIVER_NAME" => strtoupper($receiver->contact_person_name),
             "OLSHOP_RECEIVER_ADDR1" => strtoupper($receiver->address),
-            "OLSHOP_RECEIVER_ADDR2" => strtoupper($receiver->district.', '.$receiver->city),
+            "OLSHOP_RECEIVER_ADDR2" => strtoupper($receiver->district . ', ' . $receiver->city),
             "OLSHOP_RECEIVER_ADDR3" => strtoupper($receiver->province),
             "OLSHOP_RECEIVER_CITY" => strtoupper($receiver->city),
             "OLSHOP_RECEIVER_REGION" => strtoupper($receiver->district),
@@ -375,12 +375,12 @@ class Helpers
         $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
         // $value = CartManager::cart_grand_total($request->cart_group_id) - $discount;
         $order = Order::find($request->order_id);
-        if($order['payment_url'] != null){
+        if ($order['payment_url'] != null) {
             return response()->json($order['payment_url']);
         }
         $value = $order['order_amount'];
         // dd($value);
-        if(!$order['transaction_ref'] || $order['transaction_ref'] == null || $order['transaction_ref'] == ""){
+        if (!$order['transaction_ref'] || $order['transaction_ref'] == null || $order['transaction_ref'] == "") {
             $tran = OrderManager::gen_unique_id();
             $order->transaction_ref = $tran;
             $order->save();
@@ -460,8 +460,37 @@ class Helpers
         // $createVA = \Xendit\VirtualAccounts::create($params);
         // var_dump($createVA);
         $bank = \Xendit\VirtualAccounts::getVABanks();
+        $data['bank'] = [];
+        foreach ($bank as $b) {
+            if ($b['is_activated'] == true) {
+                array_push($data['bank'], $b);
+            }
+        }
+        $data['ewallet'] = [
+            [
+                "name" => "ovo",
+                "code" => "OVO",
+                "country" => "ID",
+                "currency" => "IDR",
+                "is_activated" => true
+            ],
+            [
+                "name" => "dana",
+                "code" => "DANA",
+                "country" => "ID",
+                "currency" => "IDR",
+                "is_activated" => true
+            ],
+            [
+                "name" => "linkaja",
+                "code" => "LINKAJA",
+                "country" => "ID",
+                "currency" => "IDR",
+                "is_activated" => true
+            ],
+        ];
 
-        return $bank;
+        return $data;
     }
 
     public static function district($id)
