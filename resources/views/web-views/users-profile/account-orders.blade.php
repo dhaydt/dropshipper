@@ -199,7 +199,27 @@
                                         </div>
                                         <div class="modal-body">
                                         <div class="row">
-                                            @foreach ($payment as $p)
+                                            @foreach ($payment['bank'] as $p)
+                                                <div class="col-md-6 mb-4" style="cursor: pointer">
+                                                    <div class="card">
+                                                        <div class="card-body" style="height: 100px">
+                                                            <form class="needs-validation" target="_blank" method="POST" id="payment-form"
+                                                                action="{{route('xendit-payment.vaInvoice')}}">
+
+                                                                <input type="hidden" name="type" value="{{ $p['code'] }}">
+                                                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                                {{-- <input class="price" type="hidden" name="price" value="price"> --}}
+                                                                {{ csrf_field() }}
+                                                                <button class="btn btn-block" type="submit">
+                                                                    <img width="150" style="margin-top: -10px"
+                                                                    src="{{asset('assets/front-end/img/'.strtolower($p['code']).'.png')}}" />
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            @foreach ($payment['ewallet'] as $p)
                                                 <div class="col-md-6 mb-4" style="cursor: pointer">
                                                     <div class="card">
                                                         <div class="card-body" style="height: 100px">
