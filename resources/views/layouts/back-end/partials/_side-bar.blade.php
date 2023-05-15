@@ -76,7 +76,7 @@
 
                         <!-- End Dashboards -->
 
-                        @if(\App\CPU\Helpers::module_permission_check('order_customer'))
+                        @if(\App\CPU\Helpers::module_permission_check('order_customer') || \App\CPU\Helpers::module_permission_check('order_management'))
                             <li class="nav-item {{Request::is('adminpanel/orders*')?'scroll-here':''}}">
                                 <small class="nav-subtitle" title="">{{\App\CPU\translate('order_management')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
@@ -84,7 +84,7 @@
                             <!-- Order -->
                             <li class="navbar-vertical-aside-has-menu {{Request::is('adminpanel/orders/*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                                   href="javascript:">
+                                    href="javascript:">
                                     <i class="tio-shopping-cart-outlined nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                     {{\App\CPU\translate('customer_orders')}}
