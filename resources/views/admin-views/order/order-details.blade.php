@@ -214,7 +214,7 @@
 
                             <div class="col-6 pt-2">
                             </div>
-                            <div class="col-6 col-md-4 pt-2 flex-end">
+                            <div class="col-6 col-md-6 pt-2 flex-end">
                                 <div class="d-flex justify-content-between">
                                     <span class="text-capitalize"
                                         style="color: #8a8a8a;">{{\App\CPU\translate('payment_method')}} :</span>
@@ -238,6 +238,13 @@
                                         :</span>
                                     <span class="mx-1 text-uppercase" style="color: #8a8a8a;">{{$order->shipping}}</span>
                                 </div>
+                                @if($order->no_resi)
+                                <div class="d-flex justify-content-between">
+                                    <span style="color: #8a8a8a;">Nomor Resi
+                                        :</span>
+                                    <span class="mx-1 text-uppercase" style="color: #8a8a8a;">{{$order->no_resi}}</span>
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
