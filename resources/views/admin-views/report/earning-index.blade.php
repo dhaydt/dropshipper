@@ -14,7 +14,7 @@
                 <!-- Avatar -->
                 <div class="avatar avatar-xl avatar-4by3 {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}">
                     <img class="avatar-img" src="{{asset('public/assets/back-end')}}/svg/illustrations/earnings.png"
-                         alt="Image Description">
+                        alt="Image Description">
                 </div>
                 <!-- End Avatar -->
 
@@ -93,13 +93,13 @@
                         <div class="col-4">
                             <div class="mb-3">
                                 <input type="date" name="from" id="from_date"
-                                       class="form-control" required>
+                                       class="form-control" required value="{{ session('from_date') ?? '' }}">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="mb-3">
                                 <input type="date" name="to" id="to_date"
-                                       class="form-control" required>
+                                       class="form-control" required value="{{ session('to_date') ?? '' }}">
                             </div>
                         </div>
                         <div class="col-4">
@@ -113,20 +113,49 @@
 
             @php
                 $from = session('from_date');
-               $to = session('to_date');
-               $total_tax=\App\Model\OrderTransaction::where(['status'=>'disburse'])
-               ->whereBetween('created_at', [$from, $to])
-               ->sum('tax');
-               if($total_tax==0){
-                   $total_tax=0.01;
-               }
+                $to = session('to_date');
+                $total_tax=\App\Model\OrderTransaction::where(['status'=>'disburse'])
+                ->whereBetween('created_at', [$from, $to])
+                ->sum('tax');
+                if($total_tax==0){
+                    $total_tax=0.01;
+                }
             @endphp
             @php
-                $total_earning =\App\Model\OrderTransaction::where(['status'=>'disburse'])
-               ->whereBetween('created_at', [$from, $to])
-               ->sum('order_amount');
-            if($total_earning==0){
+            //     $total_earning =\App\Model\OrderTransaction::where(['status'=>'disburse'])
+            //    ->whereBetween('created_at', [$from, $to])
+            //    ->sum('order_amount');
+            // if($total_earning==0){
+            //     $total_earning=.01;
+            // }
+                if($from && $to){
+                    $total_earning = \App\Model\Order::with('details')->where(['order_status' => "delivered", "payment_status" => "paid"])
+                    ->whereBetween('created_at', [$from, $to])
+                    ->get();
+                }else{
+                    $total_earning = \App\Model\Order::with('details')->where(['order_status' => "delivered", "payment_status" => "paid"])
+                    ->get();
+                }
+            // dd($total_earning);
+            $order = [];
+            foreach ($total_earning as $key => $t) {
+                $taxs = [];
+                foreach ($t['details'] as $k => $d) {
+                    array_push($taxs, $d['tax']);
+                }
+                $total_earning[$key]['netto_amount'] = $t['order_amount'] - array_sum($taxs);
+                $total_earning[$key]['tax'] = array_sum($taxs);
+            }
+            $total = $total_earning->sum('netto_amount');
+            $total_tax = $total_earning->sum('tax');
+            if($total == 0){
                 $total_earning=.01;
+            }else{
+                $total_earning = $total;
+            }
+            
+            if($total_tax == 0){
+                $total_tax=.01;
             }
             @endphp
             @php
@@ -141,7 +170,7 @@
                 $total = $total_earning+$total_tax + $total_commission;
             @endphp
 
-            <div class="col-sm-3 col-lg-4 mb-3 mb-lg-6">
+            <div class="col-sm-6 col-lg-6 mb-3 mb-lg-6">
             <!-- Card -->
                 <div class="card card-sm">
                     <div class="card-body">
@@ -188,7 +217,7 @@
                 <!-- End Card -->
             </div>
 
-            <div class="col-sm-3 col-lg-4 mb-3 mb-lg-6">
+            <div class="col-sm-6 col-lg-6 mb-3 mb-lg-6">
                 <!-- Card -->
                 <div class="card card-sm">
                     <div class="card-body">
@@ -233,7 +262,7 @@
                 </div>
                 <!-- End Card -->
             </div>
-            <div class="col-sm-3 col-lg-4 mb-3 mb-lg-6">
+            {{-- <div class="col-sm-3 col-lg-4 mb-3 mb-lg-6">
                 <!-- Card -->
                 <div class="card card-sm">
                     <div class="card-body">
@@ -277,7 +306,7 @@
                     </div>
                 </div>
                 <!-- End Card -->
-            </div>
+            </div> --}}
         </div>
         <!-- End Stats -->
         <hr>
