@@ -137,7 +137,6 @@
                     ->get();
                 }
             // dd($total_earning);
-            $order = [];
             foreach ($total_earning as $key => $t) {
                 $taxs = [];
                 foreach ($t['details'] as $k => $d) {
@@ -146,6 +145,7 @@
                 $total_earning[$key]['netto_amount'] = $t['order_amount'] - array_sum($taxs);
                 $total_earning[$key]['tax'] = array_sum($taxs);
             }
+            // dd($taxs);
             $total = $total_earning->sum('netto_amount');
             $total_tax = $total_earning->sum('tax');
             if($total == 0){
@@ -167,7 +167,7 @@
             }
             @endphp
             @php
-                $total = $total_earning+$total_tax + $total_commission;
+                $total = $total_earning+$total_tax;
             @endphp
 
             <div class="col-sm-6 col-lg-6 mb-3 mb-lg-6">
@@ -183,31 +183,30 @@
                                     <div class="media-body">
                                         <h4 class="mb-1">{{\App\CPU\translate('Total')}} {{\App\CPU\translate('earning')}} </h4>
                                         <span class="font-size-sm text-success">
-                                          <i class="tio-trending-up"></i> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_earning))}}
+                                            <i class="tio-trending-up"></i> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_earning))}}
                                         </span>
                                     </div>
 
                                 </div>
                                 <!-- End Media -->
                             </div>
-
                             <div class="col-auto">
                                 <!-- Circle -->
                                 <div class="js-circle"
-                                     data-hs-circles-options='{
-                                       "value": {{$total_earning=='.01'?0:round((($total_earning)/$total)*100)}},
-                                       "maxValue": 100,
-                                       "duration": 2000,
-                                       "isViewportInit": true,
-                                       "colors": ["#e7eaf3", "green"],
-                                       "radius": 25,
-                                       "width": 3,
-                                       "fgStrokeLinecap": "round",
-                                       "textFontSize": 14,
-                                       "additionalText": "%",
-                                       "textClass": "circle-custom-text",
-                                       "textColor": "green"
-                                     }'></div>
+                                    data-hs-circles-options='{
+                                        "value": {{ $total_earning=='.01' ? 0: round((($total_earning)/$total)*100) }},
+                                        "maxValue": 100,
+                                        "duration": 2000,
+                                        "isViewportInit": true,
+                                        "colors": ["#e7eaf3", "green"],
+                                        "radius": 25,
+                                        "width": 3,
+                                        "fgStrokeLinecap": "round",
+                                        "textFontSize": 14,
+                                        "additionalText": "%",
+                                        "textClass": "circle-custom-text",
+                                        "textColor": "green"
+                                    }'></div>
                                 <!-- End Circle -->
                             </div>
                         </div>
@@ -315,15 +314,38 @@
             <!-- Header -->
             <div class="card-header">
                 @php
-                    $total_sold=\App\Model\OrderTransaction::where(['status'=>'disburse'])->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])->sum('order_amount');
-                    $t=\App\Model\OrderTransaction::where(['status'=>'disburse'])->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])->sum('tax');
-                    $c=\App\Model\OrderTransaction::where(['status'=>'disburse'])->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])->sum('admin_commission');
-                    $t_c_t = $total_sold +$t +$c;
+                    $total_sold= \App\Model\Order::with('details')->where(['order_status' => "delivered", "payment_status" => "paid"])->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])->get();
+                    // if($from && $to){
+                    //     $total_sold = \App\Model\Order::with('details')->where(['order_status' => "delivered", "payment_status" => "paid"])
+                    //     ->whereBetween('created_at', [$from, $to])
+                    //     ->get();
+                    // }else{
+                    //         $total_sold = \App\Model\Order::with('details')->where(['order_status' => "delivered", "payment_status" => "paid"])
+                    //         ->get();
+                    // }
+                    // dd($total_earning);
+
+                    // $total_sold=\App\Model\Order::where(['status'=>'disburse'])->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])->get();
+                    foreach ($total_sold as $key => $t) {
+                        $taxs = [];
+                        foreach ($t['details'] as $k => $d) {
+                            array_push($taxs, $d['tax']);
+                        }
+                        $total_sold[$key]['netto_amount'] = $t['order_amount'] - array_sum($taxs);
+                        $total_sold[$key]['tax'] = array_sum($taxs);
+                    }
+                    $total = $total_sold->sum('netto_amount');
+                    $total_tax = $total_sold->sum('tax');
+                    $total_sold = $total;
+                    // $t=\App\Model\OrderTransaction::where(['status'=>'disburse'])->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])->sum('tax');
+                    $t = $total_tax;
+                    // $c=\App\Model\OrderTransaction::where(['status'=>'disburse'])->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])->sum('admin_commission');
+                    $t_c_t = $total_sold + $t;
                 @endphp
                 <div class="flex-start">
                     <h6 class="card-subtitle mt-1">{{\App\CPU\translate('total_sale_of')}} {{date('Y')}} :</h6>
-                    <h6><span class="h3 {{Session::get('direction') === "rtl" ? 'mr-sm-2' : 'ml-sm-2'}}"> {{\App\CPU\BackEndHelper::usd_to_currency($total_sold)." "}}</span></h6>
                     <h6><span class="h3 {{Session::get('direction') === "rtl" ? 'mr-sm-2' : 'ml-sm-2'}}"> {{\App\CPU\BackEndHelper::currency_symbol()}}</span></h6>
+                    <h6><span class="h3 {{Session::get('direction') === "rtl" ? 'mr-sm-2' : 'ml-sm-2'}}"> {{\App\CPU\BackEndHelper::usd_to_currency($total_sold)." "}}</span></h6>
                 </div>
 
                 <!-- Unfold -->
@@ -339,20 +361,37 @@
 
         @php
             $sold=[];
+            $tax =[];
                 for ($i=1;$i<=12;$i++){
                     $from = date('Y-'.$i.'-01');
                     $to = date('Y-'.$i.'-30');
-                    $sold[$i]=\App\Model\OrderTransaction::where(['status'=>'disburse'])->whereBetween('created_at', [$from, $to])->sum('order_amount');
+                    // $sold[$i] = \App\Model\Order::with('details')->where(['order_status' => "delivered", "payment_status" => "paid"])->whereBetween('created_at', [$from, $to])->sum('order_amount');
+                    $jual = \App\Model\Order::with('details')->where(['order_status' => "delivered", "payment_status" => "paid"])->whereBetween('created_at', [$from, $to])->get();
+                    // dd($sold);
+                    $item = [];
+                    $pajak = [];
+                    foreach ($jual as $key => $j) {
+                        $pajaks = [];
+                        foreach ($j['details'] as $key => $d) {
+                            array_push($pajaks, $d['tax']);
+                        }
+                        $paj = array_sum($pajaks);
+                        $harga = $j['order_amount'] - $paj;
+                        array_push($item, $harga);
+                        array_push($pajak, $paj);
+                    }
+                    $sold[$i] = array_sum($item);
+                    $tax[$i] = array_sum($pajak);
                 }
         @endphp
 
         @php
-            $tax=[];
-                for ($i=1;$i<=12;$i++){
-                    $from = date('Y-'.$i.'-01');
-                    $to = date('Y-'.$i.'-30');
-                    $tax[$i]=\App\Model\OrderTransaction::where(['status'=>'disburse'])->whereBetween('created_at', [$from, $to])->sum('tax');
-                }
+            // $tax=[];
+            //     for ($i=1;$i<=12;$i++){
+            //         $from = date('Y-'.$i.'-01');
+            //         $to = date('Y-'.$i.'-30');
+            //         $tax[$i]=\App\Model\OrderTransaction::where(['status'=>'disburse'])->whereBetween('created_at', [$from, $to])->sum('tax');
+            //     }
         @endphp
         @php
             $commission=[];
