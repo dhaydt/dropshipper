@@ -93,13 +93,13 @@
                         <div class="col-4">
                             <div class="mb-3">
                                 <input type="date" name="from" id="from_date"
-                                       class="form-control" required>
+                                       class="form-control" required value="{{session('from_date')}}">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="mb-3">
                                 <input type="date" name="to" id="to_date"
-                                       class="form-control" required>
+                                       class="form-control" required value="{{session('to_date')}}">
                             </div>
                         </div>
                         <div class="col-4">
@@ -491,7 +491,7 @@
         </div>
         <!-- End Card -->
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12 mb-3 mb-lg-12">
                 <!-- Card -->
                 <div class="card h-100">
@@ -600,7 +600,7 @@
                 </div>
                 <!-- End Card -->
             </div>
-        </div>
+        </div> --}}
         <!-- End Row -->
     </div>
 @endsection
