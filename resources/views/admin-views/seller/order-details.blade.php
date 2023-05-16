@@ -70,7 +70,7 @@
 
                     <div class="col-md-6 mt-2">
                         <a class="text-body" target="_blank"
-                           href={{route('admin.orders.generate-invoice',[$order['id']])}}>
+                           href={{route('admin.orders.generate-invoicen',[$order['id']])}}>
                             <i class="tio-print"></i> {{\App\CPU\translate('Print invoice')}}
                         </a>
                     </div>
@@ -162,7 +162,7 @@
                                 </div>
                                 <div>
                                     <h6 class="text-capitalize" style="display: inline; color: #8a8a8a; ">{{\App\CPU\translate('shipping')}} {{\App\CPU\translate('method')}} :</h6>
-                                    <h6 class="mx-1" style="display: inline; color: #8a8a8a;">{{str_replace('_',' ',$order->shipping->title)}}</h6>
+                                    <h6 class="mx-1" style="display: inline; color: #8a8a8a;">{{str_replace('_',' ',$order->shipping)}}</h6>
                                 </div>
                             </div>
                         </div>
@@ -315,29 +315,29 @@
                         <h4 class="card-header-title">{{\App\CPU\translate('Customer')}}</h4>
                     </div>
                     <!-- End Header -->
-
                     <!-- Body -->
-                    @if($order->customer)
-
+                    @if($order->shipping_address_data)
+                        @php($customer = json_decode($order->shipping_address_data))
+                        {{-- {{ dd($customer) }} --}}
                         <div class="card-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                             <div class="media align-items-center" href="javascript:">
                                 <div class="avatar avatar-circle {{Session::get('direction') === "rtl" ? 'ml-3' : 'mr-3'}}">
                                     <img
                                         class="avatar-img"
                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                        src="{{asset('storage/profile/'.$order->customer->image)}}"
+                                        src="{{asset('public/assets/front-end/img/image-place-holder.png')}}"
                                         alt="Image Description">
                                 </div>
                                 <div class="media-body">
                             <span
-                                class="text-body text-hover-primary">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</span>
+                                class="text-body text-hover-primary">{{$customer->contact_person_name}}</span>
                                 </div>
                                 <div class="media-body text-right">
                                     {{--<i class="tio-chevron-right text-body"></i>--}}
                                 </div>
                             </div>
 
-                            <hr>
+                            {{-- <hr>
 
                             <div class="media align-items-center" href="javascript:">
                                 <div class="icon icon-soft-info icon-circle {{Session::get('direction') === "rtl" ? 'ml-3' : 'mr-3'}}">
@@ -347,23 +347,22 @@
                                     <span class="text-body text-hover-primary"> {{\App\Model\Order::where('customer_id',$order['customer_id'])->count()}} orders</span>
                                 </div>
                                 <div class="media-body text-right">
-                                    {{--<i class="tio-chevron-right text-body"></i>--}}
+                                    <i class="tio-chevron-right text-body"></i>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <hr>
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5>{{\App\CPU\translate('Contact info')}}</h5>
                             </div>
-
-                            <div class="flex-start">
+                            {{-- <div class="flex-start">
                                 <div><i class="tio-online {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i></div>
                                 <div class="mx-1"><a class="text-dark" href = "mailto: {{$order->customer['email']}}">{{$order->customer['email']}}</a></div>
-                            </div>
+                            </div> --}}
                             <div class="flex-start">
                                 <div><i class="tio-android-phone-vs {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i></div>
-                                <div class="mx-1"><a class="text-dark" href="tel:{{$order->customer['phone']}}">{{$order->customer['phone']}}</a></div>
+                                <div class="mx-1"><a class="text-dark" href="tel:{{$customer->phone}}">{{$customer->phone}}</a></div>
                             </div>
 
                             <hr>
@@ -374,27 +373,27 @@
                             </div>
                             <div class="flex-start">
                                 <div>{{\App\CPU\translate('Name')}} :</div>
-                                <div class="mx-1"><strong>{{$order->shippingAddress ? $order->shippingAddress['contact_person_name'] : "empty"}}</strong></div>
+                                <div class="mx-1"><strong>{{$customer ? $customer->contact_person_name : "empty"}}</strong></div>
                             </div>
-                            <div class="flex-start">
+                            {{-- <div class="flex-start">
                                 <div>{{\App\CPU\translate('Country')}} :</div>
                                 <div class="mx-1"><strong>{{$order->shippingAddress ? $order->shippingAddress['country'] : "Empty"}}</strong></div>
-                            </div>
+                            </div> --}}
                             <div class="flex-start">
                                 <div>{{\App\CPU\translate('City')}} :</div>
-                                <div class="mx-1"><strong>{{$order->shippingAddress ? $order->shippingAddress['city'] : "Empty"}}</strong></div>
+                                <div class="mx-1"><strong>{{$customer ? $customer->city : "Empty"}}</strong></div>
                             </div>
                             <div class="flex-start">
                                 <div>{{\App\CPU\translate('zip_code')}} :</div>
-                                <div class="mx-1"><strong> {{$order->shippingAddress ? $order->shippingAddress['zip']  : "Empty"}}</strong></div>
+                                <div class="mx-1"><strong> {{$customer ? $customer->zip  : "Empty"}}</strong></div>
                             </div>
                             <div class="flex-start">
                                 <div>{{\App\CPU\translate('address')}} </div>
-                                <div class="mx-1"><strong> : {{$order->shippingAddress ? $order->shippingAddress['address']  : "Empty"}}</strong></div>
+                                <div class="mx-1"><strong> : {{$customer ? $customer->address  : "Empty"}}</strong></div>
                             </div>
                             <div class="flex-start">
                                 <div>{{\App\CPU\translate('Phone')}} :</div>
-                                <div class="mx-1"><strong>{{$order->shippingAddress ? $order->shippingAddress['phone']  : "Empty"}}</strong></div>
+                                <div class="mx-1"><strong>{{$customer ? $customer->phone  : "Empty"}}</strong></div>
                             </div>
 
                         </div>

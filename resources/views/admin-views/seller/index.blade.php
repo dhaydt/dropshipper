@@ -73,8 +73,11 @@
                                         <td scope="col">
                                             <a href="{{route('admin.sellers.order-list',[$seller['id']])}}"
                                                class="btn btn-outline-primary btn-block">
-                                                <i class="tio-shopping-cart-outlined"></i>( {{$seller->orders->count()}}
-                                                )
+                                                {{-- <i class="tio-shopping-cart-outlined"></i>( {{$seller->orders->count()}} ) --}}
+                                                @php
+                                                    $order = \App\Model\Order::where(['user_is' => 'dropship', 'customer_id' => $seller['id']])->count()
+                                                @endphp
+                                                <i class="tio-shopping-cart-outlined"></i>( {{$order}} )
                                             </a>
                                         </td>
                                         <td scope="col">

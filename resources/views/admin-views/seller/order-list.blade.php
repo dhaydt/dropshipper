@@ -51,15 +51,20 @@
                                         <a href="{{route('admin.sellers.order-details',[$order['id'],$seller['id']])}}">{{$order['id']}}</a>
                                     </td>
                                     <td>
-                                        @if($order->customer != null)
-                                            {{ $order->customer['f_name'] }} {{ $order->customer['l_name'] }}
+                                        @php
+                                            $seller = \App\Model\Seller::find($order['customer_id']);
+                                        @endphp
+                                        {{-- @if($order->customer != null)
+                                            {{ $order->customer['f_name'] }} {{ $order->customer['l_name'] }} --}}
+                                        @if($seller != null)
+                                            {{ $seller['f_name'] }}
                                         @else
                                             <label class='badge badge-warning'>{{\App\CPU\translate('Customer not available')}}</label>
                                         @endif
                                     </td>
                                     <td>
-                                        @if($order->customer != null)
-                                            {{ $order->customer['phone'] }}
+                                        @if($seller != null)
+                                            {{ $seller['phone'] }}
                                         @else
                                             <label class="badge badge-warning">{{\App\CPU\translate('Customer not available')}}</label>
                                         @endif
@@ -80,7 +85,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if($order->payment_status=='paid')
+                            @if($order->payment_status=='paid')
                                             <span class="badge badge-soft-success">
                                   <span class="legend-indicator bg-success"></span>{{\App\CPU\translate('Paid')}}
                                 </span>
@@ -90,6 +95,7 @@
                                 </span>
                                         @endif
                                     </td>
+                                    {{-- {{ dd($order['id']) }} --}}
                                     <td>
                                         <div class="dropdown">
                                             <button class="btn btn-outline-secondary dropdown-toggle" type="button"
@@ -103,7 +109,7 @@
                                                    href="{{route('admin.sellers.order-details',[$order['id'],$seller['id']])}}"><i
                                                         class="tio-visible"></i> {{\App\CPU\translate('View')}}</a>
                                                 <a class="dropdown-item" target="_blank"
-                                                   href="{{route('admin.orders.generate-invoice',[$order->id])}}"><i
+                                                   href="{{route('admin.orders.generate-invoicen',[$order['id']])}}"><i
                                                         class="tio-download"></i> {{\App\CPU\translate('Invoice')}}</a>
                                             </div>
                                         </div>
