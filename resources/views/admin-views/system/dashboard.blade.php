@@ -90,7 +90,7 @@
             </div>
 
             <!-- End Stats -->
-            <div class="card mb-3">
+            {{-- <div class="card mb-3">
                 <div class="card-body">
                     <div class="flex-between gx-2 gx-lg-3 mb-2">
                         <div>
@@ -102,10 +102,10 @@
                         @include('admin-views.partials._dashboard-wallet-stats',['data'=>$data])
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- End Stats -->
 
-            <div class="row gx-2 gx-lg-3">
+            {{-- <div class="row gx-2 gx-lg-3">
                 <div class="col-lg-12 mb-3 mb-lg-12">
                     <!-- Card -->
                     <div class="card h-100">
@@ -230,7 +230,7 @@
                     </div>
                     <!-- End Card -->
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row gx-2 gx-lg-3 mt-2">
                 <div class="col-lg-6 mb-3">
@@ -258,21 +258,21 @@
                     <!-- End Card -->
                 </div>
 
-                <div class="col-lg-6 mb-3">
+                {{-- <div class="col-lg-6 mb-3">
                     <!-- Card -->
                     <div class="card h-100">
                         @include('admin-views.partials._top-store-by-order',['top_store_by_order_received'=>$data['top_store_by_order_received']])
                     </div>
                     <!-- End Card -->
-                </div>
+                </div> --}}
 
-                <div class="col-lg-6 mb-3">
+                {{-- <div class="col-lg-6 mb-3">
                     <!-- Card -->
                     <div class="card h-100">
                         @include('admin-views.partials._top-selling-store',['top_store_by_earning'=>$data['top_store_by_earning']])
                     </div>
                     <!-- End Card -->
-                </div>
+                </div> --}}
 
                 <div class="col-lg-6 mb-3">
                     <!-- Card -->
@@ -282,13 +282,13 @@
                     <!-- End Card -->
                 </div>
 
-                <div class="col-lg-6 mb-3">
+                {{-- <div class="col-lg-6 mb-3">
                     <!-- Card -->
                     <div class="card h-100">
                         @include('admin-views.partials._most-rated-products',['most_rated_products'=>$data['most_rated_products']])
                     </div>
                     <!-- End Card -->
-                </div>
+                </div> --}}
 
                 <div class="col-lg-6 mb-3">
                     <!-- Card -->
