@@ -102,7 +102,7 @@
                                             class="js-example-basic-multiple js-states js-example-responsive form-control"
                                             name="category_id"
                                             id="category_id"
-                                            onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-category-select','select')">
+                                            onchange="getRequest('{{url('/')}}/adminpanel/product/get-categories?parent_id='+this.value,'sub-category-select','select')">
                                             <option value="0" selected disabled>---{{\App\CPU\translate('Select')}}---</option>
                                             @foreach($categories as $category)
                                                 <option
@@ -116,7 +116,7 @@
                                             class="js-example-basic-multiple js-states js-example-responsive form-control"
                                             name="sub_category_id" id="sub-category-select"
                                             data-id="{{count($product_category)>=2?$product_category[1]->id:''}}"
-                                            onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-sub-category-select','select')">
+                                            onchange="getRequest('{{url('/')}}/adminpanel/product/get-categories?parent_id='+this.value,'sub-sub-category-select','select')">
                                         </select>
                                     </div>
                                     <div class="col-md-4">
