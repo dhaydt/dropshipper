@@ -704,8 +704,8 @@
                 let category = $("#category_id").val();
                 let sub_category = $("#sub-category-select").attr("data-id");
                 let sub_sub_category = $("#sub-sub-category-select").attr("data-id");
-                getRequest('{{url('/')}}/admin/product/get-categories?parent_id=' + category + '&sub_category=' + sub_category, 'sub-category-select', 'select');
-                getRequest('{{url('/')}}/admin/product/get-categories?parent_id=' + sub_category + '&sub_category=' + sub_sub_category, 'sub-sub-category-select', 'select');
+                getRequest('{{url('/')}}/adminpanel/product/get-categories?parent_id=' + category + '&sub_category=' + sub_category, 'sub-category-select', 'select');
+                getRequest('{{url('/')}}/adminpanel/product/get-categories?parent_id=' + sub_category + '&sub_category=' + sub_sub_category, 'sub-sub-category-select', 'select');
             }, 100)
             // color select select2
             $('.color-var-select').select2({
