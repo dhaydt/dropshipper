@@ -775,6 +775,13 @@ class Helpers
         return $config;
     }
 
+    public static function getSubCategory($slug){
+        $cat = Category::where('slug', $slug)->first();
+        $sub = Category::where('parent_id', $cat['id'])->get();
+
+        return $sub;
+    }
+
     public static function get_settings($object, $type)
     {
         $config = null;

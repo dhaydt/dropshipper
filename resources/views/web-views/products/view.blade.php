@@ -219,6 +219,31 @@
                             {{$data['data_from']}} {{\App\CPU\translate('products')}} {{ isset($brand_name) ? '('.$brand_name.')' : ''}}
                             <label>( {{$products->total()}} {{\App\CPU\translate('items found')}} )</label>
                         </h1>
+                        @if ($data['data_from'] == 'category')
+                        @php($sub = \App\CPU\Helpers::getSubCategory(\Str::slug($data['brand_name'])))
+                        @if (count($sub) > 0)
+                            <div class="container mb-4">
+                                <h2 class="h3 text-dark mb-3 headerTitle text-capitalize mt-0">
+                                    Sub Category {{ $data['brand_name'] }}
+                                </h2>
+                                {{-- {{ dd($sub) }} --}}
+                                <div class="container">
+                                    @foreach ($sub as $s)
+                                    <a href="{{route('products',['id'=> $s['id'],'data_from'=>'sub_category','page'=>1])}}" class="mr-2">
+                                        <span class="badge bg-white" style="padding: 10px;
+                                        border: 1px solid #525252;
+                                        border-radius: 35px;
+                                        text-transform: capitalize;
+                                        font-size: 14px;
+                                        font-weight: 600;">{{ $s['name'] }}
+                                        </span>
+                                    </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+
+                        @endif
                     </div>
                     <div class="row col-md-6 d-none for-display mx-0">
 

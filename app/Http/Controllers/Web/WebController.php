@@ -858,7 +858,7 @@ class WebController extends Controller
 
         $porduct_data = Product::active()->with(['reviews']);
 
-        if ($request['data_from'] == 'category') {
+        if ($request['data_from'] == 'category' || $request['data_from'] == 'sub_category') {
             $products = $porduct_data->get();
             $product_ids = [];
             foreach ($products as $product) {
@@ -967,6 +967,12 @@ class WebController extends Controller
         if ($request['data_from'] == 'category') {
             $cat = Category::find((int) $request['id']);
             $data['brand_name'] = $cat ? $cat->name : 'Kesalahan data kategori';
+        }
+        
+        if ($request['data_from'] == 'sub_category') {
+            $cat = Category::find((int) $request['id']);
+            $data['brand_name'] = $cat ? $cat->name : 'Kesalahan data kategori';
+            $data['data_from'] = 'Sub Kategori';
         }
         if ($request['data_from'] == 'brand') {
             $data['brand_name'] = Brand::find((int) $request['id'])->name;
