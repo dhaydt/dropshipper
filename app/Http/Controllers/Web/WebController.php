@@ -921,7 +921,7 @@ class WebController extends Controller
             $query = Product::with(['reviews'])->active()->where('featured', 1);
         }
 
-        if ($request['data_from'] == 'search') {
+        if ($request['data_from'] == 'search' || $request['data_from'] == '') {
             $key = explode(' ', $request['name']);
             // dd($key);
             $query = $porduct_data->where(function ($q) use ($key) {
