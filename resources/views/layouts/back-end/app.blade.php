@@ -155,6 +155,9 @@
         .slider.round:before {
             border-radius: 50%;
         }
+        .d-none{
+            display: none;
+        }
 
     </style>
     <script
@@ -167,10 +170,10 @@
 @include('layouts.back-end.partials._front-settings')
 <!-- End Builder -->
 {{--loader--}}
-<div class="container">
-    <div class="row">
-        <div class="col-12" style="width:85%;position: fixed;z-index: 9999;display: flex;align-items: center;justify-content: center;">
-            <div id="loading" style="display: none">
+<div class="container d-none"  id="loading">
+    <div class="row d-flex">
+        <div class="col-12 w-100" style="width:85%; height: 100%; position: fixed;z-index: 9999;display: flex;align-items: center;justify-content: center;">
+            <div>
                 <img width="200"
                      src="{{asset('storage/company')}}/{{\App\CPU\Helpers::get_business_settings('loader_gif')}}"
                      onerror="this.src='{{asset('public/assets/front-end/img/loader.gif')}}'">

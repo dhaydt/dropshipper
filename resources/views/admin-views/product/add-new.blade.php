@@ -628,6 +628,8 @@
                 // for (instance in CKEDITOR.instances) {
                 //     CKEDITOR.instances[instance].updateElement();
                 // }
+                $('#loading').removeClass('d-none');
+
                 var formData = new FormData(document.getElementById('product_form'));
                 $.ajaxSetup({
                     headers: {
