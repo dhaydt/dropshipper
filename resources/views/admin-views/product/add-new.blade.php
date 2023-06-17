@@ -365,7 +365,7 @@
         $(function () {
             $("#coba").spartanMultiImagePicker({
                 fieldName: 'images[]',
-                maxCount: 4,
+                maxCount: 6,
                 rowHeight: 'auto',
                 groupClassName: 'col-6',
                 maxFileSize: '',

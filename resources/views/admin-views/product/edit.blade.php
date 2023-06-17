@@ -458,7 +458,7 @@
     <script src="{{asset('public/assets/back-end')}}/js/tags-input.min.js"></script>
     <script src="{{asset('public/assets/back-end/js/spartan-multi-image-picker.js')}}"></script>
     <script>
-        var imageCount = {{4-count(json_decode($product->images))}};
+        var imageCount = {{6-count(json_decode($product->images))}};
         var thumbnail = '{{\App\CPU\ProductManager::product_image_path('thumbnail').'/'.$product->thumbnail??asset('public/assets/back-end/img/400x400/img2.jpg')}}';
         var icon = '{{\App\CPU\ProductManager::product_image_path('icon').'/'.$product->icon??asset('public/assets/back-end/img/400x400/img2.jpg')}}';
         $(function () {
