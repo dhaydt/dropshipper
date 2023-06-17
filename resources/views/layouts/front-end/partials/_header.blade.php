@@ -167,9 +167,9 @@
         <a class="navbar-brand d-none d-sm-block mr-0
           flex-shrink-0 tab-logo" href="{{route('home')}}" style="min-width: 7rem;">
           <img width="250" height="60" style="height: 60px!important;"
-                         src="{{asset("storage/company")."/".$web_config['web_logo']->value}}"
-                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                         alt="{{$web_config['name']->value}}"/>
+              src="{{asset("storage/company")."/".$web_config['web_logo']->value}}"
+              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+              alt="{{$web_config['name']->value}}"/>
         </a>
         <a class="navbar-brand d-sm-none {{Session::get('direction') === " rtl" ? 'ml-2' : 'mr-2' }}"
           href="{{route('home')}}">
@@ -192,7 +192,7 @@
             <input class="form-control appended-form-control search-bar-input" type="text" autocomplete="off"
               placeholder="Cari Product" name="name"
               style="border: 2px solid #cbcbcb; font-weight: 500;height: 35px !important; padding-left: 2.5rem; padding-right: unset; border-radius: 10px; border-top-right-radius: 10px !important; border-bottom-right-radius: 10px !important;">
-            <input name="data_from" value="" hidden>
+            <input name="data_from" value="search" hidden>
             <input name="page" value="1" hidden>
             <diV class="card search-card"
               style="position: absolute;background: white;z-index: 999;width: 100%;display: none">

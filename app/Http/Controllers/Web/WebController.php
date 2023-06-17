@@ -854,6 +854,7 @@ class WebController extends Controller
 
     public function products(Request $request)
     {
+        // dd($request);
         $request['sort_by'] == null ? $request['sort_by'] == 'latest' : $request['sort_by'];
 
         $porduct_data = Product::active()->with(['reviews']);
@@ -922,6 +923,7 @@ class WebController extends Controller
 
         if ($request['data_from'] == 'search') {
             $key = explode(' ', $request['name']);
+            // dd($key);
             $query = $porduct_data->where(function ($q) use ($key) {
                 foreach ($key as $value) {
                     $q->orWhere('name', 'like', "%{$value}%");
