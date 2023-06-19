@@ -28,6 +28,10 @@ Route::get('/config-cache', function () {
     Artisan::call('config:cache');
     dd('config cleared!');
 });
+Route::get('/optimize', function () {
+    Artisan::call('optimize:clear');
+    dd('optimize cleared cleared!');
+});
 
 Route::get('/migrate', function () {
     Artisan::call('migrate', [
