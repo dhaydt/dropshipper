@@ -466,13 +466,13 @@
                                 <form class="needs-validation" target="_blank" method="POST" id="payment-form"
                                     action="{{route('xendit-payment.vaInvoice')}}">
 
-                                    <input type="hidden" name="type" value="{{ $p['code'] }}">
+                                    <input type="hidden" name="type" value="{{ $p['code'] ?? 'BNI' }}">
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
                                     {{-- <input class="price" type="hidden" name="price" value="price"> --}}
                                     {{ csrf_field() }}
                                     <button class="btn btn-block" type="submit">
                                         <img width="150" style="margin-top: -10px"
-                                        src="{{asset('assets/front-end/img/'.strtolower($p['code']).'.png')}}" />
+                                        src="{{asset('assets/front-end/img/'.strtolower($p['code'] ?? 'null').'.png')}}" />
                                     </button>
                                 </form>
                             </div>
