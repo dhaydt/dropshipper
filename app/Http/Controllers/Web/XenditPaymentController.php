@@ -40,6 +40,8 @@ class XenditPaymentController extends Controller
             Order::where('transaction_ref', $ref_id)->update([
                 'payment_status' => $status
             ]);
+
+            // 'success_redirect_url' => $redirect_url.'/xendit-payment/success/'.$type.'/'.$request->order_id,
     
         }
         return response()->json($data);

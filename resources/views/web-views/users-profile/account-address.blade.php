@@ -238,11 +238,11 @@
                                         <label for="state">{{\App\CPU\translate('State')}}</label>
                                         <input type="text" class="form-control" id="state" name="state" placeholder="" required>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    {{-- <div class="form-group col-md-6">
                                         <label for="country">{{\App\CPU\translate('Country')}}</label>
                                         <input type="text" class="form-control" id="country" name="country"
                                                placeholder="" required>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
