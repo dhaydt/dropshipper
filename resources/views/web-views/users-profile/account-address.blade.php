@@ -238,17 +238,18 @@
                                         <label for="state">{{\App\CPU\translate('State')}}</label>
                                         <input type="text" class="form-control" id="state" name="state" placeholder="" required>
                                     </div>
-                                    {{-- <div class="form-group col-md-6">
-                                        <label for="country">{{\App\CPU\translate('Country')}}</label>
-                                        <input type="text" class="form-control" id="country" name="country"
-                                               placeholder="" required>
-                                    </div> --}}
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
                                         <label for="firstName">{{\App\CPU\translate('Phone')}}</label>
                                         <input class="form-control" type="text" id="phone" name="phone" required>
                                     </div>
+                                    <div class="form-group col-md-6 d-none">
+                                        <label for="country">{{\App\CPU\translate('Country')}}</label>
+                                        <input type="text" class="form-control" id="country" name="country"
+                                               value="ID" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -366,16 +367,17 @@
                                                                 <input type="text" class="form-control" name="state" value="{{ $shippingAddress->state }}" id="own_state"  placeholder="" required>
                                                             </div>
                                                             <div class="form-group col-md-6">
+                                                                <label for="own_phone">{{\App\CPU\translate('Phone')}}</label>
+                                                                    <input class="form-control" type="text" id="own_phone" name="phone" value="{{$shippingAddress->phone}}" required="required">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6 d-none">
                                                             <label for="own_country">{{\App\CPU\translate('Country')}}</label>
-                                                                <input type="text" class="form-control" id="own_country" name="country" value="{{ $shippingAddress->country }}" placeholder="" required>
+                                                                <input type="text" class="form-control" id="own_country" name="country" value="ID" placeholder="" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="form-group col-md-12">
-                                                            <label for="own_phone">{{\App\CPU\translate('Phone')}}</label>
-                                                                <input class="form-control" type="text" id="own_phone" name="phone" value="{{$shippingAddress->phone}}" required="required">
-                                                            </div>
-                                                        </div>
+                                                            
                                                         <div class="modal-footer">
                                                             <button type="button" class="closeB btn btn-secondary" data-dismiss="modal">{{\App\CPU\translate('close')}}</button>
                                                             <button type="submit" class="btn btn-primary" id="addressUpdate" data-id="{{$shippingAddress->id}}">{{\App\CPU\translate('update')}}  </button>
@@ -401,9 +403,9 @@
                                         </div>
                                         <div><span class="font-nameA"> <strong>{{\App\CPU\translate('address')}} :</strong> {{$shippingAddress['address']}}</span>
                                         </div>
-                                        @php($c_name = App\Country::where('country', $shippingAddress['country'])->first())
+                                        {{-- @php($c_name = App\Country::where('country', $shippingAddress['country'])->first())
                                         <div><span class="font-nameA"> <strong>{{\App\CPU\translate('Country')}} :</strong> {{$c_name->country_name}}</span>
-                                        </div>
+                                        </div> --}}
 
                     
                                     </div>
