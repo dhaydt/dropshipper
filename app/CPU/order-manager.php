@@ -14,6 +14,7 @@ use App\Model\Seller;
 use App\Model\SellerWallet;
 use App\Model\ShippingAddress;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -126,8 +127,8 @@ class OrderManager
                 'inhouse_earning' => 0,
                 'delivery_charge_earned' => 0,
                 'pending_amount' => 0,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
         if (SellerWallet::where('seller_id', $order['seller_id'])->first() == false) {
@@ -139,8 +140,8 @@ class OrderManager
                 'pending_withdraw' => 0,
                 'delivery_charge_earned' => 0,
                 'collected_cash' => 0,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
 
@@ -160,8 +161,8 @@ class OrderManager
                 'tax' => $order_summary['total_tax'],
                 'delivered_by' => $received_by,
                 'payment_method' => $order['payment_method'],
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
 
             $wallet = AdminWallet::where('admin_id', 1)->first();
@@ -233,7 +234,10 @@ class OrderManager
 
     public static function generate_order($data)
     {
-        // dd($data);
+        config(['app.locale' => 'id']);
+        Carbon::setLocale('id');
+        date_default_timezone_set('Asia/Jakarta');
+        
         $order_id = 100000 + Order::all()->count() + 1;
         if (Order::find($order_id)) {
             $order_id = Order::orderBy('id', 'DESC')->first()->id + 1;
@@ -322,8 +326,8 @@ class OrderManager
             'shipping' => $shipSelected,
             'resi_kurir' => $resik,
             'invoice_kurir' => $inpoice,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ];
 
         $order_id = DB::table('orders')->insertGetId($or);
@@ -352,8 +356,8 @@ class OrderManager
                 'delivery_status' => 'pending',
                 'shipping_method_id' => null,
                 'payment_status' => 'unpaid',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ];
 
             if ($c['variant'] != null) {
@@ -398,8 +402,8 @@ class OrderManager
                 'tax' => $order_summary['total_tax'],
                 'delivered_by' => 'admin',
                 'payment_method' => $or['payment_method'],
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
 
             if (AdminWallet::where('admin_id', 1)->first() == false) {
@@ -410,8 +414,8 @@ class OrderManager
                     'inhouse_earning' => 0,
                     'delivery_charge_earned' => 0,
                     'pending_amount' => 0,
-                    'created_at' => now(),
-                    'updated_at' => now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ]);
             }
             DB::table('admin_wallets')->where('admin_id', $order['seller_id'])->increment('pending_amount', $order['order_amount']);
