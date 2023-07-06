@@ -97,10 +97,8 @@
                         <th>{{\App\CPU\translate('Status')}}</th>
                         <th>{{\App\CPU\translate('Total')}}</th>
                         {{-- {{ dd($orders) }} --}}
-                        @if ($orders)
-                        @if ($orders[0]['user_is'] == 'dropship')
+                        @if ($orders[0] ? $orders[0]['user_is'] == 'dropship' : $orders == 'role')
                         <th>Kode Invoice</th>
-                        @endif
                         @endif
                         <th>{{\App\CPU\translate('Order')}} {{\App\CPU\translate('Status')}} </th>
                         <th>{{\App\CPU\translate('Action')}}</th>
