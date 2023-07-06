@@ -98,7 +98,7 @@
                                             <span class="text-truncate">
                                             {{\App\CPU\translate('All')}}
                                             <span class="badge badge-info badge-pill ml-1">
-                                                {{\App\Model\Order::where('user_is', 'customer')->count()}}
+                                                {{\App\Model\Order::where('user_is', 'customer')->where('order_status', '!=', 'confirmed')->count()}}
                                             </span>
                                         </span>
                                         </a>
@@ -219,7 +219,7 @@
                                             <span class="text-truncate">
                                             {{\App\CPU\translate('All')}}
                                             <span class="badge badge-info badge-pill ml-1">
-                                                {{\App\Model\Order::where('user_is', 'dropship')->count()}}
+                                                {{\App\Model\Order::where('user_is', 'dropship')->where('order_status', '!=', 'confirmed')->count()}}
                                             </span>
                                         </span>
                                         </a>
@@ -230,7 +230,7 @@
                                             <span class="text-truncate">
                                             {{\App\CPU\translate('Menunggu')}}
                                             <span class="badge badge-soft-info badge-pill ml-1">
-                                                {{\App\Model\Order::where(['order_status'=>'pending'])->count()}}
+                                                {{\App\Model\Order::where(['order_status'=>'pending', 'user_is' => 'dropship'])->count()}}
                                             </span>
                                         </span>
                                         </a>
@@ -254,7 +254,7 @@
                                             <span class="text-truncate">
                                             {{\App\CPU\translate('Diproses')}}
                                                 <span class="badge badge-warning badge-pill ml-1">
-                                                {{\App\Model\Order::where(['order_status'=>'processing'])->count()}}
+                                                {{\App\Model\Order::where(['order_status'=>'processing','user_is' => 'dropship'])->count()}}
                                             </span>
                                         </span>
                                         </a>
@@ -278,7 +278,7 @@
                                             <span class="text-truncate">
                                             {{\App\CPU\translate('Dikirim')}}
                                                 <span class="badge badge-success badge-pill ml-1">
-                                                {{\App\Model\Order::where(['order_status'=>'delivered'])->count()}}
+                                                {{\App\Model\Order::where(['order_status'=>'delivered', 'user_is' => 'dropship'])->count()}}
                                             </span>
                                         </span>
                                         </a>
@@ -314,7 +314,7 @@
                                             <span class="text-truncate">
                                             {{\App\CPU\translate('Dibatalkan')}}
                                                 <span class="badge badge-danger badge-pill ml-1">
-                                                {{\App\Model\Order::where(['order_status'=>'canceled'])->count()}}
+                                                {{\App\Model\Order::where(['order_status'=>'canceled', 'user_is' => 'dropship'])->count()}}
                                             </span>
                                         </span>
                                         </a>
