@@ -34,7 +34,7 @@ class XenditPaymentController extends Controller
         $data = $request->all();
         $save = new Callback();
         $save->name = 'xendit response';
-        $save->response = $data;
+        $save->response = json_encode($data);
         $save->save();
         if(isset($data['status'])){
 
