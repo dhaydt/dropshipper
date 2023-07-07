@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Callback;
 use App\CPU\CartManager;
 use App\CPU\Helpers;
 use App\CPU\OrderManager;
@@ -32,6 +33,10 @@ class XenditPaymentController extends Controller
     public function callback(){
         $data = request()->all();
         // dd($data);
+        $save = new Callback();
+        $save->name = 'xendit response';
+        $save->response = $data;
+        
         if(isset($data['status'])){
 
             $status = $data['status'];
