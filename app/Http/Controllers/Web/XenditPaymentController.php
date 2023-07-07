@@ -30,13 +30,12 @@ class XenditPaymentController extends Controller
         return view('admin-views.business-settings.payment-method.xendit', compact('bank'));
     }
 
-    public function callback(){
-        $data = request()->all();
-        // dd($data);
+    public function callback(Request $request){
+        $data = $request->all();
         $save = new Callback();
         $save->name = 'xendit response';
         $save->response = $data;
-        
+        $save->save();
         if(isset($data['status'])){
 
             $status = $data['status'];

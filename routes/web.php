@@ -42,7 +42,7 @@ Route::get('/migrate', function () {
 Route::get('cetak-resi', [ResiController::class, 'printResi'])->name('cetak_resi');
 Route::get('cek_order', [WebController::class, 'expired_order']);
 Route::get('payment-complete', [WebController::class, 'order_placed'])->name('payment-complete');
-Route::post('payment-callback', [XenditPaymentController::class, 'callback']);
+Route::get('payment-callback', [XenditPaymentController::class, 'callback']);
 
 Route::get('/passport', function () {
     Artisan::call('passport:install --force');
