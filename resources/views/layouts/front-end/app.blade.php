@@ -46,6 +46,24 @@
     <!--to make http ajax request to https-->
     <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
     <style>
+        .social-btn {
+            border: 1px solid black;
+        }
+        .page-footer {
+            background: #fff !important;
+            color: #121d2c;
+        }
+        .footer-heder {
+            color: black;
+        }
+        .mr-2.mb-2 a {
+            color: black !important;
+        }
+
+        .widget-list-item a.widget-list-link, .social-media .social-btn {
+            color: #000 !important;
+        }
+
         .dropdown-menu {
             min-width: 304px !important;
             margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: -8px !important;

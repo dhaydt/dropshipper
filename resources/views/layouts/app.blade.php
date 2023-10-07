@@ -18,6 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .page-footer {
+            background: #fff !important;
+            color: #121d2c;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

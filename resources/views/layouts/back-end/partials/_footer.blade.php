@@ -6,7 +6,7 @@
     </div>
 </footer> --}}
 
-<div class="footer">
+<div class="footer" style="background: #fff;">
     <div class="row justify-content-between align-items-center">
         <div class="col">
             <p class="font-size-sm mb-0">

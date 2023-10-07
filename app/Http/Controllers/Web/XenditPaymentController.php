@@ -98,6 +98,7 @@ class XenditPaymentController extends Controller
 
         if($order['payment_url'] != null){
             Toastr::success('Invoice sudah dibuat, silahkan lakukan pembayaran!');
+            
             return redirect()->away($order['payment_url']);
         }
 

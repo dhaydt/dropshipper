@@ -34,7 +34,7 @@
                     @foreach ($social_media as $item)
                         <span class="social-media">
                                 <a class="social-btn sb-light sb-{{$item->name}} {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2"
-                                   target="_blank" href="{{$item->link}}" style="color: white!important;">
+                                   target="_blank" href="{{$item->link}}" style="color: black!important;">
                                     <i class="{{$item->icon}}" aria-hidden="true"></i>
                                 </a>
                             </span>
