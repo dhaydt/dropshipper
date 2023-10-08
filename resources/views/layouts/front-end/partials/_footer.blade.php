@@ -23,7 +23,7 @@
             <div class="col-md-3 col-lg-3 col-xl-3 mt-3">
                 <div class="text-nowrap mb-4">
                     <a class="d-inline-block mt-n1" href="{{route('home')}}">
-                        <img width="250" style="height: 60px!important;"
+                        <img width="auto" style="height: 60px!important; width: auto;"
                              src="{{asset("storage/company/")}}/{{ $web_config['footer_logo']->value }}"
                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                              alt="{{ $web_config['name']->value }}"/>
