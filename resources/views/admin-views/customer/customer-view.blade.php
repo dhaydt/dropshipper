@@ -106,7 +106,7 @@
                                                    href="{{route('admin.orders.details',['id'=>$order['id']])}}"><i
                                                         class="tio-visible"></i> {{\App\CPU\translate('View')}}</a>
                                                 <a class="dropdown-item" target="_blank"
-                                                   href="{{route('admin.orders.generate-invoice',[$order['id']])}}"><i
+                                                   href="{{route('admin.orders.generate-invoicen',[$order['id']])}}"><i
                                                         class="tio-download"></i> {{\App\CPU\translate('Invoice')}}</a>
                                             </div>
                                         </div>
