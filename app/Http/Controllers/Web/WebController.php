@@ -320,7 +320,7 @@ class WebController extends Controller
         session()->forget('category');
         $home_categories = Category::where('home_status', true)->get();
         $home_categories->map(function ($data) {
-            $data['products'] = Product::active()->whereJsonContains('category_ids', ['id' => (string) $data['id']])->inRandomOrder()->get();
+            $data['products'] = Product::active()->whereJsonContains('category_ids', ['id' => (string) $data['id']])->inRandomOrder()->take(12)->get();
         });
         //products based on top seller
         $top_sellers = Seller::approved()->with('shop')
@@ -336,7 +336,7 @@ class WebController extends Controller
         //end
 
         $latest_products = Product::with(['reviews'])->active()->orderBy('id', 'desc')->take(10)->get();
-        $categories = Category::where('position', 0)->take(12)->get();
+        $categories = Category::where('position', 0)->get();
         $brands = Brand::take(15)->get();
         //best sell product
         $bestSellProduct = OrderDetail::with('product.reviews')
