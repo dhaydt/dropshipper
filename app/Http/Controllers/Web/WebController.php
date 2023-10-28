@@ -320,7 +320,7 @@ class WebController extends Controller
         session()->forget('category');
         $home_categories = Category::where('home_status', true)->get();
         $home_categories->map(function ($data) {
-            $data['products'] = Product::active()->whereJsonContains('category_ids', ['id' => (string) $data['id']])->inRandomOrder()->take(12)->get();
+            $data['products'] = Product::active()->whereJsonContains('category_ids', ['id' => (string) $data['id']])->inRandomOrder()->get();
         });
         //products based on top seller
         $top_sellers = Seller::approved()->with('shop')
