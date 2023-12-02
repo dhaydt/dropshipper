@@ -158,7 +158,7 @@
                         <a class="nav-link active"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'order']) }}">{{\App\CPU\translate('Order')}}</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'product']) }}">{{\App\CPU\translate('Product')}}</a>
                     </li>
@@ -173,7 +173,7 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'review']) }}">{{\App\CPU\translate('Review')}}</a>
-                    </li>
+                    </li> --}}
 
                 </ul>
                 <!-- End Nav -->
