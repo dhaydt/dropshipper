@@ -57,13 +57,14 @@
         <div class="js-nav-scroller hs-nav-scroller-horizontal">
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs">
-                <li class="nav-item">
+                <li class="nav-item"> 
                         <a class="nav-link active" href="{{ route('admin.sellers.view',$seller->id) }}">{{\App\CPU\translate('Shop')}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'order']) }}">{{\App\CPU\translate('Order')}}</a>
                     </li>
+                    @if(\App\CPU\Helpers::module_permission_check('web_&_app_settings'))
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'product']) }}">{{\App\CPU\translate('Product')}}</a>
@@ -74,11 +75,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'transaction']) }}">{{\App\CPU\translate('Transaction')}}</a>
+                        href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'review']) }}">{{\App\CPU\translate('Review')}}</a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'review']) }}">{{\App\CPU\translate('Review')}}</a>
+                           href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'transaction']) }}">{{\App\CPU\translate('Transaction')}}</a>
                     </li>
 
             </ul>
