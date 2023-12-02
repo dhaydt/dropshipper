@@ -64,24 +64,22 @@
                         <a class="nav-link"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'order']) }}">{{\App\CPU\translate('Order')}}</a>
                     </li>
-                    @if(\App\CPU\Helpers::module_permission_check('web_&_app_settings'))
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'product']) }}">{{\App\CPU\translate('Product')}}</a>
-                    </li>
-                    <li class="nav-item">
+                    </li> --}}
+                    {{-- <li class="nav-item">
                         <a class="nav-link"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'setting']) }}">{{\App\CPU\translate('Setting')}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                        href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'review']) }}">{{\App\CPU\translate('Review')}}</a>
-                    </li>
-                    @endif
-                    <li class="nav-item">
+                    </li> --}}
+                    {{-- <li class="nav-item">
                         <a class="nav-link"
                            href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'transaction']) }}">{{\App\CPU\translate('Transaction')}}</a>
-                    </li>
+                    </li> --}}
+                    {{-- <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ route('admin.sellers.view',['id'=>$seller->id, 'tab'=>'review']) }}">{{\App\CPU\translate('Review')}}</a>
+                    </li> --}}
 
             </ul>
             <!-- End Nav -->
