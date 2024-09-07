@@ -755,6 +755,7 @@
                                 ProgressBar: true
                             });
                         }
+                        $('#loading').addClass('d-none');
                     } else {
                         toastr.success('product updated successfully!', {
                             CloseButton: true,

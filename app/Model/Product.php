@@ -45,7 +45,7 @@ class Product extends Model
             $query->where(['added_by' => 'admin', 'status' => 1]);
         });
     }
-    
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country', 'country');
@@ -113,7 +113,8 @@ class Product extends Model
         if (strpos(url()->current(), '/admin') || strpos(url()->current(), '/seller')) {
             return $detail;
         }
-        return $this->translations[0]->value ?? $detail;
+        // return $this->translations[0]->value ?? $detail;
+        return $detail;
     }
 
     protected static function boot()
