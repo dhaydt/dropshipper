@@ -638,7 +638,6 @@
                                     $prod = \App\Model\Product::find($product->id);
                                     ?>
                                     <div class="col-lg-12 col-md-12">
-                                        {{ dd($prod) }}
                                         {!! $prod->details !!}
                                     </div>
                                 </div>
