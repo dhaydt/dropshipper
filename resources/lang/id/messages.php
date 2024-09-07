@@ -1677,4 +1677,21 @@
   'Order_kamu_dengan_nomor_100120_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100120 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
   'Order_kamu_dengan_nomor_100121_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100121 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
   'Order_kamu_dengan_nomor_100122_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100122 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Enter your phone number' => 'Enter your phone number',
+  'Please provide valid phone number' => 'Please provide valid phone number',
+  'OTP_verification' => 'OTP verification',
+  'provide_your_otp_and_proceed' => 'Provide your otp and proceed',
+  'Enter your OTP' => 'Enter your OTP',
+  'Reset Password' => 'Reset Password',
+  'Reset your password' => 'Reset your password',
+  'Change your password in two easy steps. This helps to keep your new password secure' => 'Change your password in two easy steps. This helps to keep your new password secure',
+  'New Password' => 'New Password',
+  'Confirm Password' => 'Confirm Password',
+  'Please provide valid password' => 'Please provide valid password',
+  'Reset password' => 'Reset password',
+  'Order_kamu_dengan_nomor_100123_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100123 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'Order_kamu_dengan_nomor_100124_berhasil_disimpan, Mohon_selesaikan_pembayaran_agar_order_kamu_diproses!' => 'Order kamu dengan nomor 100124 berhasil disimpan  Mohon selesaikan pembayaran agar order kamu diproses!',
+  'optional, please provide
+                                    embed link not direct link' => 'Optional  please provide
+                                    embed link not direct link',
 );
