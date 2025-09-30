@@ -5,6 +5,7 @@ namespace App\CPU;
 use App\Model\BusinessSetting;
 use Illuminate\Support\Facades\Config;
 use Nexmo\Laravel\Facade\Nexmo;
+use Illuminate\Support\Facades\Log;
 
 class SMS_module
 {
@@ -73,9 +74,11 @@ class SMS_module
                 'userkey' => $userkey,
                 'passkey' => $passkey,
                 'to' => $telepon,
+                'brand' => 'Ezren',
                 'message' => $message,
             ]);
             $results = json_decode(curl_exec($curlHandle), true);
+            Log::info($results);
             curl_close($curlHandle);
         }
 
