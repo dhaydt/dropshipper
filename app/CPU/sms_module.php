@@ -58,8 +58,10 @@ class SMS_module
             $passkey = $config['messaging_service_sid'];
             $hp = (int) $receiver;
             $telepon = '+62'.(int) $hp;
+            // $telepon = 0 . (int) $hp;
             // dd($telepon);
-            $message = $config['otp_template'].$otp;
+            // $message = $config['otp_template'] . $otp;
+            $message = (string)$otp;
             // $message = ['grosa' => str_split($otp)];
             $url = $config['token'];
             $curlHandle = curl_init();
@@ -75,10 +77,16 @@ class SMS_module
                 'passkey' => $passkey,
                 'to' => $telepon,
                 'brand' => 'Ezren',
-                'message' => $message,
+                'otp' => $message,
             ]);
             $results = json_decode(curl_exec($curlHandle), true);
-            Log::info($results);
+            // Log::info($results, [
+            //     'userkey' => $userkey,
+            //     'passkey' => $passkey,
+            //     'to' => $telepon,
+            //     'brand' => 'Ezren',
+            //     'message' => $message,
+            // ]);
             curl_close($curlHandle);
         }
 
@@ -124,7 +132,7 @@ class SMS_module
             $api_key = $config['api_key'];
             $curl = curl_init();
             curl_setopt_array($curl, [
-                CURLOPT_URL => 'https://2factor.in/API/V1/'.$api_key.'/SMS/'.$receiver.'/'.$otp.'',
+                CURLOPT_URL => 'https://2factor.in/API/V1/' . $api_key . '/SMS/' . $receiver . '/' . $otp . '',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -154,7 +162,7 @@ class SMS_module
             $receiver = str_replace('+', '', $receiver);
             $curl = curl_init();
             curl_setopt_array($curl, [
-                CURLOPT_URL => 'https://api.msg91.com/api/v5/otp?template_id='.$config['template_id'].'&mobile='.$receiver.'&authkey='.$config['authkey'].'',
+                CURLOPT_URL => 'https://api.msg91.com/api/v5/otp?template_id=' . $config['template_id'] . '&mobile=' . $receiver . '&authkey=' . $config['authkey'] . '',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -201,7 +209,7 @@ class SMS_module
                     CURLOPT_CUSTOMREQUEST => 'POST',
                     CURLOPT_POSTFIELDS => "sender=$from&mobile=$to&content=$message",
                     CURLOPT_HTTPHEADER => [
-                        'Authorization: Bearer '.$config['api_key'],
+                        'Authorization: Bearer ' . $config['api_key'],
                     ],
                 ]);
                 $response = curl_exec($curl);
