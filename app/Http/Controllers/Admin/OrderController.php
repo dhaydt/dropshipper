@@ -27,7 +27,7 @@ class OrderController extends Controller
         if ($validator->errors()->count() > 0) {
             $err = Helpers::error_processor($validator);
             foreach ($err as $e) {
-                Toastr::error($e['message']); 
+                Toastr::error($e['message']);
             }
 
             return redirect()->back();
@@ -253,6 +253,7 @@ class OrderController extends Controller
 
     public function generate_invoicess($id)
     {
+        dd($id);
         $order = Order::with('seller')->with('shipping')->with('details')->where('id', $id)->first();
         $seller = Seller::findOrFail($order->details->first()->seller_id);
         if ($order['user_is'] == 'dropship') {
