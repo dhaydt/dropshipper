@@ -254,17 +254,15 @@ class OrderController extends Controller
     public function generate_invoicess($id)
     {
         $order = Order::with('seller')->with('shipping')->with('details')->where('id', $id)->first();
-        $seller = Seller::findOrFail($order->details->first()->seller_id);
+        $seller = Seller::find($order->details->first()->seller_id);
         if ($order['user_is'] == 'dropship') {
-            $data['email'] = $order->seller['email'];
-            $data['client_name'] = $order->seller['name'];
+            $data['email'] = $order->seller['email'] ?? 'Deletd Seller';
+            $data['client_name'] = $order->seller['name'] ?? 'Deletd Seller';
         } else {
             $data['email'] = $order->customer['email'];
             $data['client_name'] = $order->customer['f_name'].' '.$order->customer['l_name'];
         }
         $data['order'] = $order;
-
-        dd($data);
 
         if ($order['user_is'] == 'dropship') {
             // return view('admin-views.order.invoice_dropship')->with('order', $order)->with('seller', $seller);
