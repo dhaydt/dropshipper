@@ -373,7 +373,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'adminpanel', 'as' => 'admin.'
             Route::post('status', 'OrderController@status')->name('status');
             Route::post('payment-status', 'OrderController@payment_status')->name('payment-status');
             Route::post('productStatus', 'OrderController@productStatus')->name('productStatus');
-            Route::get('generate-invoicen/{id}', 'OrderController@generate_invoicess')->name('generate-invoicen');
+            Route::get('generate-invoice-order/{id}', 'OrderController@generate_invoicess')->name('generate-invoicen');
             Route::get('inhouse-order-filter', 'OrderController@inhouse_order_filter')->name('inhouse-order-filter');
             Route::post('prints', 'OrderController@prints')->name('prints');
         });
