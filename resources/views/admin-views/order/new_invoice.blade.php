@@ -165,7 +165,7 @@
         $cus = json_decode($order['shipping_address_data']);
     @endphp
     <header class="clearfix">
-        <div id="logo">
+        <div id="logo" style="height: 90px;">
             <img onerror="this.src=`{{ asset('assets/front-end/img/image-place-holder.png') }}`" src="{{ asset('storage/company'.'/'.$company_web_logo) }}" style="height: 90px">
         </div>
         <h1>INVOICE {{ $order['id'] }}</h1>
@@ -176,7 +176,7 @@
         </div>
         <div id="project" style="padding-left: 20px">
             <div><span>PENERIMA</span> :{{ $cus->contact_person_name }}</div>
-            <div><span>ALAMAT</span> :{{ $cus->district }}, {{ $cus->city }}, {{ $cus->province }}, ID</div>
+            <div><span>ALAMAT</span> :{{ $cus->address }},{{ $cus->district }}, {{ $cus->city }}, {{ $cus->province }}, ID</div>
             <div><span>HANDPHONE</span> :{{ $cus->phone }}</div>
             <div><span>TANGGAL</span> :{{date('d-m-Y h:i:s a',strtotime($order['created_at']))}}</div>
         </div>
