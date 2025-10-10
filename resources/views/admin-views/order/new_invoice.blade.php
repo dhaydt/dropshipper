@@ -166,7 +166,7 @@
     @endphp
     <header class="clearfix">
         <div id="logo">
-            <img src="{{ asset('storage/company'.'/'.$company_web_logo) }}">
+            <img height="200px" src="{{ asset('storage/company'.'/'.$company_web_logo) }}">
         </div>
         <h1>INVOICE {{ $order['id'] }}</h1>
         <div id="company" class="clearfix" style="padding-right: 20px">
