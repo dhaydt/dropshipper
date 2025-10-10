@@ -268,7 +268,7 @@ class OrderController extends Controller
             // return view('admin-views.order.invoice_dropship')->with('order', $order)->with('seller', $seller);
             $mpdf_view = \View::make('admin-views.order.invoice_dropship')->with('order', $order)->with('seller', $seller);
         } else {
-            // return view('admin-views.order.new_invoice')->with('order', $order);
+            return view('admin-views.order.new_invoice')->with('order', $order);
             $mpdf_view = \View::make('admin-views.order.new_invoice')->with('order', $order)->with('seller', $seller);
         }
         Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);

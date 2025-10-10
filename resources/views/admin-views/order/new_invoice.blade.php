@@ -42,7 +42,7 @@
         }
 
         #logo img {
-            width: 90px;
+            height: 90px;
         }
 
         h1 {
@@ -166,7 +166,7 @@
     @endphp
     <header class="clearfix">
         <div id="logo">
-            <img height="200px" src="{{ asset('storage/company'.'/'.$company_web_logo) }}">
+            <img onerror="this.src=`{{ asset('assets/front-end/img/image-place-holder.png') }}`" src="{{ asset('storage/company'.'/'.$company_web_logo) }}">
         </div>
         <h1>INVOICE {{ $order['id'] }}</h1>
         <div id="company" class="clearfix" style="padding-right: 20px">
